@@ -44,8 +44,8 @@ export class RangeSlideBar extends LitElement {
     // ── Public API — значения ───────────────────────────────
     @property({ type: Number }) from = 0;
     @property({ type: Number }) to = 100;
-    @property({ type: Number }) minValue = 20;
-    @property({ type: Number }) maxValue = 60;
+    @property({ type: Number, attribute: 'min-value' }) minValue = 20;
+    @property({ type: Number, attribute: 'max-value' }) maxValue = 60;
     @property({ type: Number }) divisions = 0;
     @property({ type: Boolean, reflect: true }) enabled = true;
 
