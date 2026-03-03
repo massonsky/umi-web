@@ -1,0 +1,35 @@
+/*
+ * umi-loading-indicator — Material Design 3 Expressive Loading Indicator
+ * Shape-morphing + continuous rotation, mirrors LoadingIndicatorBase (C++/QML)
+ */
+
+:host {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+:host([hidden]) {
+    display: none;
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+}
+
+svg {
+    display: block;
+    overflow: visible;
+    /* rotation is applied via JS on this element */
+    will-change: transform;
+}
+
+.shape {
+    transform-origin: 24px 24px;
+    will-change: d, transform;
+}

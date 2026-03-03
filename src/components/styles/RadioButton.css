@@ -1,0 +1,137 @@
+:host {
+    display: inline-flex;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.root {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: var(--rb-min-w, 48px);
+    min-height: var(--rb-min-h, 48px);
+    padding: var(--rb-pad-y, 8px) var(--rb-pad-x, 8px);
+    border-radius: var(--rb-bg-radius, 12px);
+    background: var(--rb-bg, transparent);
+    border: var(--rb-bg-border-w, 0px) solid var(--rb-bg-border, transparent);
+    transition:
+        border-radius 300ms cubic-bezier(.2,.8,.2,1),
+        background-color 200ms ease,
+        border-color 200ms ease,
+        opacity 160ms ease;
+    user-select: none;
+}
+
+.root.disabled {
+    opacity: 0.64;
+    cursor: default;
+}
+
+.root.enabled {
+    cursor: pointer;
+}
+
+.bg-state-layer {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--rb-state-layer, currentColor);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms ease;
+}
+
+.root.enabled.has-bg.hovered .bg-state-layer { opacity: 0.08; }
+.root.enabled.has-bg.pressed .bg-state-layer { opacity: 0.12; }
+.root.enabled.has-bg:focus-visible .bg-state-layer { opacity: 0.10; }
+
+.content {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--rb-gap, 8px);
+}
+
+.radio-area {
+    position: relative;
+    width: var(--rb-state, 40px);
+    height: var(--rb-state, 40px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(var(--rb-scale, 1));
+    transform-origin: center;
+    transition: transform 300ms cubic-bezier(.34,1.56,.64,1);
+}
+
+.state-layer {
+    position: absolute;
+    width: var(--rb-state, 40px);
+    height: var(--rb-state, 40px);
+    border-radius: 50%;
+    background: var(--rb-state-layer, currentColor);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms ease;
+}
+
+.root.enabled:not(.has-bg).hovered .state-layer { opacity: 0.08; }
+.root.enabled:not(.has-bg).pressed .state-layer { opacity: 0.12; }
+.root.enabled:not(.has-bg):focus-visible .state-layer { opacity: 0.10; }
+
+.ring {
+    position: relative;
+    width: var(--rb-box, 20px);
+    height: var(--rb-box, 20px);
+    border-radius: 50%;
+    border: 2px solid var(--rb-border, var(--md-sys-color-on-surface-variant, #49454f));
+    box-sizing: border-box;
+    transition: border-color 150ms ease;
+}
+
+.dot {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--rb-dot, 10px);
+    height: var(--rb-dot, 10px);
+    border-radius: 50%;
+    background: var(--rb-dot-color, var(--md-sys-color-primary, #6750a4));
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 300ms cubic-bezier(.34,1.56,.64,1), opacity 120ms ease, background-color 150ms ease;
+}
+
+.dot.visible {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.focus-ring {
+    position: absolute;
+    width: calc(var(--rb-box, 20px) + 8px);
+    height: calc(var(--rb-box, 20px) + 8px);
+    border-radius: 50%;
+    border: 2px solid var(--rb-focus, #625b71);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms ease;
+}
+
+.root.enabled:focus-visible:not(.pressed):not(.hovered) .focus-ring {
+    opacity: 1;
+}
+
+.label {
+    font-family: var(--md-sys-typescale-label-large-font, Roboto, 'Segoe UI', sans-serif);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--rb-text, var(--md-sys-color-on-surface, #1d1b20));
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+}

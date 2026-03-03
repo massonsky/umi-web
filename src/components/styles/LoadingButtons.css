@@ -1,0 +1,131 @@
+:host {
+    display: inline-flex;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--lb-gap, 8px);
+    box-sizing: border-box;
+    overflow: hidden;
+    border: var(--lb-border, 0 solid transparent);
+    border-radius: var(--lb-radius, 20px);
+    background: var(--lb-bg, var(--md-sys-color-primary, #6750a4));
+    color: var(--lb-fg, var(--md-sys-color-on-primary, #fff));
+    min-width: var(--lb-min-width, 80px);
+    height: var(--lb-height, 40px);
+    padding: 0 var(--lb-pad-x, 24px);
+    cursor: pointer;
+    user-select: none;
+    transition: transform 160ms ease, box-shadow 200ms ease, border-radius 220ms ease;
+    box-shadow: var(--lb-shadow, none);
+}
+
+.container:hover {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.22);
+}
+
+.container:active {
+    transform: scale(0.97);
+}
+
+.container.locked,
+.container:disabled {
+    cursor: not-allowed;
+    opacity: 0.78;
+}
+
+.state-layer {
+    position: absolute;
+    inset: 0;
+    background: currentColor;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 120ms ease;
+}
+
+.container:hover .state-layer { opacity: 0.08; }
+.container:active .state-layer { opacity: 0.12; }
+
+.content {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: inherit;
+    white-space: nowrap;
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    transition: opacity 240ms ease, transform 320ms cubic-bezier(.2,.8,.2,1);
+}
+
+.content.loading {
+    opacity: 0;
+    transform: scale(0.6) rotate(45deg);
+}
+
+.loader-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0) rotate(-90deg);
+    transition: opacity 260ms ease, transform 380ms cubic-bezier(.2,.8,.2,1);
+}
+
+.loader-wrap.visible {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+
+.icon {
+    font-family: var(--icon-font-family, 'Material Symbols Outlined');
+    font-size: var(--lb-icon-size, 20px);
+    line-height: 1;
+    font-variation-settings:
+        'FILL' var(--icon-fill, 0),
+        'wght' var(--icon-wght, 400),
+        'GRAD' var(--icon-grad, 0),
+        'opsz' var(--icon-opsz, 24);
+}
+
+.label {
+    font-family: var(--md-sys-typescale-label-large-font, Roboto, 'Segoe UI', sans-serif);
+    font-size: var(--lb-font-size, 14px);
+    font-weight: 500;
+    line-height: 1;
+}
+
+.container.fab {
+    min-width: var(--lb-fab-size, 56px);
+    width: var(--lb-fab-size, 56px);
+    height: var(--lb-fab-size, 56px);
+    padding: 0;
+    border-radius: var(--lb-fab-radius, 16px);
+}
+
+.container.efab {
+    height: 56px;
+    padding: 0 16px;
+    border-radius: 16px;
+    --lb-gap: 12px;
+    --lb-icon-size: 24px;
+}
+
+.container.icon-btn {
+    min-width: var(--lb-icon-btn-size, 40px);
+    width: var(--lb-icon-btn-size, 40px);
+    height: var(--lb-icon-btn-size, 40px);
+    padding: 0;
+    border-radius: 50%;
+    --lb-gap: 0;
+}

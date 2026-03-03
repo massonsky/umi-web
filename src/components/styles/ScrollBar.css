@@ -1,0 +1,158 @@
+.root {
+    position: relative;
+    display: inline-flex;
+    box-sizing: border-box;
+    opacity: var(--sb-opacity, 1);
+    transition: opacity 220ms ease;
+}
+
+.root.vertical {
+    width: calc(var(--sb-thickness, 4px) + 8px);
+    min-height: 40px;
+    height: 100%;
+}
+
+.root.horizontal {
+    height: calc(var(--sb-thickness, 4px) + 8px);
+    min-width: 40px;
+    width: 100%;
+}
+
+.track {
+    position: absolute;
+    inset: 0;
+    border-radius: calc(var(--sb-radius, 2px) + 2px);
+    background: var(--sb-track, color-mix(in srgb, #e6e0e9 55%, transparent));
+    opacity: 0.55;
+    transition: background-color 200ms ease, opacity 200ms ease, border-radius 180ms ease;
+}
+
+.thumb {
+    position: absolute;
+    border-radius: var(--sb-radius, 2px);
+    background: var(--sb-handle, var(--md-sys-color-on-surface-variant, #49454f));
+    transition:
+        background-color 180ms ease,
+        width 160ms cubic-bezier(.34,1.56,.64,1),
+        height 160ms cubic-bezier(.34,1.56,.64,1),
+        border-radius 160ms ease,
+        transform 120ms ease;
+}
+
+.root.vertical .thumb {
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--sb-thickness, 4px);
+    height: var(--sb-thumb-len, 24px);
+    top: var(--sb-thumb-offset, 0px);
+}
+
+.root.horizontal .thumb {
+    top: 50%;
+    transform: translateY(-50%);
+    height: var(--sb-thickness, 4px);
+    width: var(--sb-thumb-len, 24px);
+    left: var(--sb-thumb-offset, 0px);
+}
+
+.root.active .track {
+    opacity: 0.7;
+}
+
+.root.disabled {
+    pointer-events: none;
+}
+
+.state-layer {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: currentColor;
+    opacity: 0;
+    transition: opacity 120ms ease;
+}
+
+.root.enabled.active .state-layer {
+    opacity: 0.08;
+}
+
+.root.enabled.active .thumb:active .state-layer,
+.root.enabled.active .thumb:focus-visible .state-layer {
+    opacity: 0.12;
+}
+
+.expressive .root {
+    transition: opacity 260ms ease;
+}
+
+.expressive.show-shadow .thumb {
+    box-shadow: 0 2px 8px color-mix(in srgb, #000 20%, transparent);
+}
+
+.expressive.breathing .root:not(.active) .thumb {
+    animation: sb-breath 1800ms ease-in-out infinite;
+}
+
+@keyframes sb-breath {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.08);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.expressive.breathing .root.vertical:not(.active) .thumb {
+    transform: translateX(-50%);
+    animation-name: sb-breath-v;
+}
+
+@keyframes sb-breath-v {
+    0% {
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.08);
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+.expressive.breathing .root.horizontal:not(.active) .thumb {
+    transform: translateY(-50%);
+    animation-name: sb-breath-h;
+}
+
+@keyframes sb-breath-h {
+    0% {
+        transform: translateY(-50%) scale(1);
+    }
+    50% {
+        transform: translateY(-50%) scale(1.08);
+    }
+    100% {
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+.expressive.gradient-track .track {
+    background:
+        linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--md-sys-color-primary-container, #eaddff) 36%, transparent),
+            color-mix(in srgb, var(--md-sys-color-tertiary-container, #ffd8e4) 36%, transparent)
+        );
+}
+
+.expressive.gradient-track .root.horizontal .track {
+    background:
+        linear-gradient(
+            90deg,
+            color-mix(in srgb, var(--md-sys-color-primary-container, #eaddff) 36%, transparent),
+            color-mix(in srgb, var(--md-sys-color-tertiary-container, #ffd8e4) 36%, transparent)
+        );
+}

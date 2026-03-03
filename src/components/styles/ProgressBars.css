@@ -1,0 +1,50 @@
+:host {
+    --md-primary: var(--md-sys-color-primary, #6750a4);
+    --md-secondary-container: var(--md-sys-color-secondary-container, #e8def8);
+    --md-primary-container: var(--md-sys-color-primary-container, #eaddff);
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+:host, *, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.arc {
+    fill: none;
+    stroke-linecap: round;
+}
+
+.linear-root {
+    position: relative;
+    width: 100%;
+    min-width: 48px;
+    height: var(--thickness, 4px);
+    overflow: visible;
+    transform-origin: center center;
+    transition: transform 250ms cubic-bezier(.33, 1, .68, 1), opacity 250ms cubic-bezier(.33, 1, .68, 1);
+}
+
+.bar-segment {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    border-radius: 999px;
+}
+
+.scale-hidden {
+    transform: scale(0.05);
+    opacity: 0;
+}
+
+.scale-visible {
+    transform: scale(1);
+    opacity: 1;
+}

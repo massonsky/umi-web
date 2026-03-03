@@ -1,0 +1,554 @@
+/* ─────────────────────────────────────────────────────────────
+   umi-split-button — Material Design 3 Split Button
+   ─────────────────────────────────────────────────────────────
+   CSS custom properties (set inline by component JS):
+     --split-h             button height
+     --split-outer-r       full border-radius (height/2)
+     --split-inner-r       inner corner radius (4 | 8 | 12 dp)
+     --split-menu-w        menu-button width
+     --split-icon-sz       icon size
+     --split-font-sz       label font size
+     --split-pad           horizontal padding for primary
+
+   Color tokens (derive from MD3 color scheme):
+     --split-bg            container background
+     --split-text          container foreground
+     --split-outline       border color (outlined variant only)
+     --split-shadow        box-shadow (elevated variant only)
+   ───────────────────────────────────────────────────────────── */
+
+:host {
+    display: inline-flex;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    vertical-align: middle;
+}
+
+/* ── Life Material: breathing animation ────────────────────── */
+@keyframes umi-breathe {
+    0%, 100% { transform: none; }
+    50%      { transform: none; }
+}
+
+/* ── Wrapper ────────────────────────────────────────────────── */
+.wrapper {
+    display: inline-flex;
+    align-items: stretch;
+    height: var(--split-h, 56px);
+    gap: 2px;                   /* MD3 spec: always 2dp gap */
+    animation: none;
+}
+
+.wrapper.life-material {
+    animation: umi-breathe 3s ease-in-out infinite;
+}
+
+.wrapper.pressed,
+.wrapper.menu-open {
+    animation-play-state: paused;
+}
+
+:host([disabled]) .wrapper {
+    animation: none;
+    opacity: 0.38;
+    pointer-events: none;
+}
+
+/* ── Primary button ─────────────────────────────────────────── */
+.primary {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+    box-sizing: border-box;
+    padding: 0 var(--split-pad, 24px);
+    min-width: calc(var(--split-pad, 24px) * 2 + 64px);
+
+    background-color: var(--split-bg, var(--md-sys-color-primary, #6750a4));
+    color: var(--split-text, var(--md-sys-color-on-primary, #fff));
+    border: 1px solid var(--split-outline, transparent);
+    box-shadow: var(--split-shadow, none);
+
+    /* outer = left corners = full-round; inner = right corners, morphable */
+    border-radius:
+        var(--split-outer-r, 28px)
+        var(--split-inner-r, 4px)
+        var(--split-inner-r, 4px)
+        var(--split-outer-r, 28px);
+
+    transition:
+        border-radius  400ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        background-color 300ms cubic-bezier(0.2, 0, 0, 1),
+        box-shadow 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Hover: inner-right corners morph to full radius */
+.primary:hover,
+.primary.focused {
+    border-radius:
+        var(--split-outer-r, 28px)
+        var(--split-outer-r, 28px)
+        var(--split-outer-r, 28px)
+        var(--split-outer-r, 28px);
+}
+
+/* Press: scale down */
+.primary.pressed {
+    border-radius:
+        var(--split-outer-r, 28px)
+        var(--split-outer-r, 28px)
+        var(--split-outer-r, 28px)
+        var(--split-outer-r, 28px);
+}
+
+/* Primary state layer */
+.primary .state-layer {
+    position: absolute;
+    inset: 0;
+    background-color: var(--split-text, currentColor);
+    opacity: 0;
+    transition: opacity 150ms linear;
+    pointer-events: none;
+}
+
+.primary:hover .state-layer { opacity: 0.08; }
+.primary.pressed .state-layer { opacity: 0.12; }
+.primary.focused .state-layer { opacity: 0.10; }
+
+/* Primary content */
+.primary .content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--split-font-sz, 16px);
+    font-family: var(--md-sys-typescale-title-small-font,
+                     var(--md-sys-typescale-label-large-font,
+                     'Roboto', 'Segoe UI', sans-serif));
+    font-weight: var(--md-sys-typescale-label-large-weight, 500);
+    letter-spacing: var(--md-sys-typescale-label-large-tracking, 0.006rem);
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.primary .icon {
+    font-family: var(--icon-font-family, 'Material Symbols Outlined');
+    font-size: var(--split-icon-sz, 24px);
+    font-variation-settings:
+        'FILL' var(--icon-fill, 0),
+        'wght' var(--icon-wght, 400),
+        'GRAD' var(--icon-grad, 0),
+        'opsz' var(--split-icon-opsz, 24);
+    display: inline-block;
+    line-height: 1;
+    transition: transform 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.primary:hover .icon { transform: scale(1.1); }
+
+/* ── Menu toggle button ─────────────────────────────────────── */
+.menu-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+    box-sizing: border-box;
+    width: var(--split-menu-w, 56px);
+    flex-shrink: 0;
+
+    background-color: var(--split-bg, var(--md-sys-color-primary, #6750a4));
+    color: var(--split-text, var(--md-sys-color-on-primary, #fff));
+    border: 1px solid var(--split-outline, transparent);
+    box-shadow: var(--split-shadow, none);
+
+    /* outer = right corners; inner = left corners, morphable */
+    border-radius:
+        var(--split-inner-r, 4px)
+        var(--split-outer-r, 28px)
+        var(--split-outer-r, 28px)
+        var(--split-inner-r, 4px);
+
+    transition:
+        border-radius  400ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        background-color 300ms cubic-bezier(0.2, 0, 0, 1),
+        box-shadow 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Hover / open: left corners morph to full */
+.menu-btn:hover,
+.menu-btn.menu-open,
+.menu-btn.focused {
+    border-radius:
+        var(--split-outer-r, 28px)
+        var(--split-outer-r, 28px)
+        var(--split-outer-r, 28px)
+        var(--split-outer-r, 28px);
+}
+
+.menu-btn.pressed {
+    border-radius:
+        var(--split-outer-r, 28px)
+        var(--split-outer-r, 28px)
+        var(--split-outer-r, 28px)
+        var(--split-outer-r, 28px);
+}
+
+/* Menu-btn state layer */
+.menu-btn .state-layer {
+    position: absolute;
+    inset: 0;
+    background-color: var(--split-text, currentColor);
+    opacity: 0;
+    transition: opacity 150ms linear;
+    pointer-events: none;
+}
+
+.menu-btn:hover .state-layer { opacity: 0.08; }
+.menu-btn.pressed .state-layer { opacity: 0.12; }
+.menu-btn.menu-open .state-layer { opacity: 0.08; }
+.menu-btn.focused .state-layer { opacity: 0.10; }
+
+/* ── Arrow icon ─────────────────────────────────────────────── */
+.arrow-icon {
+    font-family: 'Material Symbols Outlined';
+    font-size: var(--split-icon-sz, 24px);
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    line-height: 1;
+    position: relative;
+    pointer-events: none;
+    /* offset from center when closed — see --split-arrow-offset */
+    margin-right: var(--split-arrow-offset, 2px);
+    color: var(--split-text, inherit);
+
+    /* elastic rotation transition */
+    transition:
+        transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+        margin-right 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+        color 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.menu-btn.menu-open .arrow-icon {
+    transform: rotate(180deg);
+    margin-right: 0;
+}
+
+/* ── Focus ring ─────────────────────────────────────────────── */
+.focus-ring {
+    position: absolute;
+    inset: -3px;
+    border-radius: calc(var(--split-outer-r, 28px) + 3px);
+    border: 2px solid var(--md-sys-color-secondary, #625b71);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+:host(:focus-visible) .focus-ring { opacity: 1; }
+
+/* ── Elevated variant shadow ────────────────────────────────── */
+:host([variant="elevated"]) .primary,
+:host([variant="elevated"]) .menu-btn {
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.15),
+        0 1px 3px 1px rgba(0,0,0,0.10);
+    transition:
+        border-radius  400ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        background-color 300ms cubic-bezier(0.2, 0, 0, 1),
+        box-shadow 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+:host([variant="elevated"]) .primary:hover,
+:host([variant="elevated"]) .menu-btn:hover {
+    box-shadow:
+        0 2px 4px rgba(0,0,0,0.18),
+        0 2px 6px 2px rgba(0,0,0,0.12);
+}
+
+/* ── Outlined variant ───────────────────────────────────────── */
+:host([variant="outlined"]) .primary,
+:host([variant="outlined"]) .menu-btn {
+    border-width: 1px;
+}
+
+/* ── Ripple slot (md-ripple is slotted) ─────────────────────── */
+.primary md-ripple,
+.menu-btn md-ripple {
+    border-radius: inherit;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MENU POPUP
+   ═══════════════════════════════════════════════════════════════ */
+
+.popup-anchor {
+    position: absolute;
+    /* filled programmatically by JS: top | bottom, left | right */
+}
+
+.popup {
+    position: fixed;
+    z-index: 9999;
+    min-width: 100%;
+    box-sizing: border-box;
+    border-radius: 4px;
+    overflow: hidden;
+
+    background-color: var(--md-sys-color-surface-container,
+                           var(--md-sys-color-surface, #fff));
+    box-shadow:
+        0 4px 8px rgba(0,0,0,0.12),
+        0 8px 24px rgba(0,0,0,0.08);
+
+    /* Elastic entrance */
+    transform-origin: top right;
+    transition:
+        opacity 300ms cubic-bezier(0.2, 0, 0, 1),
+        transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.popup[data-dir="up"] { transform-origin: bottom right; }
+
+/* Hidden state */
+.popup[hidden] {
+    display: block !important;    /* override UA hidden */
+    opacity: 0;
+    transform: scale(0.85);
+    pointer-events: none;
+    visibility: hidden;
+}
+
+/* Visible state */
+.popup:not([hidden]) {
+    opacity: 1;
+    transform: scale(1.0);
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Exit animation class */
+.popup.closing {
+    opacity: 0;
+    transform: scale(0.9);
+    transition:
+        opacity 200ms cubic-bezier(0.4, 0, 1, 1),
+        transform 200ms cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* ── Menu items ─────────────────────────────────────────────── */
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-sizing: border-box;
+    padding: 0 16px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+
+    color: var(--md-sys-color-on-surface, #1c1b1f);
+    font-size: 14px;
+    font-family: var(--md-sys-typescale-body-large-font,
+                     'Roboto', 'Segoe UI', sans-serif);
+    font-weight: 400;
+
+    height: var(--split-menu-item-h, 48px);
+
+    /* Staggered entrance */
+    opacity: 0;
+    transition:
+        opacity 250ms cubic-bezier(0.2, 0, 0, 1),
+        background-color 150ms linear;
+}
+
+.menu-item.visible {
+    opacity: 1;
+}
+
+.menu-item:hover {
+    background-color: color-mix(in srgb,
+        var(--md-sys-color-on-surface, #1c1b1f) 8%,
+        transparent);
+}
+
+.menu-item:active,
+.menu-item.pressing {
+    background-color: color-mix(in srgb,
+        var(--md-sys-color-on-surface, #1c1b1f) 12%,
+        transparent);
+}
+
+.menu-item.disabled {
+    opacity: 0.38;
+    cursor: default;
+    pointer-events: none;
+}
+
+/* Selected highlight (button type) */
+.menu-item.selected {
+    background-color: color-mix(in srgb,
+        var(--md-sys-color-primary, #6750a4) 12%,
+        transparent);
+    color: var(--md-sys-color-primary, #6750a4);
+}
+
+/* Leading icon */
+.menu-item .item-icon {
+    font-family: 'Material Symbols Outlined';
+    font-size: 20px;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+    line-height: 1;
+    color: var(--md-sys-color-on-surface-variant, #49454f);
+    flex-shrink: 0;
+}
+
+/* Trailing check (selected item in button mode) */
+.menu-item .item-check {
+    font-family: 'Material Symbols Outlined';
+    font-size: 20px;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+    margin-left: auto;
+    opacity: 0;
+    transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1);
+    color: var(--md-sys-color-primary, #6750a4);
+}
+
+.menu-item.selected .item-check { opacity: 1; }
+
+/* Item text block */
+.item-text {
+    flex: 1;
+    overflow: hidden;
+}
+
+.item-primary-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item-secondary-text {
+    font-size: 12px;
+    color: var(--md-sys-color-on-surface-variant, #49454f);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 2px;
+}
+
+/* Checkbox in menu item */
+.item-checkbox {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--md-sys-color-on-surface-variant, #49454f);
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 200ms, border-color 200ms;
+}
+
+.item-checkbox.checked {
+    background-color: var(--md-sys-color-primary, #6750a4);
+    border-color: var(--md-sys-color-primary, #6750a4);
+}
+
+.item-checkbox.checked::after {
+    content: '';
+    width: 10px;
+    height: 6px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(-45deg) translateY(-2px);
+}
+
+/* Switch in menu item */
+.item-switch {
+    width: 52px;
+    min-width: 52px;
+    height: 32px;
+    border-radius: 16px;
+    background-color: var(--md-sys-color-surface-container-highest, #e6e0e9);
+    border: 2px solid var(--md-sys-color-outline, #79747e);
+    position: relative;
+    cursor: pointer;
+    margin-left: auto;
+    flex-shrink: 0;
+    transition: background-color 200ms, border-color 200ms;
+}
+
+.item-switch.checked {
+    background-color: var(--md-sys-color-primary, #6750a4);
+    border-color: var(--md-sys-color-primary, #6750a4);
+}
+
+.item-switch::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--md-sys-color-outline, #79747e);
+    transform: translateY(-50%);
+    transition: left 300ms cubic-bezier(0.34, 1.56, 0.64, 1),
+                width 200ms, background-color 200ms;
+}
+
+.item-switch.checked::after {
+    left: calc(100% - 20px);
+    width: 24px;
+    height: 24px;
+    top: 50%;
+    background-color: var(--md-sys-color-on-primary, #fff);
+}
+
+/* Radio button in menu item */
+.item-radio {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--md-sys-color-on-surface-variant, #49454f);
+    flex-shrink: 0;
+    margin-right: 12px;
+    position: relative;
+    transition: border-color 200ms;
+}
+
+.item-radio.checked {
+    border-color: var(--md-sys-color-primary, #6750a4);
+}
+
+.item-radio.checked::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background-color: var(--md-sys-color-primary, #6750a4);
+}
+
+/* Divider between items */
+.menu-divider {
+    height: 1px;
+    background-color: var(--md-sys-color-outline-variant, #cac4d0);
+    margin: 4px 0;
+}
+
+/* Scrollbar for long menus */
+.popup {
+    max-height: 320px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--md-sys-color-outline-variant, #cac4d0) transparent;
+}

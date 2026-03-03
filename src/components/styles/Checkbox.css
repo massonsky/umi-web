@@ -1,0 +1,177 @@
+:host {
+    display: inline-flex;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.root {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: var(--cb-min-w, 48px);
+    min-height: var(--cb-min-h, 48px);
+    padding: var(--cb-pad-y, 4px) var(--cb-pad-x, 4px);
+    border-radius: var(--cb-bg-radius, 12px);
+    background: var(--cb-bg-container, transparent);
+    border: var(--cb-bg-border-w, 0px) solid var(--cb-bg-border, transparent);
+    transition:
+        border-radius 300ms cubic-bezier(.2,.8,.2,1),
+        background-color 200ms ease,
+        border-color 200ms ease,
+        opacity 160ms ease;
+    user-select: none;
+}
+
+.root:focus,
+.root:focus-visible {
+    outline: none;
+}
+
+.root.disabled {
+    opacity: 0.64;
+    cursor: default;
+}
+
+.root.enabled {
+    cursor: pointer;
+}
+
+.bg-state-layer {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--cb-state-layer, currentColor);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms ease;
+}
+
+.root.enabled.has-bg.hovered .bg-state-layer { opacity: var(--cb-bg-hover-op, 0.08); }
+.root.enabled.has-bg.pressed .bg-state-layer { opacity: var(--cb-bg-press-op, 0.10); }
+
+.content {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--cb-gap, 8px);
+}
+
+.checkbox-area {
+    position: relative;
+    width: var(--cb-state-size, 40px);
+    height: var(--cb-state-size, 40px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.state-layer {
+    position: absolute;
+    width: var(--cb-state-size, 40px);
+    height: var(--cb-state-size, 40px);
+    border-radius: 50%;
+    background: var(--cb-state-layer, currentColor);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms ease;
+}
+
+.root.enabled:not(.has-bg).hovered .state-layer { opacity: 0.08; }
+.root.enabled:not(.has-bg).pressed .state-layer { opacity: 0.10; }
+.root.enabled:not(.has-bg):focus-visible .state-layer { opacity: 0.1; }
+
+.box {
+    position: relative;
+    box-sizing: border-box;
+    width: var(--cb-box, 18px);
+    height: var(--cb-box, 18px);
+    border-radius: 2px;
+}
+
+.outline,
+.background,
+.icon {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+}
+
+.outline {
+    box-sizing: border-box;
+    border: var(--cb-outline-w, 2px) solid var(--cb-outline, var(--md-sys-color-on-surface-variant, #49454f));
+    transition: border-color 150ms ease, border-width 150ms ease;
+}
+
+.background {
+    background: var(--cb-box-bg, transparent);
+    opacity: 0;
+    transform: scale(0.6);
+    transition: transform 150ms ease, opacity 100ms linear, background-color 150ms ease;
+}
+
+.root.selected .background {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.root.selected .outline {
+    border-width: 0;
+}
+
+.root.enabled.unselected.hovered .outline,
+.root.enabled.unselected.pressed .outline,
+.root.enabled.unselected:focus-visible .outline {
+    border-color: var(--cb-outline-active, var(--md-sys-color-on-surface, #1d1b20));
+}
+
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Material Symbols Outlined';
+    font-size: var(--cb-icon, 18px);
+    line-height: 1;
+    color: var(--cb-icon-color, #fff);
+    font-variation-settings:
+        'FILL' var(--icon-fill, 0),
+        'wght' var(--icon-wght, 400),
+        'GRAD' var(--icon-grad, 0),
+        'opsz' var(--icon-opsz, 18);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 150ms ease, transform 300ms cubic-bezier(.34,1.56,.64,1);
+}
+
+.icon.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.focus-ring {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 3px solid var(--cb-focus, #625b71);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms ease;
+}
+
+.root.enabled:focus-visible:not(.pressed):not(.hovered) .focus-ring {
+    opacity: 1;
+}
+
+.label {
+    font-family: var(--md-sys-typescale-label-large-font, Roboto, 'Segoe UI', sans-serif);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--cb-text, var(--md-sys-color-on-surface, #1d1b20));
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+}

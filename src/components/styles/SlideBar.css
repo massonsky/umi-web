@@ -1,0 +1,327 @@
+/* =====================================================
+   SlideBar (MD3 Expressive) — base container
+   ===================================================== */
+:host {
+    display: block;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.sb-root {
+    position: relative;
+    width: 100%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    outline: none;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.sb-root.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+/* =====================================================
+   Tracks
+   ===================================================== */
+.sb-track {
+    position: absolute;
+    height: 16px;
+    top: 14px;
+    pointer-events: none;
+    z-index: 0;
+    transition: background-color 300ms cubic-bezier(.2,.0,.0,1), opacity 150ms ease;
+}
+
+.sb-track-active {
+    left: 0;
+    border-radius: 9999px 2px 2px 9999px;
+}
+
+.sb-track-inactive {
+    right: 0;
+    border-radius: 2px 9999px 9999px 2px;
+}
+
+/* Inset icon inside track */
+.sb-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1;
+    user-select: none;
+    font-family: 'Material Symbols Outlined', 'Material Symbols Rounded', 'Material Icons', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    -webkit-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    transition: left 150ms cubic-bezier(.2,0,.0,1), right 150ms cubic-bezier(.2,0,.0,1), color 300ms ease;
+}
+
+.sb-track-range-left  { right: 0; border-radius: 2px 9999px 9999px 2px; }
+.sb-track-range-right { left: 0;  border-radius: 9999px 2px 2px 9999px; }
+.sb-track-range-mid   { border-radius: 2px; }
+.sb-track-both-round  { border-radius: 9999px; }
+
+/* =====================================================
+   Wave track canvas
+   ===================================================== */
+.sb-wave-canvas {
+    position: absolute;
+    top: 14px;
+    height: 16px;
+    pointer-events: none;
+    transition: opacity 150ms ease;
+}
+
+/* =====================================================
+   End indicator dot
+   ===================================================== */
+.sb-end-dot {
+    position: absolute;
+    top: 50%;
+    right: 4px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 2;
+    transition: background-color 300ms cubic-bezier(.2,0,.0,1), opacity 160ms ease;
+}
+
+.sb-start-dot {
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 2;
+    transition: background-color 300ms cubic-bezier(.2,0,.0,1), opacity 160ms ease;
+}
+
+/* =====================================================
+   Division ticks
+   ===================================================== */
+.sb-tick {
+    position: absolute;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: background-color 150ms ease;
+}
+
+/* =====================================================
+   Handle
+   ===================================================== */
+.sb-handle-area {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
+    z-index: 3;
+}
+
+/* State layer: hover 8%, pressed 12% (MD3 spec) */
+.sb-state-layer {
+    position: absolute;
+    inset: 0;
+    border-radius: 22px;
+    pointer-events: none;
+    transition: opacity 150ms ease;
+}
+
+.sb-handle-inner {
+    border-radius: 999px;
+    transition:
+        width 150ms cubic-bezier(.34,1.56,.64,1),
+        background-color 300ms cubic-bezier(.2,0,.0,1),
+        opacity 150ms ease;
+}
+
+.sb-handle-focus-ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 16px;
+    border: 3px solid var(--sb-handle-color, var(--md-sys-color-primary, #6750a4));
+    pointer-events: none;
+    transition: opacity 150ms ease;
+}
+
+/* =====================================================
+   Value label — badge/pointer shape (MD3 value indicator)
+   ===================================================== */
+.sb-label {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    transform-origin: bottom center;
+    transition:
+        opacity  200ms ease,
+        transform 200ms cubic-bezier(.34,1.56,.64,1);
+    will-change: transform, opacity;
+    z-index: 10;
+}
+
+.sb-label.hidden {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.6);
+}
+
+.sb-label.visible {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+.sb-label-bubble {
+    height: 44px;
+    min-width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    padding: 0 16px;
+    white-space: nowrap;
+    font-family: var(--md-sys-typescale-label-large-font, Roboto, sans-serif);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 300ms ease, color 300ms ease;
+}
+
+.sb-label-pointer {
+    width: 0;
+    height: 0;
+    border-left:  7px solid transparent;
+    border-right: 7px solid transparent;
+    /* border-top-color is set inline to match bubble background */
+    border-top-width: 8px;
+    border-top-style: solid;
+    margin-top: -1px;
+}
+
+/* =====================================================
+   Standalone umi-slide-bar-handle element
+    ===================================================== */
+.handle-root {
+    position: relative;
+    width: 4px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.handle-rect {
+    border-radius: 999px;
+    transition:
+        width 150ms cubic-bezier(.34,1.56,.64,1),
+        background-color 300ms cubic-bezier(.2,0,.0,1),
+        opacity 150ms ease;
+}
+
+.handle-focus-ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 16px;
+    border: 3px solid var(--sb-handle-color, var(--md-sys-color-primary, #6750a4));
+    opacity: 0;
+    transition: opacity 150ms ease;
+    pointer-events: none;
+}
+
+.handle-root.focus-visible .handle-focus-ring {
+    opacity: 1;
+}
+
+/* =====================================================
+   Standalone umi-slide-bar-track element
+   ===================================================== */
+.track-root {
+    display: block;
+    height: 16px;
+    transition: opacity 150ms ease;
+}
+
+.track-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* =====================================================
+   Standalone umi-slide-bar-wave-track element
+   ===================================================== */
+.wave-track-root {
+    display: block;
+    height: 16px;
+    transition: opacity 150ms ease;
+}
+
+.wave-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* =====================================================
+   Standalone umi-slide-bar-label element
+   ===================================================== */
+.label-root {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    min-width: 48px;
+    padding: 0 16px;
+    border-radius: 22px;
+    font-family: var(--md-sys-typescale-label-large-font, Roboto, sans-serif);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    -webkit-font-smoothing: antialiased;
+    transform-origin: bottom center;
+    transition:
+        opacity 150ms ease,
+        transform 150ms cubic-bezier(.34,1.56,.64,1),
+        background-color 300ms cubic-bezier(.2,0,.0,1),
+        color 300ms cubic-bezier(.2,0,.0,1);
+}
+
+.label-root.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.label-root.visible {
+    opacity: 1;
+    transform: scale(1);
+}
