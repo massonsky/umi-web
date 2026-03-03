@@ -20,17 +20,17 @@ export enum IconButtonSize {
 
 @customElement('umi-icon-button')
 export class IconButton extends LitElement {
-    @property({ type: Number }) buttonType: IconButtonType = IconButtonType.Standard;
+    @property({ type: Number, attribute: 'button-type' }) buttonType: IconButtonType = IconButtonType.Standard;
     @property({ type: Number }) size: IconButtonSize = IconButtonSize.M;
 
-    @property({ type: String }) iconName = '';
-    @property({ type: String }) checkedIconName = '';
+    @property({ type: String, attribute: 'icon-name' }) iconName = '';
+    @property({ type: String, attribute: 'checked-icon-name' }) checkedIconName = '';
 
     /** 0 = Outlined, 1 = Rounded, 2 = Sharp */
-    @property({ type: Number }) iconType: number = 0;
-    @property({ type: Number }) iconFill: number = 0;
-    @property({ type: Number }) iconWght: number = 400;
-    @property({ type: Number }) iconGrad: number = 0;
+    @property({ type: Number, attribute: 'icon-type' }) iconType: number = 0;
+    @property({ type: Number, attribute: 'icon-fill' }) iconFill: number = 0;
+    @property({ type: Number, attribute: 'icon-wght' }) iconWght: number = 400;
+    @property({ type: Number, attribute: 'icon-grad' }) iconGrad: number = 0;
 
     @property({ type: Boolean }) checkable = false;
     @property({ type: Boolean }) checked = false;

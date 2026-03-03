@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@umi/components — Material Design 3 Web Components</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ── MD3 Typography tokens for @material/web ───────────── */
+        :root {
+            --md-sys-typescale-label-large-font: 'Roboto', sans-serif;
+            --md-sys-typescale-label-large-weight: 500;
+            --md-sys-typescale-label-medium-font: 'Roboto', sans-serif;
+            --md-sys-typescale-body-large-font: 'Roboto', sans-serif;
+            --md-sys-typescale-body-medium-font: 'Roboto', sans-serif;
+            --md-sys-typescale-title-large-font: 'Roboto', sans-serif;
+            --md-sys-typescale-title-medium-font: 'Roboto', sans-serif;
+            --md-sys-typescale-headline-small-font: 'Roboto', sans-serif;
+            --md-ref-typeface-plain: 'Roboto', sans-serif;
+            --md-ref-typeface-brand: 'Roboto', sans-serif;
+        }
+        /* ── Reset & Base ────────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; }
+        body, h1, h2, h3, h4, h5, h6, p, ul, ol, figure, blockquote, dl, dd { margin: 0; padding: 0; }
+        ul { list-style: none; }
+
+        :root {
+            --demo-section-gap: 48px;
+            --demo-card-radius: 16px;
+            --demo-card-padding: 32px;
+            --demo-nav-height: 64px;
+            --demo-max-width: 1200px;
+            color-scheme: light dark;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: calc(var(--demo-nav-height) + 24px);
+        }
+
+        body {
+            font-family: 'Roboto', 'Segoe UI', system-ui, sans-serif;
+            background: var(--md-sys-color-background, #fef7ff);
+            color: var(--md-sys-color-on-background, #1d1b20);
+            line-height: 1.6;
+            transition: background 300ms ease, color 300ms ease;
+            overflow-x: hidden;
+        }
+
+        /* ── Navigation ──────────────────────────────────────────── */
+        .demo-nav {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            z-index: 100;
+            height: var(--demo-nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            background: color-mix(in srgb, var(--md-sys-color-surface-container, #f3edf7) 85%, transparent);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 16px;
+            border: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant, #cac4d0) 40%, transparent);
+            transition: background 300ms ease, border-color 300ms ease;
+        }
+
+        .demo-nav__brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--md-sys-color-on-surface, #1d1b20);
+        }
+
+        .demo-nav__brand-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--md-sys-color-primary, #6750a4);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--md-sys-color-on-primary, #fff);
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .demo-nav__title {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .demo-nav__title span {
+            font-weight: 400;
+            opacity: 0.6;
+        }
+
+        .demo-nav__links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+        }
+
+        .demo-nav__links a {
+            padding: 8px 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--md-sys-color-on-surface-variant, #49454f);
+            transition: background 200ms, color 200ms;
+            cursor: pointer;
+        }
+
+        .demo-nav__links a:hover {
+            background: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 10%, transparent);
+            color: var(--md-sys-color-primary, #6750a4);
+        }
+
+        .demo-nav__actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ── Hero ────────────────────────────────────────────────── */
+        .demo-hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(
+                circle,
+                color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 15%, transparent) 0%,
+                color-mix(in srgb, var(--md-sys-color-tertiary, #7d5260) 8%, transparent) 40%,
+                transparent 70%
+            );
+            border-radius: 50%;
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .demo-hero > * { position: relative; z-index: 1; }
+
+        .demo-hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px 6px 8px;
+            border-radius: 100px;
+            background: var(--md-sys-color-primary-container, #eaddff);
+            color: var(--md-sys-color-on-primary-container, #21005d);
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            letter-spacing: 0.02em;
+        }
+
+        .demo-hero__version {
+            background: var(--md-sys-color-primary, #6750a4);
+            color: var(--md-sys-color-on-primary, #fff);
+            padding: 2px 10px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .demo-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--md-sys-color-on-surface, #1d1b20);
+        }
+
+        .demo-hero h1 .gradient-text {
+            background: linear-gradient(135deg,
+                var(--md-sys-color-primary, #6750a4),
+                var(--md-sys-color-tertiary, #7d5260)
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .demo-hero p {
+            max-width: 560px;
+            font-size: 18px;
+            color: var(--md-sys-color-on-surface-variant, #49454f);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .demo-hero__actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .demo-hero__stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 64px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .demo-hero__stat {
+            text-align: center;
+        }
+
+        .demo-hero__stat-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--md-sys-color-primary, #6750a4);
+            letter-spacing: -0.02em;
+        }
+
+        .demo-hero__stat-label {
+            font-size: 13px;
+            color: var(--md-sys-color-on-surface-variant, #49454f);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 4px;
+        }
+
+        /* ── Section ─────────────────────────────────────────────── */
+        .demo-section {
+            max-width: var(--demo-max-width);
+            margin: 0 auto var(--demo-section-gap);
+            padding: 0 24px;
+        }
+
+        .demo-section__header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--md-sys-color-outline-variant, #cac4d0);
+        }
+
+        .demo-section__header umi-icon {
+            color: var(--md-sys-color-primary, #6750a4);
+        }
+
+        .demo-section__header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--md-sys-color-on-surface, #1d1b20);
+        }
+
+        .demo-section__header p {
+            margin-left: auto;
+            font-size: 14px;
+            color: var(--md-sys-color-on-surface-variant, #49454f);
+        }
+
+        /* ── Card ────────────────────────────────────────────────── */
+        .demo-card {
+            background: var(--md-sys-color-surface-container-low, #f7f2fa);
+            border-radius: var(--demo-card-radius);
+            padding: var(--demo-card-padding);
+            border: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant, #cac4d0) 40%, transparent);
+            transition: background 300ms ease, border-color 300ms ease;
+        }
+
+        .demo-card + .demo-card {
+            margin-top: 20px;
+        }
+
+        .demo-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--md-sys-color-on-surface, #1d1b20);
+        }
+
+        .demo-card__subtitle {
+            font-size: 14px;
+            color: var(--md-sys-color-on-surface-variant, #49454f);
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        /* ── Component rows ──────────────────────────────────────── */
+        .component-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .component-row + .component-row {
+            margin-top: 16px;
+        }
+
+        .component-row--col {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .component-col {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .demo-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--md-sys-color-on-surface-variant, #49454f);
+            margin-bottom: 4px;
+        }
+
+        /* ── Color Playground ────────────────────────────────────── */
+        .color-playground {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .color-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .color-control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .color-control-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--md-sys-color-on-surface-variant, #49454f);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .color-control-group input[type="color"] {
+            width: 48px;
+            height: 36px;
+            border: 2px solid var(--md-sys-color-outline-variant, #cac4d0);
+            border-radius: 10px;
+            cursor: pointer;
+            padding: 2px;
+            background: transparent;
+        }
+
+        .color-control-group select {
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--md-sys-color-outline-variant, #cac4d0);
+            background: var(--md-sys-color-surface, #fef7ff);
+            color: var(--md-sys-color-on-surface, #1d1b20);
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .color-swatch-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .color-swatch {
+            aspect-ratio: 1;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            text-align: center;
+            padding: 6px;
+            transition: transform 200ms ease;
+            cursor: default;
+            border: 1px solid color-mix(in srgb, var(--md-sys-color-outline, #79747e) 20%, transparent);
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.05);
+        }
+
+        .color-swatch span {
+            font-size: 8px;
+            opacity: 0.7;
+            margin-top: 2px;
+        }
+
+        /* ── Slider demo ─────────────────────────────────────────── */
+        .slider-demos {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .slider-demo-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .slider-demo-row label {
+            min-width: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--md-sys-color-on-surface-variant, #49454f);
+        }
+
+        .slider-demo-row umi-slide-bar,
+        .slider-demo-row umi-range-slide-bar {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .slider-value {
+            min-width: 48px;
+            text-align: right;
+            font-size: 14px;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+            color: var(--md-sys-color-primary, #6750a4);
+        }
+
+        /* ── Progress demo ───────────────────────────────────────── */
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 32px;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .progress-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .progress-item .demo-label {
+            margin-bottom: 0;
+        }
+
+        /* ── Snackbar demo ───────────────────────────────────────── */
+        .snack-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        /* ── Footer ──────────────────────────────────────────────── */
+        .demo-footer {
+            max-width: var(--demo-max-width);
+            margin: 80px auto 0;
+            padding: 40px 24px;
+            text-align: center;
+            border-top: 1px solid var(--md-sys-color-outline-variant, #cac4d0);
+        }
+
+        .demo-footer p {
+            font-size: 14px;
+            color: var(--md-sys-color-on-surface-variant, #49454f);
+        }
+
+        .demo-footer a {
+            color: var(--md-sys-color-primary, #6750a4);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .demo-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Responsive ──────────────────────────────────────────── */
+        @media (max-width: 768px) {
+            .demo-nav__links { display: none; }
+            .color-playground { grid-template-columns: 1fr; }
+            .demo-hero__stats { gap: 32px; }
+            .demo-card { padding: 20px; }
+            .slider-demo-row { flex-direction: column; align-items: stretch; }
+            .slider-demo-row label { min-width: unset; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        /* ── Chips group layout ─────────────────────────────────── */
+        .chips-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        /* ── Scrollable container for demo ──────────────────────── */
+        .scroll-demo-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--md-sys-color-outline-variant, #cac4d0);
+        }
+
+        .scroll-demo-content {
+            height: 600px;
+            padding: 16px;
+            overflow-y: auto;
+            font-size: 14px;
+            color: var(--md-sys-color-on-surface-variant, #49454f);
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+    <!-- ═══════ Infrastructure (invisible) ═══════ -->
+    <umi-color-scheme
+        id="colorScheme"
+        seed="#6750a4"
+        variant="tonal-spot"
+        contrast="0"
+        success-seed="#386a20"
+        warning-seed="#7c5800">
+    </umi-color-scheme>
+    <umi-font symbols-style="Outlined" load-symbols></umi-font>
+    <umi-snackbar id="snackbar" align-view="1" max-visible="3"></umi-snackbar>
+
+    <!-- ═══════ Navigation ═══════ -->
+    <nav class="demo-nav">
+        <a href="#" class="demo-nav__brand">
+            <div class="demo-nav__brand-icon">U</div>
+            <div class="demo-nav__title">Umi <span>Components</span></div>
+        </a>
+        <ul class="demo-nav__links">
+            <li><a href="#colors">Colors</a></li>
+            <li><a href="#buttons">Buttons</a></li>
+            <li><a href="#icons">Icons</a></li>
+            <li><a href="#selection">Selection</a></li>
+            <li><a href="#chips">Chips</a></li>
+            <li><a href="#sliders">Sliders</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+            <li><a href="#material-web">Material Web</a></li>
+        </ul>
+        <div class="demo-nav__actions">
+            <a href="https://github.com/massonsky/umi-web" target="_blank" rel="noopener" style="display:flex;align-items:center;">
+                <umi-icon-button icon-name="code" button-type="0"></umi-icon-button>
+            </a>
+            <umi-icon-button
+                id="themeToggle"
+                icon-name="dark_mode"
+                checked-icon-name="light_mode"
+                checkable
+                icon-fill="1"
+                button-type="2">
+            </umi-icon-button>
+        </div>
+    </nav>
+
+    <!-- ═══════ Hero ═══════ -->
+    <section class="demo-hero">
+        <div class="demo-hero__badge">
+            <span class="demo-hero__version">v1.0</span>
+            Material Design 3 &middot; Lit &middot; Web Components
+        </div>
+        <h1>Build Beautiful UIs<br>with <span class="gradient-text">Umi Components</span></h1>
+        <p>50+ production-ready Material Design 3 web components with dynamic color,
+           living material animations, and full accessibility support.</p>
+        <div class="demo-hero__actions">
+            <a href="https://github.com/massonsky/umi-web/releases/latest" target="_blank" rel="noopener" style="text-decoration:none;">
+                <umi-filled-button id="getStartedBtn" text="Get Started" icon-name="rocket_launch" size="3"></umi-filled-button>
+            </a>
+            <a href="https://github.com/massonsky/umi-web" target="_blank" rel="noopener" style="text-decoration:none;">
+                <umi-outlined-button id="githubBtn" text="GitHub" icon-name="code" size="3"></umi-outlined-button>
+            </a>
+        </div>
+        <div class="demo-hero__stats">
+            <div class="demo-hero__stat">
+                <div class="demo-hero__stat-value">50+</div>
+                <div class="demo-hero__stat-label">Components</div>
+            </div>
+            <div class="demo-hero__stat">
+                <div class="demo-hero__stat-value">9</div>
+                <div class="demo-hero__stat-label">Color Schemes</div>
+            </div>
+            <div class="demo-hero__stat">
+                <div class="demo-hero__stat-value">5</div>
+                <div class="demo-hero__stat-label">Button Sizes</div>
+            </div>
+            <div class="demo-hero__stat">
+                <div class="demo-hero__stat-value">A11y</div>
+                <div class="demo-hero__stat-label">Accessible</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ 1. Dynamic Colors ═══════ -->
+    <section id="colors" class="demo-section">
+        <div class="demo-section__header">
+            <umi-icon name="palette" fill="1" size="28"></umi-icon>
+            <h2>Dynamic Color</h2>
+            <p>9 scheme variants &middot; custom seed &middot; dark/light</p>
+        </div>
+
+        <div class="demo-card">
+            <h3>Color Scheme Playground</h3>
+            <p class="demo-card__subtitle">Change the seed color and scheme variant to see the entire UI update in real-time.</p>
+
+            <div class="color-playground">
+                <div class="color-controls">
+                    <div class="color-control-group">
+                        <label>Seed Color</label>
+                        <input type="color" id="seedPicker" value="#6750a4">
+                    </div>
+                    <div class="color-control-group">
+                        <label>Scheme Variant</label>
+                        <select id="variantSelect">
+                            <option value="tonal-spot" selected>Tonal Spot (Default)</option>
+                            <option value="expressive">Expressive</option>
+                            <option value="vibrant">Vibrant</option>
+                            <option value="fidelity">Fidelity</option>
+                            <option value="content">Content</option>
+                            <option value="monochrome">Monochrome</option>
+                            <option value="neutral">Neutral</option>
+                            <option value="rainbow">Rainbow</option>
+                            <option value="fruit-salad">Fruit Salad</option>
+                        </select>
+                    </div>
+                    <div class="color-control-group">
+                        <label>Contrast Level</label>
+                        <select id="contrastSelect">
+                            <option value="-1">Reduced</option>
+                            <option value="0" selected>Normal</option>
+                            <option value="0.5">Medium</option>
+                            <option value="1">High (A11y)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="color-swatch-grid" id="swatchGrid"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ 2. Buttons ═══════ -->
+    <section id="buttons" class="demo-section">
+        <div class="demo-section__header">
+            <umi-icon name="smart_button" fill="1" size="28"></umi-icon>
+            <h2>Buttons</h2>
+            <p>5 types &middot; 5 sizes &middot; icons &middot; groups</p>
+        </div>
+
+        <!-- Standard Buttons -->
+        <div class="demo-card">
+            <h3>Standard Buttons</h3>
+            <p class="demo-card__subtitle">Filled, Tonal, Elevated, Outlined, and Text — all support icons and 5 size levels.</p>
+            <div class="component-row">
+                <umi-filled-button text="Filled" icon-name="add"></umi-filled-button>
+                <umi-tonal-button text="Tonal" icon-name="palette"></umi-tonal-button>
+                <umi-elevated-button text="Elevated" icon-name="upload"></umi-elevated-button>
+                <umi-outlined-button text="Outlined" icon-name="edit"></umi-outlined-button>
+                <umi-text-button text="Text" icon-name="info"></umi-text-button>
+            </div>
+            <div class="demo-label" style="margin-top:20px">Sizes: XS → XL</div>
+            <div class="component-row">
+                <umi-filled-button text="XS" size="0"></umi-filled-button>
+                <umi-filled-button text="Small" size="1"></umi-filled-button>
+                <umi-filled-button text="Medium" size="2"></umi-filled-button>
+                <umi-filled-button text="Large" size="3"></umi-filled-button>
+                <umi-filled-button text="Extra Large" size="4"></umi-filled-button>
+            </div>
+        </div>
+
+        <!-- Icon Buttons -->
+        <div class="demo-card">
+            <h3>Icon Buttons</h3>
+            <p class="demo-card__subtitle">Standard, Filled, Tonal, Outlined — with toggle support.</p>
+            <div class="component-row">
+                <umi-icon-button icon-name="favorite" button-type="0"></umi-icon-button>
+                <umi-icon-button icon-name="favorite" button-type="1" icon-fill="1"></umi-icon-button>
+                <umi-icon-button icon-name="bookmark" button-type="2"></umi-icon-button>
+                <umi-icon-button icon-name="share" button-type="3"></umi-icon-button>
+            </div>
+            <div class="demo-label" style="margin-top:16px">Toggle Mode</div>
+            <div class="component-row">
+                <umi-icon-button icon-name="favorite_border" checked-icon-name="favorite" checkable button-type="1"></umi-icon-button>
+                <umi-icon-button icon-name="bookmark_border" checked-icon-name="bookmark" checkable button-type="2"></umi-icon-button>
+                <umi-icon-button icon-name="star_border" checked-icon-name="star" checkable button-type="0" icon-fill="1"></umi-icon-button>
+            </div>
+        </div>
+
+        <!-- FAB -->
+        <div class="demo-card">
+            <h3>Floating Action Buttons</h3>
+            <p class="demo-card__subtitle">FAB (3 sizes) and Extended FAB with text labels.</p>
+            <div class="component-row">
+                <umi-fab icon-name="add" fab-size="small"></umi-fab>
+                <umi-fab icon-name="edit" fab-size="medium"></umi-fab>
+                <umi-fab icon-name="navigation" fab-size="large" icon-fill="1"></umi-fab>
+            </div>
+            <div class="component-row" style="margin-top:16px">
+                <umi-extended-fab text="Create" icon-name="add"></umi-extended-fab>
+                <umi-extended-fab text="Navigate" icon-name="near_me" icon-fill="1"></umi-extended-fab>
+            </div>
+        </div>
+
+        <!-- Button Group -->
+        <div class="demo-card">
+            <h3>Button Group</h3>
+            <p class="demo-card__subtitle">Connected and standard grouping with single/multi-select.</p>
+            <div class="demo-label">Connected Group</div>
+            <umi-button-group group-type="1" orientation="0" size="2">
+                <umi-filled-button text="Day" checkable checked></umi-filled-button>
+                <umi-filled-button text="Week" checkable></umi-filled-button>
+                <umi-filled-button text="Month" checkable></umi-filled-button>
+                <umi-filled-button text="Year" checkable></umi-filled-button>
+            </umi-button-group>
+            <div class="demo-label" style="margin-top:20px">Standard Group</div>
+            <umi-button-group group-type="0" orientation="0" size="2">
+                <umi-outlined-button text="Left" icon-name="format_align_left" checkable></umi-outlined-button>
+                <umi-outlined-button text="Center" icon-name="format_align_center" checkable checked></umi-outlined-button>
+                <umi-outlined-button text="Right" icon-name="format_align_right" checkable></umi-outlined-button>
+            </umi-button-group>
+        </div>
+
+        <!-- Split Button -->
+        <div class="demo-card">
+            <h3>Split Button</h3>
+            <p class="demo-card__subtitle">Primary action with dropdown menu — 4 variants.</p>
+            <div class="component-row">
+                <umi-split-button id="splitFilled" text="Create" icon-name="add" variant="filled" size="m"></umi-split-button>
+                <umi-split-button id="splitTonal" text="Share" icon-name="share" variant="tonal" size="m"></umi-split-button>
+                <umi-split-button id="splitOutlined" text="Export" icon-name="download" variant="outlined" size="m"></umi-split-button>
+            </div>
+        </div>
+
+        <!-- Stateful Buttons -->
+        <div class="demo-card">
+            <h3>Stateful Buttons</h3>
+            <p class="demo-card__subtitle">Loading buttons, progress buttons, and timer buttons.</p>
+            <div class="demo-label">Loading Buttons</div>
+            <div class="component-row">
+                <umi-loader-button id="loaderBtn" text="Upload" icon-name="cloud_upload" button-type="0" size="2"></umi-loader-button>
+                <umi-loader-button id="loaderBtnTonal" text="Process" icon-name="sync" button-type="1" size="2"></umi-loader-button>
+            </div>
+            <div class="demo-label" style="margin-top:16px">Progress Bar Button</div>
+            <div class="component-row">
+                <umi-progress-bar-button id="progressBtn" text="Download" icon-name="download" button-type="0" size="2" timer-duration="5"></umi-progress-bar-button>
+                <umi-text-button id="startProgressBtn" text="Start" icon-name="play_arrow"></umi-text-button>
+            </div>
+            <div class="demo-label" style="margin-top:16px">Timer Button</div>
+            <div class="component-row">
+                <umi-time-button id="timeBtn" text="Resend Code" icon-name="schedule" button-type="1" size="2" timer-duration="10" timer-format="ss"></umi-time-button>
+                <umi-text-button id="startTimeBtn" text="Start Timer" icon-name="play_arrow"></umi-text-button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ 3. Icons ═══════ -->
+    <section id="icons" class="demo-section">
+        <div class="demo-section__header">
+            <umi-icon name="emoji_symbols" fill="1" size="28"></umi-icon>
+            <h2>Icons</h2>
+            <p>Material Symbols &middot; Variable font axes</p>
+        </div>
+
+        <div class="demo-card">
+            <h3>Material Symbols</h3>
+            <p class="demo-card__subtitle">Full variable font support — fill, weight, grade, optical size.</p>
+            <div class="demo-label">Styles</div>
+            <div class="component-row">
+                <umi-icon name="home" icon-style="Outlined" size="32" color="var(--md-sys-color-primary)"></umi-icon>
+                <umi-icon name="home" icon-style="Rounded" size="32" color="var(--md-sys-color-secondary)"></umi-icon>
+                <umi-icon name="home" icon-style="Sharp" size="32" color="var(--md-sys-color-tertiary)"></umi-icon>
+            </div>
+            <div class="demo-label" style="margin-top:16px">Fill Axis (0 → 1)</div>
+            <div class="component-row">
+                <umi-icon name="favorite" fill="0" size="32" color="var(--md-sys-color-error)"></umi-icon>
+                <umi-icon name="favorite" fill="0.5" size="32" color="var(--md-sys-color-error)"></umi-icon>
+                <umi-icon name="favorite" fill="1" size="32" color="var(--md-sys-color-error)"></umi-icon>
+            </div>
+            <div class="demo-label" style="margin-top:16px">Weight Axis (100 → 700)</div>
+            <div class="component-row">
+                <umi-icon name="settings" weight="100" size="32"></umi-icon>
+                <umi-icon name="settings" weight="300" size="32"></umi-icon>
+                <umi-icon name="settings" weight="500" size="32"></umi-icon>
+                <umi-icon name="settings" weight="700" size="32"></umi-icon>
+            </div>
+            <div class="demo-label" style="margin-top:16px">Sizes (20px → 48px)</div>
+            <div class="component-row" style="align-items:end">
+                <umi-icon name="star" fill="1" size="20" color="var(--md-sys-color-primary)"></umi-icon>
+                <umi-icon name="star" fill="1" size="24" color="var(--md-sys-color-primary)"></umi-icon>
+                <umi-icon name="star" fill="1" size="32" color="var(--md-sys-color-primary)"></umi-icon>
+                <umi-icon name="star" fill="1" size="40" color="var(--md-sys-color-primary)"></umi-icon>
+                <umi-icon name="star" fill="1" size="48" color="var(--md-sys-color-primary)"></umi-icon>
+            </div>
+            <div class="demo-label" style="margin-top:16px">Common Icons</div>
+            <div class="component-row">
+                <umi-icon name="search" size="28"></umi-icon>
+                <umi-icon name="notifications" size="28"></umi-icon>
+                <umi-icon name="account_circle" size="28" fill="1"></umi-icon>
+                <umi-icon name="delete" size="28" color="var(--md-sys-color-error)"></umi-icon>
+                <umi-icon name="check_circle" size="28" fill="1" color="var(--md-sys-color-primary)"></umi-icon>
+                <umi-icon name="cloud_upload" size="28"></umi-icon>
+                <umi-icon name="visibility" size="28"></umi-icon>
+                <umi-icon name="lock" size="28" fill="1"></umi-icon>
+                <umi-icon name="schedule" size="28"></umi-icon>
+                <umi-icon name="language" size="28"></umi-icon>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ 4. Selection ═══════ -->
+    <section id="selection" class="demo-section">
+        <div class="demo-section__header">
+            <umi-icon name="check_box" fill="1" size="28"></umi-icon>
+            <h2>Selection Controls</h2>
+            <p>Checkbox &middot; Radio &middot; Tristate</p>
+        </div>
+
+        <div class="demo-card">
+            <h3>Checkboxes</h3>
+            <p class="demo-card__subtitle">Standard, with text, tristate, error state, and backgrounds.</p>
+            <div class="component-row">
+                <umi-checkbox></umi-checkbox>
+                <umi-checkbox checked></umi-checkbox>
+                <umi-checkbox text="Accept terms" checked></umi-checkbox>
+                <umi-checkbox text="With error" error></umi-checkbox>
+                <umi-checkbox tristate text="Tristate" check-state="1"></umi-checkbox>
+            </div>
+            <div class="demo-label" style="margin-top:16px">With Background</div>
+            <div class="component-row">
+                <umi-checkbox text="Filled" show-background background-type="0" checked></umi-checkbox>
+                <umi-checkbox text="Tonal" show-background background-type="1" checked></umi-checkbox>
+                <umi-checkbox text="Outlined" show-background background-type="2"></umi-checkbox>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <h3>Radio Buttons</h3>
+            <p class="demo-card__subtitle">Auto-exclusive within the same parent. With text and backgrounds.</p>
+            <div class="component-row">
+                <umi-radio-button name="demo-radio" text="Option A" checked></umi-radio-button>
+                <umi-radio-button name="demo-radio" text="Option B"></umi-radio-button>
+                <umi-radio-button name="demo-radio" text="Option C"></umi-radio-button>
+            </div>
+            <div class="demo-label" style="margin-top:16px">With Background</div>
+            <div class="component-row">
+                <umi-radio-button name="demo-radio-bg" text="Small" show-background background-type="1" size="0" checked></umi-radio-button>
+                <umi-radio-button name="demo-radio-bg" text="Medium" show-background background-type="1" size="1"></umi-radio-button>
+                <umi-radio-button name="demo-radio-bg" text="Large" show-background background-type="1" size="2"></umi-radio-button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ 5. Chips ═══════ -->
+    <section id="chips" class="demo-section">
+        <div class="demo-section__header">
+            <umi-icon name="label" fill="1" size="28"></umi-icon>
+            <h2>Chips</h2>
+            <p>Assist &middot; Filter &middot; Input &middot; Suggestion</p>
+        </div>
+
+        <div class="demo-card">
+            <h3>Assist Chips</h3>
+            <p class="demo-card__subtitle">Non-selectable action shortcuts with optional icons.</p>
+            <div class="chips-row">
+                <umi-assist-chip text="Calendar" icon="event"></umi-assist-chip>
+                <umi-assist-chip text="Directions" icon="directions"></umi-assist-chip>
+                <umi-assist-chip text="Share" icon="share"></umi-assist-chip>
+                <umi-assist-chip text="Call" icon="call"></umi-assist-chip>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <h3>Filter Chips</h3>
+            <p class="demo-card__subtitle">Toggleable selection with checkmark animation.</p>
+            <div class="chips-row">
+                <umi-filter-chip text="Electronics" icon="devices" selected></umi-filter-chip>
+                <umi-filter-chip text="Clothing" icon="checkroom"></umi-filter-chip>
+                <umi-filter-chip text="Books" icon="menu_book"></umi-filter-chip>
+                <umi-filter-chip text="Sports" icon="sports_soccer"></umi-filter-chip>
+                <umi-filter-chip text="Music" icon="music_note" selected></umi-filter-chip>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <h3>Input Chips</h3>
+            <p class="demo-card__subtitle">Removable tags, perfect for multi-select fields.</p>
+            <div class="chips-row">
+                <umi-input-chip text="JavaScript" icon="code"></umi-input-chip>
+                <umi-input-chip text="TypeScript" icon="code"></umi-input-chip>
+                <umi-input-chip text="Lit" icon="local_fire_department"></umi-input-chip>
+                <umi-input-chip text="Web Components" icon="web"></umi-input-chip>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <h3>Suggestion Chips</h3>
+            <p class="demo-card__subtitle">Contextual suggestions that can fade after selection.</p>
+            <div class="chips-row">
+                <umi-suggestion-chip text="Good morning"></umi-suggestion-chip>
+                <umi-suggestion-chip text="How are you?"></umi-suggestion-chip>
+                <umi-suggestion-chip text="Tell me a joke"></umi-suggestion-chip>
+                <umi-suggestion-chip text="What's the weather?" fade-after-click></umi-suggestion-chip>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ 6. Sliders ═══════ -->
+    <section id="sliders" class="demo-section">
+        <div class="demo-section__header">
+            <umi-icon name="tune" fill="1" size="28"></umi-icon>
+            <h2>Sliders</h2>
+            <p>Continuous &middot; Discrete &middot; Wave &middot; Range</p>
+        </div>
+
+        <div class="demo-card">
+            <h3>Slide Bar</h3>
+            <p class="demo-card__subtitle">Continuous and discrete sliders with wave mode and icons.</p>
+            <div class="slider-demos">
+                <div class="slider-demo-row">
+                    <label>Continuous</label>
+                    <umi-slide-bar id="slider1" value="40" from="0" to="100"></umi-slide-bar>
+                    <span class="slider-value" id="slider1Val">40</span>
+                </div>
+                <div class="slider-demo-row">
+                    <label>Discrete (5)</label>
+                    <umi-slide-bar id="slider2" value="60" from="0" to="100" divisions="5"></umi-slide-bar>
+                    <span class="slider-value" id="slider2Val">60</span>
+                </div>
+                <div class="slider-demo-row">
+                    <label>Wave Mode</label>
+                    <umi-slide-bar id="slider3" value="50" from="0" to="100" wave-mode wave-animated></umi-slide-bar>
+                    <span class="slider-value" id="slider3Val">50</span>
+                </div>
+                <div class="slider-demo-row">
+                    <label>With Icon</label>
+                    <umi-slide-bar id="slider4" value="70" from="0" to="100" icon="volume_up"></umi-slide-bar>
+                    <span class="slider-value" id="slider4Val">70</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <h3>Range Slide Bar</h3>
+            <p class="demo-card__subtitle">Dual-handle slider for selecting a range.</p>
+            <div class="slider-demos">
+                <div class="slider-demo-row">
+                    <label>Price Range</label>
+                    <umi-range-slide-bar id="rangeSlider" from="0" to="1000" min-value="200" max-value="800"></umi-range-slide-bar>
+                    <span class="slider-value" id="rangeVal">$200–$800</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ 7. Feedback ═══════ -->
+    <section id="feedback" class="demo-section">
+        <div class="demo-section__header">
+            <umi-icon name="notifications_active" fill="1" size="28"></umi-icon>
+            <h2>Feedback</h2>
+            <p>Progress &middot; Loading &middot; Snackbar</p>
+        </div>
+
+        <div class="demo-card">
+            <h3>Progress Indicators</h3>
+            <p class="demo-card__subtitle">Circular (indeterminate/determinate) and linear progress bars.</p>
+            <div class="progress-grid">
+                <div class="progress-item">
+                    <span class="demo-label">IC Standard</span>
+                    <umi-ic-progress-bar diameter="48" stroke-width="4"></umi-ic-progress-bar>
+                </div>
+                <div class="progress-item">
+                    <span class="demo-label">IC Expressive</span>
+                    <umi-ic-progress-bar-expressive diameter="48"></umi-ic-progress-bar-expressive>
+                </div>
+                <div class="progress-item">
+                    <span class="demo-label">DC Standard</span>
+                    <umi-dc-progress-bar diameter="48" stroke-width="4" value="0.65"></umi-dc-progress-bar>
+                </div>
+                <div class="progress-item">
+                    <span class="demo-label">DC Expressive</span>
+                    <umi-dc-progress-bar-expressive diameter="48" value="0.4"></umi-dc-progress-bar-expressive>
+                </div>
+                <div class="progress-item">
+                    <span class="demo-label">Loading Indicator</span>
+                    <umi-loading-indicator size="48"></umi-loading-indicator>
+                </div>
+                <div class="progress-item">
+                    <span class="demo-label">With Background</span>
+                    <umi-loading-indicator size="48" has-background></umi-loading-indicator>
+                </div>
+            </div>
+
+            <div class="demo-label" style="margin-top: 32px">Linear Progress Bars</div>
+            <div style="display:flex;flex-direction:column;gap:16px;margin-top:12px;">
+                <umi-il-progress-bar style="width:100%"></umi-il-progress-bar>
+                <umi-il-progress-bar-expressive style="width:100%"></umi-il-progress-bar-expressive>
+                <umi-dl-progress-bar style="width:100%" value="0.55"></umi-dl-progress-bar>
+                <umi-dl-progress-bar-expressive style="width:100%" value="0.35"></umi-dl-progress-bar-expressive>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <h3>Snackbar</h3>
+            <p class="demo-card__subtitle">Info, warning, error, success — with actions, swipe to dismiss, and stacking.</p>
+            <div class="snack-buttons">
+                <umi-filled-button id="snackInfo" text="Info" icon-name="info" size="1"></umi-filled-button>
+                <umi-tonal-button id="snackSuccess" text="Success" icon-name="check_circle" size="1"></umi-tonal-button>
+                <umi-outlined-button id="snackWarning" text="Warning" icon-name="warning" size="1"></umi-outlined-button>
+                <umi-text-button id="snackError" text="Error" icon-name="error" size="1"></umi-text-button>
+                <umi-elevated-button id="snackAction" text="With Action" icon-name="undo" size="1"></umi-elevated-button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ 9. Base Material Web Components ═══════ -->
+    <section id="material-web" class="demo-section">
+        <div class="demo-section__header">
+            <umi-icon name="widgets" fill="1" size="28"></umi-icon>
+            <h2>Material Web (md-*)</h2>
+            <p>Base @material/web components included in the bundle</p>
+        </div>
+
+        <!-- md-* Buttons -->
+        <div class="demo-card">
+            <h3>MD Buttons</h3>
+            <p class="demo-card__subtitle">Standard Material Web button variants.</p>
+            <div class="component-row">
+                <md-filled-button>Filled</md-filled-button>
+                <md-filled-tonal-button>Tonal</md-filled-tonal-button>
+                <md-elevated-button>Elevated</md-elevated-button>
+                <md-outlined-button>Outlined</md-outlined-button>
+                <md-text-button>Text</md-text-button>
+            </div>
+            <div class="demo-label" style="margin-top:16px">With Icons</div>
+            <div class="component-row">
+                <md-filled-button><md-icon slot="icon">add</md-icon>Create</md-filled-button>
+                <md-filled-tonal-button><md-icon slot="icon">palette</md-icon>Theme</md-filled-tonal-button>
+                <md-outlined-button><md-icon slot="icon">download</md-icon>Export</md-outlined-button>
+                <md-text-button><md-icon slot="icon">arrow_forward</md-icon>Next</md-text-button>
+            </div>
+        </div>
+
+        <!-- md-* Icon Buttons -->
+        <div class="demo-card">
+            <h3>MD Icon Buttons</h3>
+            <p class="demo-card__subtitle">Standard, Filled, Tonal, and Outlined icon buttons.</p>
+            <div class="component-row">
+                <md-icon-button><md-icon>settings</md-icon></md-icon-button>
+                <md-filled-icon-button><md-icon>edit</md-icon></md-filled-icon-button>
+                <md-filled-tonal-icon-button><md-icon>bookmark</md-icon></md-filled-tonal-icon-button>
+                <md-outlined-icon-button><md-icon>share</md-icon></md-outlined-icon-button>
+            </div>
+            <div class="demo-label" style="margin-top:16px">Toggle (click to toggle)</div>
+            <div class="component-row">
+                <md-icon-button toggle><md-icon>favorite_border</md-icon><md-icon slot="selected">favorite</md-icon></md-icon-button>
+                <md-filled-icon-button toggle><md-icon>bookmark_border</md-icon><md-icon slot="selected">bookmark</md-icon></md-filled-icon-button>
+                <md-filled-tonal-icon-button toggle><md-icon>star_border</md-icon><md-icon slot="selected">star</md-icon></md-filled-tonal-icon-button>
+                <md-outlined-icon-button toggle><md-icon>thumb_up_off_alt</md-icon><md-icon slot="selected">thumb_up</md-icon></md-outlined-icon-button>
+            </div>
+        </div>
+
+        <!-- md-* FABs -->
+        <div class="demo-card">
+            <h3>MD FAB</h3>
+            <p class="demo-card__subtitle">Floating Action Buttons with standard and branded variants.</p>
+            <div class="component-row">
+                <md-fab size="small"><md-icon slot="icon">add</md-icon></md-fab>
+                <md-fab><md-icon slot="icon">edit</md-icon></md-fab>
+                <md-fab size="large"><md-icon slot="icon">navigation</md-icon></md-fab>
+                <md-fab variant="primary" label="Create"><md-icon slot="icon">add</md-icon></md-fab>
+                <md-fab variant="secondary" label="Share"><md-icon slot="icon">share</md-icon></md-fab>
+                <md-fab variant="tertiary" label="Settings"><md-icon slot="icon">settings</md-icon></md-fab>
+            </div>
+        </div>
+
+        <!-- md-* Text Fields -->
+        <div class="demo-card">
+            <h3>MD Text Fields</h3>
+            <p class="demo-card__subtitle">Filled and Outlined text fields with various configurations.</p>
+            <div class="component-row" style="flex-wrap:wrap;gap:16px;">
+                <md-filled-text-field label="Name" value="John Doe" style="min-width:200px;"></md-filled-text-field>
+                <md-outlined-text-field label="Email" type="email" placeholder="user@example.com" style="min-width:200px;"></md-outlined-text-field>
+                <md-filled-text-field label="With Icon" style="min-width:200px;">
+                    <md-icon slot="leading-icon">search</md-icon>
+                </md-filled-text-field>
+                <md-outlined-text-field label="Password" type="password" value="secret" style="min-width:200px;">
+                    <md-icon slot="leading-icon">lock</md-icon>
+                </md-outlined-text-field>
+            </div>
+            <div class="component-row" style="margin-top:16px;flex-wrap:wrap;gap:16px;">
+                <md-filled-text-field label="Supporting text" supporting-text="Helper message" style="min-width:200px;"></md-filled-text-field>
+                <md-outlined-text-field label="Character count" max-length="50" style="min-width:200px;"></md-outlined-text-field>
+                <md-filled-text-field label="Error state" error error-text="This field is required" style="min-width:200px;"></md-filled-text-field>
+                <md-outlined-text-field label="Disabled" disabled value="Disabled" style="min-width:200px;"></md-outlined-text-field>
+            </div>
+        </div>
+
+        <!-- md-* Select -->
+        <div class="demo-card">
+            <h3>MD Select</h3>
+            <p class="demo-card__subtitle">Filled and Outlined select menus.</p>
+            <div class="component-row" style="flex-wrap:wrap;gap:16px;">
+                <md-filled-select label="Fruit" style="min-width:200px;">
+                    <md-select-option value="apple"><div slot="headline">Apple</div></md-select-option>
+                    <md-select-option value="banana"><div slot="headline">Banana</div></md-select-option>
+                    <md-select-option value="orange" selected><div slot="headline">Orange</div></md-select-option>
+                    <md-select-option value="grape"><div slot="headline">Grape</div></md-select-option>
+                </md-filled-select>
+                <md-outlined-select label="Language" style="min-width:200px;">
+                    <md-select-option value="en"><div slot="headline">English</div></md-select-option>
+                    <md-select-option value="ru" selected><div slot="headline">Russian</div></md-select-option>
+                    <md-select-option value="de"><div slot="headline">German</div></md-select-option>
+                    <md-select-option value="fr"><div slot="headline">French</div></md-select-option>
+                </md-outlined-select>
+            </div>
+        </div>
+
+        <!-- md-* Checkbox, Radio, Switch -->
+        <div class="demo-card">
+            <h3>MD Selection Controls</h3>
+            <p class="demo-card__subtitle">Checkbox, Radio, and Switch.</p>
+            <div class="demo-label">Checkbox</div>
+            <div class="component-row">
+                <label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><md-checkbox></md-checkbox> Unchecked</label>
+                <label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><md-checkbox checked></md-checkbox> Checked</label>
+                <label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><md-checkbox indeterminate></md-checkbox> Indeterminate</label>
+                <label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><md-checkbox disabled></md-checkbox> Disabled</label>
+            </div>
+            <div class="demo-label" style="margin-top:16px">Radio</div>
+            <div class="component-row">
+                <label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><md-radio name="md-radio-demo" value="1" checked></md-radio> Option 1</label>
+                <label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><md-radio name="md-radio-demo" value="2"></md-radio> Option 2</label>
+                <label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><md-radio name="md-radio-demo" value="3"></md-radio> Option 3</label>
+            </div>
+            <div class="demo-label" style="margin-top:16px">Switch</div>
+            <div class="component-row">
+                <label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><md-switch></md-switch> Off</label>
+                <label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><md-switch selected></md-switch> On</label>
+                <label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><md-switch icons></md-switch> With Icons</label>
+                <label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><md-switch disabled></md-switch> Disabled</label>
+            </div>
+        </div>
+
+        <!-- md-* Slider -->
+        <div class="demo-card">
+            <h3>MD Slider</h3>
+            <p class="demo-card__subtitle">Continuous and range sliders.</p>
+            <div style="display:flex;flex-direction:column;gap:20px;">
+                <div>
+                    <span class="demo-label">Continuous</span>
+                    <md-slider value="40" style="width:100%;"></md-slider>
+                </div>
+                <div>
+                    <span class="demo-label">Discrete (step = 10)</span>
+                    <md-slider value="50" step="10" ticks style="width:100%;"></md-slider>
+                </div>
+                <div>
+                    <span class="demo-label">Range</span>
+                    <md-slider range value-start="25" value-end="75" style="width:100%;"></md-slider>
+                </div>
+            </div>
+        </div>
+
+        <!-- md-* Chips -->
+        <div class="demo-card">
+            <h3>MD Chips</h3>
+            <p class="demo-card__subtitle">Chip set with assist, filter, input, and suggestion chips.</p>
+            <div class="demo-label">Assist</div>
+            <md-chip-set>
+                <md-assist-chip label="Calendar"><md-icon slot="icon">event</md-icon></md-assist-chip>
+                <md-assist-chip label="Directions"><md-icon slot="icon">directions</md-icon></md-assist-chip>
+                <md-assist-chip label="Location"><md-icon slot="icon">location_on</md-icon></md-assist-chip>
+            </md-chip-set>
+            <div class="demo-label" style="margin-top:16px">Filter</div>
+            <md-chip-set>
+                <md-filter-chip label="Electronics" selected><md-icon slot="icon">devices</md-icon></md-filter-chip>
+                <md-filter-chip label="Clothing"><md-icon slot="icon">checkroom</md-icon></md-filter-chip>
+                <md-filter-chip label="Books"><md-icon slot="icon">menu_book</md-icon></md-filter-chip>
+                <md-filter-chip label="Music" selected><md-icon slot="icon">music_note</md-icon></md-filter-chip>
+            </md-chip-set>
+            <div class="demo-label" style="margin-top:16px">Input</div>
+            <md-chip-set>
+                <md-input-chip label="TypeScript"><md-icon slot="icon">code</md-icon></md-input-chip>
+                <md-input-chip label="Lit"><md-icon slot="icon">local_fire_department</md-icon></md-input-chip>
+                <md-input-chip label="Material"><md-icon slot="icon">palette</md-icon></md-input-chip>
+            </md-chip-set>
+            <div class="demo-label" style="margin-top:16px">Suggestion</div>
+            <md-chip-set>
+                <md-suggestion-chip label="Good morning"></md-suggestion-chip>
+                <md-suggestion-chip label="How are you?"></md-suggestion-chip>
+                <md-suggestion-chip label="Tell me a joke"></md-suggestion-chip>
+            </md-chip-set>
+        </div>
+
+        <!-- md-* Tabs -->
+        <div class="demo-card">
+            <h3>MD Tabs</h3>
+            <p class="demo-card__subtitle">Primary and Secondary tab bars.</p>
+            <div class="demo-label">Primary Tabs</div>
+            <md-tabs>
+                <md-primary-tab><md-icon slot="icon">flight</md-icon>Flights</md-primary-tab>
+                <md-primary-tab><md-icon slot="icon">hotel</md-icon>Hotels</md-primary-tab>
+                <md-primary-tab active><md-icon slot="icon">hiking</md-icon>Activities</md-primary-tab>
+            </md-tabs>
+            <div class="demo-label" style="margin-top:20px">Secondary Tabs</div>
+            <md-tabs>
+                <md-secondary-tab>Overview</md-secondary-tab>
+                <md-secondary-tab active>Details</md-secondary-tab>
+                <md-secondary-tab>Reviews</md-secondary-tab>
+                <md-secondary-tab>Photos</md-secondary-tab>
+            </md-tabs>
+        </div>
+
+        <!-- md-* Dialog -->
+        <div class="demo-card">
+            <h3>MD Dialog</h3>
+            <p class="demo-card__subtitle">Modal dialog with actions.</p>
+            <div class="component-row">
+                <md-filled-button id="openDialogBtn">Open Dialog</md-filled-button>
+                <md-outlined-button id="openAlertBtn">Open Alert</md-outlined-button>
+            </div>
+            <md-dialog id="mdDialog">
+                <div slot="headline">Confirm Action</div>
+                <form slot="content" id="mdDialogForm" method="dialog">
+                    <p style="margin:0;">Are you sure you want to proceed with this action? This change cannot be undone.</p>
+                </form>
+                <div slot="actions">
+                    <md-text-button form="mdDialogForm" value="cancel">Cancel</md-text-button>
+                    <md-filled-button form="mdDialogForm" value="confirm">Confirm</md-filled-button>
+                </div>
+            </md-dialog>
+            <md-dialog id="mdAlert">
+                <div slot="headline">Alert</div>
+                <md-icon slot="icon">warning</md-icon>
+                <form slot="content" id="mdAlertForm" method="dialog">
+                    <p style="margin:0;">Something happened that you should know about.</p>
+                </form>
+                <div slot="actions">
+                    <md-filled-button form="mdAlertForm" value="ok">OK</md-filled-button>
+                </div>
+            </md-dialog>
+        </div>
+
+        <!-- md-* Menu -->
+        <div class="demo-card">
+            <h3>MD Menu</h3>
+            <p class="demo-card__subtitle">Dropdown menu with items and sub-menus.</p>
+            <div class="component-row" style="position:relative;">
+                <span style="position:relative;display:inline-block;">
+                    <md-filled-button id="menuAnchor">Open Menu</md-filled-button>
+                    <md-menu id="mdMenu" anchor="menuAnchor">
+                        <md-menu-item><div slot="headline">Cut</div><md-icon slot="start">content_cut</md-icon></md-menu-item>
+                        <md-menu-item><div slot="headline">Copy</div><md-icon slot="start">content_copy</md-icon></md-menu-item>
+                        <md-menu-item><div slot="headline">Paste</div><md-icon slot="start">content_paste</md-icon></md-menu-item>
+                        <md-divider></md-divider>
+                        <md-menu-item><div slot="headline">Select All</div><md-icon slot="start">select_all</md-icon></md-menu-item>
+                    </md-menu>
+                </span>
+            </div>
+        </div>
+
+        <!-- md-* List -->
+        <div class="demo-card">
+            <h3>MD List</h3>
+            <p class="demo-card__subtitle">Interactive list items with icons and supporting text.</p>
+            <md-list style="max-width:400px;border-radius:12px;overflow:hidden;border:1px solid var(--md-sys-color-outline-variant,#cac4d0);">
+                <md-list-item>
+                    <md-icon slot="start">inbox</md-icon>
+                    <div slot="headline">Inbox</div>
+                    <div slot="supporting-text">24 new messages</div>
+                    <md-icon slot="end">chevron_right</md-icon>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item>
+                    <md-icon slot="start">send</md-icon>
+                    <div slot="headline">Sent</div>
+                    <div slot="supporting-text">Last sent 2 hours ago</div>
+                    <md-icon slot="end">chevron_right</md-icon>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item>
+                    <md-icon slot="start">drafts</md-icon>
+                    <div slot="headline">Drafts</div>
+                    <div slot="supporting-text">3 drafts</div>
+                    <md-icon slot="end">chevron_right</md-icon>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item>
+                    <md-icon slot="start">delete</md-icon>
+                    <div slot="headline">Trash</div>
+                    <div slot="supporting-text">Empty</div>
+                    <md-icon slot="end">chevron_right</md-icon>
+                </md-list-item>
+            </md-list>
+        </div>
+
+        <!-- md-* Progress -->
+        <div class="demo-card">
+            <h3>MD Progress</h3>
+            <p class="demo-card__subtitle">Circular and Linear progress indicators — determinate and indeterminate.</p>
+            <div class="progress-grid">
+                <div class="progress-item">
+                    <span class="demo-label">Circular Indet.</span>
+                    <md-circular-progress indeterminate></md-circular-progress>
+                </div>
+                <div class="progress-item">
+                    <span class="demo-label">Circular 65%</span>
+                    <md-circular-progress value="0.65"></md-circular-progress>
+                </div>
+                <div class="progress-item">
+                    <span class="demo-label">Circular 4-color</span>
+                    <md-circular-progress indeterminate four-color></md-circular-progress>
+                </div>
+            </div>
+            <div class="demo-label" style="margin-top:24px">Linear</div>
+            <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+                <md-linear-progress indeterminate></md-linear-progress>
+                <md-linear-progress value="0.45"></md-linear-progress>
+                <md-linear-progress value="0.7" buffer="0.85"></md-linear-progress>
+                <md-linear-progress indeterminate four-color></md-linear-progress>
+            </div>
+        </div>
+
+        <!-- md-* Divider -->
+        <div class="demo-card">
+            <h3>MD Divider</h3>
+            <p class="demo-card__subtitle">Visual separator for content sections.</p>
+            <p style="margin-bottom:8px;color:var(--md-sys-color-on-surface-variant);">Content above divider</p>
+            <md-divider></md-divider>
+            <p style="margin-top:8px;color:var(--md-sys-color-on-surface-variant);">Content below divider</p>
+            <div style="margin-top:16px">
+                <span class="demo-label">Inset Divider</span>
+                <md-divider inset></md-divider>
+            </div>
+        </div>
+
+        <!-- Labs: Cards -->
+        <div class="demo-card">
+            <h3>MD Cards (Labs)</h3>
+            <p class="demo-card__subtitle">Elevated, Filled, and Outlined card containers.</p>
+            <div class="component-row" style="gap:16px;flex-wrap:wrap;">
+                <md-elevated-card style="padding:24px;min-width:180px;border-radius:12px;">
+                    <h4 style="margin:0 0 8px;font-size:16px;font-weight:600;">Elevated</h4>
+                    <p style="margin:0;font-size:14px;color:var(--md-sys-color-on-surface-variant);">Card with shadow elevation.</p>
+                </md-elevated-card>
+                <md-filled-card style="padding:24px;min-width:180px;border-radius:12px;">
+                    <h4 style="margin:0 0 8px;font-size:16px;font-weight:600;">Filled</h4>
+                    <p style="margin:0;font-size:14px;color:var(--md-sys-color-on-surface-variant);">Card with filled background.</p>
+                </md-filled-card>
+                <md-outlined-card style="padding:24px;min-width:180px;border-radius:12px;">
+                    <h4 style="margin:0 0 8px;font-size:16px;font-weight:600;">Outlined</h4>
+                    <p style="margin:0;font-size:14px;color:var(--md-sys-color-on-surface-variant);">Card with outline border.</p>
+                </md-outlined-card>
+            </div>
+        </div>
+
+        <!-- Labs: Badge -->
+        <div class="demo-card">
+            <h3>MD Badge (Labs)</h3>
+            <p class="demo-card__subtitle">Notification badges on icon buttons.</p>
+            <div class="component-row" style="gap:24px;">
+                <span style="position:relative;display:inline-flex;">
+                    <md-icon-button><md-icon>notifications</md-icon></md-icon-button>
+                    <md-badge value="3"></md-badge>
+                </span>
+                <span style="position:relative;display:inline-flex;">
+                    <md-icon-button><md-icon>mail</md-icon></md-icon-button>
+                    <md-badge value="99+"></md-badge>
+                </span>
+                <span style="position:relative;display:inline-flex;">
+                    <md-icon-button><md-icon>chat</md-icon></md-icon-button>
+                    <md-badge></md-badge>
+                </span>
+            </div>
+        </div>
+
+        <!-- Labs: Segmented Button -->
+        <div class="demo-card">
+            <h3>MD Segmented Buttons (Labs)</h3>
+            <p class="demo-card__subtitle">Single-select and multi-select segmented button sets.</p>
+            <div class="demo-label">Single Select</div>
+            <md-outlined-segmented-button-set>
+                <md-outlined-segmented-button selected label="Day"></md-outlined-segmented-button>
+                <md-outlined-segmented-button label="Week"></md-outlined-segmented-button>
+                <md-outlined-segmented-button label="Month"></md-outlined-segmented-button>
+            </md-outlined-segmented-button-set>
+            <div class="demo-label" style="margin-top:16px">Multi Select</div>
+            <md-outlined-segmented-button-set multiselect>
+                <md-outlined-segmented-button selected label="Bold"><md-icon slot="icon">format_bold</md-icon></md-outlined-segmented-button>
+                <md-outlined-segmented-button label="Italic"><md-icon slot="icon">format_italic</md-icon></md-outlined-segmented-button>
+                <md-outlined-segmented-button selected label="Underline"><md-icon slot="icon">format_underlined</md-icon></md-outlined-segmented-button>
+            </md-outlined-segmented-button-set>
+        </div>
+
+        <!-- Labs: Navigation Bar -->
+        <div class="demo-card">
+            <h3>MD Navigation Bar (Labs)</h3>
+            <p class="demo-card__subtitle">Bottom navigation bar with tabs.</p>
+            <md-navigation-bar style="border-radius:16px;overflow:hidden;">
+                <md-navigation-tab label="Home" active><md-icon slot="active-icon">home</md-icon><md-icon slot="inactive-icon">home</md-icon></md-navigation-tab>
+                <md-navigation-tab label="Explore"><md-icon slot="active-icon">explore</md-icon><md-icon slot="inactive-icon">explore</md-icon></md-navigation-tab>
+                <md-navigation-tab label="Library"><md-icon slot="active-icon">video_library</md-icon><md-icon slot="inactive-icon">video_library</md-icon></md-navigation-tab>
+                <md-navigation-tab label="Profile"><md-icon slot="active-icon">person</md-icon><md-icon slot="inactive-icon">person</md-icon></md-navigation-tab>
+            </md-navigation-bar>
+        </div>
+    </section>
+
+    <!-- ═══════ 8. FAB Menu ═══════ -->
+    <div style="position:fixed;bottom:24px;right:24px;z-index:50;">
+        <umi-fab-menu
+            id="fabMenu"
+            main-icon="add"
+            direction="0"
+            item-spacing="12"
+            expressive-motion>
+        </umi-fab-menu>
+    </div>
+
+    <!-- ═══════ Footer ═══════ -->
+    <footer class="demo-footer">
+        <p>
+            <strong>@umi/components</strong> v1.0
+            &middot; Built with <a href="https://lit.dev" target="_blank" rel="noopener">Lit</a>
+            &middot; <a href="https://m3.material.io" target="_blank" rel="noopener">Material Design 3</a>
+            &middot; <a href="https://github.com/massonsky/umi-web" target="_blank" rel="noopener">GitHub</a>
+        </p>
+        <p style="margin-top:8px;opacity:0.6;font-size:12px;">MIT License &middot; 2024–2026</p>
+    </footer>
+
+    <!-- ═══════ Script ═══════ -->
+    <script type="module">
+        import './umi-components.js';
+
+        // ── Theme Toggle ──────────────────────────────────────────
+        const colorScheme = document.getElementById('colorScheme');
+        const themeToggle = document.getElementById('themeToggle');
+
+        themeToggle.addEventListener('toggled', (e) => {
+            colorScheme.dark = e.detail.checked;
+        });
+
+        // ── Color Playground ──────────────────────────────────────
+        const seedPicker = document.getElementById('seedPicker');
+        const variantSelect = document.getElementById('variantSelect');
+        const contrastSelect = document.getElementById('contrastSelect');
+
+        seedPicker.addEventListener('input', (e) => {
+            colorScheme.seed = e.target.value;
+        });
+
+        variantSelect.addEventListener('change', (e) => {
+            colorScheme.variant = e.target.value;
+        });
+
+        contrastSelect.addEventListener('change', (e) => {
+            colorScheme.contrast = parseFloat(e.target.value);
+        });
+
+        // Build swatch grid
+        const swatchGrid = document.getElementById('swatchGrid');
+        const swatchTokens = [
+            { var: '--md-sys-color-primary', label: 'Primary', fg: '--md-sys-color-on-primary' },
+            { var: '--md-sys-color-secondary', label: 'Secondary', fg: '--md-sys-color-on-secondary' },
+            { var: '--md-sys-color-tertiary', label: 'Tertiary', fg: '--md-sys-color-on-tertiary' },
+            { var: '--md-sys-color-error', label: 'Error', fg: '--md-sys-color-on-error' },
+            { var: '--md-sys-color-primary-container', label: 'P Container', fg: '--md-sys-color-on-primary-container' },
+            { var: '--md-sys-color-secondary-container', label: '2nd Container', fg: '--md-sys-color-on-secondary-container' },
+            { var: '--md-sys-color-tertiary-container', label: 'T Container', fg: '--md-sys-color-on-tertiary-container' },
+            { var: '--md-sys-color-error-container', label: 'Err Container', fg: '--md-sys-color-on-error-container' },
+            { var: '--md-sys-color-surface', label: 'Surface', fg: '--md-sys-color-on-surface' },
+            { var: '--md-sys-color-surface-container', label: 'Surface Cnt', fg: '--md-sys-color-on-surface' },
+            { var: '--md-sys-color-surface-container-high', label: 'Srf Cnt High', fg: '--md-sys-color-on-surface' },
+            { var: '--md-sys-color-background', label: 'Background', fg: '--md-sys-color-on-background' },
+            { var: '--md-sys-color-outline', label: 'Outline', fg: '--md-sys-color-surface' },
+            { var: '--md-sys-color-outline-variant', label: 'Outline Var', fg: '--md-sys-color-on-surface' },
+            { var: '--md-sys-color-inverse-surface', label: 'Inv Surface', fg: '--md-sys-color-inverse-on-surface' },
+            { var: '--md-sys-color-surface-dim', label: 'Surface Dim', fg: '--md-sys-color-on-surface' },
+        ];
+
+        function updateSwatches() {
+            const body = document.body;
+            swatchGrid.innerHTML = '';
+            for (const token of swatchTokens) {
+                const bg = getComputedStyle(body).getPropertyValue(token.var).trim();
+                const fg = getComputedStyle(body).getPropertyValue(token.fg).trim();
+                const div = document.createElement('div');
+                div.className = 'color-swatch';
+                div.style.background = bg || '#ccc';
+                div.style.color = fg || '#000';
+                div.innerHTML = `${token.label}<span>${bg}</span>`;
+                swatchGrid.appendChild(div);
+            }
+        }
+
+        // Watch for theme changes
+        colorScheme.addEventListener('theme-changed', updateSwatches);
+        // Initial render (after component is ready)
+        requestAnimationFrame(() => setTimeout(updateSwatches, 300));
+
+        // ── Slider listeners ──────────────────────────────────────
+        for (const id of ['slider1', 'slider2', 'slider3', 'slider4']) {
+            const el = document.getElementById(id);
+            const valEl = document.getElementById(id + 'Val');
+            if (el && valEl) {
+                el.addEventListener('valueChanged', (e) => {
+                    valEl.textContent = Math.round(e.detail.value);
+                });
+                el.addEventListener('input', (e) => {
+                    valEl.textContent = Math.round(e.detail?.value ?? el.value);
+                });
+            }
+        }
+
+        // Range slider
+        const rangeSlider = document.getElementById('rangeSlider');
+        const rangeVal = document.getElementById('rangeVal');
+        if (rangeSlider) {
+            const updateRange = () => {
+                const lo = Math.round(rangeSlider.minValue ?? 200);
+                const hi = Math.round(rangeSlider.maxValue ?? 800);
+                rangeVal.textContent = `$${lo}–$${hi}`;
+            };
+            rangeSlider.addEventListener('valueChanged', updateRange);
+            rangeSlider.addEventListener('input', updateRange);
+        }
+
+        // ── Snackbar ──────────────────────────────────────────────
+        const snackbar = document.getElementById('snackbar');
+
+        document.getElementById('snackInfo').addEventListener('clicked', () => {
+            snackbar.info('Data loaded successfully');
+        });
+        document.getElementById('snackSuccess').addEventListener('clicked', () => {
+            snackbar.success('Changes saved!');
+        });
+        document.getElementById('snackWarning').addEventListener('clicked', () => {
+            snackbar.warning('Disk space is running low');
+        });
+        document.getElementById('snackError').addEventListener('clicked', () => {
+            snackbar.error('Network connection lost');
+        });
+        document.getElementById('snackAction').addEventListener('clicked', () => {
+            snackbar.info('Item deleted', { text: 'Undo', handler: () => snackbar.success('Restored!') });
+        });
+
+        // ── Loader Buttons ────────────────────────────────────────
+        document.getElementById('loaderBtn').addEventListener('clicked', function () {
+            this.loading = true;
+            this.text = 'Uploading…';
+            setTimeout(() => {
+                this.loading = false;
+                this.text = 'Upload';
+                snackbar.success('Upload complete!');
+            }, 2500);
+        });
+
+        document.getElementById('loaderBtnTonal').addEventListener('clicked', function () {
+            this.loading = true;
+            this.progressType = 2; // indicator
+            this.text = 'Processing…';
+            setTimeout(() => {
+                this.loading = false;
+                this.text = 'Process';
+            }, 3000);
+        });
+
+        // Progress Bar Button
+        document.getElementById('startProgressBtn').addEventListener('clicked', () => {
+            document.getElementById('progressBtn').run(5);
+        });
+
+        // Timer Button
+        document.getElementById('startTimeBtn').addEventListener('clicked', () => {
+            document.getElementById('timeBtn').run(10);
+        });
+
+        // ── Split Button menu items ───────────────────────────────
+        document.getElementById('splitFilled').menuItems = [
+            { text: 'New Document', icon: 'description' },
+            { text: 'New Spreadsheet', icon: 'table_chart' },
+            { text: 'New Presentation', icon: 'slideshow' },
+        ];
+
+        document.getElementById('splitTonal').menuItems = [
+            { text: 'Copy Link', icon: 'link' },
+            { text: 'Email', icon: 'email' },
+            { text: 'Messages', icon: 'chat' },
+        ];
+
+        document.getElementById('splitOutlined').menuItems = [
+            { text: 'Export as PDF', icon: 'picture_as_pdf' },
+            { text: 'Export as CSV', icon: 'table_chart' },
+            { text: 'Export as JSON', icon: 'data_object' },
+        ];
+
+        // ── FAB Menu items ────────────────────────────────────────
+        document.getElementById('fabMenu').menuItems = [
+            { text: 'New Note', icon: 'note_add' },
+            { text: 'Upload File', icon: 'cloud_upload' },
+            { text: 'Take Photo', icon: 'photo_camera' },
+        ];
+
+        // ── Hero Buttons ──────────────────────────────────────────
+        document.getElementById('getStartedBtn')?.addEventListener('clicked', () => {
+            window.open('https://github.com/massonsky/umi-web/releases/latest', '_blank');
+        });
+        document.getElementById('githubBtn')?.addEventListener('clicked', () => {
+            window.open('https://github.com/massonsky/umi-web', '_blank');
+        });
+
+        // ── MD Dialog ─────────────────────────────────────────────
+        document.getElementById('openDialogBtn')?.addEventListener('click', () => {
+            document.getElementById('mdDialog').show();
+        });
+        document.getElementById('openAlertBtn')?.addEventListener('click', () => {
+            document.getElementById('mdAlert').show();
+        });
+
+        // ── MD Menu ───────────────────────────────────────────────
+        document.getElementById('menuAnchor')?.addEventListener('click', () => {
+            const menu = document.getElementById('mdMenu');
+            menu.open = !menu.open;
+        });
+    </script>
+</body>
+</html>

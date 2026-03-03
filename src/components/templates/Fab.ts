@@ -18,15 +18,15 @@ import fabStyles from '../styles/Fab.css';
  *  - `static styles` — расширение стилей через `[...FabBase.styles, css`...`]`
  */
 export class FabBase extends LitElement {
-    @property({ type: String }) iconName = '';
+    @property({ type: String, attribute: 'icon-name' }) iconName = '';
     @property({ type: Boolean }) checkable = false;
     @property({ type: Boolean }) checked = false;
 
     /** 0 = Outlined, 1 = Rounded, 2 = Sharp */
-    @property({ type: Number }) iconType: number = 0;
-    @property({ type: Number }) iconFill: number = 0;
-    @property({ type: Number }) iconWght: number = 400;
-    @property({ type: Number }) iconGrad: number = 0;
+    @property({ type: Number, attribute: 'icon-type' }) iconType: number = 0;
+    @property({ type: Number, attribute: 'icon-fill' }) iconFill: number = 0;
+    @property({ type: Number, attribute: 'icon-wght' }) iconWght: number = 400;
+    @property({ type: Number, attribute: 'icon-grad' }) iconGrad: number = 0;
 
     @state() protected hovered = false;
     @state() protected pressed = false;

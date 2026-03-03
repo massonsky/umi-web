@@ -13,7 +13,7 @@ export class ChipBase extends LitElement {
     @property({ type: Boolean, reflect: true }) selected = false;
     @property({ type: Boolean, reflect: true }) checked = false;
     @property({ type: Boolean }) elevated = false;
-    @property({ type: Boolean }) hasRemoveButton = false;
+    @property({ type: Boolean, attribute: 'has-remove-button' }) hasRemoveButton = false;
     @property({ type: Boolean }) outlined = true;
 
     @property({ type: String, attribute: 'avatar-source' }) avatarSource = '';
