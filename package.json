@@ -1,0 +1,46 @@
+{
+  "name": "@umi/components",
+  "version": "0.1.0",
+  "description": "Umi Component Library — Material Design 3 Web Components (Lit + MD3)",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node build.mjs && tsc --project tsconfig.types.json",
+    "build:bundle": "node build.mjs",
+    "build:types": "tsc --project tsconfig.types.json",
+    "dev": "node build.mjs --watch",
+    "pack": "npm run build && npm pack",
+    "pack:patch": "pwsh scripts/pack.ps1 -BumpType patch",
+    "pack:minor": "pwsh scripts/pack.ps1 -BumpType minor",
+    "pack:major": "pwsh scripts/pack.ps1 -BumpType major",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@material/material-color-utilities": "^0.4.0",
+    "@material/web": "^2.4.1",
+    "lit": "^3.3.2"
+  },
+  "devDependencies": {
+    "esbuild": "^0.27.3",
+    "typescript": "^5.8.3"
+  },
+  "keywords": [
+    "material-design-3",
+    "md3",
+    "web-components",
+    "lit",
+    "umi"
+  ],
+  "license": "MIT"
+}

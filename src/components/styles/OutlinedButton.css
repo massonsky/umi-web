@@ -1,0 +1,7 @@
+:host {
+    --btn-bg: transparent;
+    --btn-text: var(--md-sys-color-primary, #6200ee);
+    --btn-outline: var(--md-sys-color-outline, #79747e);
+    --btn-border-width: 1px;
+    --content-color: var(--btn-text);
+}

@@ -1,0 +1,5 @@
+:host {
+    --btn-bg: var(--md-sys-color-primary, #6200ee);
+    --btn-text: var(--md-sys-color-on-primary, #ffffff);
+    --content-color: var(--btn-text);
+}

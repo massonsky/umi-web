@@ -1,0 +1,90 @@
+:host {
+    display: inline-flex;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    height: var(--btn-height, 40px);
+    min-width: var(--btn-min-width, 80px);
+    padding: 0 var(--btn-pad, 24px);
+    border-radius: var(--btn-radius, 20px);
+
+    background-color: var(--btn-bg, transparent);
+    color: var(--btn-text, inherit);
+    border: var(--btn-border-width, 0px) solid var(--btn-outline, transparent);
+    box-shadow: var(--btn-shadow, none);
+
+    transition:
+        border-radius 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        box-shadow 300ms cubic-bezier(0.2, 0, 0, 1),
+        background-color 300ms cubic-bezier(0.2, 0, 0, 1),
+        border-color 300ms cubic-bezier(0.2, 0, 0, 1),
+        color 300ms cubic-bezier(0.2, 0, 0, 1);
+    transform-origin: center;
+}
+
+.container.pressed {
+    transform: scale(var(--btn-pressed-scale, 0.97));
+}
+
+.state-layer {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    background-color: var(--content-color, currentColor);
+    transition: opacity 0.15s linear;
+}
+
+.container.hovered .state-layer {
+    opacity: var(--btn-hover-opacity, 0.08);
+}
+
+.container.pressed .state-layer {
+    opacity: var(--btn-pressed-opacity, 0.12);
+}
+
+.content {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--btn-font-size, 14px);
+    font-family: var(--md-sys-typescale-label-large-font, Roboto, 'Segoe UI', sans-serif);
+    font-weight: var(--md-sys-typescale-label-large-weight, 500);
+    letter-spacing: var(--md-sys-typescale-label-large-tracking, 0.006rem);
+    pointer-events: none;
+}
+
+.icon {
+    font-family: var(--icon-font-family, 'Material Symbols Outlined');
+    font-size: var(--btn-icon-size, 20px);
+    font-variation-settings:
+        'FILL' var(--icon-fill, 0),
+        'wght' var(--icon-wght, 400),
+        'GRAD' var(--icon-grad, 0),
+        'opsz' var(--icon-opsz, 24);
+    display: inline-block;
+    transition: transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.container.hovered .icon {
+    transform: rotate(var(--btn-hover-icon-rotate, 6deg));
+}
+
+.container.checked {
+    background-color: var(--btn-checked-bg, var(--md-sys-color-secondary-container, #e8def8));
+    color: var(--btn-checked-text, var(--md-sys-color-on-secondary-container, #1d192b));
+    --content-color: var(--btn-checked-text, var(--md-sys-color-on-secondary-container, #1d192b));
+    border-color: transparent;
+}

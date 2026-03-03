@@ -1,0 +1,6 @@
+:host {
+    --btn-bg: var(--md-sys-color-surface-container-low, #f7f2fa);
+    --btn-text: var(--md-sys-color-primary, #6200ee);
+    --btn-shadow: 0 var(--btn-shadow-offset, 1px) calc(var(--btn-shadow-offset, 1px) * 2 + 1px) rgba(0,0,0,0.15);
+    --content-color: var(--btn-text);
+}

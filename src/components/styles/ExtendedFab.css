@@ -1,0 +1,34 @@
+:host {
+    --fab-icon-hover-rotate: 6deg;
+}
+
+.container {
+    height: 56px;
+    padding: 0 16px;
+    border-radius: 16px;
+}
+
+.container.hovered {
+    border-radius: 24px;
+}
+
+.container.pressed,
+.container.checked {
+    border-radius: 8px;
+}
+
+.content {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: var(--md-sys-typescale-label-large-size, 14px);
+    font-family: var(--md-sys-typescale-label-large-font, Roboto, 'Segoe UI', sans-serif);
+    font-weight: var(--md-sys-typescale-label-large-weight, 500);
+    letter-spacing: var(--md-sys-typescale-label-large-tracking, 0.006rem);
+    pointer-events: none;
+}
+
+.icon {
+    font-size: 24px;
+}

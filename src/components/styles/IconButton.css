@@ -1,0 +1,77 @@
+:host {
+    display: inline-flex;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    box-sizing: border-box;
+
+    width: var(--icon-btn-size, 40px);
+    height: var(--icon-btn-size, 40px);
+    background-color: var(--icon-btn-bg, transparent);
+    color: var(--icon-btn-color, inherit);
+    border: var(--icon-btn-border, none);
+
+    /* Fully rounded initially */
+    border-radius: 50%;
+
+    transition:
+        border-radius 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        transform 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        background-color 300ms ease,
+        color 300ms ease,
+        border-color 300ms ease;
+    transform-origin: center;
+}
+
+/* Spring scale on press */
+.container.pressed {
+    transform: scale(0.92);
+    border-radius: calc(var(--icon-btn-size, 40px) * 0.25);
+}
+
+.state-layer {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-color: currentColor;
+    opacity: 0;
+    transition: opacity 0.15s linear;
+}
+
+.container.hovered .state-layer {
+    opacity: 0.08;
+}
+
+.container.pressed .state-layer {
+    opacity: 0.12;
+}
+
+md-ripple {
+    border-radius: inherit;
+}
+
+.icon {
+    font-family: var(--icon-font-family, 'Material Symbols Outlined');
+    font-size: var(--icon-size, 24px);
+    font-variation-settings:
+        'FILL' var(--icon-fill, 0),
+        'wght' var(--icon-wght, 400),
+        'GRAD' var(--icon-grad, 0),
+        'opsz' var(--icon-opsz, 24);
+    display: inline-block;
+    pointer-events: none;
+    transition: transform 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Slight shrink effect on icon itself during press */
+.container.pressed .icon {
+    transform: scale(0.9);
+}

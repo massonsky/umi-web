@@ -1,0 +1,5 @@
+:host {
+    --btn-bg: var(--md-sys-color-secondary-container, #e8def8);
+    --btn-text: var(--md-sys-color-on-secondary-container, #1d192b);
+    --content-color: var(--btn-text);
+}
