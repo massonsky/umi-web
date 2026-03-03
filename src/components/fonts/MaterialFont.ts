@@ -105,13 +105,41 @@ export class MaterialFont extends LitElement {
         }
 
         // Material Symbols (опционально)
+        // Важно: многие umi-компоненты могут использовать разные family
+        // (Outlined / Rounded / Sharp) через iconType или CSS-переменные.
+        // Загружаем все три набора, чтобы не было «пропавших» иконок.
         if (this.loadSymbols) {
-            const style = this.symbolsStyle;
-            const family = encodeURIComponent(`Material Symbols ${style}`);
-            this._injectLink(
-                `__umi-symbols-${style.toLowerCase()}`,
-                `https://fonts.googleapis.com/css2?family=${family}:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200`
-            );
+            const styles: SymbolsStyle[] = ['Outlined', 'Rounded', 'Sharp'];
+            for (const style of styles) {
+                const family = encodeURIComponent(`Material Symbols ${style}`);
+                this._injectLink(
+                    `__umi-symbols-${style.toLowerCase()}`,
+                    `https://fonts.googleapis.com/css2?family=${family}:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200`
+                );
+
+                // Fallback без variable-axes (на случай ограничений у браузера/прокси)
+                this._injectLink(
+                    `__umi-symbols-static-${style.toLowerCase()}`,
+                    `https://fonts.googleapis.com/css2?family=${family}`
+                );
+            }
+
+            // Legacy Material Icons family (и её варианты),
+            // т.к. часть стилей/компонентов может использовать fallback на них.
+            const legacyFamilies = [
+                { id: '__umi-material-icons', family: 'Material+Icons' },
+                { id: '__umi-material-icons-outlined', family: 'Material+Icons+Outlined' },
+                { id: '__umi-material-icons-round', family: 'Material+Icons+Round' },
+                { id: '__umi-material-icons-sharp', family: 'Material+Icons+Sharp' },
+                { id: '__umi-material-icons-twotone', family: 'Material+Icons+Two+Tone' },
+            ];
+
+            for (const f of legacyFamilies) {
+                this._injectLink(
+                    f.id,
+                    `https://fonts.googleapis.com/icon?family=${f.family}`
+                );
+            }
         }
     }
 

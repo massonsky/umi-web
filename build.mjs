@@ -4,14 +4,21 @@ import esbuild from 'esbuild';
 const watch = process.argv.includes('--watch');
 
 /** @type {import('esbuild').BuildOptions} */
-const buildOptions = {
+const baseOptions = {
     entryPoints: ['src/index.ts'],
     bundle: true,
     format: 'esm',
-    outfile: 'dist/index.js',
     // CSS files are imported as text strings (for LitElement unsafeCSS usage)
     loader: { '.css': 'text' },
-    // Peer/host dependencies — do not bundle them
+    target: 'es2022',
+    sourcemap: true,
+};
+
+/** @type {import('esbuild').BuildOptions} */
+const libBuildOptions = {
+    ...baseOptions,
+    outfile: 'dist/index.js',
+    // Library bundle for npm consumers (deps resolved by host bundler/runtime)
     external: [
         'lit',
         'lit/decorators.js',
@@ -21,22 +28,35 @@ const buildOptions = {
         '@material/web/*',
         '@material/material-color-utilities',
     ],
-    target: 'es2022',
-    sourcemap: true,
+    metafile: true,
+};
+
+/** @type {import('esbuild').BuildOptions} */
+const browserBuildOptions = {
+    ...baseOptions,
+    outfile: 'dist/index.browser.js',
+    // Browser-ready bundle for static hosting (GitHub Pages, local static server)
+    external: [],
     metafile: true,
 };
 
 if (watch) {
-    const ctx = await esbuild.context(buildOptions);
+    const ctx = await esbuild.context(libBuildOptions);
     await ctx.watch();
-    console.log('[umi-components] Watching for changes...');
+    console.log('[umi-components] Watching dist/index.js (library bundle)...');
 } else {
-    const result = await esbuild.build(buildOptions);
-    if (result.metafile) {
-        const outputSize = Object.values(result.metafile.outputs)
-            .reduce((s, o) => s + o.bytes, 0);
-        console.log(`[umi-components] Build complete → dist/index.js (${(outputSize / 1024).toFixed(1)} KB)`);
-    } else {
-        console.log('[umi-components] Build complete → dist/index.js');
-    }
+    const [libResult, browserResult] = await Promise.all([
+        esbuild.build(libBuildOptions),
+        esbuild.build(browserBuildOptions),
+    ]);
+
+    const libSize = libResult.metafile
+        ? Object.values(libResult.metafile.outputs).reduce((s, o) => s + o.bytes, 0)
+        : 0;
+    const browserSize = browserResult.metafile
+        ? Object.values(browserResult.metafile.outputs).reduce((s, o) => s + o.bytes, 0)
+        : 0;
+
+    console.log(`[umi-components] Build complete → dist/index.js (${(libSize / 1024).toFixed(1)} KB)`);
+    console.log(`[umi-components] Build complete → dist/index.browser.js (${(browserSize / 1024).toFixed(1)} KB)`);
 }

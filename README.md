@@ -1,8 +1,13 @@
 # @umi/components
 
-Библиотека компонентов **Umi** на базе Material Design 3.
+Библиотека Web Components на базе Material Design 3 (Lit + @material/web).
 
-При установке автоматически устанавливает весь пакет `@material/web` (MD3 Web Components), `@material/material-color-utilities` и `lit`. После импорта доступны как стандартные теги MD3 (`md-*`), так и кастомные компоненты Umi (`md3-*`).
+После импорта доступны:
+
+- стандартные компоненты `md-*` из `@material/web`
+- кастомные компоненты `umi-*` из этой библиотеки
+
+---
 
 ## Установка
 
@@ -10,96 +15,128 @@
 npm install @umi/components
 ```
 
-## Использование
-
-### Подключить всё сразу
+## Быстрый старт
 
 ```ts
 import '@umi/components';
-// Теперь доступны оба набора компонентов:
-//   md-filled-button, md-checkbox, md-slider, md-tabs, ...  (стандартный @material/web)
-//   md3-filled-button, md3-fab, md3-color-scheme, md3-font, md3-icon, ...
 ```
 
-### Именованный импорт классов и типов
-
-```ts
-import { FilledButton, MaterialColor, SchemeVariant, SCHEME_VARIANTS } from '@umi/components';
+```html
+<umi-color-scheme seed="#6750a4" variant="expressive"></umi-color-scheme>
+<umi-font symbols-style="Outlined" load-mono></umi-font>
+<umi-filled-button text="Hello" icon-name="rocket_launch"></umi-filled-button>
 ```
 
 ---
 
-## Компоненты
+## Актуальные префиксы
 
-### Кнопки (`md3-*`)
-
-| Тег | Класс | Описание |
-|-----|-------|----------|
-| `<md3-filled-button>` | `FilledButton` | Залитая кнопка |
-| `<md3-tonal-button>` | `TonalButton` | Тональная кнопка |
-| `<md3-elevated-button>` | `ElevatedButton` | Приподнятая кнопка |
-| `<md3-outlined-button>` | `OutlinedButton` | Кнопка с рамкой |
-| `<md3-text-button>` | `TextButton` | Текстовая кнопка |
-| `<md3-extended-fab>` | `ExtendedFab` | Расширенная FAB |
-| `<md3-fab>` | `Fab` | Круглая FAB |
-| `<md3-icon-button>` | `IconButton` | Кнопка-иконка |
-
-Все кнопки поддерживают:
-- `size` 0–4 (XS/S/M/L/XL)
-- `checkable` + `checked` — режим переключателя
-- `iconName`, `iconType` (0=Outlined, 1=Rounded, 2=Sharp)
-- `iconFill`, `iconWght`, `iconGrad` — variable font axes
-- Group API для группировки кнопок
-
-### Цвета
-
-```html
-<md3-color-scheme
-  seed="#6750a4"
-  variant="expressive"
-  contrast="0"
-  ?dark="${isDark}"
-  success-seed="#386a20"
-  warning-seed="#7c5800">
-</md3-color-scheme>
-```
-
-Устанавливает ~60 CSS-переменных `--md-sys-color-*` на `document.body`.
-
-**Варианты схемы** (`variant`): `tonal-spot` | `expressive` | `vibrant` | `fidelity` | `content` | `monochrome` | `neutral` | `rainbow` | `fruit-salad`
-
-### Шрифты
-
-```html
-<md3-font symbols-style="Outlined" ?load-mono></md3-font>
-```
-
-Загружает Roboto, Material Symbols и устанавливает 15 токенов `--md-sys-typescale-*` на `:root`.
-
-### Иконки
-
-```html
-<md3-icon name="home" fill="1" weight="600" size="32"></md3-icon>
-<md3-icon name="star" icon-style="Rounded" color="var(--md-sys-color-primary)"></md3-icon>
-```
+- ✅ актуально: `umi-*`
+- ❌ устарело в документации: `md3-*`
 
 ---
 
-## CSS-переменные
+## Публичные группы компонентов (`umi-*`)
 
-| Переменная | Источник | Назначение |
-|-----------|----------|-----------|
-| `--md-sys-color-primary` … | `<md3-color-scheme>` | Цветовые токены MD3 |
-| `--md-sys-typescale-label-large-*` | `<md3-font>` | Типографская шкала |
-| `--icon-font-family`, `--icon-fill`, … | компоненты | Иконочные переменные |
+### Foundation
+
+- `umi-color-scheme`
+- `umi-font`
+- `umi-icon`
+
+### Action / Buttons
+
+- `umi-filled-button`, `umi-tonal-button`, `umi-elevated-button`, `umi-outlined-button`, `umi-text-button`, `umi-icon-button`
+- `umi-split-button`
+
+### FAB
+
+- `umi-fab`, `umi-extended-fab`
+- `umi-fab-menu`, `umi-fab-menu-item`
+
+### Selection
+
+- `umi-checkbox`, `umi-radio-button`, `umi-button-group`
+
+### Chips
+
+- `umi-assist-chip`, `umi-filter-chip`, `umi-input-chip`, `umi-suggestion-chip`, `umi-chips`
+
+### Stateful buttons
+
+- Progress: `umi-progress-bar-button`, `umi-progress-bar-icon-button`, `umi-progress-bar-fab`, `umi-progress-bar-efab`
+- Loading: `umi-loader-button`, `umi-loading-icon-button`, `umi-loading-floating-action-button`, `umi-loading-extended-floating-action-button`
+- Timer: `umi-time-button`, `umi-icon-timer-button`, `umi-floating-action-time-button`, `umi-extended-floating-action-time-button`
+
+### Sliders
+
+- `umi-slide-bar`, `umi-range-slide-bar`
+- `umi-slide-bar-handle`, `umi-slide-bar-track`, `umi-slide-bar-wave-track`, `umi-slide-bar-label`
+
+### Scroll bars
+
+- `umi-scroll-bar`, `umi-scroll-bar-expressive`
+
+### Feedback
+
+- `umi-loading-indicator`, `umi-snackbar`
+- Circular: `umi-dc-progress-bar`, `umi-ic-progress-bar`, `umi-dc-progress-bar-expressive`, `umi-ic-progress-bar-expressive`
+- Linear: `umi-dl-progress-bar`, `umi-il-progress-bar`, `umi-dl-progress-bar-expressive`, `umi-il-progress-bar-expressive`
+
+---
+
+## Стили и токены
+
+Компоненты используют MD3 CSS-переменные, например:
+
+- `--md-sys-color-*`
+- `--md-sys-typescale-*`
+
+Рекомендуемый старт темы/шрифтов:
+
+- `umi-color-scheme` — генерация color tokens
+- `umi-font` — загрузка Roboto/Material Symbols + типографика
 
 ---
 
 ## Сборка
 
 ```bash
-npm run build          # esbuild (bundle) + tsc (types)
-npm run build:bundle   # только JS
-npm run build:types    # только .d.ts
-npm run dev            # watch mode
+npm run build
 ```
+
+Сборка теперь создаёт **два JS-бандла**:
+
+- `dist/index.js` — library bundle (для npm/бандлеров, с внешними зависимостями)
+- `dist/index.browser.js` — browser-ready bundle (для статического хостинга, включая GitHub Pages)
+
+Также генерируются типы через `tsc --project tsconfig.types.json`.
+
+---
+
+## GitHub Pages / статический хостинг
+
+Используйте browser-ready бандл:
+
+```html
+<script type="module" src="./dist/index.browser.js"></script>
+```
+
+В репозитории есть готовая витрина: `index.html`.
+
+Локальная проверка:
+
+```bash
+npm run build
+# затем откройте index.html через любой static server
+```
+
+---
+
+## Экспорт модуля
+
+Из `src/index.ts` библиотека:
+
+- регистрирует `@material/web/all.js` + labs-компоненты
+- экспортирует все Umi-компоненты из `actions/fab/selection/stateful/colors/fonts/icons/feedback`
+- экспортирует базовые шаблоны (`Button`, `Fab`) и типы
