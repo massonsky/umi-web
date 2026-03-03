@@ -1,0 +1,31 @@
+:host {
+    display: inline-flex;
+    box-sizing: border-box;
+}
+
+.group {
+    display: grid;
+    box-sizing: border-box;
+    align-items: center;
+    justify-items: stretch;
+}
+
+:host([orientation="0"]) .group,
+:host([orientation="horizontal"]) .group {
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+}
+
+:host([orientation="1"]) .group,
+:host([orientation="vertical"]) .group {
+    grid-auto-flow: row;
+    grid-auto-rows: max-content;
+}
+
+.group.connected {
+    align-items: stretch;
+}
+
+::slotted(*) {
+    box-sizing: border-box;
+}

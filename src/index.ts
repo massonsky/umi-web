@@ -30,10 +30,14 @@ import '@material/web/labs/segmentedbuttonset/outlined-segmented-button-set.js';
 
 // ─── Кастомные компоненты Umi ─────────────────────────────────────────────────
 export * from './components/types.js';
-export * from './components/buttons/index.js';
+export * from './components/actions/index.js';
+export * from './components/fab/index.js';
+export * from './components/selection/index.js';
+export * from './components/stateful/index.js';
 export * from './components/colors/index.js';
 export * from './components/fonts/index.js';
 export * from './components/icons/index.js';
+export * from './components/feedback/index.js';
 
 // Базовые классы и enum-ы доступны для расширения
 export * from './components/templates/Button.js';

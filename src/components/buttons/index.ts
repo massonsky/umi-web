@@ -1,9 +1,3 @@
-export * from '../templates/Button.js';
-export * from './FilledButton.js';
-export * from './OutlinedButton.js';
-export * from './TonalButton.js';
-export * from './ElevatedButton.js';
-export * from './TextButton.js';
-export * from './ExtendedFab.js';
-export * from './Fab.js';
-export * from './IconButton.js';
+// Legacy alias for backward compatibility.
+// New logical folder name: components/controls
+export * from '../controls/index.js';

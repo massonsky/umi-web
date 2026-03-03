@@ -1,0 +1,187 @@
+:host {
+    display: inline-flex;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.root {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+    min-height: 32px;
+    max-width: 100%;
+    box-sizing: border-box;
+    border-radius: var(--chip-radius, 8px);
+    background: var(--chip-bg, transparent);
+    color: var(--chip-fg, var(--md-sys-color-on-surface-variant, #49454f));
+    border: var(--chip-outline-w, 1px) solid var(--chip-outline, var(--md-sys-color-outline, #79747e));
+    transform: scale(calc(var(--chip-scale, 1) * var(--chip-lm-scale, 1)));
+    transform-origin: center;
+    user-select: none;
+    cursor: pointer;
+    transition:
+        background-color 170ms cubic-bezier(.2,0,0,1),
+        border-color 170ms cubic-bezier(.2,0,0,1),
+        border-radius 300ms cubic-bezier(.34,1.56,.64,1),
+        transform 300ms cubic-bezier(.34,1.56,.64,1),
+        box-shadow 170ms cubic-bezier(.2,0,0,1),
+        opacity 170ms ease;
+}
+
+.root.disabled {
+    cursor: default;
+    opacity: 0.7;
+}
+
+.root.elevated {
+    box-shadow: 0 1px 2px rgba(0,0,0,.14);
+}
+
+.root.elevated.hovered {
+    box-shadow: 0 2px 6px rgba(0,0,0,.18);
+}
+
+.root.click-bump {
+    animation: chip-bump 220ms cubic-bezier(.34,1.56,.64,1);
+}
+
+.root.chip-remove-anim {
+    animation: chip-remove-wiggle 260ms ease;
+}
+
+@keyframes chip-bump {
+    0% { transform: scale(calc(0.92 * var(--chip-lm-scale, 1))); }
+    100% { transform: scale(calc(var(--chip-scale, 1) * var(--chip-lm-scale, 1))); }
+}
+
+@keyframes chip-remove-wiggle {
+    0% { transform: scale(calc(1 * var(--chip-lm-scale, 1))) rotate(0deg); }
+    25% { transform: scale(calc(0.95 * var(--chip-lm-scale, 1))) rotate(-3deg); }
+    50% { transform: scale(calc(0.95 * var(--chip-lm-scale, 1))) rotate(3deg); }
+    100% { transform: scale(calc(var(--chip-scale, 1) * var(--chip-lm-scale, 1))) rotate(0deg); }
+}
+
+.state-layer {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: currentColor;
+    opacity: var(--chip-state-op, 0);
+    pointer-events: none;
+    transition: opacity 150ms ease;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 var(--chip-pad-right, 16px) 0 var(--chip-pad-left, 16px);
+    height: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--chip-avatar-bg, var(--md-sys-color-primary, #6750a4));
+    color: var(--md-sys-color-on-primary, #fff);
+    font-size: 14px;
+    font-weight: 500;
+    flex: 0 0 auto;
+    transition: transform 300ms cubic-bezier(.34,1.56,.64,1);
+}
+
+.root.pressed .avatar {
+    transform: scale(.9);
+}
+
+.icon {
+    font-family: 'Material Symbols Outlined';
+    font-size: 18px;
+    line-height: 1;
+    font-variation-settings:
+        'FILL' var(--chip-icon-fill, 0),
+        'wght' var(--chip-icon-wght, 400),
+        'GRAD' var(--chip-icon-grad, 0),
+        'opsz' 20;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    transition: transform 300ms cubic-bezier(.34,1.56,.64,1);
+}
+
+.root.hovered .icon {
+    transform: rotate(8deg);
+}
+
+.root.pressed .icon {
+    transform: scale(.85);
+}
+
+.label {
+    font-family: var(--md-sys-typescale-label-large-font, Roboto, 'Segoe UI', sans-serif);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.remove {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Material Symbols Outlined';
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        background-color 140ms ease,
+        transform 300ms cubic-bezier(.34,1.56,.64,1);
+}
+
+.remove:hover {
+    background: color-mix(in srgb, currentColor 12%, transparent);
+    transform: scale(1.15) rotate(90deg);
+}
+
+.remove:active {
+    transform: scale(.8);
+}
+
+.root:focus-visible {
+    outline: none;
+}
+
+.focus-ring {
+    position: absolute;
+    inset: -2px;
+    border-radius: calc(var(--chip-radius, 8px) + 2px);
+    border: 2px solid var(--md-sys-color-secondary, #625b71);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms ease;
+}
+
+.root:focus-visible .focus-ring {
+    opacity: 1;
+}
+
+.root.fading {
+    opacity: 0;
+    transform: scale(.92);
+    transition: opacity var(--chip-fade-ms, 170ms) ease, transform var(--chip-fade-ms, 170ms) ease;
+}

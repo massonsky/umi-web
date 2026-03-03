@@ -1,0 +1,42 @@
+:host {
+    display: inline-flex;
+    width: var(--menu-item-width, auto);
+    height: 56px;
+}
+
+.item-root {
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.switch-wrap,
+.checkbox-wrap {
+    box-sizing: border-box;
+    height: 56px;
+    width: 100%;
+    min-width: 120px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-radius: 16px;
+    padding: 0 12px;
+    background: var(--md-sys-color-secondary-container, #e8def8);
+    color: var(--md-sys-color-on-secondary-container, #1d192b);
+}
+
+.switch-label,
+.checkbox-label {
+    font: 500 14px/20px Roboto, "Segoe UI", sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+:host([disabled]) .item-root {
+    opacity: 0.38;
+    pointer-events: none;
+}
