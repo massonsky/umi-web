@@ -6,7 +6,7 @@ type ButtonSizeSpec = { h: number; w: number; fs: number; i: number; p: number }
 
 @customElement('umi-progress-bar-button')
 export class ProgressBarButton extends LitElement {
-    @property({ type: Number }) buttonType = 0; // 0 Filled, 1 Tonal, 2 Elevated, 3 Outlined, 4 Text
+    @property({ type: Number, attribute: 'button-type' }) buttonType = 0; // 0 Filled, 1 Tonal, 2 Elevated, 3 Outlined, 4 Text
     @property({ type: Number }) size = 2; // M
 
     @property({ type: String }) text = '';

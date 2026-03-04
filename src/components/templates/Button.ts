@@ -30,37 +30,37 @@ export enum IconType {
  * Обеспечивает API размеров, групп, иконок и морфинг-анимацию радиусов.
  */
 export class Button extends LitElement {
-    @property({ type: Number }) buttonType: ButtonType = ButtonType.Filled;
+    @property({ type: Number, attribute: 'button-type' }) buttonType: ButtonType = ButtonType.Filled;
     @property({ type: Number }) size: ButtonSize = ButtonSize.M;
 
     @property({ type: String }) text: string = '';
-    @property({ type: String }) iconName: string = '';
-    @property({ type: Number }) iconFill: number = 0.0;
-    @property({ type: Number }) iconGrad: number = 0;
-    @property({ type: Number }) iconWght: number = 400;
-    @property({ type: Number }) iconType: IconType = IconType.Outlined;
+    @property({ type: String, attribute: 'icon-name' }) iconName: string = '';
+    @property({ type: Number, attribute: 'icon-fill' }) iconFill: number = 0.0;
+    @property({ type: Number, attribute: 'icon-grad' }) iconGrad: number = 0;
+    @property({ type: Number, attribute: 'icon-wght' }) iconWght: number = 400;
+    @property({ type: Number, attribute: 'icon-type' }) iconType: IconType = IconType.Outlined;
 
-    @property({ type: Boolean }) centerText: boolean = false;
+    @property({ type: Boolean, attribute: 'center-text' }) centerText: boolean = false;
 
     // Group Button API
-    @property({ type: Number }) groupOrientation: number = 0; // 0: Horiz, 1: Vert
+    @property({ type: Number, attribute: 'group-orientation' }) groupOrientation: number = 0; // 0: Horiz, 1: Vert
     @property({ type: Boolean }) checked: boolean = false;
     @property({ type: Boolean }) checkable: boolean = false;
-    @property({ type: Boolean }) isSingleItem: boolean = true;
-    @property({ type: Boolean }) isFirstItem: boolean = false;
-    @property({ type: Boolean }) isLastItem: boolean = false;
-    @property({ type: Boolean }) roundFirstItem: boolean = true;
-    @property({ type: Boolean }) roundLastItem: boolean = true;
+    @property({ type: Boolean, attribute: 'is-single-item' }) isSingleItem: boolean = true;
+    @property({ type: Boolean, attribute: 'is-first-item' }) isFirstItem: boolean = false;
+    @property({ type: Boolean, attribute: 'is-last-item' }) isLastItem: boolean = false;
+    @property({ type: Boolean, attribute: 'round-first-item' }) roundFirstItem: boolean = true;
+    @property({ type: Boolean, attribute: 'round-last-item' }) roundLastItem: boolean = true;
 
     // Custom Radius API (-1 = auto)
-    @property({ type: Number }) radiusTL: number = -1;
-    @property({ type: Number }) radiusTR: number = -1;
-    @property({ type: Number }) radiusBL: number = -1;
-    @property({ type: Number }) radiusBR: number = -1;
-    @property({ type: Number }) cornerRadius: number = -1;
+    @property({ type: Number, attribute: 'radius-tl' }) radiusTL: number = -1;
+    @property({ type: Number, attribute: 'radius-tr' }) radiusTR: number = -1;
+    @property({ type: Number, attribute: 'radius-bl' }) radiusBL: number = -1;
+    @property({ type: Number, attribute: 'radius-br' }) radiusBR: number = -1;
+    @property({ type: Number, attribute: 'corner-radius' }) cornerRadius: number = -1;
 
-    @property({ type: Boolean }) acceptDoubleClick: boolean = true;
-    @property({ type: Boolean }) enableCustomHover: boolean = false;
+    @property({ type: Boolean, attribute: 'accept-double-click' }) acceptDoubleClick: boolean = true;
+    @property({ type: Boolean, attribute: 'enable-custom-hover' }) enableCustomHover: boolean = false;
 
     // Internal state
     @state() protected hovered: boolean = false;

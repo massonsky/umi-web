@@ -6,7 +6,7 @@ export type FabSize = 'small' | 'medium' | 'large';
 
 @customElement('umi-fab')
 export class Fab extends FabBase {
-    @property({ type: String }) fabSize: FabSize = 'medium';
+    @property({ type: String, attribute: 'fab-size' }) fabSize: FabSize = 'medium';
 
     private get sizePx() {
         if (this.fabSize === 'large') return 96;
