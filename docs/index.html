@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
     <style>
         /* ── MD3 Typography tokens for @material/web ───────────── */
         :root {
@@ -60,10 +61,9 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 12px;
             padding: 0 24px;
-            background: color-mix(in srgb, var(--md-sys-color-surface-container, #f3edf7) 85%, transparent);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            background: color-mix(in srgb, var(--md-sys-color-surface-container, #f3edf7) 94%, transparent);
             border-radius: 16px;
             border: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant, #cac4d0) 40%, transparent);
             transition: background 300ms ease, border-color 300ms ease;
@@ -73,6 +73,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            flex: 0 0 auto;
             text-decoration: none;
             color: var(--md-sys-color-on-surface, #1d1b20);
         }
@@ -106,7 +107,29 @@
             display: flex;
             align-items: center;
             gap: 4px;
+            flex: 1 1 auto;
+            min-width: 0;
             list-style: none;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            scrollbar-width: thin;
+            scrollbar-color: color-mix(in srgb, var(--md-sys-color-outline, #79747e) 40%, transparent) transparent;
+            justify-content: center;
+            padding-bottom: 2px;
+        }
+
+        .demo-nav__links::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .demo-nav__links::-webkit-scrollbar-thumb {
+            background: color-mix(in srgb, var(--md-sys-color-outline, #79747e) 45%, transparent);
+            border-radius: 999px;
+        }
+
+        .demo-nav__links li {
+            flex: 0 0 auto;
         }
 
         .demo-nav__links a {
@@ -129,6 +152,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            flex: 0 0 auto;
         }
 
         /* ── Hero ────────────────────────────────────────────────── */
@@ -159,7 +183,7 @@
                 transparent 70%
             );
             border-radius: 50%;
-            filter: blur(60px);
+            opacity: 0.75;
             pointer-events: none;
             z-index: 0;
         }
@@ -491,6 +515,76 @@
             gap: 12px;
         }
 
+        /* ── Auto code examples ─────────────────────────────────── */
+        .code-demo {
+            margin-top: 18px;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant, #cac4d0) 55%, transparent);
+            background: color-mix(in srgb, var(--md-sys-color-surface-container, #f3edf7) 60%, #111827 40%);
+        }
+
+        .code-demo__head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 12px;
+            background: color-mix(in srgb, var(--md-sys-color-surface-container-high, #ece6f0) 75%, #0f172a 25%);
+            border-bottom: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant, #cac4d0) 45%, transparent);
+        }
+
+        .code-demo__title {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--md-sys-color-on-surface-variant, #49454f);
+        }
+
+        .code-demo__actions {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .code-copy-btn,
+        .code-toggle-btn {
+            appearance: none;
+            border: 1px solid color-mix(in srgb, var(--md-sys-color-outline, #79747e) 55%, transparent);
+            background: color-mix(in srgb, var(--md-sys-color-surface, #fef7ff) 80%, #0b1220 20%);
+            color: var(--md-sys-color-on-surface, #1d1b20);
+            border-radius: 10px;
+            padding: 6px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 160ms ease, transform 120ms ease;
+        }
+
+        .code-copy-btn:hover,
+        .code-toggle-btn:hover {
+            background: color-mix(in srgb, var(--md-sys-color-primary-container, #eaddff) 45%, #0b1220 55%);
+        }
+
+        .code-copy-btn:active,
+        .code-toggle-btn:active {
+            transform: translateY(1px);
+        }
+
+        .code-demo.is-collapsed pre[class*="language-"] {
+            display: none;
+        }
+
+        .code-demo pre[class*="language-"] {
+            margin: 0 !important;
+            border-radius: 0 !important;
+            max-height: 320px;
+            overflow: auto;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
         /* ── Footer ──────────────────────────────────────────────── */
         .demo-footer {
             max-width: var(--demo-max-width);
@@ -523,6 +617,21 @@
             .demo-card { padding: 20px; }
             .slider-demo-row { flex-direction: column; align-items: stretch; }
             .slider-demo-row label { min-width: unset; }
+        }
+
+        @media (max-width: 1140px) {
+            .demo-nav {
+                padding: 0 12px;
+            }
+
+            .demo-nav__title {
+                font-size: 16px;
+            }
+
+            .demo-nav__links a {
+                padding: 8px 10px;
+                font-size: 13px;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -587,6 +696,7 @@
             <li><a href="#buttons">Buttons</a></li>
             <li><a href="#icons">Icons</a></li>
             <li><a href="#selection">Selection</a></li>
+            <li><a href="#combobox">ComboBox</a></li>
             <li><a href="#chips">Chips</a></li>
             <li><a href="#sliders">Sliders</a></li>
             <li><a href="#feedback">Feedback</a></li>
@@ -898,6 +1008,234 @@
                 <umi-radio-button name="demo-radio-bg" text="Small" show-background background-type="1" size="0" checked></umi-radio-button>
                 <umi-radio-button name="demo-radio-bg" text="Medium" show-background background-type="1" size="1"></umi-radio-button>
                 <umi-radio-button name="demo-radio-bg" text="Large" show-background background-type="1" size="2"></umi-radio-button>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <h3>Switches (UMI)</h3>
+            <p class="demo-card__subtitle">QML-перенос: drag ручки, иконки в handle, background-контейнер и состояния.</p>
+
+            <div class="demo-label">Basic</div>
+            <div class="component-row component-row--col" style="gap:14px;align-items:flex-start;">
+                <umi-switch text="Выключено"></umi-switch>
+                <umi-switch text="Включено" checked></umi-switch>
+                <umi-switch text="Disabled" disabled></umi-switch>
+                <umi-switch text="Interaction (alias) disabled" interaction="false" checked></umi-switch>
+                <umi-switch text="Interaction disabled" interaction-enabled="false" checked></umi-switch>
+            </div>
+
+            <div class="demo-label" style="margin-top:16px">Handle Icons</div>
+            <div class="component-row component-row--col" style="gap:14px;align-items:flex-start;">
+                <umi-switch text="show-on-icon" show-on-icon checked></umi-switch>
+                <umi-switch text="show-off-icon" show-off-icon></umi-switch>
+                <umi-switch text="show-on-icon-off-icon" show-on-icon-off-icon></umi-switch>
+                <umi-switch text="show-on-icon-off-icon (on)" show-on-icon-off-icon checked></umi-switch>
+            </div>
+
+            <div class="demo-label" style="margin-top:16px">Background Types</div>
+            <div class="component-row component-row--col" style="gap:14px;align-items:flex-start;">
+                <umi-switch text="Filled background" show-background background-type="0" checked></umi-switch>
+                <umi-switch text="Tonal background" show-background background-type="1" checked></umi-switch>
+                <umi-switch text="Outlined background" show-background background-type="2"></umi-switch>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ 4.5. ComboBox ═══════ -->
+    <section id="combobox" class="demo-section">
+        <div class="demo-section__header">
+            <umi-icon name="arrow_drop_down_circle" fill="1" size="28"></umi-icon>
+            <h2>ComboBox (UMI)</h2>
+            <p>Filled/Outlined &middot; Array/Object model &middot; roles</p>
+        </div>
+
+        <div class="demo-card">
+            <h3>Базовые варианты</h3>
+            <p class="demo-card__subtitle">Примеры с простым массивом, объектами и ролями <code>textRole/valueRole</code>.</p>
+
+            <div class="component-row component-row--col">
+                <div style="width:min(100%, 420px);">
+                    <div class="demo-label">Filled (без выбора по умолчанию)</div>
+                    <umi-combo-box
+                        id="comboBasic"
+                        label-text="Выберите город"
+                        supporting-text="Нажмите, чтобы открыть список"
+                        has-trailing-icon>
+                    </umi-combo-box>
+                </div>
+
+                <div style="width:min(100%, 420px);">
+                    <div class="demo-label">Outlined + textRole/valueRole</div>
+                    <umi-combo-box
+                        id="comboRoles"
+                        label-text="Приоритет"
+                        supporting-text="Данные через textRole/valueRole"
+                        text-role="title"
+                        value-role="code">
+                    </umi-combo-box>
+                </div>
+
+                <div style="width:min(100%, 420px);">
+                    <div class="demo-label">С авто-выбором первого элемента</div>
+                    <umi-combo-box
+                        id="comboAuto"
+                        label-text="Версия"
+                        supporting-text="auto-select-first-element"
+                        auto-select-first-element
+                        has-trailing-icon>
+                    </umi-combo-box>
+                </div>
+
+                <div style="width:min(100%, 420px);">
+                    <div class="demo-label">С префиксом/суффиксом и leading icon</div>
+                    <umi-combo-box
+                        id="comboAffixes"
+                        label-text="Формат"
+                        supporting-text="Prefix/suffix + leading icon"
+                        prefix="."
+                        suffix="file"
+                        has-leading-icon
+                        leading-icon-name="description"
+                        auto-select-first-element>
+                    </umi-combo-box>
+                </div>
+            </div>
+
+            <div class="demo-label" style="margin-top:16px">События выбора</div>
+            <pre id="comboLog" style="margin:0;white-space:pre-wrap;font-size:12px;padding:12px;border-radius:12px;background:var(--md-sys-color-surface,#fef7ff);border:1px solid var(--md-sys-color-outline-variant,#cac4d0);color:var(--md-sys-color-on-surface-variant,#49454f)">Ожидание выбора…</pre>
+        </div>
+    </section>
+
+    <!-- ═══════ 4.6. TextField ═══════ -->
+    <section id="textfield" class="demo-section">
+        <div class="demo-section__header">
+            <umi-icon name="text_fields" fill="1" size="28"></umi-icon>
+            <h2>TextField (UMI)</h2>
+            <p>Filled/Outlined &middot; Validation &middot; Icons</p>
+        </div>
+
+        <div class="demo-card">
+            <h3>Базовые варианты</h3>
+            <p class="demo-card__subtitle">Filled и Outlined текстовые поля с различными опциями.</p>
+
+            <div class="component-row component-row--col">
+                <div style="width:min(100%, 420px);">
+                    <div class="demo-label">Filled</div>
+                    <umi-text-field
+                        id="tfFilled"
+                        label-text="Имя пользователя"
+                        supporting-text="Минимум 3 символа">
+                    </umi-text-field>
+                </div>
+
+                <div style="width:min(100%, 420px);">
+                    <div class="demo-label">Outlined</div>
+                    <umi-text-field
+                        id="tfOutlined"
+                        label-text="Email"
+                        supporting-text="Введите email адрес"
+                        filled="false"
+                        validation-type="email">
+                    </umi-text-field>
+                </div>
+
+                <div style="width:min(100%, 420px);">
+                    <div class="demo-label">С иконками</div>
+                    <umi-text-field
+                        id="tfIcons"
+                        label-text="Поиск"
+                        placeholder-text="Что найти?"
+                        has-leading-icon
+                        leading-icon-name="search"
+                        has-trailing-icon
+                        trailing-icon-name="mic">
+                    </umi-text-field>
+                </div>
+
+                <div style="width:min(100%, 420px);">
+                    <div class="demo-label">Пароль</div>
+                    <umi-text-field
+                        id="tfPassword"
+                        label-text="Пароль"
+                        supporting-text="Не менее 8 символов"
+                        password-mode>
+                    </umi-text-field>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <h3>Валидация</h3>
+            <p class="demo-card__subtitle">Встроенные типы валидации и лимит символов.</p>
+
+            <div class="component-row component-row--col">
+                <div style="width:min(100%, 420px);">
+                    <div class="demo-label">Email</div>
+                    <umi-text-field
+                        id="tfEmail"
+                        label-text="Email"
+                        validation-type="email"
+                        error-message="Введите корректный email"
+                        filled="false">
+                    </umi-text-field>
+                </div>
+
+                <div style="width:min(100%, 420px);">
+                    <div class="demo-label">Телефон</div>
+                    <umi-text-field
+                        id="tfPhone"
+                        label-text="Телефон"
+                        validation-type="phone"
+                        error-message="Некорректный формат телефона">
+                    </umi-text-field>
+                </div>
+
+                <div style="width:min(100%, 420px);">
+                    <div class="demo-label">URL</div>
+                    <umi-text-field
+                        id="tfUrl"
+                        label-text="Веб-сайт"
+                        validation-type="url"
+                        error-message="Введите корректный URL"
+                        filled="false">
+                    </umi-text-field>
+                </div>
+
+                <div style="width:min(100%, 420px);">
+                    <div class="demo-label">С лимитом символов</div>
+                    <umi-text-field
+                        id="tfLimit"
+                        label-text="Комментарий"
+                        max-length="100"
+                        supporting-text="Краткий комментарий">
+                    </umi-text-field>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <h3>Состояния</h3>
+            <p class="demo-card__subtitle">Disabled и readonly режимы.</p>
+
+            <div class="component-row component-row--col">
+                <div style="width:min(100%, 420px);">
+                    <div class="demo-label">Disabled</div>
+                    <umi-text-field
+                        label-text="Отключено"
+                        value="Нередактируемое"
+                        disabled>
+                    </umi-text-field>
+                </div>
+
+                <div style="width:min(100%, 420px);">
+                    <div class="demo-label">Readonly</div>
+                    <umi-text-field
+                        label-text="Только чтение"
+                        value="Фиксированное значение"
+                        read-only
+                        filled="false">
+                    </umi-text-field>
+                </div>
             </div>
         </div>
     </section>
@@ -1480,8 +1818,10 @@
     </footer>
 
     <!-- ═══════ Script ═══════ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
     <script type="module">
-        import './umi-components.js';
+        import './umi-components.js?v=20260304-switch-nodrag';
 
         // ── Theme Toggle ──────────────────────────────────────────
         const colorScheme = document.getElementById('colorScheme');
@@ -1646,11 +1986,62 @@
         ];
 
         // ── FAB Menu items ────────────────────────────────────────
-        document.getElementById('fabMenu').menuItems = [
-            { text: 'New Note', icon: 'note_add' },
-            { text: 'Upload File', icon: 'cloud_upload' },
-            { text: 'Take Photo', icon: 'photo_camera' },
+        const fabMenu = document.getElementById('fabMenu');
+        fabMenu.menuItems = [
+            { text: 'Labs', icon: 'science' }
         ];
+
+        fabMenu.addEventListener('item-clicked', (e) => {
+            const item = e?.detail?.item;
+            if (item?.text === 'Labs') {
+                window.location.href = './labs.html';
+            }
+        });
+
+        // ── UMI ComboBox examples ─────────────────────────────────
+        const comboBasic = document.getElementById('comboBasic');
+        const comboRoles = document.getElementById('comboRoles');
+        const comboAffixes = document.getElementById('comboAffixes');
+        const comboLog = document.getElementById('comboLog');
+
+        if (comboBasic) {
+            comboBasic.model = ['Москва', 'Санкт-Петербург', 'Казань', 'Новосибирск', 'Екатеринбург'];
+        }
+
+        if (comboRoles) {
+            comboRoles.model = [
+                { title: 'Низкий', code: 'LOW' },
+                { title: 'Средний', code: 'MEDIUM' },
+                { title: 'Высокий', code: 'HIGH' },
+                { title: 'Критический', code: 'CRITICAL' },
+            ];
+            comboRoles.filled = false;
+        }
+
+        const comboAuto = document.getElementById('comboAuto');
+        if (comboAuto) {
+            comboAuto.model = ['v1.0.0', 'v1.1.0', 'v1.2.5', 'v2.0.0'];
+        }
+
+        if (comboAffixes) {
+            comboAffixes.model = ['pdf', 'docx', 'xlsx', 'txt', 'json'];
+        }
+
+        const bindComboLog = (el, name) => {
+            if (!el || !comboLog) return;
+            el.addEventListener('option-selected', (e) => {
+                comboLog.textContent = `[${name}] option-selected → index=${e.detail.index}, text=${e.detail.text}`;
+            });
+            el.addEventListener('item-selected', (e) => {
+                const safe = JSON.stringify(e.detail.item);
+                comboLog.textContent = `[${name}] item-selected → ${safe}`;
+            });
+        };
+
+        bindComboLog(comboBasic, 'comboBasic');
+        bindComboLog(comboRoles, 'comboRoles');
+        bindComboLog(comboAuto, 'comboAuto');
+        bindComboLog(comboAffixes, 'comboAffixes');
 
         // ── Hero Buttons ──────────────────────────────────────────
         document.getElementById('getStartedBtn')?.addEventListener('clicked', () => {
@@ -1673,6 +2064,145 @@
             const menu = document.getElementById('mdMenu');
             menu.open = !menu.open;
         });
+
+        // ── Auto code samples per demo-card ─────────────────────
+        const isComponentTag = (tagName) => tagName.startsWith('UMI-') || tagName.startsWith('MD-');
+
+        const componentSelectors = [
+            '.component-row',
+            '.chips-row',
+            '.slider-demos',
+            '.progress-grid',
+            'md-chip-set',
+            'md-tabs',
+            'md-list',
+            'umi-button-group'
+        ].join(', ');
+
+        const escapeHtml = (str) => str
+            .replaceAll('&', '&amp;')
+            .replaceAll('<', '&lt;')
+            .replaceAll('>', '&gt;');
+
+        const normalizeSnippet = (html) => html
+            .replace(/\s+\n/g, '\n')
+            .replace(/\n\s+\n/g, '\n')
+            .replace(/\s{2,}/g, ' ')
+            .replace(/>\s+</g, '>\n<')
+            .trim();
+
+        const collectTopLevelComponents = (root) => {
+            const all = Array.from(root.querySelectorAll('*'));
+            const top = [];
+
+            for (const node of all) {
+                const tag = node.tagName;
+                if (!isComponentTag(tag)) continue;
+
+                let hasComponentAncestor = false;
+                let p = node.parentElement;
+                while (p && p !== root) {
+                    if (isComponentTag(p.tagName)) {
+                        hasComponentAncestor = true;
+                        break;
+                    }
+                    p = p.parentElement;
+                }
+
+                if (!hasComponentAncestor) top.push(node);
+                if (top.length >= 6) break;
+            }
+
+            return top;
+        };
+
+        const buildCardSnippet = (card) => {
+            const scope = card.querySelector(componentSelectors) || card;
+            const components = collectTopLevelComponents(scope);
+            if (!components.length) return '';
+
+            return normalizeSnippet(components.map((el) => el.outerHTML).join('\n\n'));
+        };
+
+        const copyText = async (text) => {
+            if (navigator.clipboard?.writeText) {
+                await navigator.clipboard.writeText(text);
+                return true;
+            }
+
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            const ok = document.execCommand('copy');
+            ta.remove();
+            return ok;
+        };
+
+        const cards = Array.from(document.querySelectorAll('.demo-card'));
+        for (const card of cards) {
+            const snippet = buildCardSnippet(card);
+            if (!snippet) continue;
+
+            const wrapper = document.createElement('div');
+            wrapper.className = 'code-demo';
+
+            const head = document.createElement('div');
+            head.className = 'code-demo__head';
+
+            const title = document.createElement('div');
+            title.className = 'code-demo__title';
+            title.textContent = 'Example code';
+
+            const copyBtn = document.createElement('button');
+            copyBtn.className = 'code-copy-btn';
+            copyBtn.type = 'button';
+            copyBtn.textContent = 'Copy';
+
+            const toggleBtn = document.createElement('button');
+            toggleBtn.className = 'code-toggle-btn';
+            toggleBtn.type = 'button';
+            toggleBtn.textContent = 'Show code';
+
+            copyBtn.addEventListener('click', async () => {
+                const ok = await copyText(snippet);
+                const prev = copyBtn.textContent;
+                copyBtn.textContent = ok ? 'Copied!' : 'Failed';
+                setTimeout(() => { copyBtn.textContent = prev; }, 1200);
+            });
+
+            const pre = document.createElement('pre');
+            pre.className = 'language-html';
+            pre.hidden = true;
+            const code = document.createElement('code');
+            code.className = 'language-html';
+            code.innerHTML = escapeHtml(snippet);
+            pre.appendChild(code);
+
+            wrapper.classList.add('is-collapsed');
+
+            toggleBtn.addEventListener('click', () => {
+                const collapsed = wrapper.classList.toggle('is-collapsed');
+                pre.hidden = collapsed;
+                toggleBtn.textContent = collapsed ? 'Show code' : 'Hide code';
+            });
+
+            const actions = document.createElement('div');
+            actions.className = 'code-demo__actions';
+            actions.append(toggleBtn, copyBtn);
+
+            head.append(title, actions);
+
+            wrapper.append(head, pre);
+            card.appendChild(wrapper);
+
+            if (window.Prism?.highlightElement) {
+                window.Prism.highlightElement(code);
+            }
+        }
     </script>
 </body>
 </html>

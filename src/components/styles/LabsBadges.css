@@ -1,0 +1,51 @@
+:host {
+    display: inline-flex;
+    vertical-align: top;
+}
+
+.anchor {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge {
+    position: absolute;
+    inset-inline-end: 0;
+    top: 0;
+    box-sizing: border-box;
+    background: var(--md-sys-color-error, #b3261e);
+    color: var(--md-sys-color-on-error, #ffffff);
+    pointer-events: none;
+    user-select: none;
+}
+
+/* MD3 specs: 6dp circular badge */
+.badge-small {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    transform: translate(50%, -50%);
+}
+
+/* MD3 specs: 16dp height, width expands by content */
+.badge-large {
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 8px;
+    transform: translate(40%, -40%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge-label {
+    font-family: var(--md-sys-typescale-label-small-font, 'Roboto', sans-serif);
+    font-size: var(--md-sys-typescale-label-small-size, 11px);
+    font-weight: var(--md-sys-typescale-label-small-weight, 500);
+    line-height: var(--md-sys-typescale-label-small-line-height, 16px);
+    letter-spacing: var(--md-sys-typescale-label-small-tracking, 0.5px);
+    white-space: nowrap;
+}

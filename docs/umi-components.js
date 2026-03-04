@@ -23559,8 +23559,23 @@ var MaterialFont = class extends i4 {
       this._injectFonts();
     }
   }
-  _injectLink(id, href) {
+  /**
+   * Проверяет, загружается ли уже данное семейство шрифтов
+   * каким-либо <link> в документе (по содержимому href).
+   */
+  _isFamilyLinked(familyName) {
+    const plusForm = familyName.toLowerCase().replace(/\s+/g, "+");
+    const pctForm = familyName.toLowerCase().replace(/\s+/g, "%20");
+    const links = document.querySelectorAll('link[rel="stylesheet"]');
+    for (const link of Array.from(links)) {
+      const href = (link.getAttribute("href") || "").toLowerCase();
+      if (href.includes(plusForm) || href.includes(pctForm)) return true;
+    }
+    return false;
+  }
+  _injectLink(id, href, fontFamily) {
     if (document.getElementById(id)) return;
+    if (fontFamily && this._isFamilyLinked(fontFamily)) return;
     const link = document.createElement("link");
     link.id = id;
     link.rel = "stylesheet";
@@ -23582,21 +23597,41 @@ var MaterialFont = class extends i4 {
     }
     this._injectLink(
       "__umi-font-roboto",
-      "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"
+      "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap",
+      "Roboto"
     );
     if (this.loadMono) {
       this._injectLink(
         "__umi-font-roboto-mono",
-        "https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap"
+        "https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap",
+        "Roboto Mono"
       );
     }
     if (this.loadSymbols) {
-      const style = this.symbolsStyle;
-      const family = encodeURIComponent(`Material Symbols ${style}`);
-      this._injectLink(
-        `__umi-symbols-${style.toLowerCase()}`,
-        `https://fonts.googleapis.com/css2?family=${family}:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200`
-      );
+      const styles71 = ["Outlined", "Rounded", "Sharp"];
+      for (const style of styles71) {
+        const familyName = `Material Symbols ${style}`;
+        const family = encodeURIComponent(familyName);
+        this._injectLink(
+          `__umi-symbols-${style.toLowerCase()}`,
+          `https://fonts.googleapis.com/css2?family=${family}:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap`,
+          familyName
+        );
+      }
+      const legacyFamilies = [
+        { id: "__umi-material-icons", family: "Material+Icons", name: "Material Icons" },
+        { id: "__umi-material-icons-outlined", family: "Material+Icons+Outlined", name: "Material Icons Outlined" },
+        { id: "__umi-material-icons-round", family: "Material+Icons+Round", name: "Material Icons Round" },
+        { id: "__umi-material-icons-sharp", family: "Material+Icons+Sharp", name: "Material Icons Sharp" },
+        { id: "__umi-material-icons-twotone", family: "Material+Icons+Two+Tone", name: "Material Icons Two Tone" }
+      ];
+      for (const f3 of legacyFamilies) {
+        this._injectLink(
+          f3.id,
+          `https://fonts.googleapis.com/icon?family=${f3.family}&display=swap`,
+          f3.name
+        );
+      }
     }
   }
   _applyTypeScale() {
@@ -26186,6 +26221,2645 @@ __decorateClass([
 ILProgressBarExpressive = __decorateClass([
   t("umi-il-progress-bar-expressive")
 ], ILProgressBarExpressive);
+
+// src/components/styles/ComboBox.css
+var ComboBox_default = "/* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\n   umi-combo-box \u2014 Material Design 3 ComboBox (Expressive 2025)\r\n   \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\n   CSS custom properties (set inline by component JS):\r\n     --combo-h                 container height\r\n     --combo-icon-sz           icon size\r\n     --combo-radius            corner radius\r\n     --combo-pad-x             horizontal padding\r\n     --combo-icon-pad          icon padding\r\n     --combo-indicator-h       active indicator height\r\n\r\n   Color tokens:\r\n     --combo-container-bg      container background\r\n     --combo-label-color       label text color\r\n     --combo-text-color        input/selected text color\r\n     --combo-icon-color        icon color\r\n     --combo-indicator-color   active indicator color\r\n     --combo-outline-color     outline color (outlined variant)\r\n     --combo-supporting-color  supporting text color\r\n     --combo-state-layer       state layer color\r\n   \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n\r\n:host {\r\n    display: inline-flex;\r\n    outline: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n    position: relative;\r\n    vertical-align: top;\r\n    width: var(--combo-width, 300px);\r\n}\r\n\r\n/* \u2500\u2500 Root \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.root {\r\n    position: relative;\r\n    display: flex;\r\n    flex-direction: column;\r\n    width: 100%;\r\n}\r\n\r\n/* \u2500\u2500 Transform Container \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.transform-container {\r\n    position: relative;\r\n    width: 100%;\r\n    height: var(--combo-h, 56px);    cursor: pointer;}\r\n\r\n/* \u2500\u2500 Container \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.container {\r\n    position: relative;\r\n    width: 100%;\r\n    height: var(--combo-h, 56px);\r\n    box-sizing: border-box;\r\n    background: var(--combo-container-bg, transparent);\r\n    border-radius: var(--combo-radius, 4px);\r\n    overflow: hidden;\r\n    cursor: pointer;\r\n    user-select: none;\r\n}\r\n\r\n.container.filled {\r\n    border-radius: var(--combo-radius, 4px) var(--combo-radius, 4px) 0 0;\r\n    background: var(--md-sys-color-surface-container-highest, #e6e0e9);\r\n}\r\n\r\n/* \u2500\u2500 State Layer (filled variant) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.state-layer {\r\n    position: absolute;\r\n    inset: 0;\r\n    border-radius: inherit;\r\n    background: var(--combo-state-layer, var(--md-sys-color-on-surface, #1d1b20));\r\n    opacity: 0;\r\n    pointer-events: none;\r\n    transition: opacity 150ms cubic-bezier(.4, 0, .2, 1);\r\n}\r\n\r\n.root.hovered:not(.focused) .state-layer.filled { opacity: 0.08; }\r\n\r\n/* \u2500\u2500 Active Indicator (filled variant, bottom line) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.active-indicator {\r\n    position: absolute;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 1px;\r\n    background: var(--combo-indicator-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    transition:\r\n        height 150ms cubic-bezier(.4, 0, .2, 1),\r\n        background-color 300ms cubic-bezier(.2, 0, 0, 1);\r\n}\r\n\r\n.root.focused .active-indicator { height: var(--combo-indicator-h, 2px); }\r\n.root.disabled .active-indicator { opacity: 0.38; }\r\n\r\n/* \u2500\u2500 Outline (outlined variant) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.outline-container {\r\n    position: absolute;\r\n    inset: 0;\r\n    pointer-events: none;\r\n}\r\n\r\n.outline-container canvas {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n/* \u2500\u2500 Leading Icon \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.leading-icon {\r\n    position: absolute;\r\n    left: var(--combo-pad-x, 16px);\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    width: var(--combo-icon-sz, 24px);\r\n    height: var(--combo-icon-sz, 24px);\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    z-index: 2;\r\n    color: var(--combo-icon-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    transition: transform 500ms cubic-bezier(.2, .8, .2, 1);\r\n    cursor: pointer;\r\n}\r\n\r\n.leading-icon .icon-text {\r\n    font-family: 'Material Symbols Outlined';\r\n    font-feature-settings: 'liga' 1;\r\n    -webkit-font-feature-settings: 'liga' 1;\r\n    font-size: var(--combo-icon-sz, 24px);\r\n    font-variation-settings:\r\n        'FILL' var(--combo-icon-fill, 0),\r\n        'wght' var(--combo-icon-wght, 400),\r\n        'GRAD' var(--combo-icon-grad, 0),\r\n        'opsz' var(--combo-icon-sz, 24);\r\n    line-height: 1;\r\n    font-style: normal;\r\n}\r\n\r\n.root.hovered .leading-icon { transform: translateY(-50%) rotate(8deg); }\r\n.root.disabled .leading-icon { opacity: 0.38; }\r\n\r\n/* \u2500\u2500 Trailing Icon (dropdown arrow) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.trailing-icon {\r\n    position: absolute;\r\n    right: var(--combo-pad-x, 16px);\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    width: var(--combo-icon-sz, 24px);\r\n    height: var(--combo-icon-sz, 24px);\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    z-index: 2;\r\n    color: var(--combo-icon-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    cursor: pointer;\r\n}\r\n\r\n.trailing-icon .icon-text {\r\n    font-family: 'Material Symbols Outlined';\r\n    font-feature-settings: 'liga' 1;\r\n    -webkit-font-feature-settings: 'liga' 1;\r\n    font-size: var(--combo-icon-sz, 24px);\r\n    font-variation-settings:\r\n        'FILL' 0,\r\n        'wght' 400,\r\n        'GRAD' 0,\r\n        'opsz' var(--combo-icon-sz, 24);\r\n    line-height: 1;\r\n    font-style: normal;\r\n    display: inline-block;\r\n    transition: transform 150ms cubic-bezier(.4, 0, .2, 1);\r\n}\r\n\r\n.trailing-icon.open .icon-text { transform: rotate(180deg); }\r\n.root.disabled .trailing-icon { opacity: 0.38; }\r\n.root.has-error .trailing-icon .icon-text {\r\n    color: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n/* \u2500\u2500 Label \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.label {\r\n    position: absolute;\r\n    z-index: 2;\r\n    left: var(--combo-label-x, var(--combo-pad-x, 16px));\r\n    top: 50%;\r\n    pointer-events: none;\r\n    transform-origin: left center;\r\n    transform: translateY(-50%);\r\n    transition: transform 150ms cubic-bezier(.2, 0, 0, 1),\r\n                color 150ms cubic-bezier(.2, 0, 0, 1);\r\n    color: var(--combo-label-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    line-height: var(--md-sys-typescale-body-large-line-height, 24px);\r\n    letter-spacing: var(--md-sys-typescale-body-large-tracking, 0.5px);\r\n}\r\n\r\n/* Populated Filled: label floats to top */\r\n.label.populated.filled {\r\n    transform: translateY(calc(-50% - 12px)) scale(0.75);\r\n    transform-origin: left top;\r\n}\r\n\r\n/* Populated Outlined: label sits on top border */\r\n.label.populated.outlined {\r\n    transform: translateY(calc(-50% - (var(--combo-h, 56px) / 2) + 1px)) scale(0.75);\r\n    transform-origin: left center;\r\n}\r\n\r\n.root.focused .label {\r\n    color: var(--md-sys-color-primary, #6750a4);\r\n}\r\n\r\n.root.has-error .label {\r\n    color: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n.root.disabled .label { opacity: 0.38; }\r\n\r\n/* \u2500\u2500 Input Area (selected text) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.input-area {\r\n    position: absolute;\r\n    inset: 0;\r\n    z-index: 1;\r\n    display: flex;\r\n    align-items: center;\r\n    padding-left: var(--combo-input-left, var(--combo-pad-x, 16px));\r\n    padding-right: var(--combo-input-right, var(--combo-pad-x, 16px));\r\n    box-sizing: border-box;    pointer-events: none;}\r\n\r\n.input-area.has-label.populated.filled {\r\n    padding-top: 16px;\r\n}\r\n\r\n.input-row {\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 4px;\r\n    width: 100%;\r\n    min-width: 0;\r\n}\r\n\r\n.prefix-text,\r\n.suffix-text {\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    color: var(--combo-text-color, var(--md-sys-color-on-surface, #1d1b20));\r\n    opacity: 0.6;\r\n    white-space: nowrap;\r\n}\r\n\r\n.selected-text {\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    color: var(--combo-text-color, var(--md-sys-color-on-surface, #1d1b20));\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    flex: 1;\r\n    min-width: 0;\r\n}\r\n\r\n.root.disabled .selected-text,\r\n.root.disabled .prefix-text,\r\n.root.disabled .suffix-text { opacity: 0.38; }\r\n\r\n/* \u2500\u2500 Supporting Text \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.supporting-text {\r\n    font-family: var(--md-sys-typescale-title-small-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-title-small-size, 14px);\r\n    font-weight: var(--md-sys-typescale-title-small-weight, 500);\r\n    line-height: var(--md-sys-typescale-title-small-line-height, 20px);\r\n    letter-spacing: var(--md-sys-typescale-title-small-tracking, 0.1px);\r\n    color: var(--combo-supporting-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    padding-left: var(--combo-pad-x, 16px);\r\n    padding-right: var(--combo-pad-x, 16px);\r\n    padding-top: var(--combo-supporting-top, 4px);\r\n}\r\n\r\n.root.disabled .supporting-text { opacity: 0.38; }\r\n\r\n/* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\n   Popup\r\n   \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.combo-popup {\r\n    position: absolute;\r\n    top: 100%;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: 1000;\r\n    box-sizing: border-box;\r\n    border-radius: 12px;\r\n    padding: 8px;\r\n    background: var(--md-sys-color-surface-container, var(--md-sys-color-surface, #fff));\r\n    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.08);\r\n    max-height: 300px;\r\n    overflow-y: auto;\r\n    scrollbar-width: thin;\r\n    transform-origin: top center;\r\n\r\n    /* Entrance */\r\n    opacity: 0;\r\n    transform: scale(0.95);\r\n    pointer-events: none;\r\n    transition:\r\n        opacity 300ms cubic-bezier(.2, 0, 0, 1),\r\n        transform 500ms cubic-bezier(.34, 1.56, .64, 1);\r\n}\r\n\r\n.combo-popup.open {\r\n    opacity: 1;\r\n    transform: scale(1);\r\n    pointer-events: auto;\r\n}\r\n\r\n.combo-popup.closing {\r\n    opacity: 0 !important;\r\n    transform: scale(0.98) !important;\r\n    pointer-events: none;\r\n    transition:\r\n        opacity 150ms cubic-bezier(.4, 0, 1, 1),\r\n        transform 150ms cubic-bezier(.4, 0, .6, 1) !important;\r\n}\r\n\r\n/* \u2500\u2500 Empty message \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.popup-empty {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    padding: 16px;\r\n    color: var(--md-sys-color-on-surface-variant, #666666);\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n}\r\n\r\n/* \u2500\u2500 Option Item \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.option-item {\r\n    display: flex;\r\n    align-items: center;\r\n    height: 48px;\r\n    padding: 0 16px;\r\n    border-radius: 8px;\r\n    gap: 12px;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n    user-select: none;\r\n    position: relative;\r\n    overflow: hidden;\r\n    transition:\r\n        background-color 150ms ease,\r\n        transform 150ms cubic-bezier(.4, 0, .2, 1);\r\n    transform: scale(1);\r\n}\r\n\r\n.option-item + .option-item {\r\n    margin-top: 2px;\r\n}\r\n\r\n/* Item entrance animation */\r\n.option-item.entering {\r\n    opacity: 0;\r\n    transform: scale(0.8);\r\n}\r\n\r\n.option-item.entered {\r\n    opacity: 1;\r\n    transform: scale(1);\r\n    transition:\r\n        opacity 300ms cubic-bezier(.2, 0, 0, 1),\r\n        transform 500ms cubic-bezier(.34, 1.56, .64, 1),\r\n        background-color 150ms ease;\r\n}\r\n\r\n/* Hover */\r\n.option-item:hover {\r\n    background: color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 8%, transparent);\r\n    transform: scale(1.02);\r\n}\r\n\r\n/* Pressed */\r\n.option-item.pressed {\r\n    transform: scale(0.98);\r\n}\r\n\r\n/* Selected */\r\n.option-item.selected {\r\n    background: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 12%, transparent);\r\n}\r\n\r\n/* \u2500\u2500 Option text \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.option-text {\r\n    flex: 1;\r\n    min-width: 0;\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    color: var(--md-sys-color-on-surface, #000000);\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n}\r\n\r\n/* \u2500\u2500 Check icon for selected item \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.option-check {\r\n    flex-shrink: 0;\r\n    width: 20px;\r\n    height: 20px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    font-family: 'Material Symbols Outlined';\r\n    font-feature-settings: 'liga' 1;\r\n    -webkit-font-feature-settings: 'liga' 1;\r\n    font-size: 20px;\r\n    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;\r\n    line-height: 1;\r\n    font-style: normal;\r\n    color: var(--md-sys-color-primary, #1976d2);\r\n\r\n    /* Living Material entrance */\r\n    transform: scale(0) rotate(-90deg);\r\n    opacity: 0;\r\n    transition:\r\n        transform 500ms cubic-bezier(.2, .8, .2, 1),\r\n        opacity 300ms cubic-bezier(.2, 0, 0, 1);\r\n}\r\n\r\n.option-check.visible {\r\n    transform: scale(1) rotate(0deg);\r\n    opacity: 1;\r\n}\r\n\r\n/* \u2500\u2500 Ripple overlay \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.option-ripple {\r\n    position: absolute;\r\n    border-radius: 50%;\r\n    background: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 12%, transparent);\r\n    transform: scale(0);\r\n    pointer-events: none;\r\n    animation: combo-ripple 450ms cubic-bezier(.2, 0, 0, 1) forwards;\r\n}\r\n\r\n@keyframes combo-ripple {\r\n    to {\r\n        transform: scale(2.5);\r\n        opacity: 0;\r\n    }\r\n}\r\n";
+
+// src/components/controls/ComboBox.ts
+var ComboBox = class extends i4 {
+  constructor() {
+    super(...arguments);
+    // =========================================================
+    // MD3 EXPRESSIVE ANIMATION TIMING
+    // =========================================================
+    this.emphasizedDuration = 500;
+    // Dramatic effects (OutElastic/OutBack)
+    this.standardDuration = 150;
+    // Standard transitions (OutQuint)
+    this.quickDuration = 150;
+    // Quick feedback (OutQuad)
+    // =========================================================
+    // SIZE & SPACING (MD3 specs)
+    // =========================================================
+    this._baseContainerHeight = 56;
+    this._baseIconSize = 24;
+    this._baseCornerRadius = 4;
+    this._baseHorizontalPadding = 16;
+    this._baseIconPadding = 12;
+    this._baseActiveIndicatorHeight = 2;
+    this._baseSupportingTextTopMargin = 4;
+    this.customWidth = -1;
+    this.customHeight = -1;
+    this.scaleRatio = 1;
+    this.model = [];
+    this.textRole = "";
+    this.valueRole = "";
+    this.labelText = "";
+    this.supportingText = "";
+    this.prefix = "";
+    this.suffix = "";
+    this.errorText = "";
+    this.trailingIconName = "arrow_drop_down";
+    this.leadingIconName = "search";
+    this.hasLeadingIcon = false;
+    this.hasTrailingIcon = true;
+    this.iconFill = 0;
+    this.iconGrad = 0;
+    this.iconWght = 400;
+    this.filled = true;
+    this.hasError = false;
+    this.scaleFont = 1;
+    this.autoSelectFirstElement = false;
+    this.enableLeadingIconCustomClick = false;
+    this.leadingIconTooltipText = "\u041F\u043E\u0438\u0441\u043A";
+    this.leadingIconEnabled = true;
+    this.isFocused = false;
+    this.isHovered = false;
+    this._isPressed = false;
+    this._isOpen = false;
+    this.currentIndex = -1;
+    this.currentText = "";
+    this.optionsWithSelection = [];
+    this._notchWidth = 0;
+    this._notchAnimationId = null;
+    this._resizeObserver = null;
+  }
+  // =========================================================
+  // COMPUTED PROPERTIES
+  // =========================================================
+  get containerHeight() {
+    return this.customHeight > 0 ? this.customHeight : Math.max(40, this._baseContainerHeight);
+  }
+  get _containerScale() {
+    return Math.max(0.75, this.containerHeight / this._baseContainerHeight);
+  }
+  get iconSize() {
+    return Math.max(16, this._baseIconSize * this._containerScale);
+  }
+  get cornerRadius() {
+    return Math.min(this.containerHeight / 2, Math.max(2, this._baseCornerRadius * this._containerScale));
+  }
+  get horizontalPadding() {
+    return Math.max(8, this._baseHorizontalPadding * this._containerScale);
+  }
+  get iconPadding() {
+    return Math.max(6, this._baseIconPadding * this._containerScale);
+  }
+  get activeIndicatorHeight() {
+    return Math.max(1, this._baseActiveIndicatorHeight * this._containerScale);
+  }
+  get supportingTextTopMargin() {
+    return Math.max(1, this._baseSupportingTextTopMargin * this._containerScale);
+  }
+  get isEnabled() {
+    return !this.disabled;
+  }
+  get isPopulated() {
+    return this.currentText.length > 0 || this.isFocused;
+  }
+  // =========================================================
+  // LIFECYCLE
+  // =========================================================
+  connectedCallback() {
+    super.connectedCallback();
+    if (this.autoSelectFirstElement) {
+      this.selectFirstElement();
+    }
+    this._handleOutsideClick = this._handleOutsideClick.bind(this);
+    document.addEventListener("click", this._handleOutsideClick);
+    document.addEventListener("keydown", this._handleKeyDown.bind(this));
+  }
+  disconnectedCallback() {
+    if (this._notchAnimationId !== null) {
+      cancelAnimationFrame(this._notchAnimationId);
+      this._notchAnimationId = null;
+    }
+    if (this._resizeObserver) {
+      this._resizeObserver.disconnect();
+      this._resizeObserver = null;
+    }
+    super.disconnectedCallback();
+    document.removeEventListener("click", this._handleOutsideClick);
+  }
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    if (changedProperties.has("model") && this.autoSelectFirstElement) {
+      this.selectFirstElement();
+    }
+    if (this.filled) {
+      return;
+    }
+    const prevCurrentText = changedProperties.get("currentText");
+    const prevFocused = changedProperties.get("isFocused");
+    const prevFilled = changedProperties.get("filled");
+    const prevPopulated = (prevCurrentText ?? this.currentText).length > 0 || (prevFocused ?? this.isFocused);
+    const populatedChanged = prevPopulated !== this.isPopulated || prevFilled === true;
+    if (changedProperties.has("currentText") || changedProperties.has("isFocused") || changedProperties.has("hasError") || changedProperties.has("labelText") || changedProperties.has("filled")) {
+      this._updateOutlineCanvas(populatedChanged);
+    }
+  }
+  firstUpdated() {
+    this._resizeObserver = new ResizeObserver(() => {
+      if (!this.filled) {
+        this._updateOutlineCanvas(false);
+      }
+    });
+    this._resizeObserver.observe(this);
+    this._updateOutlineCanvas(false);
+  }
+  // =========================================================
+  // PUBLIC FUNCTIONS
+  // =========================================================
+  clearFocus() {
+    this.isFocused = false;
+    this.dispatchEvent(new CustomEvent("combo-focus-changed", { detail: { focus: false } }));
+    this.dispatchEvent(new CustomEvent("reset-focus"));
+  }
+  setElement(index) {
+    if (!this.model) return;
+    const itemCount = this.model.length;
+    if (index >= 0 && index < itemCount) {
+      const item = this.model[index];
+      this.currentIndex = index;
+      this.currentText = this.getItemText(item, index);
+    } else {
+      this.currentIndex = -1;
+      this.currentText = "";
+    }
+  }
+  selectFirstElement() {
+    this.setElement(0);
+  }
+  getItemText(item, _index) {
+    if (typeof item === "string") return item;
+    if (typeof item === "object" && item !== null) {
+      if (this.textRole !== "" && item[this.textRole] !== void 0) return String(item[this.textRole]);
+      if (item.text !== void 0) return String(item.text);
+      if (item.name !== void 0) return String(item.name);
+      if (item.title !== void 0) return String(item.title);
+    }
+    return String(item);
+  }
+  getItemValue(item, _index) {
+    if (typeof item === "string") return item;
+    if (typeof item === "object" && item !== null) {
+      if (this.valueRole !== "" && item[this.valueRole] !== void 0) return item[this.valueRole];
+      if (item.value !== void 0) return item.value;
+      if (item.code !== void 0) return item.code;
+      if (item.id !== void 0) return item.id;
+    }
+    return item;
+  }
+  createOptionsWithSelection() {
+    if (!this.model) return [];
+    const result = [];
+    const itemCount = this.model.length;
+    for (let i8 = 0; i8 < itemCount; i8++) {
+      const item = this.model[i8];
+      result.push({
+        text: this.getItemText(item, i8),
+        value: this.getItemValue(item, i8),
+        selected: i8 === this.currentIndex,
+        originalItem: item
+      });
+    }
+    return result;
+  }
+  getCurrentSelectedItem() {
+    if (this.currentIndex < 0 || !this.model) return null;
+    const itemCount = this.model.length;
+    if (this.currentIndex >= itemCount) return null;
+    const item = this.model[this.currentIndex];
+    return {
+      index: this.currentIndex,
+      originalItem: item,
+      text: this.getItemText(item, this.currentIndex),
+      value: this.getItemValue(item, this.currentIndex),
+      modelType: "Array",
+      totalItems: itemCount
+    };
+  }
+  hasSelectedItem() {
+    const itemCount = this.model ? this.model.length : 0;
+    return this.currentIndex >= 0 && this.currentIndex < itemCount;
+  }
+  getItemByIndex(index) {
+    if (index < 0 || !this.model) return null;
+    const itemCount = this.model.length;
+    if (index >= itemCount) return null;
+    const item = this.model[index];
+    return {
+      index,
+      originalItem: item,
+      text: this.getItemText(item, index),
+      value: this.getItemValue(item, index)
+    };
+  }
+  // Leading icon control functions
+  setLeadingIconEnabled(enabled) {
+    this.leadingIconEnabled = enabled;
+  }
+  setLeadingIconSource(source) {
+    this.leadingIconName = source;
+  }
+  setLeadingIconTooltip(tooltip) {
+    this.leadingIconTooltipText = tooltip;
+  }
+  enableCustomLeadingIconClick(enable) {
+    this.enableLeadingIconCustomClick = enable;
+  }
+  toggleLeadingIcon() {
+    this.hasLeadingIcon = !this.hasLeadingIcon;
+  }
+  simulateLeadingIconClick() {
+    if (this.hasLeadingIcon && this.leadingIconEnabled && this.isEnabled) {
+      this.dispatchEvent(new CustomEvent("leading-icon-clicked"));
+      if (!this.enableLeadingIconCustomClick) {
+        this.dispatchEvent(new CustomEvent("search-clicked"));
+      }
+    }
+  }
+  // =========================================================
+  // PRIVATE HANDLERS
+  // =========================================================
+  _handleOutsideClick(event) {
+    if (!this._isOpen) return;
+    const path = event.composedPath();
+    if (!path.includes(this)) {
+      this._closePopup();
+    }
+  }
+  _handleKeyDown(event) {
+    if (event.key === "Escape" && this._isOpen) {
+      this._closePopup();
+      event.preventDefault();
+    }
+  }
+  _handleContainerClick() {
+    if (!this.isEnabled) return;
+    this.isFocused = true;
+    this.dispatchEvent(new CustomEvent("combo-focus-changed", { detail: { focus: true } }));
+    this._isOpen = true;
+    this.optionsWithSelection = this.createOptionsWithSelection();
+    this.requestUpdate();
+  }
+  _handleContainerMouseEnter() {
+    if (this.isEnabled) {
+      this.isHovered = true;
+    }
+  }
+  _handleContainerMouseLeave() {
+    if (!this._isPressed) {
+      this.isHovered = false;
+    }
+  }
+  _handleContainerMouseDown() {
+    if (this.isEnabled) {
+      this._isPressed = true;
+    }
+  }
+  _handleContainerMouseUp() {
+    this._isPressed = false;
+  }
+  _handleTrailingIconClick(event) {
+    event.stopPropagation();
+    if (!this.isEnabled) return;
+    if (this._isOpen) {
+      this._closePopup();
+    } else {
+      this._isOpen = true;
+      this.optionsWithSelection = this.createOptionsWithSelection();
+      this.requestUpdate();
+    }
+  }
+  _handleLeadingIconClick(event) {
+    event.stopPropagation();
+    if (!this.isEnabled || !this.leadingIconEnabled) return;
+    this.dispatchEvent(new CustomEvent("leading-icon-clicked"));
+    if (!this.enableLeadingIconCustomClick) {
+      this.dispatchEvent(new CustomEvent("search-clicked"));
+    }
+  }
+  _handleOptionClick(index, text, _item) {
+    this.currentIndex = index;
+    const item = this.model[index];
+    this.currentText = this.getItemText(item, index);
+    this.dispatchEvent(new CustomEvent("option-selected", {
+      detail: { index, text: this.getItemText(item, index) }
+    }));
+    this.dispatchEvent(new CustomEvent("item-selected", {
+      detail: { index, item }
+    }));
+    this._closePopup();
+  }
+  _closePopup() {
+    if (this.popupElement) {
+      this.popupElement.classList.add("closing");
+      setTimeout(() => {
+        this._isOpen = false;
+        this.clearFocus();
+        this.requestUpdate();
+      }, this.quickDuration);
+    } else {
+      this._isOpen = false;
+      this.clearFocus();
+    }
+  }
+  _getOutlineColor() {
+    const computedStyle = getComputedStyle(this);
+    if (this.hasError) {
+      return computedStyle.getPropertyValue("--md-sys-color-error").trim() || "#b3261e";
+    }
+    if (this.isFocused) {
+      return computedStyle.getPropertyValue("--md-sys-color-primary").trim() || "#6750a4";
+    }
+    return computedStyle.getPropertyValue("--combo-outline-color").trim() || computedStyle.getPropertyValue("--md-sys-color-outline").trim() || "#79747e";
+  }
+  _getNotchTargetWidth() {
+    if (this.filled || !this.labelText || !this.isPopulated || !this.labelElement) {
+      return 0;
+    }
+    return Math.max(0, this.labelElement.offsetWidth + 8);
+  }
+  _drawOutline() {
+    if (this.filled || !this.outlineCanvas) return;
+    const canvas = this.outlineCanvas;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.max(1, Math.floor(rect.width * dpr));
+    canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const width = rect.width;
+    const height = rect.height;
+    const borderWidth = this.isFocused ? 2 : 1;
+    const r9 = this.cornerRadius;
+    const halfStroke = borderWidth / 2;
+    let labelCenterX = width / 2;
+    if (this.labelElement) {
+      const labelRect = this.labelElement.getBoundingClientRect();
+      labelCenterX = labelRect.left - rect.left + labelRect.width / 2;
+    }
+    labelCenterX = Math.max(r9 + 8, Math.min(width - r9 - 8, labelCenterX));
+    const gapWidth = Math.max(0, Math.min(this._notchWidth, width - (r9 + 8) * 2));
+    const gapStart = Math.max(r9 + halfStroke, labelCenterX - gapWidth / 2);
+    const gapEnd = Math.min(width - r9 - halfStroke, labelCenterX + gapWidth / 2);
+    const color = this._getOutlineColor();
+    ctx.clearRect(0, 0, width, height);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = borderWidth;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.globalAlpha = this.isEnabled ? 1 : 0.38;
+    ctx.beginPath();
+    ctx.moveTo(r9 + halfStroke, halfStroke);
+    ctx.lineTo(gapStart, halfStroke);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(gapEnd, halfStroke);
+    ctx.lineTo(width - r9 - halfStroke, halfStroke);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(r9 + halfStroke, r9 + halfStroke, r9, Math.PI, Math.PI * 1.5);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(width - r9 - halfStroke, r9 + halfStroke, r9, Math.PI * 1.5, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(halfStroke, r9 + halfStroke);
+    ctx.lineTo(halfStroke, height - r9 - halfStroke);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(width - halfStroke, r9 + halfStroke);
+    ctx.lineTo(width - halfStroke, height - r9 - halfStroke);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(r9 + halfStroke, height - halfStroke);
+    ctx.lineTo(width - r9 - halfStroke, height - halfStroke);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(r9 + halfStroke, height - r9 - halfStroke, r9, Math.PI * 0.5, Math.PI);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(width - r9 - halfStroke, height - r9 - halfStroke, r9, 0, Math.PI * 0.5);
+    ctx.stroke();
+  }
+  _animateNotch(targetWidth) {
+    if (this._notchAnimationId !== null) {
+      cancelAnimationFrame(this._notchAnimationId);
+      this._notchAnimationId = null;
+    }
+    const startWidth = this._notchWidth;
+    const delta = targetWidth - startWidth;
+    if (Math.abs(delta) < 0.5) {
+      this._notchWidth = targetWidth;
+      this._drawOutline();
+      return;
+    }
+    const duration = this.standardDuration;
+    const start = performance.now();
+    const tick = (now) => {
+      const t6 = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t6, 3);
+      this._notchWidth = startWidth + delta * eased;
+      this._drawOutline();
+      if (t6 < 1) {
+        this._notchAnimationId = requestAnimationFrame(tick);
+      } else {
+        this._notchWidth = targetWidth;
+        this._notchAnimationId = null;
+        this._drawOutline();
+      }
+    };
+    this._notchAnimationId = requestAnimationFrame(tick);
+  }
+  _updateOutlineCanvas(animate) {
+    if (this.filled || !this.outlineCanvas) return;
+    const targetWidth = this._getNotchTargetWidth();
+    if (animate) {
+      this._animateNotch(targetWidth);
+    } else {
+      this._notchWidth = targetWidth;
+      this._drawOutline();
+    }
+  }
+  // =========================================================
+  // DYNAMIC STYLES
+  // =========================================================
+  _getDynamicStyles() {
+    const inputLeftPadding = this.hasLeadingIcon ? this.horizontalPadding + this.iconSize + this.iconPadding : this.horizontalPadding;
+    const inputRightPadding = this.hasTrailingIcon ? this.horizontalPadding + this.iconSize + this.iconPadding : this.horizontalPadding;
+    return `
+            --combo-h: ${this.containerHeight}px;
+            --combo-icon-sz: ${this.iconSize}px;
+            --combo-radius: ${this.cornerRadius}px;
+            --combo-pad-x: ${this.horizontalPadding}px;
+            --combo-icon-pad: ${this.iconPadding}px;
+            --combo-indicator-h: ${this.activeIndicatorHeight}px;
+            --combo-supporting-top: ${this.supportingTextTopMargin}px;
+            --combo-input-left: ${inputLeftPadding}px;
+            --combo-input-right: ${inputRightPadding}px;
+            --combo-label-x: ${this.hasLeadingIcon ? inputLeftPadding : this.horizontalPadding}px;
+            --combo-width: ${this.customWidth > 0 ? `${this.customWidth}px` : "300px"};
+            --combo-icon-fill: ${this.iconFill};
+            --combo-icon-wght: ${this.iconWght};
+            --combo-icon-grad: ${this.iconGrad};
+        `;
+  }
+  // =========================================================
+  // RENDER
+  // =========================================================
+  render() {
+    const rootClasses = [
+      "root",
+      this.isHovered ? "hovered" : "",
+      this.isFocused ? "focused" : "",
+      !this.isEnabled ? "disabled" : "",
+      this.hasError ? "has-error" : ""
+    ].filter(Boolean).join(" ");
+    const containerClasses = [
+      "container",
+      this.filled ? "filled" : "outlined"
+    ].filter(Boolean).join(" ");
+    const labelClasses = [
+      "label",
+      this.isPopulated ? "populated" : "",
+      this.filled ? "filled" : "outlined"
+    ].filter(Boolean).join(" ");
+    const inputAreaClasses = [
+      "input-area",
+      this.labelText ? "has-label" : "",
+      this.isPopulated ? "populated" : "",
+      this.filled ? "filled" : ""
+    ].filter(Boolean).join(" ");
+    return b2`
+            <div class="${rootClasses}" style="${this._getDynamicStyles()}">
+                <!-- Transform Container -->
+                <div class="transform-container"
+                    @click="${this._handleContainerClick}"
+                    @mouseenter="${this._handleContainerMouseEnter}"
+                    @mouseleave="${this._handleContainerMouseLeave}"
+                    @mousedown="${this._handleContainerMouseDown}"
+                    @mouseup="${this._handleContainerMouseUp}">
+                    <!-- Main Container -->
+                    <div class="${containerClasses}">
+
+                        <!-- State Layer (filled variant) -->
+                        ${this.filled ? b2`<div class="state-layer filled"></div>` : ""}
+
+                        <!-- Outline (outlined variant) -->
+                        ${!this.filled ? b2`
+                            <div class="outline-container">
+                                <canvas class="outline-canvas"></canvas>
+                            </div>
+                        ` : ""}
+
+                        <!-- Active Indicator (filled variant, bottom line) -->
+                        ${this.filled ? b2`<div class="active-indicator"></div>` : ""}
+                    </div>
+
+                    <!-- Leading Icon -->
+                    ${this.hasLeadingIcon && this.leadingIconName ? b2`
+                        <div
+                            class="leading-icon"
+                            @click="${this._handleLeadingIconClick}"
+                            title="${this.leadingIconTooltipText}">
+                            <span class="icon-text">${this.leadingIconName}</span>
+                        </div>
+                    ` : ""}
+
+                    <!-- Label -->
+                    ${this.labelText ? b2`
+                        <div class="${labelClasses}">${this.labelText}</div>
+                    ` : ""}
+
+                    <!-- Input Area (selected text display) -->
+                    <div class="${inputAreaClasses}">
+                        <div class="input-row">
+                            ${this.prefix && this.currentText ? b2`
+                                <span class="prefix-text">${this.prefix}</span>
+                            ` : ""}
+                            ${this.currentText ? b2`
+                                <span class="selected-text">${this.currentText}</span>
+                            ` : b2`<span class="selected-text"></span>`}
+                            ${this.suffix && this.currentText ? b2`
+                                <span class="suffix-text">${this.suffix}</span>
+                            ` : ""}
+                        </div>
+                    </div>
+
+                    <!-- Trailing Icon (dropdown arrow) -->
+                    ${this.hasTrailingIcon && this.trailingIconName ? b2`
+                        <div
+                            class="trailing-icon ${this._isOpen ? "open" : ""}"
+                            @click="${this._handleTrailingIconClick}"
+                            title="${this._isOpen ? "\u0417\u0430\u043A\u0440\u044B\u0442\u044C \u0441\u043F\u0438\u0441\u043E\u043A" : "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0441\u043F\u0438\u0441\u043E\u043A"}">
+                            <span class="icon-text">${this.trailingIconName}</span>
+                        </div>
+                    ` : ""}
+                </div>
+
+                <!-- Supporting Text -->
+                ${this.supportingText ? b2`
+                    <div class="supporting-text">${this.supportingText}</div>
+                ` : ""}
+
+                <!-- Popup -->
+                ${this._isOpen ? b2`
+                    <div class="combo-popup ${this._isOpen ? "open" : ""}">
+                        ${this.optionsWithSelection.length === 0 ? b2`
+                            <div class="popup-empty">Нет доступных опций</div>
+                        ` : b2`
+                            ${this.optionsWithSelection.map((option, index) => b2`
+                                <div
+                                    class="option-item ${option.selected ? "selected" : ""}"
+                                    @click="${() => this._handleOptionClick(index, option.text, option.originalItem)}"
+                                    @mousedown="${(e9) => e9.currentTarget.classList.add("pressed")}"
+                                    @mouseup="${(e9) => e9.currentTarget.classList.remove("pressed")}"
+                                    @mouseleave="${(e9) => e9.currentTarget.classList.remove("pressed")}">
+                                    <span class="option-text">${option.text}</span>
+                                    <span class="option-check ${option.selected ? "visible" : ""}">check</span>
+                                </div>
+                            `)}
+                        `}
+                    </div>
+                ` : ""}
+            </div>
+        `;
+  }
+};
+ComboBox.styles = [r(ComboBox_default)];
+__decorateClass([
+  n3({ type: Number, attribute: "custom-width" })
+], ComboBox.prototype, "customWidth", 2);
+__decorateClass([
+  n3({ type: Number, attribute: "custom-height" })
+], ComboBox.prototype, "customHeight", 2);
+__decorateClass([
+  n3({ type: Number, attribute: "scale-ratio" })
+], ComboBox.prototype, "scaleRatio", 2);
+__decorateClass([
+  n3({ type: Array })
+], ComboBox.prototype, "model", 2);
+__decorateClass([
+  n3({ type: String, attribute: "text-role" })
+], ComboBox.prototype, "textRole", 2);
+__decorateClass([
+  n3({ type: String, attribute: "value-role" })
+], ComboBox.prototype, "valueRole", 2);
+__decorateClass([
+  n3({ type: String, attribute: "label-text" })
+], ComboBox.prototype, "labelText", 2);
+__decorateClass([
+  n3({ type: String, attribute: "supporting-text" })
+], ComboBox.prototype, "supportingText", 2);
+__decorateClass([
+  n3({ type: String })
+], ComboBox.prototype, "prefix", 2);
+__decorateClass([
+  n3({ type: String })
+], ComboBox.prototype, "suffix", 2);
+__decorateClass([
+  n3({ type: String, attribute: "error-text" })
+], ComboBox.prototype, "errorText", 2);
+__decorateClass([
+  n3({ type: String, attribute: "trailing-icon-name" })
+], ComboBox.prototype, "trailingIconName", 2);
+__decorateClass([
+  n3({ type: String, attribute: "leading-icon-name" })
+], ComboBox.prototype, "leadingIconName", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "has-leading-icon" })
+], ComboBox.prototype, "hasLeadingIcon", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "has-trailing-icon" })
+], ComboBox.prototype, "hasTrailingIcon", 2);
+__decorateClass([
+  n3({ type: Number, attribute: "icon-fill" })
+], ComboBox.prototype, "iconFill", 2);
+__decorateClass([
+  n3({ type: Number, attribute: "icon-grad" })
+], ComboBox.prototype, "iconGrad", 2);
+__decorateClass([
+  n3({ type: Number, attribute: "icon-wght" })
+], ComboBox.prototype, "iconWght", 2);
+__decorateClass([
+  n3({ type: Boolean })
+], ComboBox.prototype, "filled", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "has-error" })
+], ComboBox.prototype, "hasError", 2);
+__decorateClass([
+  n3({ type: Number, attribute: "scale-font" })
+], ComboBox.prototype, "scaleFont", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "auto-select-first-element" })
+], ComboBox.prototype, "autoSelectFirstElement", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "enable-leading-icon-custom-click" })
+], ComboBox.prototype, "enableLeadingIconCustomClick", 2);
+__decorateClass([
+  n3({ type: String, attribute: "leading-icon-tooltip-text" })
+], ComboBox.prototype, "leadingIconTooltipText", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "leading-icon-enabled" })
+], ComboBox.prototype, "leadingIconEnabled", 2);
+__decorateClass([
+  r4()
+], ComboBox.prototype, "isFocused", 2);
+__decorateClass([
+  r4()
+], ComboBox.prototype, "isHovered", 2);
+__decorateClass([
+  r4()
+], ComboBox.prototype, "_isPressed", 2);
+__decorateClass([
+  r4()
+], ComboBox.prototype, "_isOpen", 2);
+__decorateClass([
+  r4()
+], ComboBox.prototype, "currentIndex", 2);
+__decorateClass([
+  r4()
+], ComboBox.prototype, "currentText", 2);
+__decorateClass([
+  r4()
+], ComboBox.prototype, "optionsWithSelection", 2);
+__decorateClass([
+  r4()
+], ComboBox.prototype, "_notchWidth", 2);
+__decorateClass([
+  e4(".combo-popup")
+], ComboBox.prototype, "popupElement", 2);
+__decorateClass([
+  e4(".outline-canvas")
+], ComboBox.prototype, "outlineCanvas", 2);
+__decorateClass([
+  e4(".label")
+], ComboBox.prototype, "labelElement", 2);
+ComboBox = __decorateClass([
+  t("umi-combo-box")
+], ComboBox);
+
+// src/components/styles/TextField.css
+var TextField_default = "/* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\n   umi-text-field \u2014 Material Design 3 TextField (Expressive 2025)\r\n   \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\n   CSS custom properties (set inline by component JS):\r\n     --field-h                 container height\r\n     --field-icon-sz           icon size\r\n     --field-radius            corner radius\r\n     --field-pad-x             horizontal padding\r\n     --field-icon-pad          icon padding\r\n     --field-indicator-h       active indicator height\r\n\r\n   Color tokens:\r\n     --field-container-bg      container background\r\n     --field-label-color       label text color\r\n     --field-text-color        input text color\r\n     --field-icon-color        icon color\r\n     --field-indicator-color   active indicator color\r\n     --field-outline-color     outline color (outlined variant)\r\n     --field-supporting-color  supporting text color\r\n     --field-state-layer       state layer color\r\n   \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n\r\n:host {\r\n    display: inline-flex;\r\n    outline: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n    position: relative;\r\n    vertical-align: top;\r\n    width: var(--field-width, 280px);\r\n}\r\n\r\n/* \u2500\u2500 Root \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.root {\r\n    position: relative;\r\n    display: flex;\r\n    flex-direction: column;\r\n    width: 100%;\r\n}\r\n\r\n/* \u2500\u2500 Transform Container \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.transform-container {\r\n    position: relative;\r\n    width: 100%;\r\n    height: var(--field-h, 56px);\r\n    cursor: text;\r\n}\r\n\r\n/* \u2500\u2500 Container \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.container {\r\n    position: absolute;\r\n    inset: 0;\r\n    box-sizing: border-box;\r\n    background: var(--field-container-bg, transparent);\r\n    border-radius: var(--field-radius, 4px);\r\n    overflow: hidden;\r\n}\r\n\r\n.container.filled {\r\n    border-radius: var(--field-radius, 4px) var(--field-radius, 4px) 0 0;\r\n    background: var(--md-sys-color-surface-container-highest, #e6e0e9);\r\n}\r\n\r\n.container.outlined {\r\n    background: transparent;\r\n    border-radius: var(--field-radius, 4px);\r\n}\r\n\r\n/* \u2500\u2500 State Layer (filled variant) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.state-layer {\r\n    position: absolute;\r\n    inset: 0;\r\n    border-radius: inherit;\r\n    background: var(--field-state-layer, var(--md-sys-color-on-surface, #1d1b20));\r\n    opacity: 0;\r\n    pointer-events: none;\r\n    transition: opacity 150ms cubic-bezier(.4, 0, .2, 1);\r\n}\r\n\r\n.root.hovered:not(.focused) .state-layer.filled { opacity: 0.08; }\r\n\r\n/* \u2500\u2500 Active Indicator (filled variant, bottom line) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.active-indicator {\r\n    position: absolute;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 1px;\r\n    background: var(--field-indicator-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    transition:\r\n        height 150ms cubic-bezier(.4, 0, .2, 1),\r\n        background-color 300ms cubic-bezier(.2, 0, 0, 1);\r\n}\r\n\r\n.root.focused .active-indicator {\r\n    height: var(--field-indicator-h, 2px);\r\n    background: var(--md-sys-color-primary, #6750a4);\r\n}\r\n\r\n.root.has-error .active-indicator {\r\n    background: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n.root.disabled .active-indicator { opacity: 0.38; }\r\n\r\n.root.disabled .container {\r\n    background: color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 4%, transparent);\r\n}\r\n\r\n.root.disabled .label,\r\n.root.disabled .prefix-text,\r\n.root.disabled .suffix-text {\r\n    color: color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 38%, transparent);\r\n}\r\n\r\n.root.disabled input {\r\n    color: color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 38%, transparent);\r\n}\r\n\r\n/* \u2500\u2500 Outline (outlined variant) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.outline-container {\r\n    position: absolute;\r\n    inset: 0;\r\n    pointer-events: none;\r\n}\r\n\r\n.outline-canvas {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n/* \u2500\u2500 Leading Icon \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.leading-icon {\r\n    position: absolute;\r\n    left: var(--field-icon-pad, 12px);\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    width: var(--field-icon-sz, 24px);\r\n    height: var(--field-icon-sz, 24px);\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    z-index: 2;\r\n    color: var(--field-icon-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    transition: transform 300ms cubic-bezier(.2, .8, .2, 1);\r\n    cursor: pointer;\r\n}\r\n\r\n.leading-icon .icon-text {\r\n    font-family: 'Material Symbols Outlined';\r\n    font-feature-settings: 'liga' 1;\r\n    -webkit-font-feature-settings: 'liga' 1;\r\n    font-size: var(--field-icon-sz, 24px);\r\n    font-variation-settings:\r\n        'FILL' var(--field-icon-fill, 0),\r\n        'wght' var(--field-icon-wght, 400),\r\n        'GRAD' var(--field-icon-grad, 0),\r\n        'opsz' var(--field-icon-sz, 24);\r\n    line-height: 1;\r\n    font-style: normal;\r\n}\r\n\r\n.root.hovered .leading-icon { transform: translateY(-50%) rotate(5deg); }\r\n.root.disabled .leading-icon { opacity: 0.38; }\r\n\r\n/* \u2500\u2500 Trailing Icon \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.trailing-icon {\r\n    position: absolute;\r\n    right: var(--field-icon-pad, 12px);\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    width: var(--field-icon-sz, 24px);\r\n    height: var(--field-icon-sz, 24px);\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    z-index: 2;\r\n    color: var(--field-icon-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    cursor: pointer;\r\n    transition: transform 300ms cubic-bezier(.2, .8, .2, 1);\r\n}\r\n\r\n.trailing-icon .icon-text {\r\n    font-family: 'Material Symbols Outlined';\r\n    font-feature-settings: 'liga' 1;\r\n    -webkit-font-feature-settings: 'liga' 1;\r\n    font-size: var(--field-icon-sz, 24px);\r\n    font-variation-settings:\r\n        'FILL' 0,\r\n        'wght' 400,\r\n        'GRAD' 0,\r\n        'opsz' var(--field-icon-sz, 24);\r\n    line-height: 1;\r\n    font-style: normal;\r\n}\r\n\r\n.root.hovered .trailing-icon { transform: translateY(-50%) rotate(-5deg); }\r\n.root.disabled .trailing-icon { opacity: 0.38; }\r\n.root.has-error .trailing-icon .icon-text {\r\n    color: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n/* \u2500\u2500 Label \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.label {\r\n    position: absolute;\r\n    z-index: 2;\r\n    left: var(--field-label-x, var(--field-pad-x, 16px));\r\n    top: 50%;\r\n    pointer-events: none;\r\n    transform-origin: left center;\r\n    transform: translateY(-50%);\r\n    transition: transform 150ms cubic-bezier(.2, 0, 0, 1),\r\n                color 150ms cubic-bezier(.2, 0, 0, 1);\r\n    color: var(--field-label-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    /* Base typography - body-large */\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    line-height: var(--md-sys-typescale-body-large-line-height, 24px);\r\n    letter-spacing: var(--md-sys-typescale-body-large-tracking, 0.5px);\r\n}\r\n\r\n/* Populated Filled: label floats to top - scale creates smaller text */\r\n.label.populated.filled {\r\n    /* Move up to 8px from top, accounting for 50% start position */\r\n    /* 50% of 56px = 28px, need to go to 8px + half of scaled line-height */\r\n    transform: translateY(calc(-50% - 12px)) scale(0.75);\r\n    transform-origin: left top;\r\n}\r\n\r\n/* Populated Outlined: label floats to center of top border line */\r\n.label.populated.outlined {\r\n    transform: translateY(calc(-50% - (var(--field-h, 56px) / 2) + 1px)) scale(0.75);\r\n    transform-origin: left center;\r\n}\r\n\r\n.root.focused .label {\r\n    color: var(--md-sys-color-primary, #6750a4);\r\n}\r\n\r\n.root.has-error .label {\r\n    color: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n.root.disabled .label { opacity: 0.38; }\r\n\r\n/* \u2500\u2500 Input Area \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.input-area {\r\n    position: absolute;\r\n    inset: 0;\r\n    z-index: 1;\r\n    display: flex;\r\n    align-items: center;\r\n    padding-left: var(--field-input-left, var(--field-pad-x, 16px));\r\n    padding-right: var(--field-input-right, var(--field-pad-x, 16px));\r\n    box-sizing: border-box;\r\n}\r\n\r\n.input-area.has-label.populated.filled {\r\n    padding-top: 16px;\r\n}\r\n\r\n.input-row {\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 4px;\r\n    width: 100%;\r\n    min-width: 0;\r\n}\r\n\r\n.prefix-text,\r\n.suffix-text {\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    color: var(--field-text-color, var(--md-sys-color-on-surface, #1d1b20));\r\n    opacity: 0.6;\r\n    white-space: nowrap;\r\n}\r\n\r\n/* \u2500\u2500 Input Element \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\ninput {\r\n    flex: 1;\r\n    min-width: 0;\r\n    border: none;\r\n    outline: none;\r\n    background: transparent;\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    line-height: var(--md-sys-typescale-body-large-line-height, 24px);\r\n    color: var(--field-text-color, var(--md-sys-color-on-surface, #1d1b20));\r\n    caret-color: var(--md-sys-color-primary, #6750a4);\r\n}\r\n\r\ninput::placeholder {\r\n    color: var(--md-sys-color-on-surface-variant, #49454f);\r\n    opacity: 1;\r\n}\r\n\r\ninput:disabled {\r\n    opacity: 0.38;\r\n    cursor: not-allowed;\r\n}\r\n\r\n.root.has-error input {\r\n    caret-color: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n/* Selection color */\r\ninput::selection {\r\n    background: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 30%, transparent);\r\n}\r\n\r\n/* \u2500\u2500 Supporting Text Row \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.supporting-row {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    padding-left: var(--field-pad-x, 16px);\r\n    padding-right: var(--field-pad-x, 16px);\r\n    padding-top: var(--field-supporting-top, 4px);\r\n    gap: 16px;\r\n}\r\n\r\n.supporting-text {\r\n    font-family: var(--md-sys-typescale-body-small-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-small-size, 12px);\r\n    font-weight: var(--md-sys-typescale-body-small-weight, 400);\r\n    line-height: var(--md-sys-typescale-body-small-line-height, 16px);\r\n    color: var(--field-supporting-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    flex: 1;\r\n}\r\n\r\n.root.has-error .supporting-text {\r\n    color: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n.character-counter {\r\n    font-family: var(--md-sys-typescale-body-small-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-small-size, 12px);\r\n    font-weight: var(--md-sys-typescale-body-small-weight, 400);\r\n    line-height: var(--md-sys-typescale-body-small-line-height, 16px);\r\n    color: var(--md-sys-color-on-surface-variant, #49454f);\r\n    white-space: nowrap;\r\n}\r\n\r\n.root.disabled .supporting-row { opacity: 0.38; }\r\n";
+
+// src/components/controls/TextField.ts
+var TextField2 = class extends i4 {
+  constructor() {
+    super(...arguments);
+    // =========================================================
+    // MD3 EXPRESSIVE ANIMATION TIMING
+    // =========================================================
+    this.emphasizedDuration = 500;
+    this.standardDuration = 150;
+    this.quickDuration = 150;
+    // =========================================================
+    // SIZE & SPACING (MD3 specs)
+    // =========================================================
+    this._baseContainerHeight = 56;
+    this._baseIconSize = 24;
+    this._baseCornerRadius = 4;
+    this._baseHorizontalPadding = 16;
+    this._baseIconPadding = 12;
+    this._baseActiveIndicatorHeight = 2;
+    this._baseSupportingTextTopMargin = 4;
+    this.value = "";
+    this.placeholderText = "";
+    this.labelText = "";
+    this.supportingText = "";
+    this.errorText = "";
+    this.prefix = "";
+    this.suffix = "";
+    this.leadingIconName = "";
+    this.trailingIconName = "";
+    this.iconFill = 0;
+    this.iconGrad = 0;
+    this.iconWght = 400;
+    this.type = "text";
+    this.disabled = false;
+    this.readonly = false;
+    this.maxLength = -1;
+    this.pattern = "";
+    this.autocomplete = "off";
+    this.password = false;
+    this.clearButtonVisible = false;
+    this.showSearchIcon = false;
+    this.filled = true;
+    this.hasError = false;
+    this.showCharacterCounter = false;
+    this.leadingIconTooltipText = "";
+    this.leadingIconEnabled = true;
+    this.trailingIconTooltipText = "";
+    this.trailingIconEnabled = true;
+    this.validationType = "none";
+    this.required = false;
+    this.minLength = -1;
+    this.customPattern = "";
+    this.customErrorText = "";
+    this.validateOnChange = true;
+    this.validateOnBlur = true;
+    this.isFocused = false;
+    this.isHovered = false;
+    this._passwordVisible = false;
+    this._isValid = true;
+    this._validationError = "";
+    this._notchWidth = 0;
+    this._notchAnimationId = null;
+    this._resizeObserver = null;
+  }
+  // =========================================================
+  // COMPUTED PROPERTIES
+  // =========================================================
+  get containerHeight() {
+    return this._baseContainerHeight;
+  }
+  get _containerScale() {
+    return Math.max(0.75, this.containerHeight / this._baseContainerHeight);
+  }
+  get iconSize() {
+    return Math.max(16, this._baseIconSize * this._containerScale);
+  }
+  get cornerRadius() {
+    return Math.min(this.containerHeight / 2, Math.max(2, this._baseCornerRadius * this._containerScale));
+  }
+  get horizontalPadding() {
+    return Math.max(8, this._baseHorizontalPadding * this._containerScale);
+  }
+  get iconPadding() {
+    return Math.max(6, this._baseIconPadding * this._containerScale);
+  }
+  get activeIndicatorHeight() {
+    return Math.max(1, this._baseActiveIndicatorHeight * this._containerScale);
+  }
+  get supportingTextTopMargin() {
+    return Math.max(1, this._baseSupportingTextTopMargin * this._containerScale);
+  }
+  get isEnabled() {
+    return !this.disabled;
+  }
+  get isPopulated() {
+    return this.value.length > 0 || this.isFocused;
+  }
+  get hasLeadingIcon() {
+    return this.leadingIconName !== "" || this.showSearchIcon;
+  }
+  get hasTrailingIcon() {
+    return this.trailingIconName !== "" || this.clearButtonVisible || this.password;
+  }
+  get _effectiveLeadingIconName() {
+    if (this.leadingIconName !== "") return this.leadingIconName;
+    if (this.showSearchIcon) return "search";
+    return "";
+  }
+  get _effectiveTrailingIconName() {
+    if (this.password) return this._passwordVisible ? "visibility_off" : "visibility";
+    if (this.clearButtonVisible && this.value.length > 0) return "close";
+    if (this.trailingIconName !== "") return this.trailingIconName;
+    return "";
+  }
+  get _showClearButton() {
+    return this.clearButtonVisible && this.value.length > 0 && !this.password;
+  }
+  get _inputType() {
+    if (this.password && !this._passwordVisible) return "password";
+    return this.type;
+  }
+  // =========================================================
+  // LIFECYCLE
+  // =========================================================
+  connectedCallback() {
+    super.connectedCallback();
+  }
+  disconnectedCallback() {
+    if (this._notchAnimationId !== null) {
+      cancelAnimationFrame(this._notchAnimationId);
+      this._notchAnimationId = null;
+    }
+    if (this._resizeObserver) {
+      this._resizeObserver.disconnect();
+      this._resizeObserver = null;
+    }
+    super.disconnectedCallback();
+  }
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    if (this.filled) {
+      return;
+    }
+    const prevValue = changedProperties.get("value");
+    const prevFocused = changedProperties.get("isFocused");
+    const prevFilled = changedProperties.get("filled");
+    const prevPopulated = (prevValue ?? this.value).length > 0 || (prevFocused ?? this.isFocused);
+    const populatedChanged = prevPopulated !== this.isPopulated || prevFilled === true;
+    if (changedProperties.has("value") || changedProperties.has("isFocused") || changedProperties.has("hasError") || changedProperties.has("disabled") || changedProperties.has("labelText") || changedProperties.has("filled")) {
+      this._updateOutlineCanvas(populatedChanged);
+    }
+  }
+  firstUpdated() {
+    this._resizeObserver = new ResizeObserver(() => {
+      if (!this.filled) {
+        this._updateOutlineCanvas(false);
+      }
+    });
+    this._resizeObserver.observe(this);
+    this._updateOutlineCanvas(false);
+  }
+  // =========================================================
+  // VALIDATION
+  // =========================================================
+  validate() {
+    if (this.validationType === "none" && !this.required && this.minLength < 0) {
+      this._isValid = true;
+      this._validationError = "";
+      return true;
+    }
+    let isValid = true;
+    let errorMessage = "";
+    if (this.required && this.value.trim() === "") {
+      isValid = false;
+      errorMessage = "\u042D\u0442\u043E \u043F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E";
+    }
+    if (isValid && this.minLength > 0 && this.value.length < this.minLength) {
+      isValid = false;
+      errorMessage = `\u041C\u0438\u043D\u0438\u043C\u0443\u043C ${this.minLength} \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432`;
+    }
+    if (isValid && this.maxLength > 0 && this.value.length > this.maxLength) {
+      isValid = false;
+      errorMessage = `\u041C\u0430\u043A\u0441\u0438\u043C\u0443\u043C ${this.maxLength} \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432`;
+    }
+    if (isValid && this.value.length > 0) {
+      switch (this.validationType) {
+        case "email":
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(this.value)) {
+            isValid = false;
+            errorMessage = "\u041D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u044B\u0439 email";
+          }
+          break;
+        case "phone":
+          const phoneRegex = /^[\d\s\-+()]{7,}$/;
+          if (!phoneRegex.test(this.value)) {
+            isValid = false;
+            errorMessage = "\u041D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u044B\u0439 \u043D\u043E\u043C\u0435\u0440 \u0442\u0435\u043B\u0435\u0444\u043E\u043D\u0430";
+          }
+          break;
+        case "url":
+          const urlRegex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/i;
+          if (!urlRegex.test(this.value)) {
+            isValid = false;
+            errorMessage = "\u041D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u044B\u0439 URL";
+          }
+          break;
+        case "number":
+          if (isNaN(Number(this.value))) {
+            isValid = false;
+            errorMessage = "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0447\u0438\u0441\u043B\u043E";
+          }
+          break;
+        case "custom":
+          if (this.customPattern) {
+            const regex = new RegExp(this.customPattern);
+            if (!regex.test(this.value)) {
+              isValid = false;
+              errorMessage = this.customErrorText || "\u041D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u044B\u0439 \u0444\u043E\u0440\u043C\u0430\u0442";
+            }
+          }
+          break;
+      }
+    }
+    this._isValid = isValid;
+    this._validationError = errorMessage;
+    this.hasError = !isValid;
+    if (!isValid && errorMessage) {
+      this.errorText = errorMessage;
+    }
+    this.dispatchEvent(new CustomEvent("validation-changed", {
+      detail: { isValid, errorMessage }
+    }));
+    return isValid;
+  }
+  clearValidation() {
+    this._isValid = true;
+    this._validationError = "";
+    this.hasError = false;
+    this.errorText = "";
+    this.dispatchEvent(new CustomEvent("validation-changed", {
+      detail: { isValid: true, errorMessage: "" }
+    }));
+  }
+  // =========================================================
+  // PUBLIC FUNCTIONS
+  // =========================================================
+  clear() {
+    this.value = "";
+    if (this.inputElement) {
+      this.inputElement.value = "";
+    }
+    this.clearValidation();
+    this.dispatchEvent(new CustomEvent("input", { detail: { value: "" } }));
+  }
+  togglePasswordVisibility() {
+    if (this.password) {
+      this._passwordVisible = !this._passwordVisible;
+    }
+  }
+  selectAll() {
+    if (this.inputElement) {
+      this.inputElement.select();
+    }
+  }
+  focus() {
+    if (this.inputElement) {
+      this.inputElement.focus();
+    }
+  }
+  blur() {
+    if (this.inputElement) {
+      this.inputElement.blur();
+    }
+  }
+  // =========================================================
+  // PRIVATE HANDLERS
+  // =========================================================
+  _handleInput(event) {
+    const input = event.target;
+    this.value = input.value;
+    if (this.validateOnChange && this.validationType !== "none") {
+      this.validate();
+    }
+    this.dispatchEvent(new CustomEvent("input", { detail: { value: this.value } }));
+  }
+  _handleFocus() {
+    this.isFocused = true;
+    if (this.hasError) {
+      this.clearValidation();
+    }
+    this.dispatchEvent(new CustomEvent("focus-changed", { detail: { focused: true } }));
+  }
+  _handleBlur() {
+    this.isFocused = false;
+    if (this.validateOnBlur) {
+      this.validate();
+    }
+    this.dispatchEvent(new CustomEvent("focus-changed", { detail: { focused: false } }));
+    this.dispatchEvent(new CustomEvent("editing-finished"));
+  }
+  _handleKeyDown(event) {
+    if (event.key === "Enter") {
+      this.validate();
+      this.dispatchEvent(new CustomEvent("accepted"));
+    }
+    if (event.key === "Escape") {
+      this.blur();
+    }
+  }
+  _handleContainerMouseEnter() {
+    if (this.isEnabled) {
+      this.isHovered = true;
+    }
+  }
+  _handleContainerMouseLeave() {
+    this.isHovered = false;
+  }
+  _handleContainerClick() {
+    if (this.isEnabled) {
+      this.focus();
+    }
+  }
+  _handleLeadingIconClick(event) {
+    event.stopPropagation();
+    if (!this.isEnabled || !this.leadingIconEnabled) return;
+    this.dispatchEvent(new CustomEvent("leading-icon-clicked"));
+  }
+  _handleTrailingIconClick(event) {
+    event.stopPropagation();
+    if (!this.isEnabled) return;
+    if (this.password) {
+      this._passwordVisible = !this._passwordVisible;
+      return;
+    }
+    if (this._showClearButton) {
+      this.clear();
+      this.focus();
+      return;
+    }
+    this.dispatchEvent(new CustomEvent("trailing-icon-clicked"));
+  }
+  _getOutlineColor() {
+    const computedStyle = getComputedStyle(this);
+    if (this.hasError) {
+      return computedStyle.getPropertyValue("--md-sys-color-error").trim() || "#b3261e";
+    }
+    if (this.isFocused) {
+      return computedStyle.getPropertyValue("--md-sys-color-primary").trim() || "#6750a4";
+    }
+    if (!this.isEnabled) {
+      const onSurface = computedStyle.getPropertyValue("--md-sys-color-on-surface").trim() || "#1d1b20";
+      return onSurface;
+    }
+    return computedStyle.getPropertyValue("--md-sys-color-outline").trim() || "#79747e";
+  }
+  _getNotchTargetWidth() {
+    if (this.filled || !this.labelText || !this.isPopulated || !this.labelElement) {
+      return 0;
+    }
+    return Math.max(0, this.labelElement.offsetWidth + 8);
+  }
+  _drawOutline() {
+    if (this.filled || !this.outlineCanvas) return;
+    const canvas = this.outlineCanvas;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.max(1, Math.floor(rect.width * dpr));
+    canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const width = rect.width;
+    const height = rect.height;
+    const borderWidth = this.isFocused ? 2 : 1;
+    const r9 = this.cornerRadius;
+    const halfStroke = borderWidth / 2;
+    let labelCenterX = width / 2;
+    if (this.labelElement) {
+      const labelRect = this.labelElement.getBoundingClientRect();
+      labelCenterX = labelRect.left - rect.left + labelRect.width / 2;
+    }
+    labelCenterX = Math.max(r9 + 8, Math.min(width - r9 - 8, labelCenterX));
+    const gapWidth = Math.max(0, Math.min(this._notchWidth, width - (r9 + 8) * 2));
+    const gapStart = Math.max(r9 + halfStroke, labelCenterX - gapWidth / 2);
+    const gapEnd = Math.min(width - r9 - halfStroke, labelCenterX + gapWidth / 2);
+    const color = this._getOutlineColor();
+    ctx.clearRect(0, 0, width, height);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = borderWidth;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    if (!this.isEnabled && !this.hasError && !this.isFocused) {
+      ctx.globalAlpha = 0.38;
+    } else {
+      ctx.globalAlpha = 1;
+    }
+    ctx.beginPath();
+    ctx.moveTo(r9 + halfStroke, halfStroke);
+    ctx.lineTo(gapStart, halfStroke);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(gapEnd, halfStroke);
+    ctx.lineTo(width - r9 - halfStroke, halfStroke);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(r9 + halfStroke, r9 + halfStroke, r9, Math.PI, Math.PI * 1.5);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(width - r9 - halfStroke, r9 + halfStroke, r9, Math.PI * 1.5, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(halfStroke, r9 + halfStroke);
+    ctx.lineTo(halfStroke, height - r9 - halfStroke);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(width - halfStroke, r9 + halfStroke);
+    ctx.lineTo(width - halfStroke, height - r9 - halfStroke);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(r9 + halfStroke, height - halfStroke);
+    ctx.lineTo(width - r9 - halfStroke, height - halfStroke);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(r9 + halfStroke, height - r9 - halfStroke, r9, Math.PI * 0.5, Math.PI);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(width - r9 - halfStroke, height - r9 - halfStroke, r9, 0, Math.PI * 0.5);
+    ctx.stroke();
+  }
+  _animateNotch(targetWidth) {
+    if (this._notchAnimationId !== null) {
+      cancelAnimationFrame(this._notchAnimationId);
+      this._notchAnimationId = null;
+    }
+    const startWidth = this._notchWidth;
+    const delta = targetWidth - startWidth;
+    if (Math.abs(delta) < 0.5) {
+      this._notchWidth = targetWidth;
+      this._drawOutline();
+      return;
+    }
+    const duration = this.standardDuration;
+    const start = performance.now();
+    const tick = (now) => {
+      const t6 = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t6, 3);
+      this._notchWidth = startWidth + delta * eased;
+      this._drawOutline();
+      if (t6 < 1) {
+        this._notchAnimationId = requestAnimationFrame(tick);
+      } else {
+        this._notchWidth = targetWidth;
+        this._notchAnimationId = null;
+        this._drawOutline();
+      }
+    };
+    this._notchAnimationId = requestAnimationFrame(tick);
+  }
+  _updateOutlineCanvas(animate) {
+    if (this.filled || !this.outlineCanvas) return;
+    const targetWidth = this._getNotchTargetWidth();
+    if (animate) {
+      this._animateNotch(targetWidth);
+    } else {
+      this._notchWidth = targetWidth;
+      this._drawOutline();
+    }
+  }
+  // =========================================================
+  // DYNAMIC STYLES
+  // =========================================================
+  _getDynamicStyles() {
+    const inputLeftPadding = this.hasLeadingIcon ? this.horizontalPadding + this.iconSize + this.iconPadding : this.horizontalPadding;
+    const inputRightPadding = this.hasTrailingIcon ? this.horizontalPadding + this.iconSize + this.iconPadding : this.horizontalPadding;
+    return `
+            --field-h: ${this.containerHeight}px;
+            --field-icon-sz: ${this.iconSize}px;
+            --field-radius: ${this.cornerRadius}px;
+            --field-pad-x: ${this.horizontalPadding}px;
+            --field-icon-pad: ${this.iconPadding}px;
+            --field-indicator-h: ${this.activeIndicatorHeight}px;
+            --field-supporting-top: ${this.supportingTextTopMargin}px;
+            --field-input-left: ${inputLeftPadding}px;
+            --field-input-right: ${inputRightPadding}px;
+            --field-label-x: ${this.hasLeadingIcon ? inputLeftPadding : this.horizontalPadding}px;
+            --field-icon-fill: ${this.iconFill};
+            --field-icon-wght: ${this.iconWght};
+            --field-icon-grad: ${this.iconGrad};
+        `;
+  }
+  // =========================================================
+  // RENDER
+  // =========================================================
+  render() {
+    const rootClasses = [
+      "root",
+      this.isHovered ? "hovered" : "",
+      this.isFocused ? "focused" : "",
+      !this.isEnabled ? "disabled" : "",
+      this.hasError ? "has-error" : ""
+    ].filter(Boolean).join(" ");
+    const containerClasses = [
+      "container",
+      this.filled ? "filled" : "outlined",
+      this.isPopulated ? "populated" : ""
+    ].filter(Boolean).join(" ");
+    const labelClasses = [
+      "label",
+      this.isPopulated ? "populated" : "",
+      this.filled ? "filled" : "outlined"
+    ].filter(Boolean).join(" ");
+    const inputAreaClasses = [
+      "input-area",
+      this.labelText ? "has-label" : "",
+      this.isPopulated ? "populated" : "",
+      this.filled ? "filled" : ""
+    ].filter(Boolean).join(" ");
+    const _trailingIconTooltip = this.password ? this._passwordVisible ? "\u0421\u043A\u0440\u044B\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C" : "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C" : this._showClearButton ? "\u041E\u0447\u0438\u0441\u0442\u0438\u0442\u044C" : this.trailingIconTooltipText;
+    return b2`
+            <div class="${rootClasses}" style="${this._getDynamicStyles()}">
+                <!-- Transform Container -->
+                <div class="transform-container"
+                    @click="${this._handleContainerClick}"
+                    @mouseenter="${this._handleContainerMouseEnter}"
+                    @mouseleave="${this._handleContainerMouseLeave}">
+
+                    <!-- Main Container -->
+                    <div class="${containerClasses}">
+
+                        <!-- State Layer (filled variant) -->
+                        ${this.filled ? b2`<div class="state-layer filled"></div>` : ""}
+
+                        <!-- Canvas outline (outlined variant) -->
+                        ${!this.filled ? b2`
+                            <div class="outline-container">
+                                <canvas class="outline-canvas"></canvas>
+                            </div>
+                        ` : ""}
+
+                        <!-- Active Indicator (filled variant, bottom line) -->
+                        ${this.filled ? b2`<div class="active-indicator"></div>` : ""}
+                    </div>
+
+                    <!-- Leading Icon -->
+                    ${this.hasLeadingIcon && this._effectiveLeadingIconName ? b2`
+                        <div
+                            class="leading-icon"
+                            @click="${this._handleLeadingIconClick}"
+                            title="${this.leadingIconTooltipText}">
+                            <span class="icon-text">${this._effectiveLeadingIconName}</span>
+                        </div>
+                    ` : ""}
+
+                    <!-- Label -->
+                    ${this.labelText ? b2`
+                        <div class="${labelClasses}">${this.labelText}</div>
+                    ` : ""}
+
+                    <!-- Input Area -->
+                    <div class="${inputAreaClasses}">
+                        <div class="input-row">
+                            ${this.prefix && (this.value || this.isFocused) ? b2`
+                                <span class="prefix-text">${this.prefix}</span>
+                            ` : ""}
+                            <input
+                                type="${this._inputType}"
+                                .value="${this.value}"
+                                placeholder="${this.labelText ? "" : this.placeholderText}"
+                                ?readonly="${this.readonly}"
+                                ?disabled="${!this.isEnabled}"
+                                maxlength="${this.maxLength > 0 ? this.maxLength : ""}"
+                                pattern="${this.pattern}"
+                                autocomplete="${this.autocomplete}"
+                                @input="${this._handleInput}"
+                                @focus="${this._handleFocus}"
+                                @blur="${this._handleBlur}"
+                                @keydown="${this._handleKeyDown}"
+                            />
+                            ${this.suffix && (this.value || this.isFocused) ? b2`
+                                <span class="suffix-text">${this.suffix}</span>
+                            ` : ""}
+                        </div>
+                    </div>
+
+                    <!-- Trailing Icon -->
+                    ${this.hasTrailingIcon && this._effectiveTrailingIconName ? b2`
+                        <div
+                            class="trailing-icon"
+                            @click="${this._handleTrailingIconClick}"
+                            title="${_trailingIconTooltip}">
+                            <span class="icon-text">${this._effectiveTrailingIconName}</span>
+                        </div>
+                    ` : ""}
+                </div>
+
+                <!-- Supporting Text Row -->
+                ${this.supportingText || this.showCharacterCounter || this.hasError && this.errorText ? b2`
+                    <div class="supporting-row">
+                        <span class="supporting-text">
+                            ${this.hasError && this.errorText ? this.errorText : this.supportingText}
+                        </span>
+                        ${this.showCharacterCounter && this.maxLength > 0 ? b2`
+                            <span class="character-counter">${this.value.length}/${this.maxLength}</span>
+                        ` : ""}
+                    </div>
+                ` : ""}
+            </div>
+        `;
+  }
+};
+TextField2.styles = [r(TextField_default)];
+__decorateClass([
+  n3({ type: String })
+], TextField2.prototype, "value", 2);
+__decorateClass([
+  n3({ type: String, attribute: "placeholder-text" })
+], TextField2.prototype, "placeholderText", 2);
+__decorateClass([
+  n3({ type: String, attribute: "label-text" })
+], TextField2.prototype, "labelText", 2);
+__decorateClass([
+  n3({ type: String, attribute: "supporting-text" })
+], TextField2.prototype, "supportingText", 2);
+__decorateClass([
+  n3({ type: String, attribute: "error-text" })
+], TextField2.prototype, "errorText", 2);
+__decorateClass([
+  n3({ type: String })
+], TextField2.prototype, "prefix", 2);
+__decorateClass([
+  n3({ type: String })
+], TextField2.prototype, "suffix", 2);
+__decorateClass([
+  n3({ type: String, attribute: "leading-icon-name" })
+], TextField2.prototype, "leadingIconName", 2);
+__decorateClass([
+  n3({ type: String, attribute: "trailing-icon-name" })
+], TextField2.prototype, "trailingIconName", 2);
+__decorateClass([
+  n3({ type: Number, attribute: "icon-fill" })
+], TextField2.prototype, "iconFill", 2);
+__decorateClass([
+  n3({ type: Number, attribute: "icon-grad" })
+], TextField2.prototype, "iconGrad", 2);
+__decorateClass([
+  n3({ type: Number, attribute: "icon-wght" })
+], TextField2.prototype, "iconWght", 2);
+__decorateClass([
+  n3({ type: String })
+], TextField2.prototype, "type", 2);
+__decorateClass([
+  n3({ type: Boolean })
+], TextField2.prototype, "disabled", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "read-only" })
+], TextField2.prototype, "readonly", 2);
+__decorateClass([
+  n3({ type: Number, attribute: "max-length" })
+], TextField2.prototype, "maxLength", 2);
+__decorateClass([
+  n3({ type: String })
+], TextField2.prototype, "pattern", 2);
+__decorateClass([
+  n3({ type: String })
+], TextField2.prototype, "autocomplete", 2);
+__decorateClass([
+  n3({ type: Boolean })
+], TextField2.prototype, "password", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "clear-button-visible" })
+], TextField2.prototype, "clearButtonVisible", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "show-search-icon" })
+], TextField2.prototype, "showSearchIcon", 2);
+__decorateClass([
+  n3({
+    converter: {
+      fromAttribute: (value) => {
+        if (value === null) return true;
+        if (value === "false" || value === "0") return false;
+        return true;
+      },
+      toAttribute: (value) => value ? "" : null
+    }
+  })
+], TextField2.prototype, "filled", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "has-error" })
+], TextField2.prototype, "hasError", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "show-character-counter" })
+], TextField2.prototype, "showCharacterCounter", 2);
+__decorateClass([
+  n3({ type: String, attribute: "leading-icon-tooltip-text" })
+], TextField2.prototype, "leadingIconTooltipText", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "leading-icon-enabled" })
+], TextField2.prototype, "leadingIconEnabled", 2);
+__decorateClass([
+  n3({ type: String, attribute: "trailing-icon-tooltip-text" })
+], TextField2.prototype, "trailingIconTooltipText", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "trailing-icon-enabled" })
+], TextField2.prototype, "trailingIconEnabled", 2);
+__decorateClass([
+  n3({ type: String, attribute: "validation-type" })
+], TextField2.prototype, "validationType", 2);
+__decorateClass([
+  n3({ type: Boolean })
+], TextField2.prototype, "required", 2);
+__decorateClass([
+  n3({ type: Number, attribute: "min-length" })
+], TextField2.prototype, "minLength", 2);
+__decorateClass([
+  n3({ type: String, attribute: "custom-pattern" })
+], TextField2.prototype, "customPattern", 2);
+__decorateClass([
+  n3({ type: String, attribute: "custom-error-text" })
+], TextField2.prototype, "customErrorText", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "validate-on-change" })
+], TextField2.prototype, "validateOnChange", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "validate-on-blur" })
+], TextField2.prototype, "validateOnBlur", 2);
+__decorateClass([
+  r4()
+], TextField2.prototype, "isFocused", 2);
+__decorateClass([
+  r4()
+], TextField2.prototype, "isHovered", 2);
+__decorateClass([
+  r4()
+], TextField2.prototype, "_passwordVisible", 2);
+__decorateClass([
+  r4()
+], TextField2.prototype, "_isValid", 2);
+__decorateClass([
+  r4()
+], TextField2.prototype, "_validationError", 2);
+__decorateClass([
+  r4()
+], TextField2.prototype, "_notchWidth", 2);
+__decorateClass([
+  e4("input")
+], TextField2.prototype, "inputElement", 2);
+__decorateClass([
+  e4(".outline-canvas")
+], TextField2.prototype, "outlineCanvas", 2);
+__decorateClass([
+  e4(".label")
+], TextField2.prototype, "labelElement", 2);
+TextField2 = __decorateClass([
+  t("umi-text-field")
+], TextField2);
+
+// src/components/styles/Switch.css
+var Switch_default = ":host {\r\n    display: inline-flex;\r\n    vertical-align: top;\r\n    outline: none;\r\n}\r\n\r\n.root {\r\n    position: relative;\r\n    display: inline-flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    min-height: max(var(--sw-track-h, 32px), 20px);\r\n    border-radius: 16px;\r\n    outline: none;\r\n    user-select: none;\r\n    cursor: pointer;\r\n}\r\n\r\n.root.disabled {\r\n    cursor: default;\r\n}\r\n\r\n.root.interaction-disabled {\r\n    cursor: default;\r\n    pointer-events: none;\r\n}\r\n\r\n.root.with-background {\r\n    padding: var(--sw-bg-padding, 12px);\r\n}\r\n\r\n.background-container {\r\n    position: absolute;\r\n    inset: 0;\r\n    border-radius: 16px;\r\n    background: var(--sw-bg-color, transparent);\r\n    border: var(--sw-bg-border-width, 0) solid var(--sw-bg-border-color, transparent);\r\n    opacity: 1;\r\n    transition: background-color 200ms cubic-bezier(.2, 0, 0, 1), border-color 200ms cubic-bezier(.2, 0, 0, 1);\r\n}\r\n\r\n.root.disabled .background-container {\r\n    opacity: 0.6;\r\n}\r\n\r\n.background-state-layer {\r\n    position: absolute;\r\n    inset: 0;\r\n    border-radius: inherit;\r\n    background: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 100%, transparent);\r\n    opacity: var(--sw-state-layer-opacity, 0);\r\n    transition: opacity 150ms cubic-bezier(.2, 0, 0, 1);\r\n}\r\n\r\n.content-container {\r\n    position: relative;\r\n    z-index: 1;\r\n    display: inline-flex;\r\n    align-items: center;\r\n    gap: var(--sw-spacing, 16px);\r\n}\r\n\r\n.indicator {\r\n    position: relative;\r\n    width: var(--sw-track-w, 52px);\r\n    height: var(--sw-track-h, 32px);\r\n}\r\n\r\n.focus-indicator {\r\n    position: absolute;\r\n    width: calc(var(--sw-track-w, 52px) + 8px);\r\n    height: calc(var(--sw-track-h, 32px) + 8px);\r\n    left: 50%;\r\n    top: 50%;\r\n    transform: translate(-50%, -50%);\r\n    border-radius: 999px;\r\n    border: 2px solid var(--md-sys-color-outline, #79747e);\r\n    opacity: var(--sw-focus-ring-visible, 0);\r\n    pointer-events: none;\r\n    transition: opacity 120ms linear;\r\n    z-index: 1;\r\n}\r\n\r\n.track {\r\n    position: absolute;\r\n    inset: 0;\r\n    border-radius: 999px;\r\n    background: var(--sw-track-color, #e6e0e9);\r\n    border: var(--sw-track-border-width, 2px) solid var(--sw-track-border-color, #79747e);\r\n    opacity: var(--sw-track-opacity, 1);\r\n    transition: background-color 150ms cubic-bezier(.2, 0, 0, 1), border-color 150ms cubic-bezier(.2, 0, 0, 1), border-width 150ms cubic-bezier(.2, 0, 0, 1);\r\n}\r\n\r\n.state-layer {\r\n    position: absolute;\r\n    width: var(--sw-state-size, 40px);\r\n    height: var(--sw-state-size, 40px);\r\n    left: calc(var(--sw-handle-x, 4px) + var(--sw-handle-w, 16px) / 2 - var(--sw-state-size, 40px) / 2);\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    border-radius: 999px;\r\n    background: var(--sw-state-layer-color, transparent);\r\n    opacity: var(--sw-state-layer-opacity, 0);\r\n    transition: opacity 150ms cubic-bezier(.2, 0, 0, 1), background-color 150ms cubic-bezier(.2, 0, 0, 1), left 300ms cubic-bezier(.34, 1.56, .64, 1);\r\n}\r\n\r\n.handle {\r\n    position: absolute;\r\n    left: var(--sw-handle-x, 4px);\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    width: var(--sw-handle-w, 16px);\r\n    height: var(--sw-handle-h, 16px);\r\n    border-radius: 999px;\r\n    background: var(--sw-handle-color, #79747e);\r\n    opacity: var(--sw-handle-opacity, 1);\r\n    box-shadow: 0 1px 2px color-mix(in srgb, var(--md-sys-color-shadow, #000000) 24%, transparent);\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    transition:\r\n        left 340ms cubic-bezier(.22, 1.8, .42, 1),\r\n        width 150ms cubic-bezier(.34, 1.56, .64, 1),\r\n        height 150ms cubic-bezier(.34, 1.56, .64, 1),\r\n        background-color 150ms cubic-bezier(.2, 0, 0, 1),\r\n        opacity 150ms cubic-bezier(.2, 0, 0, 1);\r\n}\r\n\r\n.root.bounce-on .handle {\r\n    animation: sw-handle-bounce-on 360ms cubic-bezier(.22, .9, .2, 1);\r\n}\r\n\r\n.root.bounce-off .handle {\r\n    animation: sw-handle-bounce-off 360ms cubic-bezier(.22, .9, .2, 1);\r\n}\r\n\r\n@keyframes sw-handle-bounce-on {\r\n    0% {\r\n        transform: translateY(-50%) translateX(0) scaleX(1);\r\n    }\r\n    35% {\r\n        transform: translateY(-50%) translateX(2px) scaleX(1.1);\r\n    }\r\n    68% {\r\n        transform: translateY(-50%) translateX(-1px) scaleX(0.98);\r\n    }\r\n    100% {\r\n        transform: translateY(-50%) translateX(0) scaleX(1);\r\n    }\r\n}\r\n\r\n@keyframes sw-handle-bounce-off {\r\n    0% {\r\n        transform: translateY(-50%) translateX(0) scaleX(1);\r\n    }\r\n    35% {\r\n        transform: translateY(-50%) translateX(-2px) scaleX(1.1);\r\n    }\r\n    68% {\r\n        transform: translateY(-50%) translateX(1px) scaleX(0.98);\r\n    }\r\n    100% {\r\n        transform: translateY(-50%) translateX(0) scaleX(1);\r\n    }\r\n}\r\n\r\n.root.disabled .handle {\r\n    box-shadow: none;\r\n}\r\n\r\n.root.dragging .handle,\r\n.root.dragging .state-layer {\r\n    transition: background-color 150ms cubic-bezier(.2, 0, 0, 1), opacity 150ms cubic-bezier(.2, 0, 0, 1);\r\n}\r\n\r\n.handle-icon {\r\n    font-family: 'Material Symbols Outlined';\r\n    font-feature-settings: 'liga' 1;\r\n    -webkit-font-feature-settings: 'liga' 1;\r\n    font-size: 16px;\r\n    width: 16px;\r\n    height: 16px;\r\n    line-height: 16px;\r\n    text-align: center;\r\n    font-style: normal;\r\n    color: var(--sw-icon-color, #21005d);\r\n    opacity: var(--sw-icon-opacity, 1);\r\n    font-variation-settings:\r\n        'FILL' var(--sw-icon-fill, 0),\r\n        'wght' var(--sw-icon-wght, 400),\r\n        'GRAD' var(--sw-icon-grad, 0),\r\n        'opsz' 16;\r\n    transition: opacity 150ms cubic-bezier(.34, 1.56, .64, 1), color 150ms cubic-bezier(.2, 0, 0, 1);\r\n}\r\n\r\n.label {\r\n    font-family: var(--md-sys-typescale-body-medium-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-medium-size, 14px);\r\n    font-weight: var(--md-sys-typescale-body-medium-weight, 400);\r\n    line-height: var(--md-sys-typescale-body-medium-line-height, 20px);\r\n    letter-spacing: var(--md-sys-typescale-body-medium-tracking, 0.25px);\r\n    color: var(--sw-label-color, #1d1b20);\r\n    opacity: var(--sw-label-opacity, 1);\r\n    white-space: nowrap;\r\n}\r\n";
+
+// src/components/controls/Switch.ts
+var Switch2 = class extends i4 {
+  constructor() {
+    super(...arguments);
+    this.text = "";
+    this.checked = false;
+    this.enabled = true;
+    this.disabled = false;
+    this.interaction = true;
+    this.interactionEnabled = true;
+    this.showOnIcon = false;
+    this.showOffIcon = false;
+    this.showOnIconOffIcon = false;
+    this.iconFill = 0;
+    this.iconGrad = 0;
+    this.iconWght = 400;
+    this.showBackground = false;
+    this.backgroundType = 1;
+    this.innerLayerWidth = 52;
+    this.innerLayerHeight = 32;
+    this._hovered = false;
+    this._pressed = false;
+    this._focused = false;
+    this._bounceClass = "";
+    this._keyboardMode = false;
+    this._bounceTimer = null;
+    this._onPointerDown = (event) => {
+      if (!this._isEnabled || !this._isInteractionEnabled) return;
+      this._pressed = true;
+      this._keyboardMode = false;
+      this._focused = false;
+      event.currentTarget?.setPointerCapture?.(event.pointerId);
+    };
+    this._onPointerUp = () => {
+      this._pressed = false;
+    };
+    this._onKeyDown = (event) => {
+      this._keyboardMode = true;
+      if (!this._isEnabled || !this._isInteractionEnabled) return;
+      if (event.key === " " || event.key === "Enter") {
+        this._pressed = true;
+        event.preventDefault();
+      }
+    };
+    this._onKeyUp = (event) => {
+      this._keyboardMode = true;
+      if (!this._isEnabled || !this._isInteractionEnabled) return;
+      if (event.key === " " || event.key === "Enter") {
+        this._pressed = false;
+        this._toggle();
+        event.preventDefault();
+      }
+    };
+    this._onRootPointerDown = () => {
+      this._keyboardMode = false;
+      this._focused = false;
+    };
+    this._onRootFocus = () => {
+      this._focused = this._keyboardMode && this._isEnabled;
+    };
+    this._onRootBlur = () => {
+      this._focused = false;
+      this._pressed = false;
+    };
+    this._onRootClick = () => {
+      if (!this._isEnabled || !this._isInteractionEnabled) return;
+      this._toggle();
+    };
+  }
+  get _spacing() {
+    return 16;
+  }
+  get _bgPadding() {
+    return 12;
+  }
+  get _stateLayerSize() {
+    return 40;
+  }
+  get _isPressed() {
+    return this._pressed && this._isEnabled;
+  }
+  get _isHovered() {
+    return this._hovered && this._isEnabled && !this._isPressed;
+  }
+  get _isFocused() {
+    return this._focused && this._isEnabled && !this._isPressed && !this._isHovered;
+  }
+  get _isEnabled() {
+    return this.enabled && !this.disabled;
+  }
+  _parseBoolAttr(value) {
+    if (value === null) return true;
+    const normalized = value.trim().toLowerCase();
+    if (normalized === "false" || normalized === "0") return false;
+    return true;
+  }
+  _toBoolLike(value, defaultValue = true) {
+    if (value === null || value === void 0) return defaultValue;
+    if (typeof value === "boolean") return value;
+    if (typeof value === "number") return value !== 0;
+    if (typeof value === "string") {
+      const normalized = value.trim().toLowerCase();
+      if (normalized === "" || normalized === "true" || normalized === "1" || normalized === "yes" || normalized === "on") return true;
+      if (normalized === "false" || normalized === "0" || normalized === "no" || normalized === "off") return false;
+    }
+    return Boolean(value);
+  }
+  get _isInteractionEnabled() {
+    const interactionAlias = this.getAttribute("interaction");
+    if (interactionAlias !== null) {
+      return this._parseBoolAttr(interactionAlias);
+    }
+    const interactionEnabledAttr = this.getAttribute("interaction-enabled");
+    if (interactionEnabledAttr !== null) {
+      return this._parseBoolAttr(interactionEnabledAttr);
+    }
+    return this._toBoolLike(this.interaction, true) && this._toBoolLike(this.interactionEnabled, true);
+  }
+  get _handleWidth() {
+    if (this._isPressed) {
+      if (!this.checked) return 26;
+      return 28;
+    }
+    if (this.showOffIcon || this.showOnIconOffIcon) return 24;
+    return this.checked ? 24 : 16;
+  }
+  get _handleHeight() {
+    return this._handleWidth;
+  }
+  get _handleOffset() {
+    return (this.innerLayerHeight - this._handleHeight) / 2;
+  }
+  get _handleX() {
+    const offset = this._handleOffset;
+    if (!this.checked) return offset;
+    return this.innerLayerWidth - this._handleWidth - offset - 2;
+  }
+  updated(changed) {
+    if (changed.has("checked")) {
+      this._playHandleBounce(this.checked);
+    }
+    if ((changed.has("enabled") || changed.has("disabled")) && !this._isEnabled) {
+      this._hovered = false;
+      this._pressed = false;
+      this._focused = false;
+    }
+  }
+  disconnectedCallback() {
+    if (this._bounceTimer !== null) {
+      clearTimeout(this._bounceTimer);
+      this._bounceTimer = null;
+    }
+    super.disconnectedCallback();
+  }
+  _playHandleBounce(toChecked) {
+    this._bounceClass = toChecked ? "bounce-on" : "bounce-off";
+    if (this._bounceTimer !== null) {
+      clearTimeout(this._bounceTimer);
+      this._bounceTimer = null;
+    }
+    this._bounceTimer = window.setTimeout(() => {
+      this._bounceClass = "";
+      this._bounceTimer = null;
+    }, 360);
+  }
+  _emitToggleEvents() {
+    this.dispatchEvent(new CustomEvent("clicked", { bubbles: true, composed: true }));
+    this.dispatchEvent(new CustomEvent("toggled", {
+      detail: { checked: this.checked },
+      bubbles: true,
+      composed: true
+    }));
+  }
+  _setChecked(next) {
+    if (this.checked === next) return;
+    this.checked = next;
+    this._emitToggleEvents();
+  }
+  _toggle() {
+    if (!this._isEnabled || !this._isInteractionEnabled) return;
+    this._setChecked(!this.checked);
+  }
+  _bgContainerColor() {
+    if (!this.showBackground) return "transparent";
+    switch (this.backgroundType) {
+      case 0:
+        return this.checked ? "var(--md-sys-color-primary-container, #eaddff)" : "var(--md-sys-color-surface-container-highest, #e6e0e9)";
+      case 1:
+        return this.checked ? "var(--md-sys-color-secondary-container, #e8def8)" : "var(--md-sys-color-surface-container-high, #ece6f0)";
+      case 2:
+        return "transparent";
+      default:
+        return "transparent";
+    }
+  }
+  _bgBorderColor() {
+    if (!this.showBackground || this.backgroundType !== 2) return "transparent";
+    return this.checked ? "var(--md-sys-color-primary, #6750a4)" : "var(--md-sys-color-outline-variant, #cac4d0)";
+  }
+  _trackColor() {
+    if (!this.checked) return "var(--md-sys-color-surface-container-highest, #e6e0e9)";
+    if (!this._isEnabled) return "var(--md-sys-color-on-background, #1d1b20)";
+    return "var(--md-sys-color-primary, #6750a4)";
+  }
+  _trackBorderColor() {
+    if (!this._isEnabled) return "var(--md-sys-color-on-background, #1d1b20)";
+    return "var(--md-sys-color-outline, #79747e)";
+  }
+  _handleColor() {
+    if (!this._isEnabled) {
+      return this.checked ? "var(--md-sys-color-background, #fffbfe)" : "var(--md-sys-color-on-background, #1d1b20)";
+    }
+    if (this._isPressed || this._isHovered) {
+      return this.checked ? "var(--md-sys-color-primary-container, #eaddff)" : "var(--md-sys-color-on-surface-variant, #49454f)";
+    }
+    if (this._isFocused) {
+      return this.checked ? "var(--md-sys-color-outline, #79747e)" : "var(--md-sys-color-primary-container, #eaddff)";
+    }
+    return this.checked ? "var(--md-sys-color-on-primary, #ffffff)" : "var(--md-sys-color-outline, #79747e)";
+  }
+  _stateLayerColor() {
+    if (this._isPressed || this._isHovered || this._isFocused) {
+      return this.checked ? "var(--md-sys-color-primary, #6750a4)" : "var(--md-sys-color-on-surface-variant, #49454f)";
+    }
+    return "transparent";
+  }
+  _stateLayerOpacity() {
+    if (this._isPressed || this._isFocused) return 0.12;
+    if (this._isHovered) return 0.08;
+    return 0;
+  }
+  _iconVisible() {
+    if (this.showOnIconOffIcon) return true;
+    if (this.showOffIcon) return !this.checked;
+    if (this.showOnIcon) return this.checked;
+    return false;
+  }
+  _iconName() {
+    if (this.showOnIconOffIcon) return this.checked ? "check" : "close";
+    if (this.showOffIcon) return "close";
+    if (this.showOnIcon) return "check";
+    return "check";
+  }
+  _iconColor() {
+    if (!this.checked) return "var(--md-sys-color-surface-container-highest, #e6e0e9)";
+    if (!this._isEnabled) return "var(--md-sys-color-on-background, #1d1b20)";
+    return "var(--md-sys-color-on-primary-container, #21005d)";
+  }
+  _labelColor() {
+    if (!this._isEnabled) return "var(--md-sys-color-on-surface-variant, #49454f)";
+    return "var(--md-sys-color-on-surface, #1d1b20)";
+  }
+  render() {
+    const rootStyle = `
+            --sw-track-w: ${this.innerLayerWidth}px;
+            --sw-track-h: ${this.innerLayerHeight}px;
+            --sw-spacing: ${this._spacing}px;
+            --sw-bg-padding: ${this._bgPadding}px;
+            --sw-state-size: ${this._stateLayerSize}px;
+            --sw-track-color: ${this._trackColor()};
+            --sw-track-border-color: ${this._trackBorderColor()};
+            --sw-track-border-width: ${this.checked ? 0 : 2}px;
+            --sw-track-opacity: ${this._isEnabled ? 1 : 0.12};
+            --sw-handle-w: ${this._handleWidth}px;
+            --sw-handle-h: ${this._handleHeight}px;
+            --sw-handle-x: ${this._handleX}px;
+            --sw-handle-color: ${this._handleColor()};
+            --sw-handle-opacity: ${this._isEnabled || this.checked ? 1 : 0.38};
+            --sw-state-layer-color: ${this._stateLayerColor()};
+            --sw-state-layer-opacity: ${this._stateLayerOpacity()};
+            --sw-focus-ring-visible: ${this._isFocused ? 1 : 0};
+            --sw-bg-color: ${this._bgContainerColor()};
+            --sw-bg-border-color: ${this._bgBorderColor()};
+            --sw-bg-border-width: ${this.showBackground && this.backgroundType === 2 ? 1 : 0}px;
+            --sw-icon-color: ${this._iconColor()};
+            --sw-icon-opacity: ${this._isEnabled ? 1 : 0.38};
+            --sw-label-color: ${this._labelColor()};
+            --sw-label-opacity: ${this._isEnabled ? 1 : 0.38};
+            --sw-icon-fill: ${this.iconFill};
+            --sw-icon-grad: ${this.iconGrad};
+            --sw-icon-wght: ${this.iconWght};
+        `;
+    const rootClasses = [
+      "root",
+      this._isEnabled ? "enabled" : "disabled",
+      this._isInteractionEnabled ? "interaction-enabled" : "interaction-disabled",
+      this._bounceClass,
+      this.showBackground ? "with-background" : ""
+    ].filter(Boolean).join(" ");
+    return b2`
+            <div
+                class="${rootClasses}"
+                style="${rootStyle}"
+                role="switch"
+                aria-checked=${this.checked ? "true" : "false"}
+                aria-disabled=${this._isEnabled ? "false" : "true"}
+                tabindex=${this._isInteractionEnabled && this._isEnabled ? 0 : -1}
+                @focus=${this._onRootFocus}
+                @blur=${this._onRootBlur}
+                @pointerdown=${this._onRootPointerDown}
+                @click=${this._onRootClick}
+                @mouseenter=${() => {
+      if (this._isEnabled) this._hovered = true;
+    }}
+                @mouseleave=${() => {
+      this._hovered = false;
+      this._pressed = false;
+    }}
+                @keydown=${this._onKeyDown}
+                @keyup=${this._onKeyUp}
+            >
+                ${this.showBackground ? b2`
+                    <div class="background-container">
+                        <div class="background-state-layer"></div>
+                    </div>
+                ` : null}
+
+                <div class="content-container">
+                    <div class="indicator" @pointerdown=${this._onPointerDown} @pointerup=${this._onPointerUp} @pointercancel=${this._onPointerUp}>
+                        <div class="focus-indicator"></div>
+                        <div class="track"></div>
+
+                        ${!this.showBackground ? b2`<div class="state-layer"></div>` : null}
+
+                        <div class="handle">
+                            ${this._iconVisible() ? b2`
+                                <span class="handle-icon">${this._iconName()}</span>
+                            ` : null}
+                        </div>
+                    </div>
+
+                    ${this.text ? b2`<span class="label">${this.text}</span>` : null}
+                </div>
+            </div>
+        `;
+  }
+};
+Switch2.styles = [r(Switch_default)];
+__decorateClass([
+  n3({ type: String })
+], Switch2.prototype, "text", 2);
+__decorateClass([
+  n3({ type: Boolean })
+], Switch2.prototype, "checked", 2);
+__decorateClass([
+  n3({ type: Boolean })
+], Switch2.prototype, "enabled", 2);
+__decorateClass([
+  n3({ type: Boolean })
+], Switch2.prototype, "disabled", 2);
+__decorateClass([
+  n3({
+    attribute: "interaction",
+    converter: {
+      fromAttribute: (value) => {
+        if (value === null) return true;
+        if (value === "false" || value === "0") return false;
+        return true;
+      },
+      toAttribute: (value) => value ? "" : "false"
+    }
+  })
+], Switch2.prototype, "interaction", 2);
+__decorateClass([
+  n3({
+    attribute: "interaction-enabled",
+    converter: {
+      fromAttribute: (value) => {
+        if (value === null) return true;
+        if (value === "false" || value === "0") return false;
+        return true;
+      },
+      toAttribute: (value) => value ? "" : "false"
+    }
+  })
+], Switch2.prototype, "interactionEnabled", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "show-on-icon" })
+], Switch2.prototype, "showOnIcon", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "show-off-icon" })
+], Switch2.prototype, "showOffIcon", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "show-on-icon-off-icon" })
+], Switch2.prototype, "showOnIconOffIcon", 2);
+__decorateClass([
+  n3({ type: Number, attribute: "icon-fill" })
+], Switch2.prototype, "iconFill", 2);
+__decorateClass([
+  n3({ type: Number, attribute: "icon-grad" })
+], Switch2.prototype, "iconGrad", 2);
+__decorateClass([
+  n3({ type: Number, attribute: "icon-wght" })
+], Switch2.prototype, "iconWght", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "show-background" })
+], Switch2.prototype, "showBackground", 2);
+__decorateClass([
+  n3({ type: Number, attribute: "background-type" })
+], Switch2.prototype, "backgroundType", 2);
+__decorateClass([
+  n3({ type: Number, attribute: "inner-layer-width" })
+], Switch2.prototype, "innerLayerWidth", 2);
+__decorateClass([
+  n3({ type: Number, attribute: "inner-layer-height" })
+], Switch2.prototype, "innerLayerHeight", 2);
+__decorateClass([
+  r4()
+], Switch2.prototype, "_hovered", 2);
+__decorateClass([
+  r4()
+], Switch2.prototype, "_pressed", 2);
+__decorateClass([
+  r4()
+], Switch2.prototype, "_focused", 2);
+__decorateClass([
+  r4()
+], Switch2.prototype, "_bounceClass", 2);
+Switch2 = __decorateClass([
+  t("umi-switch")
+], Switch2);
+
+// src/components/styles/LabsAppBars.css
+var LabsAppBars_default = ":host {\r\n    display: block;\r\n    width: 100%;\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n}\r\n\r\n.bar {\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background: var(--md-sys-color-surface, #fef7ff);\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n    transition: background-color 200ms cubic-bezier(.2, 0, 0, 1), color 200ms cubic-bezier(.2, 0, 0, 1);\r\n    border-bottom: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant, #cac4d0) 26%, transparent);\r\n}\r\n\r\n.bar.is-scrolled {\r\n    background: var(--md-sys-color-surface-container, #f3edf7);\r\n}\r\n\r\n.main-row {\r\n    min-height: 64px;\r\n    padding: 0 4px;\r\n    display: grid;\r\n    grid-template-columns: auto 1fr auto;\r\n    align-items: center;\r\n    gap: 8px;\r\n}\r\n\r\n.leading-wrap,\r\n.trailing-wrap {\r\n    min-width: 48px;\r\n    min-height: 48px;\r\n    display: inline-flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    gap: 2px;\r\n    padding: 0 4px;\r\n}\r\n\r\n.headline-wrap {\r\n    min-width: 0;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n}\r\n\r\n.headline {\r\n    margin: 0;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n\r\n.subtitle {\r\n    margin-top: 2px;\r\n    color: var(--md-sys-color-on-surface-variant, #49454f);\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n\r\n/* Small / Center */\r\n.bar.variant-small .headline,\r\n.bar.variant-center .headline {\r\n    font-family: var(--md-sys-typescale-title-large-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-title-large-size, 22px);\r\n    font-weight: var(--md-sys-typescale-title-large-weight, 400);\r\n    line-height: var(--md-sys-typescale-title-large-line-height, 28px);\r\n    letter-spacing: var(--md-sys-typescale-title-large-tracking, 0);\r\n}\r\n\r\n.bar.variant-small .subtitle,\r\n.bar.variant-center .subtitle {\r\n    font-family: var(--md-sys-typescale-label-medium-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-label-medium-size, 12px);\r\n    font-weight: var(--md-sys-typescale-label-medium-weight, 500);\r\n    line-height: var(--md-sys-typescale-label-medium-line-height, 16px);\r\n    letter-spacing: var(--md-sys-typescale-label-medium-tracking, 0.5px);\r\n}\r\n\r\n.bar.text-leading.variant-small .headline-wrap,\r\n.bar.text-leading.variant-center .headline-wrap {\r\n    text-align: left;\r\n}\r\n\r\n.bar.text-centered.variant-small .headline-wrap,\r\n.bar.text-centered.variant-center .headline-wrap,\r\n.bar.variant-center .headline-wrap {\r\n    text-align: center;\r\n}\r\n\r\n.bar.variant-center .main-row {\r\n    grid-template-columns: minmax(56px, auto) 1fr minmax(56px, auto);\r\n}\r\n\r\n/* Flexible (Expressive) */\r\n.bar.variant-medium-flexible,\r\n.bar.variant-large-flexible {\r\n    padding-bottom: 12px;\r\n}\r\n\r\n.bar.variant-medium-flexible .main-row,\r\n.bar.variant-large-flexible .main-row {\r\n    min-height: 64px;\r\n}\r\n\r\n.flexible-text-wrap {\r\n    padding: 0 16px;\r\n    min-height: 44px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n}\r\n\r\n.bar.variant-medium-flexible .flexible-text-wrap {\r\n    min-height: 48px;\r\n}\r\n\r\n.bar.variant-large-flexible .flexible-text-wrap {\r\n    min-height: 72px;\r\n}\r\n\r\n.bar.variant-medium-flexible .headline {\r\n    font-family: var(--md-sys-typescale-headline-medium-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-headline-medium-size, 28px);\r\n    font-weight: var(--md-sys-typescale-headline-medium-weight, 400);\r\n    line-height: var(--md-sys-typescale-headline-medium-line-height, 36px);\r\n    letter-spacing: var(--md-sys-typescale-headline-medium-tracking, 0);\r\n}\r\n\r\n.bar.variant-large-flexible .headline {\r\n    font-family: var(--md-sys-typescale-display-small-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-display-small-size, 36px);\r\n    font-weight: var(--md-sys-typescale-display-small-weight, 400);\r\n    line-height: var(--md-sys-typescale-display-small-line-height, 44px);\r\n    letter-spacing: var(--md-sys-typescale-display-small-tracking, 0);\r\n}\r\n\r\n.bar.variant-medium-flexible .subtitle {\r\n    font-family: var(--md-sys-typescale-label-large-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-label-large-size, 14px);\r\n    font-weight: var(--md-sys-typescale-label-large-weight, 500);\r\n    line-height: var(--md-sys-typescale-label-large-line-height, 20px);\r\n    letter-spacing: var(--md-sys-typescale-label-large-tracking, 0.1px);\r\n}\r\n\r\n.bar.variant-large-flexible .subtitle {\r\n    font-family: var(--md-sys-typescale-title-medium-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-title-medium-size, 16px);\r\n    font-weight: var(--md-sys-typescale-title-medium-weight, 500);\r\n    line-height: var(--md-sys-typescale-title-medium-line-height, 24px);\r\n    letter-spacing: var(--md-sys-typescale-title-medium-tracking, 0.15px);\r\n}\r\n\r\n.bar.text-leading .flexible-text-wrap {\r\n    text-align: left;\r\n}\r\n\r\n.bar.text-centered .flexible-text-wrap {\r\n    text-align: center;\r\n}\r\n\r\n/* Defaults for icon button spacing in slots */\r\n::slotted(umi-icon-button),\r\n::slotted(md-icon-button),\r\n::slotted(md-filled-icon-button),\r\n::slotted(md-filled-tonal-icon-button),\r\n::slotted(md-outlined-icon-button) {\r\n    margin: 0;\r\n}\r\n";
+
+// src/components/labs/AppBars.ts
+var LabsAppBar = class extends i4 {
+  constructor() {
+    super(...arguments);
+    this.headline = "Page title";
+    this.subtitle = "";
+    this.variant = "small";
+    this.centeredText = false;
+    this.scrolled = false;
+    this.autoScrollState = false;
+    this._hasLeading = false;
+    this._hasTrailing = false;
+    this._onWindowScroll = () => {
+      if (!this.autoScrollState) return;
+      this.scrolled = window.scrollY > 0;
+    };
+    this._onSlotChange = () => {
+      this._syncSlotState();
+    };
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener("scroll", this._onWindowScroll, { passive: true });
+  }
+  disconnectedCallback() {
+    window.removeEventListener("scroll", this._onWindowScroll);
+    super.disconnectedCallback();
+  }
+  firstUpdated() {
+    this._syncSlotState();
+    this._onWindowScroll();
+  }
+  _syncSlotState() {
+    const root = this.renderRoot;
+    const leadingSlot = root.querySelector('slot[name="leading"]');
+    const trailingSlot = root.querySelector('slot[name="trailing"]');
+    this._hasLeading = Boolean(leadingSlot?.assignedElements({ flatten: true }).length);
+    this._hasTrailing = Boolean(trailingSlot?.assignedElements({ flatten: true }).length);
+  }
+  get _isCenter() {
+    return this.variant === "center";
+  }
+  get _isFlexible() {
+    return this.variant === "medium-flexible" || this.variant === "large-flexible";
+  }
+  get _isCenteredText() {
+    return this._isCenter || this.centeredText;
+  }
+  get _resolvedHeadline() {
+    return this.headline?.trim() || "Page title";
+  }
+  render() {
+    const classes = [
+      "bar",
+      `variant-${this.variant}`,
+      this.scrolled ? "is-scrolled" : "is-flat",
+      this._isCenteredText ? "text-centered" : "text-leading",
+      this._hasLeading ? "has-leading" : "no-leading",
+      this._hasTrailing ? "has-trailing" : "no-trailing",
+      this.subtitle ? "has-subtitle" : "no-subtitle",
+      this._isFlexible ? "is-flexible" : "is-fixed"
+    ].join(" ");
+    return b2`
+            <header class="${classes}" role="banner">
+                <div class="main-row">
+                    <div class="leading-wrap">
+                        <slot name="leading" @slotchange=${this._onSlotChange}></slot>
+                    </div>
+
+                    ${this._isFlexible ? b2`<div class="spacer"></div>` : b2`<div class="headline-wrap">
+                            <h1 class="headline">${this._resolvedHeadline}</h1>
+                            ${this.subtitle ? b2`<div class="subtitle">${this.subtitle}</div>` : null}
+                        </div>`}
+
+                    <div class="trailing-wrap">
+                        <slot name="trailing" @slotchange=${this._onSlotChange}></slot>
+                    </div>
+                </div>
+
+                ${this._isFlexible ? b2`<div class="flexible-text-wrap">
+                        <h1 class="headline">${this._resolvedHeadline}</h1>
+                        ${this.subtitle ? b2`<div class="subtitle">${this.subtitle}</div>` : null}
+                    </div>` : null}
+            </header>
+        `;
+  }
+};
+LabsAppBar.styles = [r(LabsAppBars_default)];
+__decorateClass([
+  n3({ type: String })
+], LabsAppBar.prototype, "headline", 2);
+__decorateClass([
+  n3({ type: String })
+], LabsAppBar.prototype, "subtitle", 2);
+__decorateClass([
+  n3({ type: String })
+], LabsAppBar.prototype, "variant", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "centered-text" })
+], LabsAppBar.prototype, "centeredText", 2);
+__decorateClass([
+  n3({ type: Boolean })
+], LabsAppBar.prototype, "scrolled", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "auto-scroll-state" })
+], LabsAppBar.prototype, "autoScrollState", 2);
+__decorateClass([
+  r4()
+], LabsAppBar.prototype, "_hasLeading", 2);
+__decorateClass([
+  r4()
+], LabsAppBar.prototype, "_hasTrailing", 2);
+LabsAppBar = __decorateClass([
+  t("umi-labs-app-bar")
+], LabsAppBar);
+
+// src/components/styles/LabsBadges.css
+var LabsBadges_default = ":host {\r\n    display: inline-flex;\r\n    vertical-align: top;\r\n}\r\n\r\n.anchor {\r\n    position: relative;\r\n    display: inline-flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n.badge {\r\n    position: absolute;\r\n    inset-inline-end: 0;\r\n    top: 0;\r\n    box-sizing: border-box;\r\n    background: var(--md-sys-color-error, #b3261e);\r\n    color: var(--md-sys-color-on-error, #ffffff);\r\n    pointer-events: none;\r\n    user-select: none;\r\n}\r\n\r\n/* MD3 specs: 6dp circular badge */\r\n.badge-small {\r\n    width: 6px;\r\n    height: 6px;\r\n    border-radius: 999px;\r\n    transform: translate(50%, -50%);\r\n}\r\n\r\n/* MD3 specs: 16dp height, width expands by content */\r\n.badge-large {\r\n    min-width: 16px;\r\n    height: 16px;\r\n    padding: 0 4px;\r\n    border-radius: 8px;\r\n    transform: translate(40%, -40%);\r\n    display: inline-flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n.badge-label {\r\n    font-family: var(--md-sys-typescale-label-small-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-label-small-size, 11px);\r\n    font-weight: var(--md-sys-typescale-label-small-weight, 500);\r\n    line-height: var(--md-sys-typescale-label-small-line-height, 16px);\r\n    letter-spacing: var(--md-sys-typescale-label-small-tracking, 0.5px);\r\n    white-space: nowrap;\r\n}\r\n";
+
+// src/components/labs/Badges.ts
+var LabsBadge = class extends i4 {
+  constructor() {
+    super(...arguments);
+    this.variant = "auto";
+    this.count = -1;
+    this.label = "";
+    this.max = 999;
+    this.hideZero = true;
+    this.visible = true;
+  }
+  get _resolvedLabel() {
+    if (this.count >= 0) {
+      if (this.hideZero && this.count === 0) return "";
+      if (this.count > this.max) return `${this.max}+`;
+      return String(this.count);
+    }
+    const text = (this.label ?? "").trim();
+    if (!text) return "";
+    if (text.length <= 4) return text;
+    return `${text.slice(0, 3)}+`;
+  }
+  get _isSmall() {
+    if (!this.visible) return false;
+    if (this.variant === "small") return true;
+    if (this.variant === "large") return false;
+    return this._resolvedLabel.length === 0;
+  }
+  get _isLarge() {
+    if (!this.visible) return false;
+    if (this.variant === "large") return true;
+    if (this.variant === "small") return false;
+    return this._resolvedLabel.length > 0;
+  }
+  render() {
+    const label = this._resolvedLabel;
+    return b2`
+            <span class="anchor" part="anchor">
+                <slot></slot>
+
+                ${this._isSmall ? b2`
+                    <span class="badge badge-small" aria-hidden="true"></span>
+                ` : null}
+
+                ${this._isLarge ? b2`
+                    <span class="badge badge-large" aria-label=${`Badge ${label}`}>
+                        <span class="badge-label">${label}</span>
+                    </span>
+                ` : null}
+            </span>
+        `;
+  }
+};
+LabsBadge.styles = [r(LabsBadges_default)];
+__decorateClass([
+  n3({ type: String })
+], LabsBadge.prototype, "variant", 2);
+__decorateClass([
+  n3({ type: Number })
+], LabsBadge.prototype, "count", 2);
+__decorateClass([
+  n3({ type: String })
+], LabsBadge.prototype, "label", 2);
+__decorateClass([
+  n3({ type: Number })
+], LabsBadge.prototype, "max", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "hide-zero" })
+], LabsBadge.prototype, "hideZero", 2);
+__decorateClass([
+  n3({ type: Boolean })
+], LabsBadge.prototype, "visible", 2);
+LabsBadge = __decorateClass([
+  t("umi-labs-badge")
+], LabsBadge);
+
+// src/components/styles/LabsCards.css
+var LabsCards_default = ":host {\r\n    display: block;\r\n}\r\n\r\n.card {\r\n    position: relative;\r\n    width: 100%;\r\n    overflow: hidden;\r\n    border-radius: 12px;\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n    border: 1px solid transparent;\r\n    transition:\r\n        background-color 180ms cubic-bezier(.2, 0, 0, 1),\r\n        border-color 180ms cubic-bezier(.2, 0, 0, 1),\r\n        box-shadow 180ms cubic-bezier(.2, 0, 0, 1),\r\n        transform 140ms ease;\r\n}\r\n\r\n.card.variant-elevated {\r\n    background: var(--md-sys-color-surface-container-low, #f7f2fa);\r\n    box-shadow: 0 1px 2px color-mix(in srgb, var(--md-sys-color-shadow, #000) 16%, transparent);\r\n}\r\n\r\n.card.variant-filled {\r\n    background: var(--md-sys-color-surface-container-highest, #e6e0e9);\r\n}\r\n\r\n.card.variant-outlined {\r\n    background: var(--md-sys-color-surface, #fef7ff);\r\n    border-color: var(--md-sys-color-outline-variant, #cac4d0);\r\n}\r\n\r\n.card.interactive.enabled {\r\n    cursor: pointer;\r\n}\r\n\r\n.card.disabled {\r\n    opacity: 0.5;\r\n    cursor: default;\r\n}\r\n\r\n.card.interactive.enabled:active {\r\n    transform: scale(0.997);\r\n}\r\n\r\n.state-layer {\r\n    position: absolute;\r\n    inset: 0;\r\n    pointer-events: none;\r\n    background: var(--md-sys-color-on-surface, #1d1b20);\r\n    opacity: var(--labs-card-state-opacity, 0);\r\n    transition: opacity 140ms cubic-bezier(.2, 0, 0, 1);\r\n}\r\n\r\n.media-wrap {\r\n    width: 100%;\r\n    min-height: 140px;\r\n    background: var(--md-sys-color-surface-container, #f3edf7);\r\n}\r\n\r\n.media {\r\n    width: 100%;\r\n    height: auto;\r\n    display: block;\r\n    object-fit: cover;\r\n}\r\n\r\n.content {\r\n    padding: 16px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 10px;\r\n}\r\n\r\n.header {\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 2px;\r\n}\r\n\r\n.subhead {\r\n    font-family: var(--md-sys-typescale-label-medium-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-label-medium-size, 12px);\r\n    font-weight: var(--md-sys-typescale-label-medium-weight, 500);\r\n    line-height: var(--md-sys-typescale-label-medium-line-height, 16px);\r\n    letter-spacing: var(--md-sys-typescale-label-medium-tracking, 0.5px);\r\n    color: var(--md-sys-color-on-surface-variant, #49454f);\r\n}\r\n\r\n.headline {\r\n    margin: 0;\r\n    font-family: var(--md-sys-typescale-title-large-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-title-large-size, 22px);\r\n    font-weight: var(--md-sys-typescale-title-large-weight, 400);\r\n    line-height: var(--md-sys-typescale-title-large-line-height, 28px);\r\n    letter-spacing: var(--md-sys-typescale-title-large-tracking, 0);\r\n}\r\n\r\n.supporting {\r\n    margin: 0;\r\n    font-family: var(--md-sys-typescale-body-medium-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-medium-size, 14px);\r\n    font-weight: var(--md-sys-typescale-body-medium-weight, 400);\r\n    line-height: var(--md-sys-typescale-body-medium-line-height, 20px);\r\n    letter-spacing: var(--md-sys-typescale-body-medium-tracking, 0.25px);\r\n    color: var(--md-sys-color-on-surface-variant, #49454f);\r\n}\r\n\r\n.actions {\r\n    padding: 0 16px 16px;\r\n    display: inline-flex;\r\n    flex-wrap: wrap;\r\n    gap: 8px;\r\n    align-items: center;\r\n}\r\n\r\n.actions:empty {\r\n    display: none;\r\n}\r\n";
+
+// src/components/labs/Cards.ts
+var LabsCard = class extends i4 {
+  constructor() {
+    super(...arguments);
+    this.variant = "elevated";
+    this.headline = "";
+    this.subhead = "";
+    this.supportingText = "";
+    this.mediaSrc = "";
+    this.mediaAlt = "";
+    this.interactive = false;
+    this.disabled = false;
+    this._hovered = false;
+    this._pressed = false;
+    this._focused = false;
+    this._onClick = (event) => {
+      if (!this.interactive || !this._isEnabled) return;
+      if (this._isActionClick(event)) return;
+      this.dispatchEvent(new CustomEvent("clicked", { bubbles: true, composed: true }));
+    };
+    this._onKeyDown = (e9) => {
+      if (!this.interactive || !this._isEnabled) return;
+      if (e9.key === " " || e9.key === "Enter") {
+        this._pressed = true;
+        e9.preventDefault();
+      }
+    };
+    this._onKeyUp = (e9) => {
+      if (!this.interactive || !this._isEnabled) return;
+      if (e9.key === " " || e9.key === "Enter") {
+        this._pressed = false;
+        this.dispatchEvent(new CustomEvent("clicked", { bubbles: true, composed: true }));
+        e9.preventDefault();
+      }
+    };
+  }
+  get _isEnabled() {
+    return !this.disabled;
+  }
+  get _stateLayerOpacity() {
+    if (!this.interactive || !this._isEnabled) return 0;
+    if (this._pressed) return 0.12;
+    if (this._focused) return 0.12;
+    if (this._hovered) return 0.08;
+    return 0;
+  }
+  _isActionClick(event) {
+    const path = event.composedPath();
+    for (const node of path) {
+      if (!(node instanceof HTMLElement)) continue;
+      if (node.classList.contains("actions")) return true;
+      if (node.getAttribute("slot") === "actions") return true;
+      const tag = node.tagName;
+      if (tag === "BUTTON" || tag === "A" || tag === "INPUT" || tag === "SELECT" || tag === "TEXTAREA" || tag.startsWith("UMI-") || tag.startsWith("MD-")) {
+        if (tag !== "ARTICLE") return true;
+      }
+    }
+    return false;
+  }
+  render() {
+    const classes = [
+      "card",
+      `variant-${this.variant}`,
+      this.interactive ? "interactive" : "static",
+      this._isEnabled ? "enabled" : "disabled"
+    ].join(" ");
+    const hasHeader = Boolean(this.headline || this.subhead);
+    const hasSupporting = Boolean(this.supportingText);
+    return b2`
+            <article
+                class="${classes}"
+                role=${this.interactive ? "button" : "article"}
+                tabindex=${this.interactive && this._isEnabled ? 0 : -1}
+                aria-disabled=${this._isEnabled ? "false" : "true"}
+                @click=${this._onClick}
+                @mouseenter=${() => {
+      if (this._isEnabled) this._hovered = true;
+    }}
+                @mouseleave=${() => {
+      this._hovered = false;
+      this._pressed = false;
+    }}
+                @pointerdown=${() => {
+      if (this._isEnabled && this.interactive) this._pressed = true;
+    }}
+                @pointerup=${() => {
+      this._pressed = false;
+    }}
+                @focus=${() => {
+      if (this._isEnabled && this.interactive) this._focused = true;
+    }}
+                @blur=${() => {
+      this._focused = false;
+      this._pressed = false;
+    }}
+                @keydown=${this._onKeyDown}
+                @keyup=${this._onKeyUp}
+                style=${`--labs-card-state-opacity:${this._stateLayerOpacity};`}
+            >
+                <span class="state-layer"></span>
+
+                ${this.mediaSrc ? b2`
+                    <div class="media-wrap">
+                        <img class="media" src=${this.mediaSrc} alt=${this.mediaAlt || this.headline || "card media"} loading="lazy" />
+                    </div>
+                ` : b2`<slot name="media"></slot>`}
+
+                ${hasHeader || hasSupporting ? b2`
+                    <div class="content">
+                        ${hasHeader ? b2`
+                            <div class="header">
+                                ${this.subhead ? b2`<div class="subhead">${this.subhead}</div>` : null}
+                                ${this.headline ? b2`<h3 class="headline">${this.headline}</h3>` : null}
+                            </div>
+                        ` : null}
+
+                        ${hasSupporting ? b2`<p class="supporting">${this.supportingText}</p>` : null}
+
+                        <slot></slot>
+                    </div>
+                ` : b2`<slot></slot>`}
+
+                <div class="actions">
+                    <slot name="actions"></slot>
+                </div>
+            </article>
+        `;
+  }
+};
+LabsCard.styles = [r(LabsCards_default)];
+__decorateClass([
+  n3({ type: String })
+], LabsCard.prototype, "variant", 2);
+__decorateClass([
+  n3({ type: String })
+], LabsCard.prototype, "headline", 2);
+__decorateClass([
+  n3({ type: String })
+], LabsCard.prototype, "subhead", 2);
+__decorateClass([
+  n3({ type: String })
+], LabsCard.prototype, "supportingText", 2);
+__decorateClass([
+  n3({ type: String, attribute: "media-src" })
+], LabsCard.prototype, "mediaSrc", 2);
+__decorateClass([
+  n3({ type: String, attribute: "media-alt" })
+], LabsCard.prototype, "mediaAlt", 2);
+__decorateClass([
+  n3({ type: Boolean })
+], LabsCard.prototype, "interactive", 2);
+__decorateClass([
+  n3({ type: Boolean })
+], LabsCard.prototype, "disabled", 2);
+__decorateClass([
+  r4()
+], LabsCard.prototype, "_hovered", 2);
+__decorateClass([
+  r4()
+], LabsCard.prototype, "_pressed", 2);
+__decorateClass([
+  r4()
+], LabsCard.prototype, "_focused", 2);
+LabsCard = __decorateClass([
+  t("umi-labs-card")
+], LabsCard);
+
+// src/components/styles/LabsCarousel.css
+var LabsCarousel_default = ":host {\r\n    display: block;\r\n    width: 100%;\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n}\r\n\r\n.carousel {\r\n    width: 100%;\r\n}\r\n\r\n.viewport {\r\n    width: 100%;\r\n    overflow-x: auto;\r\n    overflow-y: hidden;\r\n    border-radius: 28px;\r\n    cursor: grab;\r\n    scrollbar-width: thin;\r\n    scrollbar-color: color-mix(in srgb, var(--md-sys-color-outline, #79747e) 45%, transparent) transparent;\r\n}\r\n\r\n.viewport.is-dragging {\r\n    cursor: grabbing;\r\n    user-select: none;\r\n}\r\n\r\n.track {\r\n    min-height: 200px;\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 8px;\r\n    padding: 8px 16px;\r\n    perspective: 1000px;\r\n}\r\n\r\n.carousel.snap .viewport {\r\n    scroll-snap-type: x mandatory;\r\n}\r\n\r\n.carousel.free-scroll .viewport {\r\n    scroll-snap-type: x proximity;\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item) {\r\n    position: relative;\r\n    flex: 0 0 auto;\r\n    min-height: 180px;\r\n    transform-origin: center center;\r\n    transform-style: preserve-3d;\r\n    backface-visibility: hidden;\r\n    border-radius: var(--labs-carousel-dynamic-radius, 28px);\r\n    border: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant, #cac4d0) 55%, transparent);\r\n    background: var(--md-sys-color-surface-container, #f3edf7);\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n    overflow: hidden;\r\n    cursor: pointer;\r\n    scroll-snap-align: start;\r\n    scroll-snap-stop: always;\r\n    transform:\r\n        translateX(var(--labs-carousel-parallax-x, 0px))\r\n        translateY(calc(var(--labs-carousel-dynamic-lift, 0px) * -0.1))\r\n        rotateY(var(--labs-carousel-tilt, 0deg))\r\n        scale(var(--labs-carousel-dynamic-scale, 1));\r\n    transition:\r\n        width var(--labs-carousel-item-duration, 260ms) var(--labs-carousel-item-easing, cubic-bezier(.2, .75, .2, 1)),\r\n        transform var(--labs-carousel-item-duration, 260ms) var(--labs-carousel-item-easing, cubic-bezier(.2, .75, .2, 1)),\r\n        border-radius var(--labs-carousel-item-duration, 260ms) var(--labs-carousel-item-easing, cubic-bezier(.2, .75, .2, 1)),\r\n        background-color 180ms cubic-bezier(.2, 0, 0, 1),\r\n        box-shadow 180ms cubic-bezier(.2, 0, 0, 1),\r\n        border-color 180ms cubic-bezier(.2, 0, 0, 1);\r\n    outline: none;\r\n    user-select: none;\r\n    will-change: transform, border-radius;\r\n}\r\n\r\n.viewport.is-dragging ::slotted(.umi-labs-carousel-item) {\r\n    transition-duration: 90ms;\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item:hover) {\r\n    box-shadow: inset 0 0 0 9999px color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 8%, transparent);\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item:active) {\r\n    box-shadow: inset 0 0 0 9999px color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 12%, transparent);\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item:focus-visible) {\r\n    border-color: var(--md-sys-color-primary, #6750a4);\r\n    box-shadow: 0 0 0 3px color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 24%, transparent);\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item.size-large) {\r\n    width: var(--labs-carousel-dynamic-width, min(74vw, 360px));\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item.size-medium) {\r\n    width: var(--labs-carousel-dynamic-width, min(58vw, 280px));\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item.size-small) {\r\n    width: var(--labs-carousel-dynamic-width, clamp(40px, 8vw, 56px));\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item.size-full) {\r\n    width: var(--labs-carousel-dynamic-width, 100%);\r\n    min-height: 280px;\r\n    border-radius: 0;\r\n}\r\n\r\n.carousel.variant-uncontained .track,\r\n.carousel.variant-uncontained-multi .track {\r\n    padding-right: 0;\r\n}\r\n\r\n.carousel.variant-full-screen .viewport {\r\n    border-radius: 0;\r\n}\r\n\r\n.carousel.variant-full-screen .track {\r\n    min-height: 320px;\r\n    padding: 0;\r\n    gap: 16px;\r\n}\r\n\r\n.show-all {\r\n    margin-top: 8px;\r\n    padding: 8px 12px;\r\n    border-radius: 10px;\r\n    border: 1px solid color-mix(in srgb, var(--md-sys-color-outline, #79747e) 60%, transparent);\r\n    background: transparent;\r\n    color: var(--md-sys-color-primary, #6750a4);\r\n    font-family: var(--md-sys-typescale-label-large-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-label-large-size, 14px);\r\n    font-weight: var(--md-sys-typescale-label-large-weight, 500);\r\n    letter-spacing: var(--md-sys-typescale-label-large-tracking, 0.1px);\r\n    cursor: pointer;\r\n}\r\n\r\n.show-all:hover {\r\n    background: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 8%, transparent);\r\n}\r\n\r\n.show-all:focus-visible {\r\n    outline: 2px solid color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 50%, transparent);\r\n    outline-offset: 2px;\r\n}\r\n\r\n@media (min-width: 900px) {\r\n    ::slotted(.umi-labs-carousel-item.size-large) {\r\n        width: min(42vw, 420px);\r\n    }\r\n\r\n    ::slotted(.umi-labs-carousel-item.size-medium) {\r\n        width: min(30vw, 320px);\r\n    }\r\n}\r\n\r\n@media (prefers-reduced-motion: reduce) {\r\n    .viewport {\r\n        scroll-behavior: auto;\r\n    }\r\n\r\n    ::slotted(.umi-labs-carousel-item) {\r\n        transition: none;\r\n        transform: none;\r\n    }\r\n}\r\n";
+
+// src/components/labs/Carousel.ts
+var LabsCarousel = class extends i4 {
+  constructor() {
+    super(...arguments);
+    this.variant = "multi-browse";
+    this.snap = true;
+    this.ariaLabel = "Carousel";
+    this.showAll = false;
+    this.showAllText = "Show all";
+    this._items = [];
+    this._activeIndex = 0;
+    this._rafId = 0;
+    this._pointerId = null;
+    this._dragStartX = 0;
+    this._dragStartScrollLeft = 0;
+    this._dragMoved = false;
+    this._suppressClickUntil = 0;
+    this._snapClassTimer = null;
+    this._onSlotChange = () => {
+      this._syncItems();
+    };
+    this._onShowAllClick = () => {
+      this.dispatchEvent(new CustomEvent("show-all-clicked", { bubbles: true, composed: true }));
+    };
+    this._onViewportScroll = () => {
+      this._requestMorphUpdate();
+    };
+    this._requestMorphUpdate = () => {
+      if (this._rafId) return;
+      this._rafId = requestAnimationFrame(() => {
+        this._rafId = 0;
+        this._applyDynamicMorph();
+      });
+    };
+    this._onPointerDown = (event) => {
+      if (event.button !== 0) return;
+      const viewport = this._getViewport();
+      if (!viewport) return;
+      this._pointerId = event.pointerId;
+      this._dragStartX = event.clientX;
+      this._dragStartScrollLeft = viewport.scrollLeft;
+      this._dragMoved = false;
+      viewport.classList.add("is-dragging");
+      viewport.setPointerCapture(event.pointerId);
+    };
+    this._onPointerMove = (event) => {
+      if (this._pointerId === null || event.pointerId !== this._pointerId) return;
+      const viewport = this._getViewport();
+      if (!viewport) return;
+      const dx = event.clientX - this._dragStartX;
+      if (Math.abs(dx) > 2) this._dragMoved = true;
+      viewport.scrollLeft = this._dragStartScrollLeft - dx;
+      this._requestMorphUpdate();
+    };
+    this._onPointerUp = (event) => {
+      if (this._pointerId === null || event.pointerId !== this._pointerId) return;
+      this._endDrag(event.pointerId);
+    };
+    this._onPointerCancel = (event) => {
+      if (this._pointerId === null || event.pointerId !== this._pointerId) return;
+      this._endDrag(event.pointerId);
+    };
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener("resize", this._requestMorphUpdate, { passive: true });
+  }
+  disconnectedCallback() {
+    if (this._rafId) {
+      cancelAnimationFrame(this._rafId);
+      this._rafId = 0;
+    }
+    if (this._snapClassTimer) {
+      clearTimeout(this._snapClassTimer);
+      this._snapClassTimer = null;
+    }
+    window.removeEventListener("resize", this._requestMorphUpdate);
+    super.disconnectedCallback();
+  }
+  firstUpdated() {
+    this._syncItems();
+    this._requestMorphUpdate();
+  }
+  updated(changed) {
+    if (changed.has("variant")) {
+      this._applyLayoutClasses();
+      this._applyA11yState();
+      this._requestMorphUpdate();
+    }
+  }
+  _syncItems() {
+    const slot = this.renderRoot.querySelector("slot");
+    const assigned = slot?.assignedElements({ flatten: true }) ?? [];
+    this._items = assigned.filter((el) => el instanceof HTMLElement);
+    this._activeIndex = Math.min(this._activeIndex, Math.max(0, this._items.length - 1));
+    this._applyLayoutClasses();
+    this._applyA11yState();
+    this._bindItemHandlers();
+    this._requestMorphUpdate();
+  }
+  _applyLayoutClasses() {
+    const itemCount = this._items.length;
+    this._items.forEach((item, index) => {
+      item.classList.add("umi-labs-carousel-item");
+      item.classList.remove(
+        "size-large",
+        "size-medium",
+        "size-small",
+        "size-full"
+      );
+      if (this.variant === "full-screen") {
+        item.classList.add("size-full");
+        return;
+      }
+      if (this.variant === "uncontained" || this.variant === "uncontained-multi") {
+        item.classList.add("size-large");
+        return;
+      }
+      if (this.variant === "hero") {
+        item.classList.add(index === 0 ? "size-large" : "size-small");
+        return;
+      }
+      if (this.variant === "centered-hero") {
+        const first = index === 0;
+        const last = index === itemCount - 1;
+        item.classList.add(first || last ? "size-small" : "size-large");
+        return;
+      }
+      const pattern = index % 3;
+      if (pattern === 0) item.classList.add("size-large");
+      else if (pattern === 1) item.classList.add("size-medium");
+      else item.classList.add("size-small");
+    });
+  }
+  _applyA11yState() {
+    const total = this._items.length;
+    this._items.forEach((item, index) => {
+      item.tabIndex = index === this._activeIndex ? 0 : -1;
+      const hasLabel = item.hasAttribute("aria-label");
+      if (!hasLabel) {
+        item.setAttribute("aria-label", `Item ${index + 1} of ${total}`);
+      }
+      if (!item.hasAttribute("role")) {
+        item.setAttribute("role", "button");
+      }
+    });
+  }
+  _bindItemHandlers() {
+    this._items.forEach((item, index) => {
+      item.onfocus = () => {
+        this._activeIndex = index;
+        this._applyA11yState();
+      };
+      item.onclick = () => {
+        if (performance.now() < this._suppressClickUntil) return;
+        this._emitActivate(index);
+      };
+      item.onkeydown = (e9) => {
+        const key = e9.key;
+        if (key === "ArrowRight" || key === "ArrowDown" || key === "Tab") {
+          if (!e9.shiftKey) {
+            e9.preventDefault();
+            this._focusIndex(index + 1);
+          }
+          return;
+        }
+        if (key === "ArrowLeft" || key === "ArrowUp") {
+          e9.preventDefault();
+          this._focusIndex(index - 1);
+          return;
+        }
+        if (key === "Enter" || key === " ") {
+          e9.preventDefault();
+          this._emitActivate(index);
+        }
+      };
+    });
+  }
+  _focusIndex(index) {
+    if (!this._items.length) return;
+    const next = Math.max(0, Math.min(index, this._items.length - 1));
+    this._activeIndex = next;
+    this._applyA11yState();
+    const el = this._items[next];
+    el.focus();
+    el.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+    this._requestMorphUpdate();
+  }
+  _emitActivate(index) {
+    this.dispatchEvent(new CustomEvent("item-activated", {
+      detail: { index, item: this._items[index] ?? null },
+      bubbles: true,
+      composed: true
+    }));
+  }
+  _getViewport() {
+    return this.renderRoot.querySelector(".viewport");
+  }
+  _applyDynamicMorph() {
+    const viewport = this._getViewport();
+    if (!viewport || !this._items.length) return;
+    const rect = viewport.getBoundingClientRect();
+    const viewportCenter = rect.left + rect.width / 2;
+    const viewportWidth = Math.max(1, rect.width);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    this._items.forEach((item) => {
+      const itemRect = item.getBoundingClientRect();
+      const itemCenter = itemRect.left + itemRect.width / 2;
+      const signedDistance = (itemCenter - viewportCenter) / Math.max(1, viewportWidth * 0.6);
+      const rawDistance = Math.abs(itemCenter - viewportCenter);
+      const normalized = Math.min(1, rawDistance / Math.max(1, rect.width * 0.58));
+      const focus = 1 - normalized;
+      const smooth = focus * focus * (3 - 2 * focus);
+      const scale = reducedMotion ? 1 : 0.94 + smooth * 0.08;
+      const radius = this.variant === "full-screen" ? 0 : reducedMotion ? 28 : 28 - smooth * 10;
+      const lift = reducedMotion ? 0 : smooth * 7;
+      const tilt = reducedMotion ? 0 : Math.max(-2.5, Math.min(2.5, -signedDistance * 2.2));
+      const parallaxX = reducedMotion ? 0 : Math.max(-4, Math.min(4, -signedDistance * 3.2));
+      const sizeType = this._resolveSizeType(item);
+      const dynamicWidth = this._calcDynamicWidthPx(sizeType, viewportWidth, smooth);
+      item.style.setProperty("--labs-carousel-focus", focus.toFixed(4));
+      item.style.setProperty("--labs-carousel-dynamic-scale", scale.toFixed(4));
+      item.style.setProperty("--labs-carousel-dynamic-radius", `${Math.max(12, radius).toFixed(2)}px`);
+      item.style.setProperty("--labs-carousel-dynamic-lift", `${lift.toFixed(2)}px`);
+      item.style.setProperty("--labs-carousel-tilt", `${tilt.toFixed(2)}deg`);
+      item.style.setProperty("--labs-carousel-parallax-x", `${parallaxX.toFixed(2)}px`);
+      item.style.setProperty("--labs-carousel-dynamic-width", `${dynamicWidth.toFixed(2)}px`);
+    });
+  }
+  _resolveSizeType(item) {
+    if (item.classList.contains("size-full")) return "full";
+    if (item.classList.contains("size-small")) return "small";
+    if (item.classList.contains("size-medium")) return "medium";
+    return "large";
+  }
+  _clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+  _calcDynamicWidthPx(sizeType, viewportWidth, focus) {
+    if (sizeType === "full") return viewportWidth;
+    const compact = viewportWidth < 900;
+    if (this.variant === "multi-browse") {
+      const minW = compact ? 56 : 64;
+      const maxW = this._clamp(compact ? viewportWidth * 0.72 : viewportWidth * 0.42, 240, compact ? 360 : 420);
+      let width = minW + (maxW - minW) * focus;
+      if (sizeType === "medium") width *= 0.95;
+      if (sizeType === "small") width *= 0.9;
+      return this._clamp(width, 48, maxW + 10);
+    }
+    if (this.variant === "hero" || this.variant === "centered-hero") {
+      const minW = compact ? 56 : 64;
+      const maxW = this._clamp(compact ? viewportWidth * 0.8 : viewportWidth * 0.52, 280, compact ? 420 : 520);
+      const width = minW + (maxW - minW) * Math.pow(focus, 1.05);
+      return this._clamp(width, 48, maxW + 14);
+    }
+    if (this.variant === "uncontained" || this.variant === "uncontained-multi") {
+      const base = this._clamp(compact ? viewportWidth * 0.74 : viewportWidth * 0.42, 220, compact ? 360 : 420);
+      const width = base * (0.96 + focus * 0.08);
+      return this._clamp(width, base * 0.9, base * 1.06);
+    }
+    const fallback = this._clamp(compact ? viewportWidth * 0.66 : viewportWidth * 0.38, 200, compact ? 340 : 420);
+    return fallback;
+  }
+  _endDrag(pointerId) {
+    const viewport = this._getViewport();
+    if (viewport?.hasPointerCapture(pointerId)) {
+      viewport.releasePointerCapture(pointerId);
+    }
+    viewport?.classList.remove("is-dragging");
+    if (this._dragMoved) {
+      this._suppressClickUntil = performance.now() + 220;
+      if (this.snap) this._snapToNearest();
+    }
+    this._pointerId = null;
+    this._dragStartX = 0;
+    this._dragStartScrollLeft = 0;
+    this._dragMoved = false;
+  }
+  _snapToNearest() {
+    const viewport = this._getViewport();
+    if (!viewport || !this._items.length) return;
+    viewport.classList.add("is-snapping");
+    this.style.setProperty("--labs-carousel-item-duration", "300ms");
+    this.style.setProperty("--labs-carousel-item-easing", "cubic-bezier(.18, .9, .2, 1.05)");
+    if (this._snapClassTimer) clearTimeout(this._snapClassTimer);
+    this._snapClassTimer = setTimeout(() => {
+      viewport.classList.remove("is-snapping");
+      this.style.removeProperty("--labs-carousel-item-duration");
+      this.style.removeProperty("--labs-carousel-item-easing");
+      this._snapClassTimer = null;
+    }, 340);
+    const viewportCenter = viewport.scrollLeft + viewport.clientWidth / 2;
+    let nearestIndex = 0;
+    let nearestDist = Number.POSITIVE_INFINITY;
+    this._items.forEach((item2, index) => {
+      const center = item2.offsetLeft + item2.offsetWidth / 2;
+      const dist = Math.abs(center - viewportCenter);
+      if (dist < nearestDist) {
+        nearestDist = dist;
+        nearestIndex = index;
+      }
+    });
+    const item = this._items[nearestIndex];
+    const target = item.offsetLeft - (viewport.clientWidth - item.offsetWidth) / 2;
+    viewport.scrollTo({ left: Math.max(0, target), behavior: "smooth" });
+    this._activeIndex = nearestIndex;
+    this._applyA11yState();
+    this._requestMorphUpdate();
+  }
+  render() {
+    const classes = [
+      "carousel",
+      `variant-${this.variant}`,
+      this.snap ? "snap" : "free-scroll"
+    ].join(" ");
+    return b2`
+            <section class="${classes}">
+                <div
+                    class="viewport"
+                    role="region"
+                    aria-label=${this.ariaLabel}
+                    @scroll=${this._onViewportScroll}
+                    @pointerdown=${this._onPointerDown}
+                    @pointermove=${this._onPointerMove}
+                    @pointerup=${this._onPointerUp}
+                    @pointercancel=${this._onPointerCancel}
+                >
+                    <div class="track">
+                        <slot @slotchange=${this._onSlotChange}></slot>
+                    </div>
+                </div>
+
+                ${this.showAll ? b2`<button class="show-all" type="button" @click=${this._onShowAllClick}>${this.showAllText}</button>` : null}
+            </section>
+        `;
+  }
+};
+LabsCarousel.styles = [r(LabsCarousel_default)];
+__decorateClass([
+  n3({ type: String })
+], LabsCarousel.prototype, "variant", 2);
+__decorateClass([
+  n3({ type: Boolean })
+], LabsCarousel.prototype, "snap", 2);
+__decorateClass([
+  n3({ type: String, attribute: "aria-label" })
+], LabsCarousel.prototype, "ariaLabel", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "show-all" })
+], LabsCarousel.prototype, "showAll", 2);
+__decorateClass([
+  n3({ type: String, attribute: "show-all-text" })
+], LabsCarousel.prototype, "showAllText", 2);
+__decorateClass([
+  r4()
+], LabsCarousel.prototype, "_items", 2);
+__decorateClass([
+  r4()
+], LabsCarousel.prototype, "_activeIndex", 2);
+LabsCarousel = __decorateClass([
+  t("umi-labs-carousel")
+], LabsCarousel);
 export {
   AssistChip2 as AssistChip,
   Button2 as Button,
@@ -26195,6 +28869,7 @@ export {
   Checkbox2 as Checkbox,
   ChipBase,
   Chips,
+  ComboBox,
   DCProgressBar,
   DCProgressBarExpressive,
   DLProgressBar,
@@ -26222,6 +28897,10 @@ export {
   IconTimerButton,
   IconType,
   InputChip2 as InputChip,
+  LabsAppBar,
+  LabsBadge,
+  LabsCard,
+  LabsCarousel,
   LoaderButton,
   LoadingExtendedFloatingActionButton,
   LoadingFloatingActionButton,
@@ -26249,7 +28928,9 @@ export {
   SnackBar,
   SplitButton,
   SuggestionChip2 as SuggestionChip,
+  Switch2 as Switch,
   TextButton2 as TextButton,
+  TextField2 as TextField,
   TimeButton,
   TonalButton,
   clamp2 as clamp
@@ -26672,4 +29353,4 @@ lit-html/directives/live.js:
    * limitations under the License.
    *)
 */
-//# sourceMappingURL=umi-components.js.map
+//# sourceMappingURL=index.browser.js.map

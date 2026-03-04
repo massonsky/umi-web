@@ -4,3 +4,8 @@ export * from '../actions/index.js';
 export * from '../fab/index.js';
 export * from '../selection/index.js';
 export * from '../stateful/index.js';
+
+// Controls
+export * from './ComboBox.js';
+export * from './TextField.js';
+export * from './Switch.js';
