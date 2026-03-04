@@ -38,6 +38,10 @@ export * from './components/colors/index.js';
 export * from './components/fonts/index.js';
 export * from './components/icons/index.js';
 export * from './components/feedback/index.js';
+export * from './components/controls/ComboBox.js';
+export * from './components/controls/TextField.js';
+export * from './components/controls/Switch.js';
+export * from './components/labs/index.js';
 
 // Базовые классы и enum-ы доступны для расширения
 export * from './components/templates/Button.js';

@@ -1,0 +1,350 @@
+/* ─────────────────────────────────────────────────────────────
+   umi-text-field — Material Design 3 TextField (Expressive 2025)
+   ─────────────────────────────────────────────────────────────
+   CSS custom properties (set inline by component JS):
+     --field-h                 container height
+     --field-icon-sz           icon size
+     --field-radius            corner radius
+     --field-pad-x             horizontal padding
+     --field-icon-pad          icon padding
+     --field-indicator-h       active indicator height
+
+   Color tokens:
+     --field-container-bg      container background
+     --field-label-color       label text color
+     --field-text-color        input text color
+     --field-icon-color        icon color
+     --field-indicator-color   active indicator color
+     --field-outline-color     outline color (outlined variant)
+     --field-supporting-color  supporting text color
+     --field-state-layer       state layer color
+   ───────────────────────────────────────────────────────────── */
+
+:host {
+    display: inline-flex;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    vertical-align: top;
+    width: var(--field-width, 280px);
+}
+
+/* ── Root ───────────────────────────────────────────────────── */
+.root {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* ── Transform Container ───────────────────────────────────── */
+.transform-container {
+    position: relative;
+    width: 100%;
+    height: var(--field-h, 56px);
+    cursor: text;
+}
+
+/* ── Container ─────────────────────────────────────────────── */
+.container {
+    position: absolute;
+    inset: 0;
+    box-sizing: border-box;
+    background: var(--field-container-bg, transparent);
+    border-radius: var(--field-radius, 4px);
+    overflow: hidden;
+}
+
+.container.filled {
+    border-radius: var(--field-radius, 4px) var(--field-radius, 4px) 0 0;
+    background: var(--md-sys-color-surface-container-highest, #e6e0e9);
+}
+
+.container.outlined {
+    background: transparent;
+    border-radius: var(--field-radius, 4px);
+}
+
+/* ── State Layer (filled variant) ──────────────────────────── */
+.state-layer {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--field-state-layer, var(--md-sys-color-on-surface, #1d1b20));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms cubic-bezier(.4, 0, .2, 1);
+}
+
+.root.hovered:not(.focused) .state-layer.filled { opacity: 0.08; }
+
+/* ── Active Indicator (filled variant, bottom line) ────────── */
+.active-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--field-indicator-color, var(--md-sys-color-on-surface-variant, #49454f));
+    transition:
+        height 150ms cubic-bezier(.4, 0, .2, 1),
+        background-color 300ms cubic-bezier(.2, 0, 0, 1);
+}
+
+.root.focused .active-indicator {
+    height: var(--field-indicator-h, 2px);
+    background: var(--md-sys-color-primary, #6750a4);
+}
+
+.root.has-error .active-indicator {
+    background: var(--md-sys-color-error, #b3261e);
+}
+
+.root.disabled .active-indicator { opacity: 0.38; }
+
+.root.disabled .container {
+    background: color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 4%, transparent);
+}
+
+.root.disabled .label,
+.root.disabled .prefix-text,
+.root.disabled .suffix-text {
+    color: color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 38%, transparent);
+}
+
+.root.disabled input {
+    color: color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 38%, transparent);
+}
+
+/* ── Outline (outlined variant) ────────────────────────────── */
+.outline-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.outline-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* ── Leading Icon ──────────────────────────────────────────── */
+.leading-icon {
+    position: absolute;
+    left: var(--field-icon-pad, 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--field-icon-sz, 24px);
+    height: var(--field-icon-sz, 24px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    color: var(--field-icon-color, var(--md-sys-color-on-surface-variant, #49454f));
+    transition: transform 300ms cubic-bezier(.2, .8, .2, 1);
+    cursor: pointer;
+}
+
+.leading-icon .icon-text {
+    font-family: 'Material Symbols Outlined';
+    font-feature-settings: 'liga' 1;
+    -webkit-font-feature-settings: 'liga' 1;
+    font-size: var(--field-icon-sz, 24px);
+    font-variation-settings:
+        'FILL' var(--field-icon-fill, 0),
+        'wght' var(--field-icon-wght, 400),
+        'GRAD' var(--field-icon-grad, 0),
+        'opsz' var(--field-icon-sz, 24);
+    line-height: 1;
+    font-style: normal;
+}
+
+.root.hovered .leading-icon { transform: translateY(-50%) rotate(5deg); }
+.root.disabled .leading-icon { opacity: 0.38; }
+
+/* ── Trailing Icon ─────────────────────────────────────────── */
+.trailing-icon {
+    position: absolute;
+    right: var(--field-icon-pad, 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--field-icon-sz, 24px);
+    height: var(--field-icon-sz, 24px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    color: var(--field-icon-color, var(--md-sys-color-on-surface-variant, #49454f));
+    cursor: pointer;
+    transition: transform 300ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.trailing-icon .icon-text {
+    font-family: 'Material Symbols Outlined';
+    font-feature-settings: 'liga' 1;
+    -webkit-font-feature-settings: 'liga' 1;
+    font-size: var(--field-icon-sz, 24px);
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' var(--field-icon-sz, 24);
+    line-height: 1;
+    font-style: normal;
+}
+
+.root.hovered .trailing-icon { transform: translateY(-50%) rotate(-5deg); }
+.root.disabled .trailing-icon { opacity: 0.38; }
+.root.has-error .trailing-icon .icon-text {
+    color: var(--md-sys-color-error, #b3261e);
+}
+
+/* ── Label ─────────────────────────────────────────────────── */
+.label {
+    position: absolute;
+    z-index: 2;
+    left: var(--field-label-x, var(--field-pad-x, 16px));
+    top: 50%;
+    pointer-events: none;
+    transform-origin: left center;
+    transform: translateY(-50%);
+    transition: transform 150ms cubic-bezier(.2, 0, 0, 1),
+                color 150ms cubic-bezier(.2, 0, 0, 1);
+    color: var(--field-label-color, var(--md-sys-color-on-surface-variant, #49454f));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Base typography - body-large */
+    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);
+    font-size: var(--md-sys-typescale-body-large-size, 16px);
+    font-weight: var(--md-sys-typescale-body-large-weight, 400);
+    line-height: var(--md-sys-typescale-body-large-line-height, 24px);
+    letter-spacing: var(--md-sys-typescale-body-large-tracking, 0.5px);
+}
+
+/* Populated Filled: label floats to top - scale creates smaller text */
+.label.populated.filled {
+    /* Move up to 8px from top, accounting for 50% start position */
+    /* 50% of 56px = 28px, need to go to 8px + half of scaled line-height */
+    transform: translateY(calc(-50% - 12px)) scale(0.75);
+    transform-origin: left top;
+}
+
+/* Populated Outlined: label floats to center of top border line */
+.label.populated.outlined {
+    transform: translateY(calc(-50% - (var(--field-h, 56px) / 2) + 1px)) scale(0.75);
+    transform-origin: left center;
+}
+
+.root.focused .label {
+    color: var(--md-sys-color-primary, #6750a4);
+}
+
+.root.has-error .label {
+    color: var(--md-sys-color-error, #b3261e);
+}
+
+.root.disabled .label { opacity: 0.38; }
+
+/* ── Input Area ────────────────────────────────────────────── */
+.input-area {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    padding-left: var(--field-input-left, var(--field-pad-x, 16px));
+    padding-right: var(--field-input-right, var(--field-pad-x, 16px));
+    box-sizing: border-box;
+}
+
+.input-area.has-label.populated.filled {
+    padding-top: 16px;
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    min-width: 0;
+}
+
+.prefix-text,
+.suffix-text {
+    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);
+    font-size: var(--md-sys-typescale-body-large-size, 16px);
+    font-weight: var(--md-sys-typescale-body-large-weight, 400);
+    color: var(--field-text-color, var(--md-sys-color-on-surface, #1d1b20));
+    opacity: 0.6;
+    white-space: nowrap;
+}
+
+/* ── Input Element ─────────────────────────────────────────── */
+input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);
+    font-size: var(--md-sys-typescale-body-large-size, 16px);
+    font-weight: var(--md-sys-typescale-body-large-weight, 400);
+    line-height: var(--md-sys-typescale-body-large-line-height, 24px);
+    color: var(--field-text-color, var(--md-sys-color-on-surface, #1d1b20));
+    caret-color: var(--md-sys-color-primary, #6750a4);
+}
+
+input::placeholder {
+    color: var(--md-sys-color-on-surface-variant, #49454f);
+    opacity: 1;
+}
+
+input:disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+}
+
+.root.has-error input {
+    caret-color: var(--md-sys-color-error, #b3261e);
+}
+
+/* Selection color */
+input::selection {
+    background: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 30%, transparent);
+}
+
+/* ── Supporting Text Row ───────────────────────────────────── */
+.supporting-row {
+    display: flex;
+    justify-content: space-between;
+    padding-left: var(--field-pad-x, 16px);
+    padding-right: var(--field-pad-x, 16px);
+    padding-top: var(--field-supporting-top, 4px);
+    gap: 16px;
+}
+
+.supporting-text {
+    font-family: var(--md-sys-typescale-body-small-font, 'Roboto', 'Segoe UI', sans-serif);
+    font-size: var(--md-sys-typescale-body-small-size, 12px);
+    font-weight: var(--md-sys-typescale-body-small-weight, 400);
+    line-height: var(--md-sys-typescale-body-small-line-height, 16px);
+    color: var(--field-supporting-color, var(--md-sys-color-on-surface-variant, #49454f));
+    flex: 1;
+}
+
+.root.has-error .supporting-text {
+    color: var(--md-sys-color-error, #b3261e);
+}
+
+.character-counter {
+    font-family: var(--md-sys-typescale-body-small-font, 'Roboto', 'Segoe UI', sans-serif);
+    font-size: var(--md-sys-typescale-body-small-size, 12px);
+    font-weight: var(--md-sys-typescale-body-small-weight, 400);
+    line-height: var(--md-sys-typescale-body-small-line-height, 16px);
+    color: var(--md-sys-color-on-surface-variant, #49454f);
+    white-space: nowrap;
+}
+
+.root.disabled .supporting-row { opacity: 0.38; }
