@@ -28496,7 +28496,7 @@ LabsCard = __decorateClass([
 ], LabsCard);
 
 // src/components/styles/LabsCarousel.css
-var LabsCarousel_default = ":host {\r\n    display: block;\r\n    width: 100%;\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n}\r\n\r\n.carousel {\r\n    width: 100%;\r\n}\r\n\r\n.viewport {\r\n    width: 100%;\r\n    overflow-x: auto;\r\n    overflow-y: hidden;\r\n    border-radius: 28px;\r\n    cursor: grab;\r\n    scrollbar-width: thin;\r\n    scrollbar-color: color-mix(in srgb, var(--md-sys-color-outline, #79747e) 45%, transparent) transparent;\r\n}\r\n\r\n.viewport.is-dragging {\r\n    cursor: grabbing;\r\n    user-select: none;\r\n}\r\n\r\n.track {\r\n    min-height: 200px;\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 8px;\r\n    padding: 8px 16px;\r\n    perspective: 1000px;\r\n}\r\n\r\n.carousel.snap .viewport {\r\n    scroll-snap-type: x mandatory;\r\n}\r\n\r\n.carousel.free-scroll .viewport {\r\n    scroll-snap-type: x proximity;\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item) {\r\n    position: relative;\r\n    flex: 0 0 auto;\r\n    min-height: 180px;\r\n    transform-origin: center center;\r\n    transform-style: preserve-3d;\r\n    backface-visibility: hidden;\r\n    border-radius: var(--labs-carousel-dynamic-radius, 28px);\r\n    border: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant, #cac4d0) 55%, transparent);\r\n    background: var(--md-sys-color-surface-container, #f3edf7);\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n    overflow: hidden;\r\n    cursor: pointer;\r\n    scroll-snap-align: start;\r\n    scroll-snap-stop: always;\r\n    transform:\r\n        translateX(var(--labs-carousel-parallax-x, 0px))\r\n        translateY(calc(var(--labs-carousel-dynamic-lift, 0px) * -0.1))\r\n        rotateY(var(--labs-carousel-tilt, 0deg))\r\n        scale(var(--labs-carousel-dynamic-scale, 1));\r\n    transition:\r\n        width var(--labs-carousel-item-duration, 260ms) var(--labs-carousel-item-easing, cubic-bezier(.2, .75, .2, 1)),\r\n        transform var(--labs-carousel-item-duration, 260ms) var(--labs-carousel-item-easing, cubic-bezier(.2, .75, .2, 1)),\r\n        border-radius var(--labs-carousel-item-duration, 260ms) var(--labs-carousel-item-easing, cubic-bezier(.2, .75, .2, 1)),\r\n        background-color 180ms cubic-bezier(.2, 0, 0, 1),\r\n        box-shadow 180ms cubic-bezier(.2, 0, 0, 1),\r\n        border-color 180ms cubic-bezier(.2, 0, 0, 1);\r\n    outline: none;\r\n    user-select: none;\r\n    will-change: transform, border-radius;\r\n}\r\n\r\n.viewport.is-dragging ::slotted(.umi-labs-carousel-item) {\r\n    transition-duration: 90ms;\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item:hover) {\r\n    box-shadow: inset 0 0 0 9999px color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 8%, transparent);\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item:active) {\r\n    box-shadow: inset 0 0 0 9999px color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 12%, transparent);\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item:focus-visible) {\r\n    border-color: var(--md-sys-color-primary, #6750a4);\r\n    box-shadow: 0 0 0 3px color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 24%, transparent);\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item.size-large) {\r\n    width: var(--labs-carousel-dynamic-width, min(74vw, 360px));\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item.size-medium) {\r\n    width: var(--labs-carousel-dynamic-width, min(58vw, 280px));\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item.size-small) {\r\n    width: var(--labs-carousel-dynamic-width, clamp(40px, 8vw, 56px));\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item.size-full) {\r\n    width: var(--labs-carousel-dynamic-width, 100%);\r\n    min-height: 280px;\r\n    border-radius: 0;\r\n}\r\n\r\n.carousel.variant-uncontained .track,\r\n.carousel.variant-uncontained-multi .track {\r\n    padding-right: 0;\r\n}\r\n\r\n.carousel.variant-full-screen .viewport {\r\n    border-radius: 0;\r\n}\r\n\r\n.carousel.variant-full-screen .track {\r\n    min-height: 320px;\r\n    padding: 0;\r\n    gap: 16px;\r\n}\r\n\r\n.show-all {\r\n    margin-top: 8px;\r\n    padding: 8px 12px;\r\n    border-radius: 10px;\r\n    border: 1px solid color-mix(in srgb, var(--md-sys-color-outline, #79747e) 60%, transparent);\r\n    background: transparent;\r\n    color: var(--md-sys-color-primary, #6750a4);\r\n    font-family: var(--md-sys-typescale-label-large-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-label-large-size, 14px);\r\n    font-weight: var(--md-sys-typescale-label-large-weight, 500);\r\n    letter-spacing: var(--md-sys-typescale-label-large-tracking, 0.1px);\r\n    cursor: pointer;\r\n}\r\n\r\n.show-all:hover {\r\n    background: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 8%, transparent);\r\n}\r\n\r\n.show-all:focus-visible {\r\n    outline: 2px solid color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 50%, transparent);\r\n    outline-offset: 2px;\r\n}\r\n\r\n@media (min-width: 900px) {\r\n    ::slotted(.umi-labs-carousel-item.size-large) {\r\n        width: min(42vw, 420px);\r\n    }\r\n\r\n    ::slotted(.umi-labs-carousel-item.size-medium) {\r\n        width: min(30vw, 320px);\r\n    }\r\n}\r\n\r\n@media (prefers-reduced-motion: reduce) {\r\n    .viewport {\r\n        scroll-behavior: auto;\r\n    }\r\n\r\n    ::slotted(.umi-labs-carousel-item) {\r\n        transition: none;\r\n        transform: none;\r\n    }\r\n}\r\n";
+var LabsCarousel_default = ":host {\r\n    display: block;\r\n    width: 100%;\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n}\r\n\r\n.carousel {\r\n    width: 100%;\r\n}\r\n\r\n.viewport {\r\n    width: 100%;\r\n    overflow-x: auto;\r\n    overflow-y: hidden;\r\n    border-radius: 28px;\r\n    cursor: grab;\r\n    scrollbar-width: none;\r\n    scrollbar-gutter: auto;\r\n    -ms-overflow-style: none;\r\n    overscroll-behavior-x: contain;\r\n    -webkit-overflow-scrolling: touch;\r\n    touch-action: pan-x;\r\n    user-select: none;\r\n}\r\n\r\n.viewport::-webkit-scrollbar {\r\n    width: 0;\r\n    height: 0;\r\n    display: none;\r\n}\r\n\r\n.viewport::-webkit-scrollbar-track {\r\n    background: transparent;\r\n}\r\n\r\n.viewport::-webkit-scrollbar-thumb {\r\n    background: transparent;\r\n    border-radius: 999px;\r\n}\r\n\r\n.viewport::-webkit-scrollbar-thumb:hover {\r\n    background: transparent;\r\n}\r\n\r\n.viewport.is-dragging {\r\n    cursor: grabbing;\r\n    user-select: none;\r\n}\r\n\r\n.viewport.is-dragging,\r\n.viewport.is-wheeling {\r\n    scroll-snap-type: none !important;\r\n}\r\n\r\n.track {\r\n    min-height: 200px;\r\n    width: max-content;\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 8px;\r\n    padding: 8px 16px;\r\n    perspective: 1000px;\r\n}\r\n\r\n.carousel.snap .viewport {\r\n    scroll-snap-type: x mandatory;\r\n}\r\n\r\n.carousel.free-scroll .viewport {\r\n    scroll-snap-type: x proximity;\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item) {\r\n    position: relative;\r\n    flex: 0 0 auto;\r\n    min-height: 180px;\r\n    transform-origin: center center;\r\n    transform-style: preserve-3d;\r\n    backface-visibility: hidden;\r\n    contain: layout paint style;\r\n    border-radius: var(--labs-carousel-dynamic-radius, 28px);\r\n    border: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant, #cac4d0) 55%, transparent);\r\n    background: var(--md-sys-color-surface-container, #f3edf7);\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n    overflow: hidden;\r\n    cursor: pointer;\r\n    scroll-snap-align: start;\r\n    scroll-snap-stop: always;\r\n    transform:\r\n        translateX(var(--labs-carousel-parallax-x, 0px))\r\n        translateY(calc(var(--labs-carousel-dynamic-lift, 0px) * -0.1))\r\n        rotateY(var(--labs-carousel-tilt, 0deg))\r\n        scale(var(--labs-carousel-dynamic-scale, 1));\r\n    transition:\r\n        width var(--labs-carousel-item-duration, 260ms) var(--labs-carousel-item-easing, cubic-bezier(.2, .75, .2, 1)),\r\n        transform var(--labs-carousel-item-duration, 260ms) var(--labs-carousel-item-easing, cubic-bezier(.2, .75, .2, 1)),\r\n        border-radius var(--labs-carousel-item-duration, 260ms) var(--labs-carousel-item-easing, cubic-bezier(.2, .75, .2, 1)),\r\n        background-color 180ms cubic-bezier(.2, 0, 0, 1),\r\n        box-shadow 180ms cubic-bezier(.2, 0, 0, 1),\r\n        border-color 180ms cubic-bezier(.2, 0, 0, 1);\r\n    outline: none;\r\n    user-select: none;\r\n    will-change: transform, border-radius, width;\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item:hover) {\r\n    box-shadow: inset 0 0 0 9999px color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 8%, transparent);\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item:active) {\r\n    box-shadow: inset 0 0 0 9999px color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 12%, transparent);\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item:focus-visible) {\r\n    border-color: var(--md-sys-color-primary, #6750a4);\r\n    box-shadow: 0 0 0 3px color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 24%, transparent);\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item.size-large) {\r\n    width: var(--labs-carousel-dynamic-width, min(74vw, 360px));\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item.size-medium) {\r\n    width: var(--labs-carousel-dynamic-width, min(58vw, 280px));\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item.size-small) {\r\n    width: var(--labs-carousel-dynamic-width, clamp(40px, 8vw, 56px));\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item.size-full) {\r\n    width: var(--labs-carousel-dynamic-width, 100%);\r\n    min-height: 280px;\r\n    border-radius: 0;\r\n}\r\n\r\n.carousel.variant-uncontained .track,\r\n.carousel.variant-uncontained-multi .track {\r\n    padding-right: 0;\r\n}\r\n\r\n.carousel.variant-full-screen .viewport {\r\n    border-radius: 0;\r\n}\r\n\r\n.carousel.variant-full-screen .track {\r\n    min-height: 320px;\r\n    padding: 0;\r\n    gap: 16px;\r\n}\r\n\r\n.show-all {\r\n    margin-top: 8px;\r\n    padding: 8px 12px;\r\n    border-radius: 10px;\r\n    border: 1px solid color-mix(in srgb, var(--md-sys-color-outline, #79747e) 60%, transparent);\r\n    background: transparent;\r\n    color: var(--md-sys-color-primary, #6750a4);\r\n    font-family: var(--md-sys-typescale-label-large-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-label-large-size, 14px);\r\n    font-weight: var(--md-sys-typescale-label-large-weight, 500);\r\n    letter-spacing: var(--md-sys-typescale-label-large-tracking, 0.1px);\r\n    cursor: pointer;\r\n}\r\n\r\n.show-all:hover {\r\n    background: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 8%, transparent);\r\n}\r\n\r\n.show-all:focus-visible {\r\n    outline: 2px solid color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 50%, transparent);\r\n    outline-offset: 2px;\r\n}\r\n\r\n@media (min-width: 900px) {\r\n    ::slotted(.umi-labs-carousel-item.size-large) {\r\n        width: min(42vw, 420px);\r\n    }\r\n\r\n    ::slotted(.umi-labs-carousel-item.size-medium) {\r\n        width: min(30vw, 320px);\r\n    }\r\n}\r\n\r\n@media (prefers-reduced-motion: reduce) {\r\n    .viewport {\r\n        scroll-behavior: auto;\r\n    }\r\n\r\n    ::slotted(.umi-labs-carousel-item) {\r\n        transition: none;\r\n        transform: none;\r\n    }\r\n}\r\n";
 
 // src/components/labs/Carousel.ts
 var LabsCarousel = class extends i4 {
@@ -28516,6 +28516,18 @@ var LabsCarousel = class extends i4 {
     this._dragMoved = false;
     this._suppressClickUntil = 0;
     this._snapClassTimer = null;
+    this._wheelRafId = 0;
+    this._wheelTargetScrollLeft = null;
+    this._wheelSnapTimer = null;
+    this._wheelStepAcc = 0;
+    this._isIndexAnimating = false;
+    this._indexAnimTimer = null;
+    this._widthLerpMap = /* @__PURE__ */ new WeakMap();
+    this._viewportEl = null;
+    this._lastPointerX = 0;
+    this._lastPointerT = 0;
+    this._dragVelocity = 0;
+    this._inertiaRafId = 0;
     this._onSlotChange = () => {
       this._syncItems();
     };
@@ -28524,6 +28536,23 @@ var LabsCarousel = class extends i4 {
     };
     this._onViewportScroll = () => {
       this._requestMorphUpdate();
+    };
+    this._onViewportClick = (event) => {
+      if (performance.now() < this._suppressClickUntil) return;
+      if (this._pointerId !== null) return;
+      const path = event.composedPath();
+      let index = -1;
+      for (const node of path) {
+        if (!(node instanceof HTMLElement)) continue;
+        const hit = this._items.indexOf(node);
+        if (hit >= 0) {
+          index = hit;
+          break;
+        }
+      }
+      if (index < 0) return;
+      this._scrollToIndex(index, "smooth");
+      this._emitActivate(index);
     };
     this._requestMorphUpdate = () => {
       if (this._rafId) return;
@@ -28540,7 +28569,16 @@ var LabsCarousel = class extends i4 {
       this._dragStartX = event.clientX;
       this._dragStartScrollLeft = viewport.scrollLeft;
       this._dragMoved = false;
+      this._lastPointerX = event.clientX;
+      this._lastPointerT = performance.now();
+      this._dragVelocity = 0;
+      if (this._inertiaRafId) {
+        cancelAnimationFrame(this._inertiaRafId);
+        this._inertiaRafId = 0;
+      }
       viewport.classList.add("is-dragging");
+      this.style.setProperty("--labs-carousel-item-duration", "80ms");
+      this.style.setProperty("--labs-carousel-item-easing", "linear");
       viewport.setPointerCapture(event.pointerId);
     };
     this._onPointerMove = (event) => {
@@ -28548,8 +28586,14 @@ var LabsCarousel = class extends i4 {
       const viewport = this._getViewport();
       if (!viewport) return;
       const dx = event.clientX - this._dragStartX;
-      if (Math.abs(dx) > 2) this._dragMoved = true;
+      if (Math.abs(dx) > 4) this._dragMoved = true;
       viewport.scrollLeft = this._dragStartScrollLeft - dx;
+      const now = performance.now();
+      const dt = Math.max(1, now - this._lastPointerT);
+      const vx = (event.clientX - this._lastPointerX) / dt;
+      this._dragVelocity = this._dragVelocity * 0.7 + vx * 0.3;
+      this._lastPointerX = event.clientX;
+      this._lastPointerT = now;
       this._requestMorphUpdate();
     };
     this._onPointerUp = (event) => {
@@ -28559,6 +28603,48 @@ var LabsCarousel = class extends i4 {
     this._onPointerCancel = (event) => {
       if (this._pointerId === null || event.pointerId !== this._pointerId) return;
       this._endDrag(event.pointerId);
+    };
+    this._onViewportWheel = (event) => {
+      const viewport = this._getViewport();
+      if (!viewport) return;
+      const maxScroll = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
+      if (maxScroll <= 0) return;
+      const deltaX = event.deltaX;
+      const deltaY = event.deltaY;
+      if (Math.abs(deltaX) < 0.1 && Math.abs(deltaY) < 0.1) return;
+      const horizontalIntent = Math.abs(deltaX) > Math.abs(deltaY) ? deltaX : deltaY;
+      if (this._isIndexAnimating) {
+        event.preventDefault();
+        return;
+      }
+      const atLeft = viewport.scrollLeft <= 0.5;
+      const atRight = viewport.scrollLeft >= maxScroll - 0.5;
+      const wantsLeft = horizontalIntent < 0;
+      const wantsRight = horizontalIntent > 0;
+      if (atLeft && wantsLeft || atRight && wantsRight) {
+        return;
+      }
+      event.preventDefault();
+      viewport.classList.add("is-wheeling");
+      this._wheelStepAcc += horizontalIntent;
+      const STEP_THRESHOLD = 60;
+      if (Math.abs(this._wheelStepAcc) >= STEP_THRESHOLD) {
+        const direction = this._wheelStepAcc > 0 ? 1 : -1;
+        this._wheelStepAcc = 0;
+        const from = this._nearestIndex();
+        const to = this._clamp(from + direction, 0, this._items.length - 1);
+        if (to !== from) {
+          this._scrollToIndex(to, "smooth");
+        }
+      }
+      if (this._wheelSnapTimer) clearTimeout(this._wheelSnapTimer);
+      this._wheelSnapTimer = setTimeout(() => {
+        const vp = this._getViewport();
+        vp?.classList.remove("is-wheeling");
+        if (this.snap && this._pointerId === null && !this._isIndexAnimating) this._snapToNearest();
+        this._wheelStepAcc = 0;
+        this._wheelSnapTimer = null;
+      }, 180);
     };
   }
   connectedCallback() {
@@ -28574,10 +28660,31 @@ var LabsCarousel = class extends i4 {
       clearTimeout(this._snapClassTimer);
       this._snapClassTimer = null;
     }
+    if (this._wheelRafId) {
+      cancelAnimationFrame(this._wheelRafId);
+      this._wheelRafId = 0;
+    }
+    if (this._wheelSnapTimer) {
+      clearTimeout(this._wheelSnapTimer);
+      this._wheelSnapTimer = null;
+    }
+    if (this._indexAnimTimer) {
+      clearTimeout(this._indexAnimTimer);
+      this._indexAnimTimer = null;
+    }
+    if (this._inertiaRafId) {
+      cancelAnimationFrame(this._inertiaRafId);
+      this._inertiaRafId = 0;
+    }
+    this._detachViewportListeners();
+    this._wheelTargetScrollLeft = null;
+    this._wheelStepAcc = 0;
+    this._isIndexAnimating = false;
     window.removeEventListener("resize", this._requestMorphUpdate);
     super.disconnectedCallback();
   }
   firstUpdated() {
+    this._attachViewportListeners();
     this._syncItems();
     this._requestMorphUpdate();
   }
@@ -28651,10 +28758,6 @@ var LabsCarousel = class extends i4 {
         this._activeIndex = index;
         this._applyA11yState();
       };
-      item.onclick = () => {
-        if (performance.now() < this._suppressClickUntil) return;
-        this._emitActivate(index);
-      };
       item.onkeydown = (e9) => {
         const key = e9.key;
         if (key === "ArrowRight" || key === "ArrowDown" || key === "Tab") {
@@ -28683,8 +28786,51 @@ var LabsCarousel = class extends i4 {
     this._applyA11yState();
     const el = this._items[next];
     el.focus();
-    el.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+    this._scrollToIndex(next, "smooth");
     this._requestMorphUpdate();
+  }
+  _nearestIndex() {
+    const viewport = this._getViewport();
+    if (!viewport || !this._items.length) return 0;
+    const viewportCenter = viewport.scrollLeft + viewport.clientWidth / 2;
+    let nearestIndex = 0;
+    let nearestDist = Number.POSITIVE_INFINITY;
+    this._items.forEach((item, index) => {
+      const center = item.offsetLeft + item.offsetWidth / 2;
+      const dist = Math.abs(center - viewportCenter);
+      if (dist < nearestDist) {
+        nearestDist = dist;
+        nearestIndex = index;
+      }
+    });
+    return nearestIndex;
+  }
+  _scrollToIndex(index, behavior) {
+    const viewport = this._getViewport();
+    if (!viewport || !this._items.length) return;
+    const clamped = this._clamp(index, 0, this._items.length - 1);
+    const item = this._items[clamped];
+    if (!item) return;
+    this._activeIndex = clamped;
+    this._applyA11yState();
+    const target = item.offsetLeft - (viewport.clientWidth - item.offsetWidth) / 2;
+    viewport.scrollTo({ left: Math.max(0, target), behavior });
+    if (behavior === "smooth") {
+      this._isIndexAnimating = true;
+      if (this._indexAnimTimer) clearTimeout(this._indexAnimTimer);
+      this._indexAnimTimer = setTimeout(() => {
+        this._isIndexAnimating = false;
+        this._indexAnimTimer = null;
+      }, 260);
+    }
+  }
+  _scrollItemIntoCenter(index, behavior) {
+    const viewport = this._getViewport();
+    if (!viewport) return;
+    const item = this._items[index];
+    if (!item) return;
+    const target = item.offsetLeft - (viewport.clientWidth - item.offsetWidth) / 2;
+    viewport.scrollTo({ left: Math.max(0, target), behavior });
   }
   _emitActivate(index) {
     this.dispatchEvent(new CustomEvent("item-activated", {
@@ -28696,19 +28842,33 @@ var LabsCarousel = class extends i4 {
   _getViewport() {
     return this.renderRoot.querySelector(".viewport");
   }
+  _attachViewportListeners() {
+    const viewport = this._getViewport();
+    if (!viewport || this._viewportEl === viewport) return;
+    if (this._viewportEl) {
+      this._detachViewportListeners();
+    }
+    this._viewportEl = viewport;
+    this._viewportEl.addEventListener("wheel", this._onViewportWheel, { passive: false });
+  }
+  _detachViewportListeners() {
+    if (!this._viewportEl) return;
+    this._viewportEl.removeEventListener("wheel", this._onViewportWheel);
+    this._viewportEl = null;
+  }
   _applyDynamicMorph() {
     const viewport = this._getViewport();
     if (!viewport || !this._items.length) return;
-    const rect = viewport.getBoundingClientRect();
-    const viewportCenter = rect.left + rect.width / 2;
-    const viewportWidth = Math.max(1, rect.width);
+    const viewportWidth = Math.max(1, viewport.clientWidth);
+    const viewportCenter = viewport.scrollLeft + viewportWidth / 2;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const lerpFactor = reducedMotion ? 1 : this._pointerId !== null ? 0.16 : this._wheelRafId ? 0.2 : 0.24;
     this._items.forEach((item) => {
-      const itemRect = item.getBoundingClientRect();
-      const itemCenter = itemRect.left + itemRect.width / 2;
+      const itemWidthNow = item.offsetWidth;
+      const itemCenter = item.offsetLeft + itemWidthNow / 2;
       const signedDistance = (itemCenter - viewportCenter) / Math.max(1, viewportWidth * 0.6);
       const rawDistance = Math.abs(itemCenter - viewportCenter);
-      const normalized = Math.min(1, rawDistance / Math.max(1, rect.width * 0.58));
+      const normalized = Math.min(1, rawDistance / Math.max(1, viewportWidth * 0.58));
       const focus = 1 - normalized;
       const smooth = focus * focus * (3 - 2 * focus);
       const scale = reducedMotion ? 1 : 0.94 + smooth * 0.08;
@@ -28717,14 +28877,19 @@ var LabsCarousel = class extends i4 {
       const tilt = reducedMotion ? 0 : Math.max(-2.5, Math.min(2.5, -signedDistance * 2.2));
       const parallaxX = reducedMotion ? 0 : Math.max(-4, Math.min(4, -signedDistance * 3.2));
       const sizeType = this._resolveSizeType(item);
-      const dynamicWidth = this._calcDynamicWidthPx(sizeType, viewportWidth, smooth);
+      const targetWidth = this._calcDynamicWidthPx(sizeType, viewportWidth, smooth);
+      const prevWidth = this._widthLerpMap.get(item) ?? targetWidth;
+      const delta = (targetWidth - prevWidth) * lerpFactor;
+      const cappedDelta = this._clamp(delta, -10, 10);
+      const dynamicWidth = prevWidth + cappedDelta;
+      this._widthLerpMap.set(item, dynamicWidth);
       item.style.setProperty("--labs-carousel-focus", focus.toFixed(4));
       item.style.setProperty("--labs-carousel-dynamic-scale", scale.toFixed(4));
       item.style.setProperty("--labs-carousel-dynamic-radius", `${Math.max(12, radius).toFixed(2)}px`);
       item.style.setProperty("--labs-carousel-dynamic-lift", `${lift.toFixed(2)}px`);
       item.style.setProperty("--labs-carousel-tilt", `${tilt.toFixed(2)}deg`);
       item.style.setProperty("--labs-carousel-parallax-x", `${parallaxX.toFixed(2)}px`);
-      item.style.setProperty("--labs-carousel-dynamic-width", `${dynamicWidth.toFixed(2)}px`);
+      item.style.setProperty("--labs-carousel-dynamic-width", `${Math.round(dynamicWidth)}px`);
     });
   }
   _resolveSizeType(item) {
@@ -28767,14 +28932,53 @@ var LabsCarousel = class extends i4 {
       viewport.releasePointerCapture(pointerId);
     }
     viewport?.classList.remove("is-dragging");
+    this.style.removeProperty("--labs-carousel-item-duration");
+    this.style.removeProperty("--labs-carousel-item-easing");
     if (this._dragMoved) {
       this._suppressClickUntil = performance.now() + 220;
-      if (this.snap) this._snapToNearest();
+      this._startInertia();
     }
     this._pointerId = null;
     this._dragStartX = 0;
     this._dragStartScrollLeft = 0;
     this._dragMoved = false;
+  }
+  _startInertia() {
+    const viewport = this._getViewport();
+    if (!viewport) return;
+    const maxScroll = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
+    if (maxScroll <= 0) {
+      if (this.snap) this._snapToNearest();
+      return;
+    }
+    let velocity = -this._dragVelocity * 28;
+    if (Math.abs(velocity) < 0.4) {
+      if (this.snap) this._snapToNearest();
+      return;
+    }
+    if (this._inertiaRafId) {
+      cancelAnimationFrame(this._inertiaRafId);
+      this._inertiaRafId = 0;
+    }
+    const step = () => {
+      const vp = this._getViewport();
+      if (!vp) {
+        this._inertiaRafId = 0;
+        return;
+      }
+      const next = this._clamp(vp.scrollLeft + velocity, 0, maxScroll);
+      vp.scrollLeft = next;
+      this._requestMorphUpdate();
+      velocity *= 0.92;
+      const atEdge = next <= 0 || next >= maxScroll;
+      if (Math.abs(velocity) < 0.35 || atEdge) {
+        this._inertiaRafId = 0;
+        if (this.snap) this._snapToNearest();
+        return;
+      }
+      this._inertiaRafId = requestAnimationFrame(step);
+    };
+    this._inertiaRafId = requestAnimationFrame(step);
   }
   _snapToNearest() {
     const viewport = this._getViewport();
@@ -28789,22 +28993,8 @@ var LabsCarousel = class extends i4 {
       this.style.removeProperty("--labs-carousel-item-easing");
       this._snapClassTimer = null;
     }, 340);
-    const viewportCenter = viewport.scrollLeft + viewport.clientWidth / 2;
-    let nearestIndex = 0;
-    let nearestDist = Number.POSITIVE_INFINITY;
-    this._items.forEach((item2, index) => {
-      const center = item2.offsetLeft + item2.offsetWidth / 2;
-      const dist = Math.abs(center - viewportCenter);
-      if (dist < nearestDist) {
-        nearestDist = dist;
-        nearestIndex = index;
-      }
-    });
-    const item = this._items[nearestIndex];
-    const target = item.offsetLeft - (viewport.clientWidth - item.offsetWidth) / 2;
-    viewport.scrollTo({ left: Math.max(0, target), behavior: "smooth" });
-    this._activeIndex = nearestIndex;
-    this._applyA11yState();
+    const nearestIndex = this._nearestIndex();
+    this._scrollToIndex(nearestIndex, "smooth");
     this._requestMorphUpdate();
   }
   render() {
@@ -28819,6 +29009,7 @@ var LabsCarousel = class extends i4 {
                     class="viewport"
                     role="region"
                     aria-label=${this.ariaLabel}
+                    @click=${this._onViewportClick}
                     @scroll=${this._onViewportScroll}
                     @pointerdown=${this._onPointerDown}
                     @pointermove=${this._onPointerMove}
