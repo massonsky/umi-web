@@ -14,8 +14,32 @@
     overflow-y: hidden;
     border-radius: 28px;
     cursor: grab;
-    scrollbar-width: thin;
-    scrollbar-color: color-mix(in srgb, var(--md-sys-color-outline, #79747e) 45%, transparent) transparent;
+    scrollbar-width: none;
+    scrollbar-gutter: auto;
+    -ms-overflow-style: none;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    user-select: none;
+}
+
+.viewport::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+.viewport::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.viewport::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 999px;
+}
+
+.viewport::-webkit-scrollbar-thumb:hover {
+    background: transparent;
 }
 
 .viewport.is-dragging {
@@ -23,8 +47,14 @@
     user-select: none;
 }
 
+.viewport.is-dragging,
+.viewport.is-wheeling {
+    scroll-snap-type: none !important;
+}
+
 .track {
     min-height: 200px;
+    width: max-content;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -47,6 +77,7 @@
     transform-origin: center center;
     transform-style: preserve-3d;
     backface-visibility: hidden;
+    contain: layout paint style;
     border-radius: var(--labs-carousel-dynamic-radius, 28px);
     border: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant, #cac4d0) 55%, transparent);
     background: var(--md-sys-color-surface-container, #f3edf7);
@@ -69,11 +100,7 @@
         border-color 180ms cubic-bezier(.2, 0, 0, 1);
     outline: none;
     user-select: none;
-    will-change: transform, border-radius;
-}
-
-.viewport.is-dragging ::slotted(.umi-labs-carousel-item) {
-    transition-duration: 90ms;
+    will-change: transform, border-radius, width;
 }
 
 ::slotted(.umi-labs-carousel-item:hover) {
