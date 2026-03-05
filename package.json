@@ -1,6 +1,6 @@
 {
   "name": "@umi/components",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Umi Component Library — Material Design 3 Web Components (Lit + MD3)",
   "type": "module",
   "main": "dist/index.js",
