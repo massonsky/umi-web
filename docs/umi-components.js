@@ -29051,6 +29051,83 @@ __decorateClass([
 LabsCarousel = __decorateClass([
   t("umi-labs-carousel")
 ], LabsCarousel);
+
+// src/components/styles/LabsToolbars.css
+var LabsToolbars_default = ":host {\r\n    display: block;\r\n    width: 100%;\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n}\r\n\r\n.toolbar-host {\r\n    width: 100%;\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 10px;\r\n}\r\n\r\n.toolbar {\r\n    min-height: 64px;\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 8px;\r\n    padding: 8px 16px;\r\n    border: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant, #cac4d0) 38%, transparent);\r\n    transition: background-color 180ms cubic-bezier(.2, 0, 0, 1), border-color 180ms cubic-bezier(.2, 0, 0, 1), box-shadow 180ms cubic-bezier(.2, 0, 0, 1);\r\n}\r\n\r\n.cluster {\r\n    min-height: 48px;\r\n    display: inline-flex;\r\n    align-items: center;\r\n    gap: 8px;\r\n}\r\n\r\n.middle {\r\n    flex: 1 1 auto;\r\n    justify-content: center;\r\n    min-width: 0;\r\n}\r\n\r\n.leading,\r\n.trailing {\r\n    flex: 0 0 auto;\r\n}\r\n\r\n.trailing {\r\n    justify-content: flex-end;\r\n}\r\n\r\n/* Variants */\r\n.variant-docked {\r\n    width: 100%;\r\n}\r\n\r\n.variant-docked .toolbar {\r\n    width: 100%;\r\n    border-radius: 0;\r\n}\r\n\r\n.variant-floating {\r\n    width: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.variant-floating .toolbar {\r\n    width: fit-content;\r\n    max-width: min(100%, calc(100vw - 32px));\r\n    border-radius: 28px;\r\n}\r\n\r\n.variant-floating.orientation-horizontal {\r\n    align-items: flex-end;\r\n}\r\n\r\n.variant-floating.orientation-vertical {\r\n    width: fit-content;\r\n}\r\n\r\n.variant-floating.orientation-vertical .toolbar {\r\n    flex-direction: column;\r\n    align-items: stretch;\r\n    width: max-content;\r\n    max-width: none;\r\n}\r\n\r\n.variant-floating.orientation-vertical .cluster {\r\n    width: 100%;\r\n    justify-content: center;\r\n}\r\n\r\n.variant-floating.orientation-vertical .middle {\r\n    flex: 0 0 auto;\r\n}\r\n\r\n/* Color styles */\r\n.style-standard .toolbar {\r\n    background: var(--md-sys-color-surface-container, #f3edf7);\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n}\r\n\r\n.style-vibrant .toolbar {\r\n    background: var(--md-sys-color-primary-container, #eaddff);\r\n    color: var(--md-sys-color-on-primary-container, #21005d);\r\n    border-color: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 30%, transparent);\r\n}\r\n\r\n/* Elevation */\r\n.is-elevated.variant-floating .toolbar {\r\n    box-shadow: 0 1px 2px color-mix(in srgb, var(--md-sys-color-shadow, #000) 18%, transparent),\r\n                0 4px 10px color-mix(in srgb, var(--md-sys-color-shadow, #000) 12%, transparent);\r\n}\r\n\r\n.is-flat .toolbar {\r\n    box-shadow: none;\r\n}\r\n\r\n/* FAB pairing */\r\n.fab-wrap {\r\n    flex: 0 0 auto;\r\n    display: inline-flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n.variant-floating.orientation-vertical .fab-wrap {\r\n    width: 100%;\r\n    justify-content: center;\r\n}\r\n\r\n/* Slots defaults */\r\n::slotted(umi-icon-button),\r\n::slotted(umi-filled-button),\r\n::slotted(umi-tonal-button),\r\n::slotted(umi-outlined-button),\r\n::slotted(umi-text-button),\r\n::slotted(umi-fab),\r\n::slotted(md-icon-button),\r\n::slotted(md-filled-icon-button),\r\n::slotted(md-filled-tonal-icon-button),\r\n::slotted(md-outlined-icon-button) {\r\n    margin: 0;\r\n}\r\n";
+
+// src/components/labs/Toolbars.ts
+var LabsToolbar = class extends i4 {
+  constructor() {
+    super(...arguments);
+    this.variant = "floating";
+    this.colorStyle = "standard";
+    this.orientation = "horizontal";
+    this.elevated = true;
+    this.withFab = false;
+    this.ariaLabel = "Toolbar actions";
+  }
+  get _isDocked() {
+    return this.variant === "docked";
+  }
+  get _isVerticalFloating() {
+    return !this._isDocked && this.orientation === "vertical";
+  }
+  render() {
+    const classes = [
+      "toolbar-host",
+      `variant-${this.variant}`,
+      `style-${this.colorStyle}`,
+      this._isVerticalFloating ? "orientation-vertical" : "orientation-horizontal",
+      this.elevated ? "is-elevated" : "is-flat",
+      this.withFab ? "with-fab" : "no-fab"
+    ].join(" ");
+    return b2`
+            <div class="${classes}">
+                <div class="toolbar" role="toolbar" aria-label=${this.ariaLabel}>
+                    <div class="cluster leading">
+                        <slot name="leading"></slot>
+                    </div>
+
+                    <div class="cluster middle">
+                        <slot></slot>
+                    </div>
+
+                    <div class="cluster trailing">
+                        <slot name="trailing"></slot>
+                    </div>
+                </div>
+
+                ${this.withFab ? b2`
+                    <div class="fab-wrap">
+                        <slot name="fab"></slot>
+                    </div>
+                ` : null}
+            </div>
+        `;
+  }
+};
+LabsToolbar.styles = [r(LabsToolbars_default)];
+__decorateClass([
+  n3({ type: String })
+], LabsToolbar.prototype, "variant", 2);
+__decorateClass([
+  n3({ type: String, attribute: "color-style" })
+], LabsToolbar.prototype, "colorStyle", 2);
+__decorateClass([
+  n3({ type: String })
+], LabsToolbar.prototype, "orientation", 2);
+__decorateClass([
+  n3({ type: Boolean })
+], LabsToolbar.prototype, "elevated", 2);
+__decorateClass([
+  n3({ type: Boolean, attribute: "with-fab" })
+], LabsToolbar.prototype, "withFab", 2);
+__decorateClass([
+  n3({ type: String, attribute: "aria-label" })
+], LabsToolbar.prototype, "ariaLabel", 2);
+LabsToolbar = __decorateClass([
+  t("umi-labs-toolbar")
+], LabsToolbar);
 export {
   AssistChip2 as AssistChip,
   Button2 as Button,
@@ -29092,6 +29169,7 @@ export {
   LabsBadge,
   LabsCard,
   LabsCarousel,
+  LabsToolbar,
   LoaderButton,
   LoadingExtendedFloatingActionButton,
   LoadingFloatingActionButton,
