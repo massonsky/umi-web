@@ -137,7 +137,7 @@ function schemeToVars(scheme: DynamicScheme): Record<string, string> {
 
 /**
  * Генерирует 4 CSS-переменных для семантической роли (success, warning, …)
- * с правильными HCT-тонами по umi-спецификации.
+ * с правильными HCT-тонами по lumina-спецификации.
  */
 function customRoleVars(
     seedArgb: number,
@@ -159,10 +159,10 @@ function customRoleVars(
 }
 
 /**
- * `<umi-color-scheme seed="#6750a4" variant="expressive" contrast="0" ?dark>`
+ * `<lumina-color-scheme seed="#6750a4" variant="expressive" contrast="0" ?dark>`
  *
  * Невизуальный Web Component. Принимает hex-цвет зерна, вариант схемы
- * и уровень контраста. Генерирует полную umi-палитру и применяет
+ * и уровень контраста. Генерирует полную lumina-палитру и применяет
  * CSS-переменные к `document.body`.
  *
  * Свойства:
@@ -176,7 +176,7 @@ function customRoleVars(
  * События:
  *   theme-changed — CustomEvent<{ vars, dark, seed, variant, contrast }>
  */
-@customElement('umi-color-scheme')
+@customElement('lumina-color-scheme')
 export class MaterialColor extends LitElement {
     @property({ type: String }) seed: string = '#6750a4';
     @property({ type: Boolean, reflect: true }) dark: boolean = false;
@@ -207,7 +207,7 @@ export class MaterialColor extends LitElement {
         try {
             argb = argbFromHex(this.seed);
         } catch {
-            console.warn(`[umi-color-scheme] Некорректный hex: "${this.seed}"`);
+            console.warn(`[lumina-color-scheme] Некорректный hex: "${this.seed}"`);
             return;
         }
 
@@ -245,6 +245,6 @@ export class MaterialColor extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-color-scheme': MaterialColor;
+        'lumina-color-scheme': MaterialColor;
     }
 }

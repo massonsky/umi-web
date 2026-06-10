@@ -4,7 +4,7 @@ import { FabBase } from '../templates/Fab.js';
 import fabStyles from '../styles/Fab.css';
 import extendedFabStyles from '../styles/ExtendedFab.css';
 
-@customElement('umi-extended-fab')
+@customElement('lumina-extended-fab')
 export class ExtendedFab extends FabBase {
     @property({ type: String }) text = '';
 
@@ -25,6 +25,6 @@ export class ExtendedFab extends FabBase {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-extended-fab': ExtendedFab;
+        'lumina-extended-fab': ExtendedFab;
     }
 }

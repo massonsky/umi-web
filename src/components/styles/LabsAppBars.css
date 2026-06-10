@@ -161,7 +161,7 @@
 }
 
 /* Defaults for icon button spacing in slots */
-::slotted(umi-icon-button),
+::slotted(lumina-icon-button),
 ::slotted(md-icon-button),
 ::slotted(md-filled-icon-button),
 ::slotted(md-filled-tonal-icon-button),

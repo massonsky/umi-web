@@ -3,7 +3,7 @@ import { unsafeCSS } from 'lit';
 import * as T from '../templates/Button.js';
 import textStyles from '../styles/TextButton.css';
 
-@customElement('umi-text-button')
+@customElement('lumina-text-button')
 export class TextButton extends T.Button {
     constructor() {
         super();
@@ -18,6 +18,6 @@ export class TextButton extends T.Button {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-text-button': TextButton;
+        'lumina-text-button': TextButton;
     }
 }

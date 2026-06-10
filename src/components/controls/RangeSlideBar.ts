@@ -9,7 +9,7 @@ import './SlideBarWaveTrack.js';
 import './SlideBarTextContainer.js';
 
 /**
- * umi-range-slide-bar
+ * lumina-range-slide-bar
  *
  * TS/Lit port of RangeSlideBar.qml.
  *
@@ -23,7 +23,7 @@ import './SlideBarTextContainer.js';
  *   maxValueChanged   — {maxValue: number}
  *   change            — при завершении interaction
  */
-@customElement('umi-range-slide-bar')
+@customElement('lumina-range-slide-bar')
 export class RangeSlideBar extends LitElement {
     // ── Public API — цвета ──────────────────────────────────
     @property({ type: String, attribute: 'active-track-color' })
@@ -598,6 +598,6 @@ export class RangeSlideBar extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-range-slide-bar': RangeSlideBar;
+        'lumina-range-slide-bar': RangeSlideBar;
     }
 }

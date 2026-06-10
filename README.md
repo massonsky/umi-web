@@ -1,87 +1,87 @@
-# @umi/components
+# @luminaui/web
 
 Библиотека Web Components на базе Material Design 3 (Lit + @material/web).
 
 После импорта доступны:
 
 - стандартные компоненты `md-*` из `@material/web`
-- кастомные компоненты `umi-*` из этой библиотеки
+- кастомные компоненты `lumina-*` из этой библиотеки
 
 ---
 
 ## Установка
 
 ```bash
-npm install @umi/components
+npm install @luminaui/web
 ```
 
 ## Быстрый старт
 
 ```ts
-import '@umi/components';
+import '@luminaui/web';
 ```
 
 ```html
-<umi-color-scheme seed="#6750a4" variant="expressive"></umi-color-scheme>
-<umi-font symbols-style="Outlined" load-mono></umi-font>
-<umi-filled-button text="Hello" icon-name="rocket_launch"></umi-filled-button>
+<lumina-color-scheme seed="#6750a4" variant="expressive"></lumina-color-scheme>
+<lumina-font symbols-style="Outlined" load-mono></lumina-font>
+<lumina-filled-button text="Hello" icon-name="rocket_launch"></lumina-filled-button>
 ```
 
 ---
 
 ## Актуальные префиксы
 
-- ✅ актуально: `umi-*`
+- ✅ актуально: `lumina-*`
 - ❌ устарело в документации: `md3-*`
 
 ---
 
-## Публичные группы компонентов (`umi-*`)
+## Публичные группы компонентов (`lumina-*`)
 
 ### Foundation
 
-- `umi-color-scheme`
-- `umi-font`
-- `umi-icon`
+- `lumina-color-scheme`
+- `lumina-font`
+- `lumina-icon`
 
 ### Action / Buttons
 
-- `umi-filled-button`, `umi-tonal-button`, `umi-elevated-button`, `umi-outlined-button`, `umi-text-button`, `umi-icon-button`
-- `umi-split-button`
+- `lumina-filled-button`, `lumina-tonal-button`, `lumina-elevated-button`, `lumina-outlined-button`, `lumina-text-button`, `lumina-icon-button`
+- `lumina-split-button`
 
 ### FAB
 
-- `umi-fab`, `umi-extended-fab`
-- `umi-fab-menu`, `umi-fab-menu-item`
+- `lumina-fab`, `lumina-extended-fab`
+- `lumina-fab-menu`, `lumina-fab-menu-item`
 
 ### Selection
 
-- `umi-checkbox`, `umi-radio-button`, `umi-button-group`
+- `lumina-checkbox`, `lumina-radio-button`, `lumina-button-group`
 
 ### Chips
 
-- `umi-assist-chip`, `umi-filter-chip`, `umi-input-chip`, `umi-suggestion-chip`, `umi-chips`
+- `lumina-assist-chip`, `lumina-filter-chip`, `lumina-input-chip`, `lumina-suggestion-chip`, `lumina-chips`
 
 ### Stateful buttons
 
-- Progress: `umi-progress-bar-button`, `umi-progress-bar-icon-button`, `umi-progress-bar-fab`, `umi-progress-bar-efab`
-- Loading: `umi-loader-button`, `umi-loading-icon-button`, `umi-loading-floating-action-button`, `umi-loading-extended-floating-action-button`
-- Timer: `umi-time-button`, `umi-icon-timer-button`, `umi-floating-action-time-button`, `umi-extended-floating-action-time-button`
+- Progress: `lumina-progress-bar-button`, `lumina-progress-bar-icon-button`, `lumina-progress-bar-fab`, `lumina-progress-bar-efab`
+- Loading: `lumina-loader-button`, `lumina-loading-icon-button`, `lumina-loading-floating-action-button`, `lumina-loading-extended-floating-action-button`
+- Timer: `lumina-time-button`, `lumina-icon-timer-button`, `lumina-floating-action-time-button`, `lumina-extended-floating-action-time-button`
 
 ### Sliders
 
-- `umi-slide-bar`, `umi-range-slide-bar`
-- `umi-slide-bar-handle`, `umi-slide-bar-track`, `umi-slide-bar-wave-track`, `umi-slide-bar-label`
+- `lumina-slide-bar`, `lumina-range-slide-bar`
+- `lumina-slide-bar-handle`, `lumina-slide-bar-track`, `lumina-slide-bar-wave-track`, `lumina-slide-bar-label`
 
 ### Scroll bars
 
-- `umi-scroll-bar`, `umi-scroll-bar-expressive`
+- `lumina-scroll-bar`, `lumina-scroll-bar-expressive`
 
 ### Feedback
 
-- `umi-loading-indicator`, `umi-snackbar`
-- Circular: `umi-dc-progress-bar`, `umi-ic-progress-bar`, `umi-dc-progress-bar-expressive`, `umi-ic-progress-bar-expressive`
-- Linear: `umi-dl-progress-bar`, `umi-il-progress-bar`, `umi-dl-progress-bar-expressive`, `umi-il-progress-bar-expressive`
+- `lumina-loading-indicator`, `lumina-snackbar`
+- Circular: `lumina-dc-progress-bar`, `lumina-ic-progress-bar`, `lumina-dc-progress-bar-expressive`, `lumina-ic-progress-bar-expressive`
+- Linear: `lumina-dl-progress-bar`, `lumina-il-progress-bar`, `lumina-dl-progress-bar-expressive`, `lumina-il-progress-bar-expressive`
 
 ---
 
@@ -94,8 +94,8 @@ import '@umi/components';
 
 Рекомендуемый старт темы/шрифтов:
 
-- `umi-color-scheme` — генерация color tokens
-- `umi-font` — загрузка Roboto/Material Symbols + типографика
+- `lumina-color-scheme` — генерация color tokens
+- `lumina-font` — загрузка Roboto/Material Symbols + типографика
 
 ---
 
@@ -138,5 +138,5 @@ npm run build
 Из `src/index.ts` библиотека:
 
 - регистрирует `@material/web/all.js` + labs-компоненты
-- экспортирует все Umi-компоненты из `actions/fab/selection/stateful/colors/fonts/icons/feedback`
+- экспортирует все LuminaUI-компоненты из `actions/fab/selection/stateful/colors/fonts/icons/feedback`
 - экспортирует базовые шаблоны (`Button`, `Fab`) и типы

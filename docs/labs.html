@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@umi/components — Labs</title>
+    <title>@luminaui/web — Labs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -273,20 +273,20 @@
     </style>
 </head>
 <body>
-    <umi-color-scheme
+    <lumina-color-scheme
         id="colorScheme"
         seed="#6750a4"
         variant="tonal-spot"
         contrast="0"
         success-seed="#386a20"
         warning-seed="#7c5800">
-    </umi-color-scheme>
-    <umi-font symbols-style="Outlined" load-symbols></umi-font>
-    <umi-font symbols-style="Rounded" load-symbols></umi-font>
-    <umi-font symbols-style="Sharp" load-symbols></umi-font>
+    </lumina-color-scheme>
+    <lumina-font symbols-style="Outlined" load-symbols></lumina-font>
+    <lumina-font symbols-style="Rounded" load-symbols></lumina-font>
+    <lumina-font symbols-style="Sharp" load-symbols></lumina-font>
 
     <header class="labs-header">
-        <umi-icon-button id="backBtn" icon-name="arrow_back" button-type="0" aria-label="Назад"></umi-icon-button>
+        <lumina-icon-button id="backBtn" icon-name="arrow_back" button-type="0" aria-label="Назад"></lumina-icon-button>
         <div class="labs-header__title">Labs Playground</div>
     </header>
 
@@ -295,50 +295,50 @@
 
         <div class="demo-card">
             <h3>Labs Module #1 — MD3 App Bars</h3>
-            <p class="demo-card__subtitle">Компонент <code>umi-labs-app-bar</code> на спецификации M3 Expressive: small, center, medium flexible, large flexible, и scroll-state.</p>
+            <p class="demo-card__subtitle">Компонент <code>lumina-labs-app-bar</code> на спецификации M3 Expressive: small, center, medium flexible, large flexible, и scroll-state.</p>
 
             <div class="appbar-demo-stack">
                 <div class="demo-label">Small (leading-aligned)</div>
                 <div class="appbar-demo-frame">
-                    <umi-labs-app-bar headline="Inbox" variant="small">
-                        <umi-icon-button slot="leading" icon-name="menu" button-type="0"></umi-icon-button>
-                        <umi-icon-button slot="trailing" icon-name="search" button-type="0"></umi-icon-button>
-                        <umi-icon-button slot="trailing" icon-name="more_vert" button-type="0"></umi-icon-button>
-                    </umi-labs-app-bar>
+                    <lumina-labs-app-bar headline="Inbox" variant="small">
+                        <lumina-icon-button slot="leading" icon-name="menu" button-type="0"></lumina-icon-button>
+                        <lumina-icon-button slot="trailing" icon-name="search" button-type="0"></lumina-icon-button>
+                        <lumina-icon-button slot="trailing" icon-name="more_vert" button-type="0"></lumina-icon-button>
+                    </lumina-labs-app-bar>
                     <div class="appbar-demo-content"><p>MD3: до 1–2 основных action в app bar, контейнер на всю ширину, прямые углы.</p></div>
                 </div>
 
                 <div class="demo-label">Center-aligned</div>
                 <div class="appbar-demo-frame">
-                    <umi-labs-app-bar headline="Conversations" variant="center">
-                        <umi-icon-button slot="leading" icon-name="arrow_back" button-type="0"></umi-icon-button>
-                        <umi-icon-button slot="trailing" icon-name="search" button-type="0"></umi-icon-button>
-                    </umi-labs-app-bar>
+                    <lumina-labs-app-bar headline="Conversations" variant="center">
+                        <lumina-icon-button slot="leading" icon-name="arrow_back" button-type="0"></lumina-icon-button>
+                        <lumina-icon-button slot="trailing" icon-name="search" button-type="0"></lumina-icon-button>
+                    </lumina-labs-app-bar>
                     <div class="appbar-demo-content"><p>Центровка headline для small-варианта поддерживается отдельно от leading-конфигурации.</p></div>
                 </div>
 
                 <div class="demo-label">Medium flexible</div>
                 <div class="appbar-demo-frame">
-                    <umi-labs-app-bar
+                    <lumina-labs-app-bar
                         headline="Project dashboard"
                         subtitle="Sprint 12 · 5 open tasks"
                         variant="medium-flexible">
-                        <umi-icon-button slot="leading" icon-name="menu" button-type="0"></umi-icon-button>
-                        <umi-icon-button slot="trailing" icon-name="edit" button-type="1" icon-fill="1"></umi-icon-button>
-                    </umi-labs-app-bar>
+                        <lumina-icon-button slot="leading" icon-name="menu" button-type="0"></lumina-icon-button>
+                        <lumina-icon-button slot="trailing" icon-name="edit" button-type="1" icon-fill="1"></lumina-icon-button>
+                    </lumina-labs-app-bar>
                     <div class="appbar-demo-content"><p>Гибкий вариант с увеличенным headline, subtitle и акцентным trailing action.</p></div>
                 </div>
 
                 <div class="demo-label">Large flexible (scrolled state)</div>
                 <div class="appbar-demo-frame">
-                    <umi-labs-app-bar
+                    <lumina-labs-app-bar
                         headline="Design System"
                         subtitle="Material 3 Expressive playground"
                         variant="large-flexible"
                         scrolled>
-                        <umi-icon-button slot="leading" icon-name="arrow_back" button-type="0"></umi-icon-button>
-                        <umi-icon-button slot="trailing" icon-name="star" button-type="2" icon-fill="1"></umi-icon-button>
-                    </umi-labs-app-bar>
+                        <lumina-icon-button slot="leading" icon-name="arrow_back" button-type="0"></lumina-icon-button>
+                        <lumina-icon-button slot="trailing" icon-name="star" button-type="2" icon-fill="1"></lumina-icon-button>
+                    </lumina-labs-app-bar>
                     <div class="appbar-demo-content"><p>Scrolled-state: контейнер переходит в <code>surface-container</code> вместо тени (M3 поведение on scroll).</p></div>
                 </div>
             </div>
@@ -346,60 +346,60 @@
 
         <div class="demo-card">
             <h3>Labs Module #2 — MD3 Badges</h3>
-            <p class="demo-card__subtitle">Компонент <code>umi-labs-badge</code> по MD3: small/large, размещение в верхнем trailing-углу и ограничение контента до 4 символов (например, <code>999+</code>).</p>
+            <p class="demo-card__subtitle">Компонент <code>lumina-labs-badge</code> по MD3: small/large, размещение в верхнем trailing-углу и ограничение контента до 4 символов (например, <code>999+</code>).</p>
 
             <div class="demo-label">Small badge (dot)</div>
             <div class="component-row">
-                <umi-labs-badge variant="small">
-                    <umi-icon-button icon-name="mail" button-type="0"></umi-icon-button>
-                </umi-labs-badge>
-                <umi-labs-badge variant="small">
-                    <umi-icon-button icon-name="notifications" button-type="0"></umi-icon-button>
-                </umi-labs-badge>
+                <lumina-labs-badge variant="small">
+                    <lumina-icon-button icon-name="mail" button-type="0"></lumina-icon-button>
+                </lumina-labs-badge>
+                <lumina-labs-badge variant="small">
+                    <lumina-icon-button icon-name="notifications" button-type="0"></lumina-icon-button>
+                </lumina-labs-badge>
             </div>
 
             <div class="demo-label">Large badge (count)</div>
             <div class="component-row">
-                <umi-labs-badge count="1">
-                    <umi-icon-button icon-name="inbox" button-type="0"></umi-icon-button>
-                </umi-labs-badge>
-                <umi-labs-badge count="24">
-                    <umi-icon-button icon-name="chat" button-type="0"></umi-icon-button>
-                </umi-labs-badge>
-                <umi-labs-badge count="9999">
-                    <umi-icon-button icon-name="forum" button-type="0"></umi-icon-button>
-                </umi-labs-badge>
+                <lumina-labs-badge count="1">
+                    <lumina-icon-button icon-name="inbox" button-type="0"></lumina-icon-button>
+                </lumina-labs-badge>
+                <lumina-labs-badge count="24">
+                    <lumina-icon-button icon-name="chat" button-type="0"></lumina-icon-button>
+                </lumina-labs-badge>
+                <lumina-labs-badge count="9999">
+                    <lumina-icon-button icon-name="forum" button-type="0"></lumina-icon-button>
+                </lumina-labs-badge>
             </div>
 
             <div class="demo-label">Custom label (max 4 chars)</div>
             <div class="component-row">
-                <umi-labs-badge label="NEW">
-                    <umi-icon-button icon-name="campaign" button-type="0"></umi-icon-button>
-                </umi-labs-badge>
-                <umi-labs-badge label="ALERT">
-                    <umi-icon-button icon-name="warning" button-type="0"></umi-icon-button>
-                </umi-labs-badge>
+                <lumina-labs-badge label="NEW">
+                    <lumina-icon-button icon-name="campaign" button-type="0"></lumina-icon-button>
+                </lumina-labs-badge>
+                <lumina-labs-badge label="ALERT">
+                    <lumina-icon-button icon-name="warning" button-type="0"></lumina-icon-button>
+                </lumina-labs-badge>
             </div>
 
             <div class="demo-label">Compact placement (app bar-like)</div>
             <div class="component-row">
-                <umi-labs-badge variant="small">
+                <lumina-labs-badge variant="small">
                     <md-icon-button><md-icon>search</md-icon></md-icon-button>
-                </umi-labs-badge>
-                <umi-labs-badge count="7">
+                </lumina-labs-badge>
+                <lumina-labs-badge count="7">
                     <md-icon-button><md-icon>account_circle</md-icon></md-icon-button>
-                </umi-labs-badge>
+                </lumina-labs-badge>
             </div>
         </div>
 
         <div class="demo-card">
             <h3>Labs Module #3 — MD3 Cards</h3>
-            <p class="demo-card__subtitle">Компонент <code>umi-labs-card</code> с тремя M3-вариантами: elevated, filled, outlined. Включает media, headline/subhead/supporting text и actions.</p>
+            <p class="demo-card__subtitle">Компонент <code>lumina-labs-card</code> с тремя M3-вариантами: elevated, filled, outlined. Включает media, headline/subhead/supporting text и actions.</p>
 
             <div class="demo-label">Elevated interactive card</div>
             <div class="component-row" style="align-items:stretch;">
                 <div style="width:min(100%, 360px)">
-                    <umi-labs-card
+                    <lumina-labs-card
                         variant="elevated"
                         interactive
                         subhead="Travel"
@@ -407,47 +407,47 @@
                         supporting-text="Discover curated destinations and flexible routes for your next adventure."
                         media-src="https://picsum.photos/640/320?random=31"
                         media-alt="Travel landscape">
-                        <umi-filled-button slot="actions" text="Explore" icon-name="travel_explore" size="1"></umi-filled-button>
-                        <umi-text-button slot="actions" text="Save" icon-name="bookmark" size="1"></umi-text-button>
-                    </umi-labs-card>
+                        <lumina-filled-button slot="actions" text="Explore" icon-name="travel_explore" size="1"></lumina-filled-button>
+                        <lumina-text-button slot="actions" text="Save" icon-name="bookmark" size="1"></lumina-text-button>
+                    </lumina-labs-card>
                 </div>
             </div>
 
             <div class="demo-label">Filled card</div>
             <div class="component-row" style="align-items:stretch;">
                 <div style="width:min(100%, 360px)">
-                    <umi-labs-card
+                    <lumina-labs-card
                         variant="filled"
                         subhead="Status"
                         headline="Build pipeline"
                         supporting-text="All checks passed. Deploy target is ready.">
-                        <umi-tonal-button slot="actions" text="Open logs" icon-name="description" size="1"></umi-tonal-button>
-                    </umi-labs-card>
+                        <lumina-tonal-button slot="actions" text="Open logs" icon-name="description" size="1"></lumina-tonal-button>
+                    </lumina-labs-card>
                 </div>
             </div>
 
             <div class="demo-label">Outlined card</div>
             <div class="component-row" style="align-items:stretch;">
                 <div style="width:min(100%, 360px)">
-                    <umi-labs-card
+                    <lumina-labs-card
                         variant="outlined"
                         subhead="Article"
                         headline="Design tokens in practice"
                         supporting-text="How to map semantic tokens to responsive components across themes.">
-                        <umi-outlined-button slot="actions" text="Read" icon-name="menu_book" size="1"></umi-outlined-button>
-                        <umi-icon-button slot="actions" icon-name="more_vert" button-type="0"></umi-icon-button>
-                    </umi-labs-card>
+                        <lumina-outlined-button slot="actions" text="Read" icon-name="menu_book" size="1"></lumina-outlined-button>
+                        <lumina-icon-button slot="actions" icon-name="more_vert" button-type="0"></lumina-icon-button>
+                    </lumina-labs-card>
                 </div>
             </div>
         </div>
 
         <div class="demo-card">
             <h3>Labs Module #4 — MD3 Carousel</h3>
-            <p class="demo-card__subtitle">Компонент <code>umi-labs-carousel</code> c layout-вариантами из Material 3: multi-browse, uncontained, hero, full-screen. Добавлены snap-scrolling, клавиатурная навигация и <code>Show all</code> action для доступности.</p>
+            <p class="demo-card__subtitle">Компонент <code>lumina-labs-carousel</code> c layout-вариантами из Material 3: multi-browse, uncontained, hero, full-screen. Добавлены snap-scrolling, клавиатурная навигация и <code>Show all</code> action для доступности.</p>
 
             <div class="carousel-demo-stack">
                 <div class="demo-label">Multi-browse (snap)</div>
-                <umi-labs-carousel id="labsCarouselMulti" variant="multi-browse" show-all show-all-text="Show all photos">
+                <lumina-labs-carousel id="labsCarouselMulti" variant="multi-browse" show-all show-all-text="Show all photos">
                     <article>
                         <div class="carousel-item-content" style="background-image:linear-gradient(135deg,#5b4c93,#8f7ad7)">
                             <strong>Alpine views</strong>
@@ -496,10 +496,10 @@
                             <span>Morning breeze</span>
                         </div>
                     </article>
-                </umi-labs-carousel>
+                </lumina-labs-carousel>
 
                 <div class="demo-label">Uncontained (free scroll)</div>
-                <umi-labs-carousel id="labsCarouselUncontained" variant="uncontained">
+                <lumina-labs-carousel id="labsCarouselUncontained" variant="uncontained">
                     <article>
                         <div class="carousel-item-content" style="background-image:linear-gradient(135deg,#294d8a,#3f77cb)">
                             <strong>News #1</strong>
@@ -536,10 +536,10 @@
                             <span>Long feed test</span>
                         </div>
                     </article>
-                </umi-labs-carousel>
+                </lumina-labs-carousel>
 
                 <div class="demo-label">Hero</div>
-                <umi-labs-carousel variant="hero" show-all show-all-text="View all hero items">
+                <lumina-labs-carousel variant="hero" show-all show-all-text="View all hero items">
                     <article>
                         <div class="carousel-item-content is-tall" style="background-image:linear-gradient(135deg,#7a3f8d,#b26bd0)">
                             <strong>Featured release</strong>
@@ -570,10 +570,10 @@
                             <span>Trending now</span>
                         </div>
                     </article>
-                </umi-labs-carousel>
+                </lumina-labs-carousel>
 
                 <div class="demo-label">Full-screen style</div>
-                <umi-labs-carousel variant="full-screen" show-all-text="Open feed">
+                <lumina-labs-carousel variant="full-screen" show-all-text="Open feed">
                     <article>
                         <div class="carousel-item-content is-tall" style="min-height:300px;background-image:linear-gradient(135deg,#2f2f55,#5656a5)">
                             <strong>Immersive feed item</strong>
@@ -598,7 +598,7 @@
                             <span>Immersive flow</span>
                         </div>
                     </article>
-                </umi-labs-carousel>
+                </lumina-labs-carousel>
 
                 <div id="carouselLabsLog" class="labs-log">Waiting for carousel events…</div>
             </div>
@@ -606,58 +606,58 @@
 
         <div class="demo-card">
             <h3>Labs Module #5 — MD3 Toolbars</h3>
-            <p class="demo-card__subtitle">Компонент <code>umi-labs-toolbar</code> с M3-вариантами: docked/floating, standard/vibrant, horizontal/vertical и опциональной парой с FAB.</p>
+            <p class="demo-card__subtitle">Компонент <code>lumina-labs-toolbar</code> с M3-вариантами: docked/floating, standard/vibrant, horizontal/vertical и опциональной парой с FAB.</p>
 
             <div class="toolbar-demo-stack">
                 <div class="demo-label">Docked · Standard</div>
                 <div class="toolbar-demo-frame bottom">
-                    <umi-labs-toolbar variant="docked" color-style="standard" aria-label="Docked standard toolbar">
-                        <umi-icon-button slot="leading" icon-name="menu" button-type="0"></umi-icon-button>
-                        <umi-icon-button icon-name="undo" button-type="0"></umi-icon-button>
-                        <umi-icon-button icon-name="redo" button-type="0"></umi-icon-button>
-                        <umi-filled-button slot="trailing" text="Save" icon-name="check" size="1"></umi-filled-button>
-                    </umi-labs-toolbar>
+                    <lumina-labs-toolbar variant="docked" color-style="standard" aria-label="Docked standard toolbar">
+                        <lumina-icon-button slot="leading" icon-name="menu" button-type="0"></lumina-icon-button>
+                        <lumina-icon-button icon-name="undo" button-type="0"></lumina-icon-button>
+                        <lumina-icon-button icon-name="redo" button-type="0"></lumina-icon-button>
+                        <lumina-filled-button slot="trailing" text="Save" icon-name="check" size="1"></lumina-filled-button>
+                    </lumina-labs-toolbar>
                 </div>
 
                 <div class="demo-label">Docked · Vibrant</div>
                 <div class="toolbar-demo-frame bottom">
-                    <umi-labs-toolbar variant="docked" color-style="vibrant" aria-label="Docked vibrant toolbar">
-                        <umi-icon-button slot="leading" icon-name="format_bold" button-type="0"></umi-icon-button>
-                        <umi-icon-button icon-name="format_italic" button-type="0"></umi-icon-button>
-                        <umi-icon-button icon-name="format_underlined" button-type="0"></umi-icon-button>
-                        <umi-tonal-button slot="trailing" text="Publish" icon-name="send" size="1"></umi-tonal-button>
-                    </umi-labs-toolbar>
+                    <lumina-labs-toolbar variant="docked" color-style="vibrant" aria-label="Docked vibrant toolbar">
+                        <lumina-icon-button slot="leading" icon-name="format_bold" button-type="0"></lumina-icon-button>
+                        <lumina-icon-button icon-name="format_italic" button-type="0"></lumina-icon-button>
+                        <lumina-icon-button icon-name="format_underlined" button-type="0"></lumina-icon-button>
+                        <lumina-tonal-button slot="trailing" text="Publish" icon-name="send" size="1"></lumina-tonal-button>
+                    </lumina-labs-toolbar>
                 </div>
 
                 <div class="demo-label">Floating · Horizontal</div>
                 <div class="toolbar-demo-frame float-area">
-                    <umi-labs-toolbar variant="floating" color-style="standard" aria-label="Floating toolbar">
-                        <umi-icon-button slot="leading" icon-name="edit" button-type="0"></umi-icon-button>
-                        <umi-icon-button icon-name="content_copy" button-type="0"></umi-icon-button>
-                        <umi-icon-button icon-name="content_paste" button-type="0"></umi-icon-button>
-                        <umi-icon-button slot="trailing" icon-name="more_vert" button-type="0"></umi-icon-button>
-                    </umi-labs-toolbar>
+                    <lumina-labs-toolbar variant="floating" color-style="standard" aria-label="Floating toolbar">
+                        <lumina-icon-button slot="leading" icon-name="edit" button-type="0"></lumina-icon-button>
+                        <lumina-icon-button icon-name="content_copy" button-type="0"></lumina-icon-button>
+                        <lumina-icon-button icon-name="content_paste" button-type="0"></lumina-icon-button>
+                        <lumina-icon-button slot="trailing" icon-name="more_vert" button-type="0"></lumina-icon-button>
+                    </lumina-labs-toolbar>
                 </div>
 
                 <div class="demo-label">Floating · Vibrant + FAB</div>
                 <div class="toolbar-demo-frame float-area">
-                    <umi-labs-toolbar variant="floating" color-style="vibrant" with-fab aria-label="Floating toolbar with fab">
-                        <umi-icon-button slot="leading" icon-name="photo" button-type="0"></umi-icon-button>
-                        <umi-icon-button icon-name="palette" button-type="0"></umi-icon-button>
-                        <umi-icon-button icon-name="auto_fix_high" button-type="0"></umi-icon-button>
-                        <umi-icon-button slot="trailing" icon-name="more_horiz" button-type="0"></umi-icon-button>
-                        <umi-fab slot="fab" icon-name="add" fab-size="small"></umi-fab>
-                    </umi-labs-toolbar>
+                    <lumina-labs-toolbar variant="floating" color-style="vibrant" with-fab aria-label="Floating toolbar with fab">
+                        <lumina-icon-button slot="leading" icon-name="photo" button-type="0"></lumina-icon-button>
+                        <lumina-icon-button icon-name="palette" button-type="0"></lumina-icon-button>
+                        <lumina-icon-button icon-name="auto_fix_high" button-type="0"></lumina-icon-button>
+                        <lumina-icon-button slot="trailing" icon-name="more_horiz" button-type="0"></lumina-icon-button>
+                        <lumina-fab slot="fab" icon-name="add" fab-size="small"></lumina-fab>
+                    </lumina-labs-toolbar>
                 </div>
 
                 <div class="demo-label">Floating · Vertical (large-screen style)</div>
                 <div class="toolbar-demo-frame vertical-area">
-                    <umi-labs-toolbar variant="floating" orientation="vertical" color-style="standard" aria-label="Vertical floating toolbar">
-                        <umi-icon-button icon-name="brush" button-type="0"></umi-icon-button>
-                        <umi-icon-button icon-name="crop" button-type="0"></umi-icon-button>
-                        <umi-icon-button icon-name="layers" button-type="0"></umi-icon-button>
-                        <umi-icon-button icon-name="delete" button-type="0"></umi-icon-button>
-                    </umi-labs-toolbar>
+                    <lumina-labs-toolbar variant="floating" orientation="vertical" color-style="standard" aria-label="Vertical floating toolbar">
+                        <lumina-icon-button icon-name="brush" button-type="0"></lumina-icon-button>
+                        <lumina-icon-button icon-name="crop" button-type="0"></lumina-icon-button>
+                        <lumina-icon-button icon-name="layers" button-type="0"></lumina-icon-button>
+                        <lumina-icon-button icon-name="delete" button-type="0"></lumina-icon-button>
+                    </lumina-labs-toolbar>
                 </div>
             </div>
         </div>
@@ -733,7 +733,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
     <script type="module">
-        import './umi-components.js?v=20260305-labs-toolbars';
+        import './lumina-ui-web.js?v=20260305-labs-toolbars';
 
         const backBtn = document.getElementById('backBtn');
         backBtn?.addEventListener('clicked', () => {
@@ -756,7 +756,7 @@
         });
 
         // ── Auto code samples per demo-card ─────────────────────
-        const isComponentTag = (tagName) => tagName.startsWith('UMI-') || tagName.startsWith('MD-');
+        const isComponentTag = (tagName) => tagName.startsWith('LUMINA-') || tagName.startsWith('MD-');
 
         const componentSelectors = [
             '.component-row',

@@ -6,7 +6,7 @@ const UNCHECKED = 0;
 const PARTIALLY_CHECKED = 1;
 const CHECKED = 2;
 
-@customElement('umi-checkbox')
+@customElement('lumina-checkbox')
 export class Checkbox extends LitElement {
     @property({ type: Boolean }) enabled = true;
     @property({ type: Boolean }) checked = false;
@@ -255,6 +255,6 @@ export class Checkbox extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-checkbox': Checkbox;
+        'lumina-checkbox': Checkbox;
     }
 }

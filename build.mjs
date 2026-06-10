@@ -43,7 +43,7 @@ const browserBuildOptions = {
 if (watch) {
     const ctx = await esbuild.context(libBuildOptions);
     await ctx.watch();
-    console.log('[umi-components] Watching dist/index.js (library bundle)...');
+    console.log('[lumina-ui-web] Watching dist/index.js (library bundle)...');
 } else {
     const [libResult, browserResult] = await Promise.all([
         esbuild.build(libBuildOptions),
@@ -57,6 +57,6 @@ if (watch) {
         ? Object.values(browserResult.metafile.outputs).reduce((s, o) => s + o.bytes, 0)
         : 0;
 
-    console.log(`[umi-components] Build complete → dist/index.js (${(libSize / 1024).toFixed(1)} KB)`);
-    console.log(`[umi-components] Build complete → dist/index.browser.js (${(browserSize / 1024).toFixed(1)} KB)`);
+    console.log(`[lumina-ui-web] Build complete → dist/index.js (${(libSize / 1024).toFixed(1)} KB)`);
+    console.log(`[lumina-ui-web] Build complete → dist/index.browser.js (${(browserSize / 1024).toFixed(1)} KB)`);
 }

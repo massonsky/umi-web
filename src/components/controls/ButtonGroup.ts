@@ -28,7 +28,7 @@ type ItemVisualState = {
     radiusBR: number | undefined;
 };
 
-@customElement('umi-button-group')
+@customElement('lumina-button-group')
 export class ButtonGroup extends LitElement {
     @property({ type: Number, attribute: 'group-type', reflect: true }) groupType = 0; // 0 Standard | 1 Connected
     @property({ type: Number, reflect: true }) size = 2; // XS..XL
@@ -237,7 +237,7 @@ export class ButtonGroup extends LitElement {
     }
 
     private _applyLayoutAndState(): void {
-        this.style.setProperty('--umi-group-gap', `${this.gap}px`);
+        this.style.setProperty('--lumina-group-gap', `${this.gap}px`);
         this.requestUpdate();
     }
 
@@ -462,6 +462,6 @@ export class ButtonGroup extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-button-group': ButtonGroup;
+        'lumina-button-group': ButtonGroup;
     }
 }

@@ -10856,7 +10856,7 @@ FilledButton2.styles = [
   r(FilledButton_default)
 ];
 FilledButton2 = __decorateClass([
-  t("umi-filled-button")
+  t("lumina-filled-button")
 ], FilledButton2);
 
 // src/components/styles/OutlinedButton.css
@@ -10874,7 +10874,7 @@ OutlinedButton2.styles = [
   r(OutlinedButton_default)
 ];
 OutlinedButton2 = __decorateClass([
-  t("umi-outlined-button")
+  t("lumina-outlined-button")
 ], OutlinedButton2);
 
 // src/components/styles/TonalButton.css
@@ -10892,7 +10892,7 @@ TonalButton.styles = [
   r(TonalButton_default)
 ];
 TonalButton = __decorateClass([
-  t("umi-tonal-button")
+  t("lumina-tonal-button")
 ], TonalButton);
 
 // src/components/styles/ElevatedButton.css
@@ -10910,7 +10910,7 @@ ElevatedButton2.styles = [
   r(ElevatedButton_default)
 ];
 ElevatedButton2 = __decorateClass([
-  t("umi-elevated-button")
+  t("lumina-elevated-button")
 ], ElevatedButton2);
 
 // src/components/styles/TextButton.css
@@ -10928,7 +10928,7 @@ TextButton2.styles = [
   r(TextButton_default)
 ];
 TextButton2 = __decorateClass([
-  t("umi-text-button")
+  t("lumina-text-button")
 ], TextButton2);
 
 // src/components/styles/IconButton.css
@@ -11097,12 +11097,12 @@ __decorateClass([
   r4()
 ], IconButton2.prototype, "pressed", 2);
 IconButton2 = __decorateClass([
-  t("umi-icon-button")
+  t("lumina-icon-button")
 ], IconButton2);
 
 // src/components/styles/SplitButton.css
 var SplitButton_default = `/* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r
-   umi-split-button \u2014 Material Design 3 Split Button\r
+   lumina-split-button \u2014 Material Design 3 Split Button\r
    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r
    CSS custom properties (set inline by component JS):\r
      --split-h             button height\r
@@ -11129,7 +11129,7 @@ var SplitButton_default = `/* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u
 }\r
 \r
 /* \u2500\u2500 Life Material: breathing animation \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r
-@keyframes umi-breathe {\r
+@keyframes lumina-breathe {\r
     0%, 100% { transform: none; }\r
     50%      { transform: none; }\r
 }\r
@@ -11144,7 +11144,7 @@ var SplitButton_default = `/* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u
 }\r
 \r
 .wrapper.life-material {\r
-    animation: umi-breathe 3s ease-in-out infinite;\r
+    animation: lumina-breathe 3s ease-in-out infinite;\r
 }\r
 \r
 .wrapper.pressed,\r
@@ -11672,7 +11672,7 @@ var VARIANT_COLORS = {
   outlined: { bg: "transparent", text: "var(--md-sys-color-primary,#6750a4)", outline: "var(--md-sys-color-outline,#79747e)", shadow: "none" }
 };
 var POPUP_CSS = `
-.umi-split-popup {
+.lumina-split-popup {
     position:fixed; z-index:9999; box-sizing:border-box; border-radius:8px;
     overflow:hidden;
     background:var(--md-sys-color-surface-container,var(--md-sys-color-surface,#fff));
@@ -11683,14 +11683,14 @@ var POPUP_CSS = `
     transition:opacity 300ms cubic-bezier(.2,0,0,1),
                transform 600ms cubic-bezier(.34,1.56,.64,1);
 }
-.umi-split-popup[data-up]{transform-origin:bottom right}
-.umi-split-popup[data-hidden]{opacity:0;transform:scale(.85);pointer-events:none;visibility:hidden}
-.umi-split-popup[data-closing]{
+.lumina-split-popup[data-up]{transform-origin:bottom right}
+.lumina-split-popup[data-hidden]{opacity:0;transform:scale(.85);pointer-events:none;visibility:hidden}
+.lumina-split-popup[data-closing]{
     opacity:0!important;transform:scale(.9)!important;pointer-events:none;
     transition:opacity 200ms cubic-bezier(.4,0,1,1),transform 200ms cubic-bezier(.4,0,.6,1)!important;
 }
 /* \u2500\u2500 items \u2500\u2500 */
-.umi-split-menu-item{
+.lumina-split-menu-item{
     display:flex;align-items:center;gap:12px;box-sizing:border-box;
     padding:0 16px;cursor:pointer;position:relative;overflow:hidden;user-select:none;
     color:var(--md-sys-color-on-surface,#1c1b1f);
@@ -11699,64 +11699,64 @@ var POPUP_CSS = `
     opacity:0;
     transition:opacity 220ms ease,background 150ms linear;
 }
-.umi-split-menu-item.visible{opacity:1}
-.umi-split-menu-item:hover{background:rgba(0,0,0,.08)}
-.umi-split-menu-item.pressing{background:rgba(0,0,0,.12)}
-.umi-split-menu-item.selected{
+.lumina-split-menu-item.visible{opacity:1}
+.lumina-split-menu-item:hover{background:rgba(0,0,0,.08)}
+.lumina-split-menu-item.pressing{background:rgba(0,0,0,.12)}
+.lumina-split-menu-item.selected{
     background:color-mix(in srgb,var(--md-sys-color-primary,#6750a4) 12%,transparent);
     color:var(--md-sys-color-primary,#6750a4);
 }
-.umi-split-menu-item.disabled{opacity:.38;pointer-events:none}
+.lumina-split-menu-item.disabled{opacity:.38;pointer-events:none}
 /* \u2500\u2500 icon, check \u2500\u2500 */
-.umi-split-menu-icon,.umi-split-menu-check{
+.lumina-split-menu-icon,.lumina-split-menu-check{
     font-family:'Material Symbols Outlined';
     font-feature-settings:'liga' 1;
     -webkit-font-feature-settings:'liga' 1;
     font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 20;
     line-height:1;font-style:normal;display:inline-block;
 }
-.umi-split-menu-icon{font-size:20px;color:var(--md-sys-color-on-surface-variant,#49454f);flex-shrink:0}
-.umi-split-menu-check{font-size:18px;margin-left:auto;opacity:0;transition:opacity 200ms;color:var(--md-sys-color-primary,#6750a4)}
-.umi-split-menu-item.selected .umi-split-menu-check{opacity:1}
+.lumina-split-menu-icon{font-size:20px;color:var(--md-sys-color-on-surface-variant,#49454f);flex-shrink:0}
+.lumina-split-menu-check{font-size:18px;margin-left:auto;opacity:0;transition:opacity 200ms;color:var(--md-sys-color-primary,#6750a4)}
+.lumina-split-menu-item.selected .lumina-split-menu-check{opacity:1}
 /* \u2500\u2500 text \u2500\u2500 */
-.umi-split-item-text{flex:1;overflow:hidden}
-.umi-split-item-primary{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.umi-split-item-secondary{font-size:12px;color:var(--md-sys-color-on-surface-variant,#49454f);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lumina-split-item-text{flex:1;overflow:hidden}
+.lumina-split-item-primary{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lumina-split-item-secondary{font-size:12px;color:var(--md-sys-color-on-surface-variant,#49454f);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 /* \u2500\u2500 checkbox \u2500\u2500 */
-.umi-split-item-cb{
+.lumina-split-item-cb{
     width:18px;height:18px;border:2px solid var(--md-sys-color-on-surface-variant,#49454f);
     border-radius:2px;flex-shrink:0;margin-left:auto;display:flex;align-items:center;justify-content:center;
     box-sizing:border-box;transition:background 200ms,border-color 200ms;
 }
-.umi-split-item-cb.checked{background:var(--md-sys-color-primary,#6750a4);border-color:var(--md-sys-color-primary,#6750a4)}
-.umi-split-item-cb.checked::after{content:'';width:10px;height:6px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translateY(-2px);display:block}
+.lumina-split-item-cb.checked{background:var(--md-sys-color-primary,#6750a4);border-color:var(--md-sys-color-primary,#6750a4)}
+.lumina-split-item-cb.checked::after{content:'';width:10px;height:6px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translateY(-2px);display:block}
 /* \u2500\u2500 switch \u2500\u2500 */
-.umi-split-item-sw{
+.lumina-split-item-sw{
     width:52px;min-width:52px;height:32px;border-radius:16px;
     background:var(--md-sys-color-surface-container-highest,#e6e0e9);
     border:2px solid var(--md-sys-color-outline,#79747e);
     position:relative;margin-left:auto;flex-shrink:0;box-sizing:border-box;
     transition:background 200ms,border-color 200ms;
 }
-.umi-split-item-sw::after{
+.lumina-split-item-sw::after{
     content:'';position:absolute;top:50%;left:3px;width:16px;height:16px;
     border-radius:50%;background:var(--md-sys-color-outline,#79747e);
     transform:translateY(-50%);transition:left 300ms cubic-bezier(.34,1.56,.64,1),background 200ms;
 }
-.umi-split-item-sw.checked{background:var(--md-sys-color-primary,#6750a4);border-color:var(--md-sys-color-primary,#6750a4)}
-.umi-split-item-sw.checked::after{left:calc(100% - 19px);background:var(--md-sys-color-on-primary,#fff)}
+.lumina-split-item-sw.checked{background:var(--md-sys-color-primary,#6750a4);border-color:var(--md-sys-color-primary,#6750a4)}
+.lumina-split-item-sw.checked::after{left:calc(100% - 19px);background:var(--md-sys-color-on-primary,#fff)}
 /* \u2500\u2500 radio \u2500\u2500 */
-.umi-split-item-radio{
+.lumina-split-item-radio{
     width:20px;height:20px;border-radius:50%;border:2px solid var(--md-sys-color-on-surface-variant,#49454f);
     flex-shrink:0;margin-right:4px;position:relative;box-sizing:border-box;transition:border-color 200ms;
 }
-.umi-split-item-radio.checked{border-color:var(--md-sys-color-primary,#6750a4)}
-.umi-split-item-radio.checked::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--md-sys-color-primary,#6750a4)}
+.lumina-split-item-radio.checked{border-color:var(--md-sys-color-primary,#6750a4)}
+.lumina-split-item-radio.checked::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--md-sys-color-primary,#6750a4)}
 `;
 function ensureGlobalStyle() {
-  if (document.getElementById("__umi-split-style")) return;
+  if (document.getElementById("__lumina-split-style")) return;
   const s4 = document.createElement("style");
-  s4.id = "__umi-split-style";
+  s4.id = "__lumina-split-style";
   s4.textContent = POPUP_CSS;
   document.head.appendChild(s4);
 }
@@ -11796,7 +11796,7 @@ var SplitButton = class extends i4 {
     super.connectedCallback();
     ensureGlobalStyle();
     this._portal = document.createElement("div");
-    this._portal.className = "umi-split-popup";
+    this._portal.className = "lumina-split-popup";
     this._portal.setAttribute("data-hidden", "");
     document.body.appendChild(this._portal);
     this._scrollBound = () => {
@@ -11881,7 +11881,7 @@ var SplitButton = class extends i4 {
       if (!this._portal) return;
       this._portal.removeAttribute("data-hidden");
       this._portal.removeAttribute("data-closing");
-      this._portal.querySelectorAll(".umi-split-menu-item").forEach((el, i8) => {
+      this._portal.querySelectorAll(".lumina-split-menu-item").forEach((el, i8) => {
         const t6 = setTimeout(() => el.classList.add("visible"), 30 + i8 * 45);
         this._staggerTimers.push(t6);
       });
@@ -11922,7 +11922,7 @@ var SplitButton = class extends i4 {
       const chk = this.menuItemType === "radio" ? this.selectedIndex === i8 : !!item.checked;
       const dis = item.enabled === false;
       return b2`<div
-                    class="umi-split-menu-item ${sel ? "selected" : ""} ${dis ? "disabled" : ""}"
+                    class="lumina-split-menu-item ${sel ? "selected" : ""} ${dis ? "disabled" : ""}"
                     style="height:${itemH}px"
                     role=${this.menuItemType === "radio" ? "menuitemradio" : this.menuItemType === "checkbox" ? "menuitemcheckbox" : "menuitem"}
                     aria-checked=${chk}
@@ -11931,10 +11931,10 @@ var SplitButton = class extends i4 {
                     @mouseup=${(e9) => e9.currentTarget.classList.remove("pressing")}
                     @mouseleave=${(e9) => e9.currentTarget.classList.remove("pressing")}
                 >
-                    ${item.icon ? b2`<span class="umi-split-menu-icon">${item.icon}</span>` : A}
-                    <div class="umi-split-item-text">
-                        <div class="umi-split-item-primary">${item.text}</div>
-                        ${item.secondaryText ? b2`<div class="umi-split-item-secondary">${item.secondaryText}</div>` : A}
+                    ${item.icon ? b2`<span class="lumina-split-menu-icon">${item.icon}</span>` : A}
+                    <div class="lumina-split-item-text">
+                        <div class="lumina-split-item-primary">${item.text}</div>
+                        ${item.secondaryText ? b2`<div class="lumina-split-item-secondary">${item.secondaryText}</div>` : A}
                     </div>
                     ${this._trailing(item, i8, chk)}
                 </div>`;
@@ -11944,13 +11944,13 @@ var SplitButton = class extends i4 {
   _trailing(item, _i, checked) {
     switch (this.menuItemType) {
       case "checkbox":
-        return b2`<div class="umi-split-item-cb  ${checked ? "checked" : ""}"></div>`;
+        return b2`<div class="lumina-split-item-cb  ${checked ? "checked" : ""}"></div>`;
       case "switch":
-        return b2`<div class="umi-split-item-sw  ${checked ? "checked" : ""}"></div>`;
+        return b2`<div class="lumina-split-item-sw  ${checked ? "checked" : ""}"></div>`;
       case "radio":
-        return b2`<div class="umi-split-item-radio ${checked ? "checked" : ""}"></div>`;
+        return b2`<div class="lumina-split-item-radio ${checked ? "checked" : ""}"></div>`;
       default:
-        return b2`<span class="umi-split-menu-check">check</span>`;
+        return b2`<span class="lumina-split-menu-check">check</span>`;
     }
   }
   _itemClick(item, index, e9) {
@@ -12129,7 +12129,7 @@ __decorateClass([
   r4()
 ], SplitButton.prototype, "_menuPress", 2);
 SplitButton = __decorateClass([
-  t("umi-split-button")
+  t("lumina-split-button")
 ], SplitButton);
 
 // src/components/styles/Fab.css
@@ -12297,7 +12297,7 @@ __decorateClass([
   n3({ type: String, attribute: "fab-size" })
 ], Fab2.prototype, "fabSize", 2);
 Fab2 = __decorateClass([
-  t("umi-fab")
+  t("lumina-fab")
 ], Fab2);
 
 // src/components/styles/ExtendedFab.css
@@ -12326,7 +12326,7 @@ __decorateClass([
   n3({ type: String })
 ], ExtendedFab.prototype, "text", 2);
 ExtendedFab = __decorateClass([
-  t("umi-extended-fab")
+  t("lumina-extended-fab")
 ], ExtendedFab);
 
 // src/components/styles/FabMenuItem.css
@@ -12369,24 +12369,24 @@ var FloatingActionButtonMenuItem = class extends i4 {
     switch (this.buttonType) {
       case 1 /* IconButton */:
         return b2`
-                    <umi-icon-button
+                    <lumina-icon-button
                         .iconName=${this.iconName}
                         .buttonType=${1}
                         .size=${4}
                         .checkable=${false}
                         @clicked=${this._emitClicked}
-                    ></umi-icon-button>
+                    ></lumina-icon-button>
                 `;
       case 4 /* ToggleIcon */:
         return b2`
-                    <umi-icon-button
+                    <lumina-icon-button
                         .iconName=${this.iconName}
                         .buttonType=${1}
                         .size=${4}
                         .checkable=${true}
                         .checked=${this.checked}
                         @toggled=${(e9) => this._emitToggled(Boolean(e9.detail?.checked))}
-                    ></umi-icon-button>
+                    ></lumina-icon-button>
                 `;
       case 2 /* Switch */:
         return b2`
@@ -12411,11 +12411,11 @@ var FloatingActionButtonMenuItem = class extends i4 {
       case 0 /* EFAB */:
       default:
         return b2`
-                    <umi-extended-fab
+                    <lumina-extended-fab
                         .text=${this.text}
                         .iconName=${this.iconName}
                         @clicked=${this._emitClicked}
-                    ></umi-extended-fab>
+                    ></lumina-extended-fab>
                 `;
     }
   }
@@ -12449,7 +12449,7 @@ __decorateClass([
   n3({ type: Number, attribute: "item-width" })
 ], FloatingActionButtonMenuItem.prototype, "itemWidth", 2);
 FloatingActionButtonMenuItem = __decorateClass([
-  t("umi-fab-menu-item")
+  t("lumina-fab-menu-item")
 ], FloatingActionButtonMenuItem);
 
 // src/components/styles/FabMenu.css
@@ -12657,7 +12657,7 @@ var FloatingActionButtonMenu = class extends i4 {
                                     --start-y:${start.y}px;
                                 "
                             >
-                                <umi-fab-menu-item
+                                <lumina-fab-menu-item
                                     .text=${item.text ?? ""}
                                     .iconName=${item.icon ?? ""}
                                     .buttonType=${this._baseType(item)}
@@ -12666,7 +12666,7 @@ var FloatingActionButtonMenu = class extends i4 {
                                     .itemWidth=${width}
                                     @clicked=${() => this._onItemClicked(index, item)}
                                     @toggled=${(e9) => this._onItemToggled(index, Boolean(e9.detail?.checked), item)}
-                                ></umi-fab-menu-item>
+                                ></lumina-fab-menu-item>
                             </div>
                         `;
     })}
@@ -12747,7 +12747,7 @@ __decorateClass([
   r4()
 ], FloatingActionButtonMenu.prototype, "_itemState", 2);
 FloatingActionButtonMenu = __decorateClass([
-  t("umi-fab-menu")
+  t("lumina-fab-menu")
 ], FloatingActionButtonMenu);
 
 // src/components/styles/Checkbox.css
@@ -13031,7 +13031,7 @@ __decorateClass([
   r4()
 ], Checkbox2.prototype, "_pressed", 2);
 Checkbox2 = __decorateClass([
-  t("umi-checkbox")
+  t("lumina-checkbox")
 ], Checkbox2);
 
 // src/components/styles/RadioButton.css
@@ -13121,7 +13121,7 @@ var RadioButton = class extends i4 {
   _enforceExclusive() {
     if (!this.autoExclusive || !this.checked) return;
     const root = this.getRootNode();
-    const all = Array.from(root.querySelectorAll("umi-radio-button"));
+    const all = Array.from(root.querySelectorAll("lumina-radio-button"));
     all.forEach((el) => {
       if (el === this) return;
       if (!el.autoExclusive) return;
@@ -13289,7 +13289,7 @@ __decorateClass([
   r4()
 ], RadioButton.prototype, "_pressed", 2);
 RadioButton = __decorateClass([
-  t("umi-radio-button")
+  t("lumina-radio-button")
 ], RadioButton);
 
 // src/components/styles/ButtonGroup.css
@@ -13465,7 +13465,7 @@ var ButtonGroup = class extends i4 {
     }
   }
   _applyLayoutAndState() {
-    this.style.setProperty("--umi-group-gap", `${this.gap}px`);
+    this.style.setProperty("--lumina-group-gap", `${this.gap}px`);
     this.requestUpdate();
   }
   _handleToggle(source, checked) {
@@ -13675,7 +13675,7 @@ __decorateClass([
   e4("slot")
 ], ButtonGroup.prototype, "_slotEl", 2);
 ButtonGroup = __decorateClass([
-  t("umi-button-group")
+  t("lumina-button-group")
 ], ButtonGroup);
 
 // src/components/styles/Chips.css
@@ -13964,7 +13964,7 @@ var AssistChip2 = class extends ChipBase {
   }
 };
 AssistChip2 = __decorateClass([
-  t("umi-assist-chip")
+  t("lumina-assist-chip")
 ], AssistChip2);
 
 // src/components/chips/FilterChip.ts
@@ -14022,7 +14022,7 @@ __decorateClass([
   n3({ type: String, attribute: "user-icon" })
 ], FilterChip2.prototype, "userIcon", 2);
 FilterChip2 = __decorateClass([
-  t("umi-filter-chip")
+  t("lumina-filter-chip")
 ], FilterChip2);
 
 // src/components/chips/InputChip.ts
@@ -14059,7 +14059,7 @@ var InputChip2 = class extends ChipBase {
   }
 };
 InputChip2 = __decorateClass([
-  t("umi-input-chip")
+  t("lumina-input-chip")
 ], InputChip2);
 
 // src/components/chips/SuggestionChip.ts
@@ -14112,7 +14112,7 @@ __decorateClass([
   r4()
 ], SuggestionChip2.prototype, "_fading", 2);
 SuggestionChip2 = __decorateClass([
-  t("umi-suggestion-chip")
+  t("lumina-suggestion-chip")
 ], SuggestionChip2);
 
 // src/components/chips/Chips.ts
@@ -14130,7 +14130,7 @@ var Chips = class extends i4 {
     switch (this.chipType) {
       case Chips.chipFilter:
         return b2`
-                    <umi-filter-chip
+                    <lumina-filter-chip
                         .text=${this.text}
                         .icon=${this.icon}
                         .enabled=${this.enabled}
@@ -14140,40 +14140,40 @@ var Chips = class extends i4 {
           this.selected = Boolean(e9.detail?.selected);
           this.dispatchEvent(new CustomEvent("toggled", { detail: e9.detail, bubbles: true, composed: true }));
         }}
-                    ></umi-filter-chip>
+                    ></lumina-filter-chip>
                 `;
       case Chips.chipInput:
         return b2`
-                    <umi-input-chip
+                    <lumina-input-chip
                         .text=${this.text}
                         .icon=${this.icon}
                         .enabled=${this.enabled}
                         .selected=${this.selected}
                         @clicked=${() => this.dispatchEvent(new CustomEvent("clicked", { bubbles: true, composed: true }))}
                         @removeClicked=${() => this.dispatchEvent(new CustomEvent("removeClicked", { bubbles: true, composed: true }))}
-                    ></umi-input-chip>
+                    ></lumina-input-chip>
                 `;
       case Chips.chipSuggestion:
         return b2`
-                    <umi-suggestion-chip
+                    <lumina-suggestion-chip
                         .text=${this.text}
                         .icon=${this.icon}
                         .enabled=${this.enabled}
                         .elevated=${this.elevated}
                         @clicked=${() => this.dispatchEvent(new CustomEvent("clicked", { bubbles: true, composed: true }))}
                         @suggestionSelected=${(e9) => this.dispatchEvent(new CustomEvent("suggestionSelected", { detail: e9.detail, bubbles: true, composed: true }))}
-                    ></umi-suggestion-chip>
+                    ></lumina-suggestion-chip>
                 `;
       case Chips.chipAssist:
       default:
         return b2`
-                    <umi-assist-chip
+                    <lumina-assist-chip
                         .text=${this.text}
                         .icon=${this.icon}
                         .enabled=${this.enabled}
                         .elevated=${this.elevated}
                         @clicked=${() => this.dispatchEvent(new CustomEvent("clicked", { bubbles: true, composed: true }))}
-                    ></umi-assist-chip>
+                    ></lumina-assist-chip>
                 `;
     }
   }
@@ -14201,7 +14201,7 @@ __decorateClass([
   n3({ type: Number, attribute: "chip-type" })
 ], Chips.prototype, "chipType", 2);
 Chips = __decorateClass([
-  t("umi-chips")
+  t("lumina-chips")
 ], Chips);
 
 // src/components/styles/ProgressButtons.css
@@ -14424,7 +14424,7 @@ __decorateClass([
   r4()
 ], ProgressBarButton.prototype, "_locked", 2);
 ProgressBarButton = __decorateClass([
-  t("umi-progress-bar-button")
+  t("lumina-progress-bar-button")
 ], ProgressBarButton);
 
 // src/components/controls/ProgressBarEFAButton.ts
@@ -14582,7 +14582,7 @@ __decorateClass([
   r4()
 ], ProgressBarEFAButton.prototype, "_locked", 2);
 ProgressBarEFAButton = __decorateClass([
-  t("umi-progress-bar-efab")
+  t("lumina-progress-bar-efab")
 ], ProgressBarEFAButton);
 
 // src/components/controls/ProgressBarFAButton.ts
@@ -14744,7 +14744,7 @@ __decorateClass([
   r4()
 ], ProgressBarFAButton.prototype, "_locked", 2);
 ProgressBarFAButton = __decorateClass([
-  t("umi-progress-bar-fab")
+  t("lumina-progress-bar-fab")
 ], ProgressBarFAButton);
 
 // src/components/controls/ProgressBarIconButton.ts
@@ -14954,7 +14954,7 @@ __decorateClass([
   r4()
 ], ProgressBarIconButton.prototype, "_locked", 2);
 ProgressBarIconButton = __decorateClass([
-  t("umi-progress-bar-icon-button")
+  t("lumina-progress-bar-icon-button")
 ], ProgressBarIconButton);
 
 // src/components/styles/LoadingButtons.css
@@ -15035,36 +15035,36 @@ var LoaderButton = class extends i4 {
     const trackColor = this.progressTrackColor || "rgba(127, 127, 127, 0.25)";
     if (this.progressType === 2) {
       return b2`
-                <umi-loading-indicator
+                <lumina-loading-indicator
                     .size=${Math.max(16, Math.floor(sizePx * 0.6))}
                     .color=${indicatorColor}
                     .hasBackground=${false}
-                ></umi-loading-indicator>
+                ></lumina-loading-indicator>
             `;
     }
     if (this.progressType === 0) {
       return this.progressStyle === 1 ? b2`
-                    <umi-dc-progress-bar-expressive
+                    <lumina-dc-progress-bar-expressive
                         .progress=${Math.max(0, Math.min(100, this.progress))}
                         .diameter=${Math.max(16, Math.floor(sizePx * 0.6))}
                         .thickness=${3}
                         .gapSize=${6}
                         .indicatorColor=${indicatorColor}
                         .trackColor=${trackColor}
-                    ></umi-dc-progress-bar-expressive>
+                    ></lumina-dc-progress-bar-expressive>
                 ` : b2`
-                    <umi-dc-progress-bar
+                    <lumina-dc-progress-bar
                         .progress=${Math.max(0, Math.min(100, this.progress))}
                         .diameter=${Math.max(16, Math.floor(sizePx * 0.6))}
                         .thickness=${3}
                         .gapSize=${6}
                         .indicatorColor=${indicatorColor}
                         .trackColor=${trackColor}
-                    ></umi-dc-progress-bar>
+                    ></lumina-dc-progress-bar>
                 `;
     }
     return this.progressStyle === 1 ? b2`
-                <umi-ic-progress-bar-expressive
+                <lumina-ic-progress-bar-expressive
                     .running=${true}
                     .diameter=${Math.max(16, Math.floor(sizePx * 0.6))}
                     .thickness=${3}
@@ -15072,9 +15072,9 @@ var LoaderButton = class extends i4 {
                     .indicatorColor=${indicatorColor}
                     .trackColor=${trackColor}
                     .showTrack=${true}
-                ></umi-ic-progress-bar-expressive>
+                ></lumina-ic-progress-bar-expressive>
             ` : b2`
-                <umi-ic-progress-bar
+                <lumina-ic-progress-bar
                     .running=${true}
                     .diameter=${Math.max(16, Math.floor(sizePx * 0.6))}
                     .strokeWidth=${3}
@@ -15082,7 +15082,7 @@ var LoaderButton = class extends i4 {
                     .indicatorColor=${indicatorColor}
                     .trackColor=${trackColor}
                     .showTrack=${true}
-                ></umi-ic-progress-bar>
+                ></lumina-ic-progress-bar>
             `;
   }
   render() {
@@ -15172,7 +15172,7 @@ __decorateClass([
   n3({ type: String, attribute: "progress-track-color" })
 ], LoaderButton.prototype, "progressTrackColor", 2);
 LoaderButton = __decorateClass([
-  t("umi-loader-button")
+  t("lumina-loader-button")
 ], LoaderButton);
 
 // src/components/controls/LoadingIconButton.ts
@@ -15235,12 +15235,12 @@ var LoadingIconButton = class extends i4 {
     const trackColor = this.progressTrackColor || "rgba(127, 127, 127, 0.25)";
     const indicatorSize = Math.max(14, Math.floor(sizePx * 0.52));
     if (this.progressType === 2) {
-      return b2`<umi-loading-indicator .size=${indicatorSize} .color=${indicatorColor}></umi-loading-indicator>`;
+      return b2`<lumina-loading-indicator .size=${indicatorSize} .color=${indicatorColor}></lumina-loading-indicator>`;
     }
     if (this.progressType === 0) {
-      return this.progressStyle === 1 ? b2`<umi-dc-progress-bar-expressive .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${2} .gapSize=${4} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></umi-dc-progress-bar-expressive>` : b2`<umi-dc-progress-bar .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${2} .gapSize=${4} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></umi-dc-progress-bar>`;
+      return this.progressStyle === 1 ? b2`<lumina-dc-progress-bar-expressive .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${2} .gapSize=${4} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></lumina-dc-progress-bar-expressive>` : b2`<lumina-dc-progress-bar .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${2} .gapSize=${4} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></lumina-dc-progress-bar>`;
     }
-    return this.progressStyle === 1 ? b2`<umi-ic-progress-bar-expressive .running=${true} .diameter=${indicatorSize} .thickness=${2} .gapSize=${4} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></umi-ic-progress-bar-expressive>` : b2`<umi-ic-progress-bar .running=${true} .diameter=${indicatorSize} .strokeWidth=${2} .gapSize=${4} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></umi-ic-progress-bar>`;
+    return this.progressStyle === 1 ? b2`<lumina-ic-progress-bar-expressive .running=${true} .diameter=${indicatorSize} .thickness=${2} .gapSize=${4} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></lumina-ic-progress-bar-expressive>` : b2`<lumina-ic-progress-bar .running=${true} .diameter=${indicatorSize} .strokeWidth=${2} .gapSize=${4} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></lumina-ic-progress-bar>`;
   }
   _handleClick() {
     if (this.loading) return;
@@ -15339,7 +15339,7 @@ __decorateClass([
   n3({ type: String, attribute: "progress-track-color" })
 ], LoadingIconButton.prototype, "progressTrackColor", 2);
 LoadingIconButton = __decorateClass([
-  t("umi-loading-icon-button")
+  t("lumina-loading-icon-button")
 ], LoadingIconButton);
 
 // src/components/controls/LoadingFloatingActionButton.ts
@@ -15366,12 +15366,12 @@ var LoadingFloatingActionButton = class extends i4 {
     const trackColor = this.progressTrackColor || "rgba(127, 127, 127, 0.25)";
     const indicatorSize = Math.max(16, Math.floor(sizePx * 0.48));
     if (this.progressType === 2) {
-      return b2`<umi-loading-indicator .size=${indicatorSize} .color=${indicatorColor}></umi-loading-indicator>`;
+      return b2`<lumina-loading-indicator .size=${indicatorSize} .color=${indicatorColor}></lumina-loading-indicator>`;
     }
     if (this.progressType === 0) {
-      return this.progressStyle === 1 ? b2`<umi-dc-progress-bar-expressive .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></umi-dc-progress-bar-expressive>` : b2`<umi-dc-progress-bar .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></umi-dc-progress-bar>`;
+      return this.progressStyle === 1 ? b2`<lumina-dc-progress-bar-expressive .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></lumina-dc-progress-bar-expressive>` : b2`<lumina-dc-progress-bar .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></lumina-dc-progress-bar>`;
     }
-    return this.progressStyle === 1 ? b2`<umi-ic-progress-bar-expressive .running=${true} .diameter=${indicatorSize} .thickness=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></umi-ic-progress-bar-expressive>` : b2`<umi-ic-progress-bar .running=${true} .diameter=${indicatorSize} .strokeWidth=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></umi-ic-progress-bar>`;
+    return this.progressStyle === 1 ? b2`<lumina-ic-progress-bar-expressive .running=${true} .diameter=${indicatorSize} .thickness=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></lumina-ic-progress-bar-expressive>` : b2`<lumina-ic-progress-bar .running=${true} .diameter=${indicatorSize} .strokeWidth=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></lumina-ic-progress-bar>`;
   }
   _handleClick() {
     if (this.loading) return;
@@ -15462,7 +15462,7 @@ __decorateClass([
   n3({ type: String, attribute: "progress-track-color" })
 ], LoadingFloatingActionButton.prototype, "progressTrackColor", 2);
 LoadingFloatingActionButton = __decorateClass([
-  t("umi-loading-floating-action-button")
+  t("lumina-loading-floating-action-button")
 ], LoadingFloatingActionButton);
 
 // src/components/controls/LoadingExtendedFloatingActionButton.ts
@@ -15489,12 +15489,12 @@ var LoadingExtendedFloatingActionButton = class extends i4 {
     const trackColor = this.progressTrackColor || "rgba(127, 127, 127, 0.25)";
     const indicatorSize = Math.max(16, Math.floor(sizePx * 0.46));
     if (this.progressType === 2) {
-      return b2`<umi-loading-indicator .size=${indicatorSize} .color=${indicatorColor}></umi-loading-indicator>`;
+      return b2`<lumina-loading-indicator .size=${indicatorSize} .color=${indicatorColor}></lumina-loading-indicator>`;
     }
     if (this.progressType === 0) {
-      return this.progressStyle === 1 ? b2`<umi-dc-progress-bar-expressive .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></umi-dc-progress-bar-expressive>` : b2`<umi-dc-progress-bar .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></umi-dc-progress-bar>`;
+      return this.progressStyle === 1 ? b2`<lumina-dc-progress-bar-expressive .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></lumina-dc-progress-bar-expressive>` : b2`<lumina-dc-progress-bar .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></lumina-dc-progress-bar>`;
     }
-    return this.progressStyle === 1 ? b2`<umi-ic-progress-bar-expressive .running=${true} .diameter=${indicatorSize} .thickness=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></umi-ic-progress-bar-expressive>` : b2`<umi-ic-progress-bar .running=${true} .diameter=${indicatorSize} .strokeWidth=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></umi-ic-progress-bar>`;
+    return this.progressStyle === 1 ? b2`<lumina-ic-progress-bar-expressive .running=${true} .diameter=${indicatorSize} .thickness=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></lumina-ic-progress-bar-expressive>` : b2`<lumina-ic-progress-bar .running=${true} .diameter=${indicatorSize} .strokeWidth=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></lumina-ic-progress-bar>`;
   }
   _handleClick() {
     if (this.loading) return;
@@ -15581,7 +15581,7 @@ __decorateClass([
   n3({ type: String, attribute: "progress-track-color" })
 ], LoadingExtendedFloatingActionButton.prototype, "progressTrackColor", 2);
 LoadingExtendedFloatingActionButton = __decorateClass([
-  t("umi-loading-extended-floating-action-button")
+  t("lumina-loading-extended-floating-action-button")
 ], LoadingExtendedFloatingActionButton);
 
 // src/components/styles/TimeButtons.css
@@ -15795,7 +15795,7 @@ __decorateClass([
   r4()
 ], TimeButton.prototype, "_locked", 2);
 TimeButton = __decorateClass([
-  t("umi-time-button")
+  t("lumina-time-button")
 ], TimeButton);
 
 // src/components/controls/IconTimerButton.ts
@@ -15996,7 +15996,7 @@ __decorateClass([
   r4()
 ], IconTimerButton.prototype, "_locked", 2);
 IconTimerButton = __decorateClass([
-  t("umi-icon-timer-button")
+  t("lumina-icon-timer-button")
 ], IconTimerButton);
 
 // src/components/controls/FloatingActionTimeButton.ts
@@ -16154,7 +16154,7 @@ __decorateClass([
   r4()
 ], FloatingActionTimeButton.prototype, "_locked", 2);
 FloatingActionTimeButton = __decorateClass([
-  t("umi-floating-action-time-button")
+  t("lumina-floating-action-time-button")
 ], FloatingActionTimeButton);
 
 // src/components/controls/ExtendedFloatingActionTimeButton.ts
@@ -16308,7 +16308,7 @@ __decorateClass([
   r4()
 ], ExtendedFloatingActionTimeButton.prototype, "_locked", 2);
 ExtendedFloatingActionTimeButton = __decorateClass([
-  t("umi-extended-floating-action-time-button")
+  t("lumina-extended-floating-action-time-button")
 ], ExtendedFloatingActionTimeButton);
 
 // src/components/styles/ScrollBar.css
@@ -16669,7 +16669,7 @@ __decorateClass([
   r4()
 ], ScrollBar.prototype, "_hideReady", 2);
 ScrollBar = __decorateClass([
-  t("umi-scroll-bar")
+  t("lumina-scroll-bar")
 ], ScrollBar);
 var ScrollBarExpressive = class extends ScrollBar {
   constructor() {
@@ -16719,11 +16719,11 @@ __decorateClass([
   n3({ type: String, attribute: "handle-active-color" })
 ], ScrollBarExpressive.prototype, "handleActiveColor", 2);
 ScrollBarExpressive = __decorateClass([
-  t("umi-scroll-bar-expressive")
+  t("lumina-scroll-bar-expressive")
 ], ScrollBarExpressive);
 
 // src/components/styles/SlideBar.css
-var SlideBar_default = "/* =====================================================\r\n   SlideBar (MD3 Expressive) \u2014 base container\r\n   ===================================================== */\r\n:host {\r\n    display: block;\r\n    outline: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\n.sb-root {\r\n    position: relative;\r\n    width: 100%;\r\n    height: 44px;\r\n    display: flex;\r\n    align-items: center;\r\n    outline: none;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n}\r\n\r\n.sb-root.disabled {\r\n    pointer-events: none;\r\n    cursor: default;\r\n}\r\n\r\n/* =====================================================\r\n   Tracks\r\n   ===================================================== */\r\n.sb-track {\r\n    position: absolute;\r\n    height: 16px;\r\n    top: 14px;\r\n    pointer-events: none;\r\n    z-index: 0;\r\n    transition: background-color 300ms cubic-bezier(.2,.0,.0,1), opacity 150ms ease;\r\n}\r\n\r\n.sb-track-active {\r\n    left: 0;\r\n    border-radius: 9999px 2px 2px 9999px;\r\n}\r\n\r\n.sb-track-inactive {\r\n    right: 0;\r\n    border-radius: 2px 9999px 9999px 2px;\r\n}\r\n\r\n/* Inset icon inside track */\r\n.sb-icon {\r\n    position: absolute;\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    width: 16px;\r\n    height: 16px;\r\n    font-size: 16px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    pointer-events: none;\r\n    z-index: 1;\r\n    user-select: none;\r\n    font-family: 'Material Symbols Outlined', 'Material Symbols Rounded', 'Material Icons', sans-serif;\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    -webkit-font-feature-settings: 'liga';\r\n    font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    transition: left 150ms cubic-bezier(.2,0,.0,1), right 150ms cubic-bezier(.2,0,.0,1), color 300ms ease;\r\n}\r\n\r\n.sb-track-range-left  { right: 0; border-radius: 2px 9999px 9999px 2px; }\r\n.sb-track-range-right { left: 0;  border-radius: 9999px 2px 2px 9999px; }\r\n.sb-track-range-mid   { border-radius: 2px; }\r\n.sb-track-both-round  { border-radius: 9999px; }\r\n\r\n/* =====================================================\r\n   Wave track canvas\r\n   ===================================================== */\r\n.sb-wave-canvas {\r\n    position: absolute;\r\n    top: 14px;\r\n    height: 16px;\r\n    pointer-events: none;\r\n    transition: opacity 150ms ease;\r\n}\r\n\r\n/* =====================================================\r\n   End indicator dot\r\n   ===================================================== */\r\n.sb-end-dot {\r\n    position: absolute;\r\n    top: 50%;\r\n    right: 4px;\r\n    width: 4px;\r\n    height: 4px;\r\n    border-radius: 50%;\r\n    transform: translateY(-50%);\r\n    pointer-events: none;\r\n    z-index: 2;\r\n    transition: background-color 300ms cubic-bezier(.2,0,.0,1), opacity 160ms ease;\r\n}\r\n\r\n.sb-start-dot {\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 4px;\r\n    width: 4px;\r\n    height: 4px;\r\n    border-radius: 50%;\r\n    transform: translateY(-50%);\r\n    pointer-events: none;\r\n    z-index: 2;\r\n    transition: background-color 300ms cubic-bezier(.2,0,.0,1), opacity 160ms ease;\r\n}\r\n\r\n/* =====================================================\r\n   Division ticks\r\n   ===================================================== */\r\n.sb-tick {\r\n    position: absolute;\r\n    top: 50%;\r\n    width: 4px;\r\n    height: 4px;\r\n    border-radius: 50%;\r\n    transform: translate(-50%, -50%);\r\n    pointer-events: none;\r\n    transition: background-color 150ms ease;\r\n}\r\n\r\n/* =====================================================\r\n   Handle\r\n   ===================================================== */\r\n.sb-handle-area {\r\n    position: absolute;\r\n    width: 44px;\r\n    height: 44px;\r\n    top: 0;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    transform: translateX(-50%);\r\n    z-index: 3;\r\n}\r\n\r\n/* State layer: hover 8%, pressed 12% (MD3 spec) */\r\n.sb-state-layer {\r\n    position: absolute;\r\n    inset: 0;\r\n    border-radius: 22px;\r\n    pointer-events: none;\r\n    transition: opacity 150ms ease;\r\n}\r\n\r\n.sb-handle-inner {\r\n    border-radius: 999px;\r\n    transition:\r\n        width 150ms cubic-bezier(.34,1.56,.64,1),\r\n        background-color 300ms cubic-bezier(.2,0,.0,1),\r\n        opacity 150ms ease;\r\n}\r\n\r\n.sb-handle-focus-ring {\r\n    position: absolute;\r\n    inset: -6px;\r\n    border-radius: 16px;\r\n    border: 3px solid var(--sb-handle-color, var(--md-sys-color-primary, #6750a4));\r\n    pointer-events: none;\r\n    transition: opacity 150ms ease;\r\n}\r\n\r\n/* =====================================================\r\n   Value label \u2014 badge/pointer shape (MD3 value indicator)\r\n   ===================================================== */\r\n.sb-label {\r\n    position: absolute;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    pointer-events: none;\r\n    transform-origin: bottom center;\r\n    transition:\r\n        opacity  200ms ease,\r\n        transform 200ms cubic-bezier(.34,1.56,.64,1);\r\n    will-change: transform, opacity;\r\n    z-index: 10;\r\n}\r\n\r\n.sb-label.hidden {\r\n    opacity: 0;\r\n    transform: translateX(-50%) scale(0.6);\r\n}\r\n\r\n.sb-label.visible {\r\n    opacity: 1;\r\n    transform: translateX(-50%) scale(1);\r\n}\r\n\r\n.sb-label-bubble {\r\n    height: 44px;\r\n    min-width: 48px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    border-radius: 22px;\r\n    padding: 0 16px;\r\n    white-space: nowrap;\r\n    font-family: var(--md-sys-typescale-label-large-font, Roboto, sans-serif);\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n    line-height: 20px;\r\n    -webkit-font-smoothing: antialiased;\r\n    transition: background-color 300ms ease, color 300ms ease;\r\n}\r\n\r\n.sb-label-pointer {\r\n    width: 0;\r\n    height: 0;\r\n    border-left:  7px solid transparent;\r\n    border-right: 7px solid transparent;\r\n    /* border-top-color is set inline to match bubble background */\r\n    border-top-width: 8px;\r\n    border-top-style: solid;\r\n    margin-top: -1px;\r\n}\r\n\r\n/* =====================================================\r\n   Standalone umi-slide-bar-handle element\r\n    ===================================================== */\r\n.handle-root {\r\n    position: relative;\r\n    width: 4px;\r\n    height: 44px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n.handle-rect {\r\n    border-radius: 999px;\r\n    transition:\r\n        width 150ms cubic-bezier(.34,1.56,.64,1),\r\n        background-color 300ms cubic-bezier(.2,0,.0,1),\r\n        opacity 150ms ease;\r\n}\r\n\r\n.handle-focus-ring {\r\n    position: absolute;\r\n    inset: -6px;\r\n    border-radius: 16px;\r\n    border: 3px solid var(--sb-handle-color, var(--md-sys-color-primary, #6750a4));\r\n    opacity: 0;\r\n    transition: opacity 150ms ease;\r\n    pointer-events: none;\r\n}\r\n\r\n.handle-root.focus-visible .handle-focus-ring {\r\n    opacity: 1;\r\n}\r\n\r\n/* =====================================================\r\n   Standalone umi-slide-bar-track element\r\n   ===================================================== */\r\n.track-root {\r\n    display: block;\r\n    height: 16px;\r\n    transition: opacity 150ms ease;\r\n}\r\n\r\n.track-canvas {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n/* =====================================================\r\n   Standalone umi-slide-bar-wave-track element\r\n   ===================================================== */\r\n.wave-track-root {\r\n    display: block;\r\n    height: 16px;\r\n    transition: opacity 150ms ease;\r\n}\r\n\r\n.wave-canvas {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n/* =====================================================\r\n   Standalone umi-slide-bar-label element\r\n   ===================================================== */\r\n.label-root {\r\n    display: inline-flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 44px;\r\n    min-width: 48px;\r\n    padding: 0 16px;\r\n    border-radius: 22px;\r\n    font-family: var(--md-sys-typescale-label-large-font, Roboto, sans-serif);\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n    line-height: 20px;\r\n    -webkit-font-smoothing: antialiased;\r\n    transform-origin: bottom center;\r\n    transition:\r\n        opacity 150ms ease,\r\n        transform 150ms cubic-bezier(.34,1.56,.64,1),\r\n        background-color 300ms cubic-bezier(.2,0,.0,1),\r\n        color 300ms cubic-bezier(.2,0,.0,1);\r\n}\r\n\r\n.label-root.hidden {\r\n    opacity: 0;\r\n    transform: scale(0.8);\r\n}\r\n\r\n.label-root.visible {\r\n    opacity: 1;\r\n    transform: scale(1);\r\n}\r\n";
+var SlideBar_default = "/* =====================================================\r\n   SlideBar (MD3 Expressive) \u2014 base container\r\n   ===================================================== */\r\n:host {\r\n    display: block;\r\n    outline: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\n.sb-root {\r\n    position: relative;\r\n    width: 100%;\r\n    height: 44px;\r\n    display: flex;\r\n    align-items: center;\r\n    outline: none;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n}\r\n\r\n.sb-root.disabled {\r\n    pointer-events: none;\r\n    cursor: default;\r\n}\r\n\r\n/* =====================================================\r\n   Tracks\r\n   ===================================================== */\r\n.sb-track {\r\n    position: absolute;\r\n    height: 16px;\r\n    top: 14px;\r\n    pointer-events: none;\r\n    z-index: 0;\r\n    transition: background-color 300ms cubic-bezier(.2,.0,.0,1), opacity 150ms ease;\r\n}\r\n\r\n.sb-track-active {\r\n    left: 0;\r\n    border-radius: 9999px 2px 2px 9999px;\r\n}\r\n\r\n.sb-track-inactive {\r\n    right: 0;\r\n    border-radius: 2px 9999px 9999px 2px;\r\n}\r\n\r\n/* Inset icon inside track */\r\n.sb-icon {\r\n    position: absolute;\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    width: 16px;\r\n    height: 16px;\r\n    font-size: 16px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    pointer-events: none;\r\n    z-index: 1;\r\n    user-select: none;\r\n    font-family: 'Material Symbols Outlined', 'Material Symbols Rounded', 'Material Icons', sans-serif;\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    -webkit-font-feature-settings: 'liga';\r\n    font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    transition: left 150ms cubic-bezier(.2,0,.0,1), right 150ms cubic-bezier(.2,0,.0,1), color 300ms ease;\r\n}\r\n\r\n.sb-track-range-left  { right: 0; border-radius: 2px 9999px 9999px 2px; }\r\n.sb-track-range-right { left: 0;  border-radius: 9999px 2px 2px 9999px; }\r\n.sb-track-range-mid   { border-radius: 2px; }\r\n.sb-track-both-round  { border-radius: 9999px; }\r\n\r\n/* =====================================================\r\n   Wave track canvas\r\n   ===================================================== */\r\n.sb-wave-canvas {\r\n    position: absolute;\r\n    top: 14px;\r\n    height: 16px;\r\n    pointer-events: none;\r\n    transition: opacity 150ms ease;\r\n}\r\n\r\n/* =====================================================\r\n   End indicator dot\r\n   ===================================================== */\r\n.sb-end-dot {\r\n    position: absolute;\r\n    top: 50%;\r\n    right: 4px;\r\n    width: 4px;\r\n    height: 4px;\r\n    border-radius: 50%;\r\n    transform: translateY(-50%);\r\n    pointer-events: none;\r\n    z-index: 2;\r\n    transition: background-color 300ms cubic-bezier(.2,0,.0,1), opacity 160ms ease;\r\n}\r\n\r\n.sb-start-dot {\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 4px;\r\n    width: 4px;\r\n    height: 4px;\r\n    border-radius: 50%;\r\n    transform: translateY(-50%);\r\n    pointer-events: none;\r\n    z-index: 2;\r\n    transition: background-color 300ms cubic-bezier(.2,0,.0,1), opacity 160ms ease;\r\n}\r\n\r\n/* =====================================================\r\n   Division ticks\r\n   ===================================================== */\r\n.sb-tick {\r\n    position: absolute;\r\n    top: 50%;\r\n    width: 4px;\r\n    height: 4px;\r\n    border-radius: 50%;\r\n    transform: translate(-50%, -50%);\r\n    pointer-events: none;\r\n    transition: background-color 150ms ease;\r\n}\r\n\r\n/* =====================================================\r\n   Handle\r\n   ===================================================== */\r\n.sb-handle-area {\r\n    position: absolute;\r\n    width: 44px;\r\n    height: 44px;\r\n    top: 0;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    transform: translateX(-50%);\r\n    z-index: 3;\r\n}\r\n\r\n/* State layer: hover 8%, pressed 12% (MD3 spec) */\r\n.sb-state-layer {\r\n    position: absolute;\r\n    inset: 0;\r\n    border-radius: 22px;\r\n    pointer-events: none;\r\n    transition: opacity 150ms ease;\r\n}\r\n\r\n.sb-handle-inner {\r\n    border-radius: 999px;\r\n    transition:\r\n        width 150ms cubic-bezier(.34,1.56,.64,1),\r\n        background-color 300ms cubic-bezier(.2,0,.0,1),\r\n        opacity 150ms ease;\r\n}\r\n\r\n.sb-handle-focus-ring {\r\n    position: absolute;\r\n    inset: -6px;\r\n    border-radius: 16px;\r\n    border: 3px solid var(--sb-handle-color, var(--md-sys-color-primary, #6750a4));\r\n    pointer-events: none;\r\n    transition: opacity 150ms ease;\r\n}\r\n\r\n/* =====================================================\r\n   Value label \u2014 badge/pointer shape (MD3 value indicator)\r\n   ===================================================== */\r\n.sb-label {\r\n    position: absolute;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    pointer-events: none;\r\n    transform-origin: bottom center;\r\n    transition:\r\n        opacity  200ms ease,\r\n        transform 200ms cubic-bezier(.34,1.56,.64,1);\r\n    will-change: transform, opacity;\r\n    z-index: 10;\r\n}\r\n\r\n.sb-label.hidden {\r\n    opacity: 0;\r\n    transform: translateX(-50%) scale(0.6);\r\n}\r\n\r\n.sb-label.visible {\r\n    opacity: 1;\r\n    transform: translateX(-50%) scale(1);\r\n}\r\n\r\n.sb-label-bubble {\r\n    height: 44px;\r\n    min-width: 48px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    border-radius: 22px;\r\n    padding: 0 16px;\r\n    white-space: nowrap;\r\n    font-family: var(--md-sys-typescale-label-large-font, Roboto, sans-serif);\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n    line-height: 20px;\r\n    -webkit-font-smoothing: antialiased;\r\n    transition: background-color 300ms ease, color 300ms ease;\r\n}\r\n\r\n.sb-label-pointer {\r\n    width: 0;\r\n    height: 0;\r\n    border-left:  7px solid transparent;\r\n    border-right: 7px solid transparent;\r\n    /* border-top-color is set inline to match bubble background */\r\n    border-top-width: 8px;\r\n    border-top-style: solid;\r\n    margin-top: -1px;\r\n}\r\n\r\n/* =====================================================\r\n   Standalone lumina-slide-bar-handle element\r\n    ===================================================== */\r\n.handle-root {\r\n    position: relative;\r\n    width: 4px;\r\n    height: 44px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n.handle-rect {\r\n    border-radius: 999px;\r\n    transition:\r\n        width 150ms cubic-bezier(.34,1.56,.64,1),\r\n        background-color 300ms cubic-bezier(.2,0,.0,1),\r\n        opacity 150ms ease;\r\n}\r\n\r\n.handle-focus-ring {\r\n    position: absolute;\r\n    inset: -6px;\r\n    border-radius: 16px;\r\n    border: 3px solid var(--sb-handle-color, var(--md-sys-color-primary, #6750a4));\r\n    opacity: 0;\r\n    transition: opacity 150ms ease;\r\n    pointer-events: none;\r\n}\r\n\r\n.handle-root.focus-visible .handle-focus-ring {\r\n    opacity: 1;\r\n}\r\n\r\n/* =====================================================\r\n   Standalone lumina-slide-bar-track element\r\n   ===================================================== */\r\n.track-root {\r\n    display: block;\r\n    height: 16px;\r\n    transition: opacity 150ms ease;\r\n}\r\n\r\n.track-canvas {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n/* =====================================================\r\n   Standalone lumina-slide-bar-wave-track element\r\n   ===================================================== */\r\n.wave-track-root {\r\n    display: block;\r\n    height: 16px;\r\n    transition: opacity 150ms ease;\r\n}\r\n\r\n.wave-canvas {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n/* =====================================================\r\n   Standalone lumina-slide-bar-label element\r\n   ===================================================== */\r\n.label-root {\r\n    display: inline-flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 44px;\r\n    min-width: 48px;\r\n    padding: 0 16px;\r\n    border-radius: 22px;\r\n    font-family: var(--md-sys-typescale-label-large-font, Roboto, sans-serif);\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n    line-height: 20px;\r\n    -webkit-font-smoothing: antialiased;\r\n    transform-origin: bottom center;\r\n    transition:\r\n        opacity 150ms ease,\r\n        transform 150ms cubic-bezier(.34,1.56,.64,1),\r\n        background-color 300ms cubic-bezier(.2,0,.0,1),\r\n        color 300ms cubic-bezier(.2,0,.0,1);\r\n}\r\n\r\n.label-root.hidden {\r\n    opacity: 0;\r\n    transform: scale(0.8);\r\n}\r\n\r\n.label-root.visible {\r\n    opacity: 1;\r\n    transform: scale(1);\r\n}\r\n";
 
 // src/components/controls/SlideBarHandleItem.ts
 var SlideBarHandleItem = class extends i4 {
@@ -16775,7 +16775,7 @@ __decorateClass([
   n3({ type: Boolean, reflect: true })
 ], SlideBarHandleItem.prototype, "enabled", 2);
 SlideBarHandleItem = __decorateClass([
-  t("umi-slide-bar-handle")
+  t("lumina-slide-bar-handle")
 ], SlideBarHandleItem);
 
 // src/components/controls/SlideBarTrack.ts
@@ -16819,7 +16819,7 @@ __decorateClass([
   n3({ type: Number, attribute: "opacity-value" })
 ], SlideBarTrack.prototype, "opacityValue", 2);
 SlideBarTrack = __decorateClass([
-  t("umi-slide-bar-track")
+  t("lumina-slide-bar-track")
 ], SlideBarTrack);
 
 // src/components/controls/SlideBarWaveTrack.ts
@@ -17022,7 +17022,7 @@ __decorateClass([
   e4("canvas")
 ], SlideBarWaveTrack.prototype, "_canvas", 2);
 SlideBarWaveTrack = __decorateClass([
-  t("umi-slide-bar-wave-track")
+  t("lumina-slide-bar-wave-track")
 ], SlideBarWaveTrack);
 
 // src/components/controls/SlideBarTextContainer.ts
@@ -17084,7 +17084,7 @@ __decorateClass([
   r4()
 ], SlideBarTextContainer.prototype, "_visible", 2);
 SlideBarTextContainer = __decorateClass([
-  t("umi-slide-bar-label")
+  t("lumina-slide-bar-label")
 ], SlideBarTextContainer);
 
 // src/components/controls/SlideBar.ts
@@ -17680,7 +17680,7 @@ __decorateClass([
   e4("canvas")
 ], SlideBar.prototype, "_waveCanvas", 2);
 SlideBar = __decorateClass([
-  t("umi-slide-bar")
+  t("lumina-slide-bar")
 ], SlideBar);
 
 // src/components/controls/RangeSlideBar.ts
@@ -18282,7 +18282,7 @@ __decorateClass([
   e4("canvas.sb-wave-range")
 ], RangeSlideBar.prototype, "_waveCanvas", 2);
 RangeSlideBar = __decorateClass([
-  t("umi-range-slide-bar")
+  t("lumina-range-slide-bar")
 ], RangeSlideBar);
 
 // node_modules/@material/material-color-utilities/utils/math_utils.js
@@ -23462,7 +23462,7 @@ var MaterialColor = class extends i4 {
     try {
       argb = argbFromHex(this.seed);
     } catch {
-      console.warn(`[umi-color-scheme] \u041D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u044B\u0439 hex: "${this.seed}"`);
+      console.warn(`[lumina-color-scheme] \u041D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u044B\u0439 hex: "${this.seed}"`);
       return;
     }
     const hct = Hct.fromInt(argb);
@@ -23517,7 +23517,7 @@ __decorateClass([
   n3({ type: String, attribute: "warning-seed" })
 ], MaterialColor.prototype, "warningSeed", 2);
 MaterialColor = __decorateClass([
-  t("umi-color-scheme")
+  t("lumina-color-scheme")
 ], MaterialColor);
 
 // src/components/fonts/MaterialFont.ts
@@ -23583,9 +23583,9 @@ var MaterialFont = class extends i4 {
     document.head.appendChild(link);
   }
   _injectFonts() {
-    if (!document.getElementById("__umi-preconnect-gfonts")) {
+    if (!document.getElementById("__lumina-preconnect-gfonts")) {
       const pc1 = document.createElement("link");
-      pc1.id = "__umi-preconnect-gfonts";
+      pc1.id = "__lumina-preconnect-gfonts";
       pc1.rel = "preconnect";
       pc1.href = "https://fonts.googleapis.com";
       document.head.prepend(pc1);
@@ -23596,13 +23596,13 @@ var MaterialFont = class extends i4 {
       document.head.prepend(pc2);
     }
     this._injectLink(
-      "__umi-font-roboto",
+      "__lumina-font-roboto",
       "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap",
       "Roboto"
     );
     if (this.loadMono) {
       this._injectLink(
-        "__umi-font-roboto-mono",
+        "__lumina-font-roboto-mono",
         "https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap",
         "Roboto Mono"
       );
@@ -23613,17 +23613,17 @@ var MaterialFont = class extends i4 {
         const familyName = `Material Symbols ${style}`;
         const family = encodeURIComponent(familyName);
         this._injectLink(
-          `__umi-symbols-${style.toLowerCase()}`,
+          `__lumina-symbols-${style.toLowerCase()}`,
           `https://fonts.googleapis.com/css2?family=${family}:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap`,
           familyName
         );
       }
       const legacyFamilies = [
-        { id: "__umi-material-icons", family: "Material+Icons", name: "Material Icons" },
-        { id: "__umi-material-icons-outlined", family: "Material+Icons+Outlined", name: "Material Icons Outlined" },
-        { id: "__umi-material-icons-round", family: "Material+Icons+Round", name: "Material Icons Round" },
-        { id: "__umi-material-icons-sharp", family: "Material+Icons+Sharp", name: "Material Icons Sharp" },
-        { id: "__umi-material-icons-twotone", family: "Material+Icons+Two+Tone", name: "Material Icons Two Tone" }
+        { id: "__lumina-material-icons", family: "Material+Icons", name: "Material Icons" },
+        { id: "__lumina-material-icons-outlined", family: "Material+Icons+Outlined", name: "Material Icons Outlined" },
+        { id: "__lumina-material-icons-round", family: "Material+Icons+Round", name: "Material Icons Round" },
+        { id: "__lumina-material-icons-sharp", family: "Material+Icons+Sharp", name: "Material Icons Sharp" },
+        { id: "__lumina-material-icons-twotone", family: "Material+Icons+Two+Tone", name: "Material Icons Two Tone" }
       ];
       for (const f3 of legacyFamilies) {
         this._injectLink(
@@ -23657,7 +23657,7 @@ __decorateClass([
   n3({ type: Boolean, attribute: "load-symbols" })
 ], MaterialFont.prototype, "loadSymbols", 2);
 MaterialFont = __decorateClass([
-  t("umi-font")
+  t("lumina-font")
 ], MaterialFont);
 
 // src/components/icons/MaterialSymbols.ts
@@ -23677,12 +23677,12 @@ var MaterialSymbols = class extends i4 {
     const fontFamily = `'Material Symbols ${this.iconStyle}'`;
     const style = [
       `font-family: ${fontFamily}`,
-      `--umi-icon-size: ${this.size}px`,
-      `--umi-icon-fill: ${this.fill}`,
-      `--umi-icon-weight: ${this.weight}`,
-      `--umi-icon-grade: ${this.grade}`,
-      `--umi-icon-optical-size: ${this.opticalSize}`,
-      this.color ? `--umi-icon-color: ${this.color}` : ""
+      `--lumina-icon-size: ${this.size}px`,
+      `--lumina-icon-fill: ${this.fill}`,
+      `--lumina-icon-weight: ${this.weight}`,
+      `--lumina-icon-grade: ${this.grade}`,
+      `--lumina-icon-optical-size: ${this.opticalSize}`,
+      this.color ? `--lumina-icon-color: ${this.color}` : ""
     ].filter(Boolean).join("; ");
     return b2`<span class="symbol" style="${style}">${this.name}</span>`;
   }
@@ -23693,12 +23693,12 @@ MaterialSymbols.styles = i`
             align-items: center;
             justify-content: center;
             line-height: 1;
-            --umi-icon-fill:         0;
-            --umi-icon-weight:       400;
-            --umi-icon-grade:        0;
-            --umi-icon-optical-size: 24;
-            --umi-icon-size:         24px;
-            --umi-icon-color:        currentColor;
+            --lumina-icon-fill:         0;
+            --lumina-icon-weight:       400;
+            --lumina-icon-grade:        0;
+            --lumina-icon-optical-size: 24;
+            --lumina-icon-size:         24px;
+            --lumina-icon-color:        currentColor;
         }
 
         .symbol {
@@ -23720,14 +23720,14 @@ MaterialSymbols.styles = i`
             user-select:     none;
             pointer-events:  none;
 
-            font-size:       var(--umi-icon-size, 24px);
-            color:           var(--umi-icon-color, currentColor);
+            font-size:       var(--lumina-icon-size, 24px);
+            color:           var(--lumina-icon-color, currentColor);
 
             font-variation-settings:
-                'FILL' var(--umi-icon-fill,         0),
-                'wght' var(--umi-icon-weight,       400),
-                'GRAD' var(--umi-icon-grade,        0),
-                'opsz' var(--umi-icon-optical-size, 24);
+                'FILL' var(--lumina-icon-fill,         0),
+                'wght' var(--lumina-icon-weight,       400),
+                'GRAD' var(--lumina-icon-grade,        0),
+                'opsz' var(--lumina-icon-optical-size, 24);
 
             transition:
                 font-size             200ms cubic-bezier(0.2, 0, 0, 1),
@@ -23760,11 +23760,11 @@ __decorateClass([
   n3({ type: String })
 ], MaterialSymbols.prototype, "color", 2);
 MaterialSymbols = __decorateClass([
-  t("umi-icon")
+  t("lumina-icon")
 ], MaterialSymbols);
 
 // src/components/styles/LoadingIndicator.css
-var LoadingIndicator_default = "/*\r\n * umi-loading-indicator \u2014 Material Design 3 Expressive Loading Indicator\r\n * Shape-morphing + continuous rotation, mirrors LoadingIndicatorBase (C++/QML)\r\n */\r\n\r\n:host {\r\n    display: inline-flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    vertical-align: middle;\r\n}\r\n\r\n:host([hidden]) {\r\n    display: none;\r\n}\r\n\r\n.wrapper {\r\n    position: relative;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    will-change: transform;\r\n}\r\n\r\nsvg {\r\n    display: block;\r\n    overflow: visible;\r\n    /* rotation is applied via JS on this element */\r\n    will-change: transform;\r\n}\r\n\r\n.shape {\r\n    transform-origin: 24px 24px;\r\n    will-change: d, transform;\r\n}\r\n";
+var LoadingIndicator_default = "/*\r\n * lumina-loading-indicator \u2014 Material Design 3 Expressive Loading Indicator\r\n * Shape-morphing + continuous rotation, mirrors LoadingIndicatorBase (C++/QML)\r\n */\r\n\r\n:host {\r\n    display: inline-flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    vertical-align: middle;\r\n}\r\n\r\n:host([hidden]) {\r\n    display: none;\r\n}\r\n\r\n.wrapper {\r\n    position: relative;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    will-change: transform;\r\n}\r\n\r\nsvg {\r\n    display: block;\r\n    overflow: visible;\r\n    /* rotation is applied via JS on this element */\r\n    will-change: transform;\r\n}\r\n\r\n.shape {\r\n    transform-origin: 24px 24px;\r\n    will-change: d, transform;\r\n}\r\n";
 
 // src/components/feedback/LoadingIndicator.ts
 var SHAPES = [
@@ -23986,7 +23986,7 @@ __decorateClass([
   e4("svg")
 ], LoadingIndicator.prototype, "_svg", 2);
 LoadingIndicator = __decorateClass([
-  t("umi-loading-indicator")
+  t("lumina-loading-indicator")
 ], LoadingIndicator);
 
 // src/components/styles/SnackBar.css
@@ -24005,7 +24005,7 @@ var SnackBar_default = `:host {\r
 .stack {\r
     position: absolute;\r
     display: flex;\r
-    gap: var(--umi-snackbar-spacing, 16px);\r
+    gap: var(--lumina-snackbar-spacing, 16px);\r
     pointer-events: none;\r
 }\r
 \r
@@ -24446,7 +24446,7 @@ var SnackBar = class extends i4 {
   }
   _stackStyle() {
     const styleParts = [
-      `--umi-snackbar-spacing:${this.spacing}px`,
+      `--lumina-snackbar-spacing:${this.spacing}px`,
       `max-width:${Math.max(220, this._viewportWidth - 8)}px`
     ];
     switch (this.alignView) {
@@ -24670,7 +24670,7 @@ __decorateClass([
   r4()
 ], SnackBar.prototype, "_viewportHeight", 2);
 SnackBar = __decorateClass([
-  t("umi-snackbar")
+  t("lumina-snackbar")
 ], SnackBar);
 
 // src/components/styles/ProgressBars.css
@@ -24794,7 +24794,7 @@ __decorateClass([
   n3({ type: Number, attribute: "appear-animation-duration" })
 ], DCProgressBar.prototype, "appearAnimationDuration", 2);
 DCProgressBar = __decorateClass([
-  t("umi-dc-progress-bar")
+  t("lumina-dc-progress-bar")
 ], DCProgressBar);
 
 // src/components/feedback/DLProgressBar.ts
@@ -24913,7 +24913,7 @@ __decorateClass([
   n3({ type: Number, attribute: "appear-animation-duration" })
 ], DLProgressBar.prototype, "appearAnimationDuration", 2);
 DLProgressBar = __decorateClass([
-  t("umi-dl-progress-bar")
+  t("lumina-dl-progress-bar")
 ], DLProgressBar);
 
 // src/components/feedback/ICProgressBar.ts
@@ -25096,7 +25096,7 @@ __decorateClass([
   r4()
 ], ICProgressBar.prototype, "_sweepAngle", 2);
 ICProgressBar = __decorateClass([
-  t("umi-ic-progress-bar")
+  t("lumina-ic-progress-bar")
 ], ICProgressBar);
 
 // src/components/feedback/ILProgressBar.ts
@@ -25259,7 +25259,7 @@ __decorateClass([
   r4()
 ], ILProgressBar.prototype, "_widthPx", 2);
 ILProgressBar = __decorateClass([
-  t("umi-il-progress-bar")
+  t("lumina-il-progress-bar")
 ], ILProgressBar);
 
 // src/components/feedback/DCProgressBarExpressive.ts
@@ -25482,7 +25482,7 @@ __decorateClass([
   r4()
 ], DCProgressBarExpressive.prototype, "_wavePhase", 2);
 DCProgressBarExpressive = __decorateClass([
-  t("umi-dc-progress-bar-expressive")
+  t("lumina-dc-progress-bar-expressive")
 ], DCProgressBarExpressive);
 
 // src/components/feedback/DLProgressBarExpressive.ts
@@ -25747,7 +25747,7 @@ __decorateClass([
   r4()
 ], DLProgressBarExpressive.prototype, "_wavePhase", 2);
 DLProgressBarExpressive = __decorateClass([
-  t("umi-dl-progress-bar-expressive")
+  t("lumina-dl-progress-bar-expressive")
 ], DLProgressBarExpressive);
 
 // src/components/feedback/ICProgressBarExpressive.ts
@@ -25986,7 +25986,7 @@ __decorateClass([
   r4()
 ], ICProgressBarExpressive.prototype, "_wavePhase", 2);
 ICProgressBarExpressive = __decorateClass([
-  t("umi-ic-progress-bar-expressive")
+  t("lumina-ic-progress-bar-expressive")
 ], ICProgressBarExpressive);
 
 // src/components/feedback/ILProgressBarExpressive.ts
@@ -26219,11 +26219,11 @@ __decorateClass([
   r4()
 ], ILProgressBarExpressive.prototype, "_widthPx", 2);
 ILProgressBarExpressive = __decorateClass([
-  t("umi-il-progress-bar-expressive")
+  t("lumina-il-progress-bar-expressive")
 ], ILProgressBarExpressive);
 
 // src/components/styles/ComboBox.css
-var ComboBox_default = "/* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\n   umi-combo-box \u2014 Material Design 3 ComboBox (Expressive 2025)\r\n   \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\n   CSS custom properties (set inline by component JS):\r\n     --combo-h                 container height\r\n     --combo-icon-sz           icon size\r\n     --combo-radius            corner radius\r\n     --combo-pad-x             horizontal padding\r\n     --combo-icon-pad          icon padding\r\n     --combo-indicator-h       active indicator height\r\n\r\n   Color tokens:\r\n     --combo-container-bg      container background\r\n     --combo-label-color       label text color\r\n     --combo-text-color        input/selected text color\r\n     --combo-icon-color        icon color\r\n     --combo-indicator-color   active indicator color\r\n     --combo-outline-color     outline color (outlined variant)\r\n     --combo-supporting-color  supporting text color\r\n     --combo-state-layer       state layer color\r\n   \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n\r\n:host {\r\n    display: inline-flex;\r\n    outline: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n    position: relative;\r\n    vertical-align: top;\r\n    width: var(--combo-width, 300px);\r\n}\r\n\r\n/* \u2500\u2500 Root \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.root {\r\n    position: relative;\r\n    display: flex;\r\n    flex-direction: column;\r\n    width: 100%;\r\n}\r\n\r\n/* \u2500\u2500 Transform Container \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.transform-container {\r\n    position: relative;\r\n    width: 100%;\r\n    height: var(--combo-h, 56px);    cursor: pointer;}\r\n\r\n/* \u2500\u2500 Container \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.container {\r\n    position: relative;\r\n    width: 100%;\r\n    height: var(--combo-h, 56px);\r\n    box-sizing: border-box;\r\n    background: var(--combo-container-bg, transparent);\r\n    border-radius: var(--combo-radius, 4px);\r\n    overflow: hidden;\r\n    cursor: pointer;\r\n    user-select: none;\r\n}\r\n\r\n.container.filled {\r\n    border-radius: var(--combo-radius, 4px) var(--combo-radius, 4px) 0 0;\r\n    background: var(--md-sys-color-surface-container-highest, #e6e0e9);\r\n}\r\n\r\n/* \u2500\u2500 State Layer (filled variant) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.state-layer {\r\n    position: absolute;\r\n    inset: 0;\r\n    border-radius: inherit;\r\n    background: var(--combo-state-layer, var(--md-sys-color-on-surface, #1d1b20));\r\n    opacity: 0;\r\n    pointer-events: none;\r\n    transition: opacity 150ms cubic-bezier(.4, 0, .2, 1);\r\n}\r\n\r\n.root.hovered:not(.focused) .state-layer.filled { opacity: 0.08; }\r\n\r\n/* \u2500\u2500 Active Indicator (filled variant, bottom line) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.active-indicator {\r\n    position: absolute;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 1px;\r\n    background: var(--combo-indicator-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    transition:\r\n        height 150ms cubic-bezier(.4, 0, .2, 1),\r\n        background-color 300ms cubic-bezier(.2, 0, 0, 1);\r\n}\r\n\r\n.root.focused .active-indicator { height: var(--combo-indicator-h, 2px); }\r\n.root.disabled .active-indicator { opacity: 0.38; }\r\n\r\n/* \u2500\u2500 Outline (outlined variant) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.outline-container {\r\n    position: absolute;\r\n    inset: 0;\r\n    pointer-events: none;\r\n}\r\n\r\n.outline-container canvas {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n/* \u2500\u2500 Leading Icon \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.leading-icon {\r\n    position: absolute;\r\n    left: var(--combo-pad-x, 16px);\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    width: var(--combo-icon-sz, 24px);\r\n    height: var(--combo-icon-sz, 24px);\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    z-index: 2;\r\n    color: var(--combo-icon-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    transition: transform 500ms cubic-bezier(.2, .8, .2, 1);\r\n    cursor: pointer;\r\n}\r\n\r\n.leading-icon .icon-text {\r\n    font-family: 'Material Symbols Outlined';\r\n    font-feature-settings: 'liga' 1;\r\n    -webkit-font-feature-settings: 'liga' 1;\r\n    font-size: var(--combo-icon-sz, 24px);\r\n    font-variation-settings:\r\n        'FILL' var(--combo-icon-fill, 0),\r\n        'wght' var(--combo-icon-wght, 400),\r\n        'GRAD' var(--combo-icon-grad, 0),\r\n        'opsz' var(--combo-icon-sz, 24);\r\n    line-height: 1;\r\n    font-style: normal;\r\n}\r\n\r\n.root.hovered .leading-icon { transform: translateY(-50%) rotate(8deg); }\r\n.root.disabled .leading-icon { opacity: 0.38; }\r\n\r\n/* \u2500\u2500 Trailing Icon (dropdown arrow) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.trailing-icon {\r\n    position: absolute;\r\n    right: var(--combo-pad-x, 16px);\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    width: var(--combo-icon-sz, 24px);\r\n    height: var(--combo-icon-sz, 24px);\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    z-index: 2;\r\n    color: var(--combo-icon-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    cursor: pointer;\r\n}\r\n\r\n.trailing-icon .icon-text {\r\n    font-family: 'Material Symbols Outlined';\r\n    font-feature-settings: 'liga' 1;\r\n    -webkit-font-feature-settings: 'liga' 1;\r\n    font-size: var(--combo-icon-sz, 24px);\r\n    font-variation-settings:\r\n        'FILL' 0,\r\n        'wght' 400,\r\n        'GRAD' 0,\r\n        'opsz' var(--combo-icon-sz, 24);\r\n    line-height: 1;\r\n    font-style: normal;\r\n    display: inline-block;\r\n    transition: transform 150ms cubic-bezier(.4, 0, .2, 1);\r\n}\r\n\r\n.trailing-icon.open .icon-text { transform: rotate(180deg); }\r\n.root.disabled .trailing-icon { opacity: 0.38; }\r\n.root.has-error .trailing-icon .icon-text {\r\n    color: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n/* \u2500\u2500 Label \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.label {\r\n    position: absolute;\r\n    z-index: 2;\r\n    left: var(--combo-label-x, var(--combo-pad-x, 16px));\r\n    top: 50%;\r\n    pointer-events: none;\r\n    transform-origin: left center;\r\n    transform: translateY(-50%);\r\n    transition: transform 150ms cubic-bezier(.2, 0, 0, 1),\r\n                color 150ms cubic-bezier(.2, 0, 0, 1);\r\n    color: var(--combo-label-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    line-height: var(--md-sys-typescale-body-large-line-height, 24px);\r\n    letter-spacing: var(--md-sys-typescale-body-large-tracking, 0.5px);\r\n}\r\n\r\n/* Populated Filled: label floats to top */\r\n.label.populated.filled {\r\n    transform: translateY(calc(-50% - 12px)) scale(0.75);\r\n    transform-origin: left top;\r\n}\r\n\r\n/* Populated Outlined: label sits on top border */\r\n.label.populated.outlined {\r\n    transform: translateY(calc(-50% - (var(--combo-h, 56px) / 2) + 1px)) scale(0.75);\r\n    transform-origin: left center;\r\n}\r\n\r\n.root.focused .label {\r\n    color: var(--md-sys-color-primary, #6750a4);\r\n}\r\n\r\n.root.has-error .label {\r\n    color: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n.root.disabled .label { opacity: 0.38; }\r\n\r\n/* \u2500\u2500 Input Area (selected text) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.input-area {\r\n    position: absolute;\r\n    inset: 0;\r\n    z-index: 1;\r\n    display: flex;\r\n    align-items: center;\r\n    padding-left: var(--combo-input-left, var(--combo-pad-x, 16px));\r\n    padding-right: var(--combo-input-right, var(--combo-pad-x, 16px));\r\n    box-sizing: border-box;    pointer-events: none;}\r\n\r\n.input-area.has-label.populated.filled {\r\n    padding-top: 16px;\r\n}\r\n\r\n.input-row {\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 4px;\r\n    width: 100%;\r\n    min-width: 0;\r\n}\r\n\r\n.prefix-text,\r\n.suffix-text {\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    color: var(--combo-text-color, var(--md-sys-color-on-surface, #1d1b20));\r\n    opacity: 0.6;\r\n    white-space: nowrap;\r\n}\r\n\r\n.selected-text {\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    color: var(--combo-text-color, var(--md-sys-color-on-surface, #1d1b20));\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    flex: 1;\r\n    min-width: 0;\r\n}\r\n\r\n.root.disabled .selected-text,\r\n.root.disabled .prefix-text,\r\n.root.disabled .suffix-text { opacity: 0.38; }\r\n\r\n/* \u2500\u2500 Supporting Text \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.supporting-text {\r\n    font-family: var(--md-sys-typescale-title-small-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-title-small-size, 14px);\r\n    font-weight: var(--md-sys-typescale-title-small-weight, 500);\r\n    line-height: var(--md-sys-typescale-title-small-line-height, 20px);\r\n    letter-spacing: var(--md-sys-typescale-title-small-tracking, 0.1px);\r\n    color: var(--combo-supporting-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    padding-left: var(--combo-pad-x, 16px);\r\n    padding-right: var(--combo-pad-x, 16px);\r\n    padding-top: var(--combo-supporting-top, 4px);\r\n}\r\n\r\n.root.disabled .supporting-text { opacity: 0.38; }\r\n\r\n/* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\n   Popup\r\n   \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.combo-popup {\r\n    position: absolute;\r\n    top: 100%;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: 1000;\r\n    box-sizing: border-box;\r\n    border-radius: 12px;\r\n    padding: 8px;\r\n    background: var(--md-sys-color-surface-container, var(--md-sys-color-surface, #fff));\r\n    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.08);\r\n    max-height: 300px;\r\n    overflow-y: auto;\r\n    scrollbar-width: thin;\r\n    transform-origin: top center;\r\n\r\n    /* Entrance */\r\n    opacity: 0;\r\n    transform: scale(0.95);\r\n    pointer-events: none;\r\n    transition:\r\n        opacity 300ms cubic-bezier(.2, 0, 0, 1),\r\n        transform 500ms cubic-bezier(.34, 1.56, .64, 1);\r\n}\r\n\r\n.combo-popup.open {\r\n    opacity: 1;\r\n    transform: scale(1);\r\n    pointer-events: auto;\r\n}\r\n\r\n.combo-popup.closing {\r\n    opacity: 0 !important;\r\n    transform: scale(0.98) !important;\r\n    pointer-events: none;\r\n    transition:\r\n        opacity 150ms cubic-bezier(.4, 0, 1, 1),\r\n        transform 150ms cubic-bezier(.4, 0, .6, 1) !important;\r\n}\r\n\r\n/* \u2500\u2500 Empty message \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.popup-empty {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    padding: 16px;\r\n    color: var(--md-sys-color-on-surface-variant, #666666);\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n}\r\n\r\n/* \u2500\u2500 Option Item \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.option-item {\r\n    display: flex;\r\n    align-items: center;\r\n    height: 48px;\r\n    padding: 0 16px;\r\n    border-radius: 8px;\r\n    gap: 12px;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n    user-select: none;\r\n    position: relative;\r\n    overflow: hidden;\r\n    transition:\r\n        background-color 150ms ease,\r\n        transform 150ms cubic-bezier(.4, 0, .2, 1);\r\n    transform: scale(1);\r\n}\r\n\r\n.option-item + .option-item {\r\n    margin-top: 2px;\r\n}\r\n\r\n/* Item entrance animation */\r\n.option-item.entering {\r\n    opacity: 0;\r\n    transform: scale(0.8);\r\n}\r\n\r\n.option-item.entered {\r\n    opacity: 1;\r\n    transform: scale(1);\r\n    transition:\r\n        opacity 300ms cubic-bezier(.2, 0, 0, 1),\r\n        transform 500ms cubic-bezier(.34, 1.56, .64, 1),\r\n        background-color 150ms ease;\r\n}\r\n\r\n/* Hover */\r\n.option-item:hover {\r\n    background: color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 8%, transparent);\r\n    transform: scale(1.02);\r\n}\r\n\r\n/* Pressed */\r\n.option-item.pressed {\r\n    transform: scale(0.98);\r\n}\r\n\r\n/* Selected */\r\n.option-item.selected {\r\n    background: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 12%, transparent);\r\n}\r\n\r\n/* \u2500\u2500 Option text \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.option-text {\r\n    flex: 1;\r\n    min-width: 0;\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    color: var(--md-sys-color-on-surface, #000000);\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n}\r\n\r\n/* \u2500\u2500 Check icon for selected item \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.option-check {\r\n    flex-shrink: 0;\r\n    width: 20px;\r\n    height: 20px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    font-family: 'Material Symbols Outlined';\r\n    font-feature-settings: 'liga' 1;\r\n    -webkit-font-feature-settings: 'liga' 1;\r\n    font-size: 20px;\r\n    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;\r\n    line-height: 1;\r\n    font-style: normal;\r\n    color: var(--md-sys-color-primary, #1976d2);\r\n\r\n    /* Living Material entrance */\r\n    transform: scale(0) rotate(-90deg);\r\n    opacity: 0;\r\n    transition:\r\n        transform 500ms cubic-bezier(.2, .8, .2, 1),\r\n        opacity 300ms cubic-bezier(.2, 0, 0, 1);\r\n}\r\n\r\n.option-check.visible {\r\n    transform: scale(1) rotate(0deg);\r\n    opacity: 1;\r\n}\r\n\r\n/* \u2500\u2500 Ripple overlay \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.option-ripple {\r\n    position: absolute;\r\n    border-radius: 50%;\r\n    background: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 12%, transparent);\r\n    transform: scale(0);\r\n    pointer-events: none;\r\n    animation: combo-ripple 450ms cubic-bezier(.2, 0, 0, 1) forwards;\r\n}\r\n\r\n@keyframes combo-ripple {\r\n    to {\r\n        transform: scale(2.5);\r\n        opacity: 0;\r\n    }\r\n}\r\n";
+var ComboBox_default = "/* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\n   lumina-combo-box \u2014 Material Design 3 ComboBox (Expressive 2025)\r\n   \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\n   CSS custom properties (set inline by component JS):\r\n     --combo-h                 container height\r\n     --combo-icon-sz           icon size\r\n     --combo-radius            corner radius\r\n     --combo-pad-x             horizontal padding\r\n     --combo-icon-pad          icon padding\r\n     --combo-indicator-h       active indicator height\r\n\r\n   Color tokens:\r\n     --combo-container-bg      container background\r\n     --combo-label-color       label text color\r\n     --combo-text-color        input/selected text color\r\n     --combo-icon-color        icon color\r\n     --combo-indicator-color   active indicator color\r\n     --combo-outline-color     outline color (outlined variant)\r\n     --combo-supporting-color  supporting text color\r\n     --combo-state-layer       state layer color\r\n   \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n\r\n:host {\r\n    display: inline-flex;\r\n    outline: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n    position: relative;\r\n    vertical-align: top;\r\n    width: var(--combo-width, 300px);\r\n}\r\n\r\n/* \u2500\u2500 Root \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.root {\r\n    position: relative;\r\n    display: flex;\r\n    flex-direction: column;\r\n    width: 100%;\r\n}\r\n\r\n/* \u2500\u2500 Transform Container \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.transform-container {\r\n    position: relative;\r\n    width: 100%;\r\n    height: var(--combo-h, 56px);    cursor: pointer;}\r\n\r\n/* \u2500\u2500 Container \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.container {\r\n    position: relative;\r\n    width: 100%;\r\n    height: var(--combo-h, 56px);\r\n    box-sizing: border-box;\r\n    background: var(--combo-container-bg, transparent);\r\n    border-radius: var(--combo-radius, 4px);\r\n    overflow: hidden;\r\n    cursor: pointer;\r\n    user-select: none;\r\n}\r\n\r\n.container.filled {\r\n    border-radius: var(--combo-radius, 4px) var(--combo-radius, 4px) 0 0;\r\n    background: var(--md-sys-color-surface-container-highest, #e6e0e9);\r\n}\r\n\r\n/* \u2500\u2500 State Layer (filled variant) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.state-layer {\r\n    position: absolute;\r\n    inset: 0;\r\n    border-radius: inherit;\r\n    background: var(--combo-state-layer, var(--md-sys-color-on-surface, #1d1b20));\r\n    opacity: 0;\r\n    pointer-events: none;\r\n    transition: opacity 150ms cubic-bezier(.4, 0, .2, 1);\r\n}\r\n\r\n.root.hovered:not(.focused) .state-layer.filled { opacity: 0.08; }\r\n\r\n/* \u2500\u2500 Active Indicator (filled variant, bottom line) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.active-indicator {\r\n    position: absolute;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 1px;\r\n    background: var(--combo-indicator-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    transition:\r\n        height 150ms cubic-bezier(.4, 0, .2, 1),\r\n        background-color 300ms cubic-bezier(.2, 0, 0, 1);\r\n}\r\n\r\n.root.focused .active-indicator { height: var(--combo-indicator-h, 2px); }\r\n.root.disabled .active-indicator { opacity: 0.38; }\r\n\r\n/* \u2500\u2500 Outline (outlined variant) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.outline-container {\r\n    position: absolute;\r\n    inset: 0;\r\n    pointer-events: none;\r\n}\r\n\r\n.outline-container canvas {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n/* \u2500\u2500 Leading Icon \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.leading-icon {\r\n    position: absolute;\r\n    left: var(--combo-pad-x, 16px);\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    width: var(--combo-icon-sz, 24px);\r\n    height: var(--combo-icon-sz, 24px);\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    z-index: 2;\r\n    color: var(--combo-icon-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    transition: transform 500ms cubic-bezier(.2, .8, .2, 1);\r\n    cursor: pointer;\r\n}\r\n\r\n.leading-icon .icon-text {\r\n    font-family: 'Material Symbols Outlined';\r\n    font-feature-settings: 'liga' 1;\r\n    -webkit-font-feature-settings: 'liga' 1;\r\n    font-size: var(--combo-icon-sz, 24px);\r\n    font-variation-settings:\r\n        'FILL' var(--combo-icon-fill, 0),\r\n        'wght' var(--combo-icon-wght, 400),\r\n        'GRAD' var(--combo-icon-grad, 0),\r\n        'opsz' var(--combo-icon-sz, 24);\r\n    line-height: 1;\r\n    font-style: normal;\r\n}\r\n\r\n.root.hovered .leading-icon { transform: translateY(-50%) rotate(8deg); }\r\n.root.disabled .leading-icon { opacity: 0.38; }\r\n\r\n/* \u2500\u2500 Trailing Icon (dropdown arrow) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.trailing-icon {\r\n    position: absolute;\r\n    right: var(--combo-pad-x, 16px);\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    width: var(--combo-icon-sz, 24px);\r\n    height: var(--combo-icon-sz, 24px);\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    z-index: 2;\r\n    color: var(--combo-icon-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    cursor: pointer;\r\n}\r\n\r\n.trailing-icon .icon-text {\r\n    font-family: 'Material Symbols Outlined';\r\n    font-feature-settings: 'liga' 1;\r\n    -webkit-font-feature-settings: 'liga' 1;\r\n    font-size: var(--combo-icon-sz, 24px);\r\n    font-variation-settings:\r\n        'FILL' 0,\r\n        'wght' 400,\r\n        'GRAD' 0,\r\n        'opsz' var(--combo-icon-sz, 24);\r\n    line-height: 1;\r\n    font-style: normal;\r\n    display: inline-block;\r\n    transition: transform 150ms cubic-bezier(.4, 0, .2, 1);\r\n}\r\n\r\n.trailing-icon.open .icon-text { transform: rotate(180deg); }\r\n.root.disabled .trailing-icon { opacity: 0.38; }\r\n.root.has-error .trailing-icon .icon-text {\r\n    color: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n/* \u2500\u2500 Label \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.label {\r\n    position: absolute;\r\n    z-index: 2;\r\n    left: var(--combo-label-x, var(--combo-pad-x, 16px));\r\n    top: 50%;\r\n    pointer-events: none;\r\n    transform-origin: left center;\r\n    transform: translateY(-50%);\r\n    transition: transform 150ms cubic-bezier(.2, 0, 0, 1),\r\n                color 150ms cubic-bezier(.2, 0, 0, 1);\r\n    color: var(--combo-label-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    line-height: var(--md-sys-typescale-body-large-line-height, 24px);\r\n    letter-spacing: var(--md-sys-typescale-body-large-tracking, 0.5px);\r\n}\r\n\r\n/* Populated Filled: label floats to top */\r\n.label.populated.filled {\r\n    transform: translateY(calc(-50% - 12px)) scale(0.75);\r\n    transform-origin: left top;\r\n}\r\n\r\n/* Populated Outlined: label sits on top border */\r\n.label.populated.outlined {\r\n    transform: translateY(calc(-50% - (var(--combo-h, 56px) / 2) + 1px)) scale(0.75);\r\n    transform-origin: left center;\r\n}\r\n\r\n.root.focused .label {\r\n    color: var(--md-sys-color-primary, #6750a4);\r\n}\r\n\r\n.root.has-error .label {\r\n    color: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n.root.disabled .label { opacity: 0.38; }\r\n\r\n/* \u2500\u2500 Input Area (selected text) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.input-area {\r\n    position: absolute;\r\n    inset: 0;\r\n    z-index: 1;\r\n    display: flex;\r\n    align-items: center;\r\n    padding-left: var(--combo-input-left, var(--combo-pad-x, 16px));\r\n    padding-right: var(--combo-input-right, var(--combo-pad-x, 16px));\r\n    box-sizing: border-box;    pointer-events: none;}\r\n\r\n.input-area.has-label.populated.filled {\r\n    padding-top: 16px;\r\n}\r\n\r\n.input-row {\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 4px;\r\n    width: 100%;\r\n    min-width: 0;\r\n}\r\n\r\n.prefix-text,\r\n.suffix-text {\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    color: var(--combo-text-color, var(--md-sys-color-on-surface, #1d1b20));\r\n    opacity: 0.6;\r\n    white-space: nowrap;\r\n}\r\n\r\n.selected-text {\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    color: var(--combo-text-color, var(--md-sys-color-on-surface, #1d1b20));\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    flex: 1;\r\n    min-width: 0;\r\n}\r\n\r\n.root.disabled .selected-text,\r\n.root.disabled .prefix-text,\r\n.root.disabled .suffix-text { opacity: 0.38; }\r\n\r\n/* \u2500\u2500 Supporting Text \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.supporting-text {\r\n    font-family: var(--md-sys-typescale-title-small-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-title-small-size, 14px);\r\n    font-weight: var(--md-sys-typescale-title-small-weight, 500);\r\n    line-height: var(--md-sys-typescale-title-small-line-height, 20px);\r\n    letter-spacing: var(--md-sys-typescale-title-small-tracking, 0.1px);\r\n    color: var(--combo-supporting-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    padding-left: var(--combo-pad-x, 16px);\r\n    padding-right: var(--combo-pad-x, 16px);\r\n    padding-top: var(--combo-supporting-top, 4px);\r\n}\r\n\r\n.root.disabled .supporting-text { opacity: 0.38; }\r\n\r\n/* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\n   Popup\r\n   \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.combo-popup {\r\n    position: absolute;\r\n    top: 100%;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: 1000;\r\n    box-sizing: border-box;\r\n    border-radius: 12px;\r\n    padding: 8px;\r\n    background: var(--md-sys-color-surface-container, var(--md-sys-color-surface, #fff));\r\n    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.08);\r\n    max-height: 300px;\r\n    overflow-y: auto;\r\n    scrollbar-width: thin;\r\n    transform-origin: top center;\r\n\r\n    /* Entrance */\r\n    opacity: 0;\r\n    transform: scale(0.95);\r\n    pointer-events: none;\r\n    transition:\r\n        opacity 300ms cubic-bezier(.2, 0, 0, 1),\r\n        transform 500ms cubic-bezier(.34, 1.56, .64, 1);\r\n}\r\n\r\n.combo-popup.open {\r\n    opacity: 1;\r\n    transform: scale(1);\r\n    pointer-events: auto;\r\n}\r\n\r\n.combo-popup.closing {\r\n    opacity: 0 !important;\r\n    transform: scale(0.98) !important;\r\n    pointer-events: none;\r\n    transition:\r\n        opacity 150ms cubic-bezier(.4, 0, 1, 1),\r\n        transform 150ms cubic-bezier(.4, 0, .6, 1) !important;\r\n}\r\n\r\n/* \u2500\u2500 Empty message \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.popup-empty {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    padding: 16px;\r\n    color: var(--md-sys-color-on-surface-variant, #666666);\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n}\r\n\r\n/* \u2500\u2500 Option Item \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.option-item {\r\n    display: flex;\r\n    align-items: center;\r\n    height: 48px;\r\n    padding: 0 16px;\r\n    border-radius: 8px;\r\n    gap: 12px;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n    user-select: none;\r\n    position: relative;\r\n    overflow: hidden;\r\n    transition:\r\n        background-color 150ms ease,\r\n        transform 150ms cubic-bezier(.4, 0, .2, 1);\r\n    transform: scale(1);\r\n}\r\n\r\n.option-item + .option-item {\r\n    margin-top: 2px;\r\n}\r\n\r\n/* Item entrance animation */\r\n.option-item.entering {\r\n    opacity: 0;\r\n    transform: scale(0.8);\r\n}\r\n\r\n.option-item.entered {\r\n    opacity: 1;\r\n    transform: scale(1);\r\n    transition:\r\n        opacity 300ms cubic-bezier(.2, 0, 0, 1),\r\n        transform 500ms cubic-bezier(.34, 1.56, .64, 1),\r\n        background-color 150ms ease;\r\n}\r\n\r\n/* Hover */\r\n.option-item:hover {\r\n    background: color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 8%, transparent);\r\n    transform: scale(1.02);\r\n}\r\n\r\n/* Pressed */\r\n.option-item.pressed {\r\n    transform: scale(0.98);\r\n}\r\n\r\n/* Selected */\r\n.option-item.selected {\r\n    background: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 12%, transparent);\r\n}\r\n\r\n/* \u2500\u2500 Option text \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.option-text {\r\n    flex: 1;\r\n    min-width: 0;\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    color: var(--md-sys-color-on-surface, #000000);\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n}\r\n\r\n/* \u2500\u2500 Check icon for selected item \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.option-check {\r\n    flex-shrink: 0;\r\n    width: 20px;\r\n    height: 20px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    font-family: 'Material Symbols Outlined';\r\n    font-feature-settings: 'liga' 1;\r\n    -webkit-font-feature-settings: 'liga' 1;\r\n    font-size: 20px;\r\n    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;\r\n    line-height: 1;\r\n    font-style: normal;\r\n    color: var(--md-sys-color-primary, #1976d2);\r\n\r\n    /* Living Material entrance */\r\n    transform: scale(0) rotate(-90deg);\r\n    opacity: 0;\r\n    transition:\r\n        transform 500ms cubic-bezier(.2, .8, .2, 1),\r\n        opacity 300ms cubic-bezier(.2, 0, 0, 1);\r\n}\r\n\r\n.option-check.visible {\r\n    transform: scale(1) rotate(0deg);\r\n    opacity: 1;\r\n}\r\n\r\n/* \u2500\u2500 Ripple overlay \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.option-ripple {\r\n    position: absolute;\r\n    border-radius: 50%;\r\n    background: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 12%, transparent);\r\n    transform: scale(0);\r\n    pointer-events: none;\r\n    animation: combo-ripple 450ms cubic-bezier(.2, 0, 0, 1) forwards;\r\n}\r\n\r\n@keyframes combo-ripple {\r\n    to {\r\n        transform: scale(2.5);\r\n        opacity: 0;\r\n    }\r\n}\r\n";
 
 // src/components/controls/ComboBox.ts
 var ComboBox = class extends i4 {
@@ -26939,11 +26939,11 @@ __decorateClass([
   e4(".label")
 ], ComboBox.prototype, "labelElement", 2);
 ComboBox = __decorateClass([
-  t("umi-combo-box")
+  t("lumina-combo-box")
 ], ComboBox);
 
 // src/components/styles/TextField.css
-var TextField_default = "/* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\n   umi-text-field \u2014 Material Design 3 TextField (Expressive 2025)\r\n   \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\n   CSS custom properties (set inline by component JS):\r\n     --field-h                 container height\r\n     --field-icon-sz           icon size\r\n     --field-radius            corner radius\r\n     --field-pad-x             horizontal padding\r\n     --field-icon-pad          icon padding\r\n     --field-indicator-h       active indicator height\r\n\r\n   Color tokens:\r\n     --field-container-bg      container background\r\n     --field-label-color       label text color\r\n     --field-text-color        input text color\r\n     --field-icon-color        icon color\r\n     --field-indicator-color   active indicator color\r\n     --field-outline-color     outline color (outlined variant)\r\n     --field-supporting-color  supporting text color\r\n     --field-state-layer       state layer color\r\n   \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n\r\n:host {\r\n    display: inline-flex;\r\n    outline: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n    position: relative;\r\n    vertical-align: top;\r\n    width: var(--field-width, 280px);\r\n}\r\n\r\n/* \u2500\u2500 Root \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.root {\r\n    position: relative;\r\n    display: flex;\r\n    flex-direction: column;\r\n    width: 100%;\r\n}\r\n\r\n/* \u2500\u2500 Transform Container \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.transform-container {\r\n    position: relative;\r\n    width: 100%;\r\n    height: var(--field-h, 56px);\r\n    cursor: text;\r\n}\r\n\r\n/* \u2500\u2500 Container \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.container {\r\n    position: absolute;\r\n    inset: 0;\r\n    box-sizing: border-box;\r\n    background: var(--field-container-bg, transparent);\r\n    border-radius: var(--field-radius, 4px);\r\n    overflow: hidden;\r\n}\r\n\r\n.container.filled {\r\n    border-radius: var(--field-radius, 4px) var(--field-radius, 4px) 0 0;\r\n    background: var(--md-sys-color-surface-container-highest, #e6e0e9);\r\n}\r\n\r\n.container.outlined {\r\n    background: transparent;\r\n    border-radius: var(--field-radius, 4px);\r\n}\r\n\r\n/* \u2500\u2500 State Layer (filled variant) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.state-layer {\r\n    position: absolute;\r\n    inset: 0;\r\n    border-radius: inherit;\r\n    background: var(--field-state-layer, var(--md-sys-color-on-surface, #1d1b20));\r\n    opacity: 0;\r\n    pointer-events: none;\r\n    transition: opacity 150ms cubic-bezier(.4, 0, .2, 1);\r\n}\r\n\r\n.root.hovered:not(.focused) .state-layer.filled { opacity: 0.08; }\r\n\r\n/* \u2500\u2500 Active Indicator (filled variant, bottom line) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.active-indicator {\r\n    position: absolute;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 1px;\r\n    background: var(--field-indicator-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    transition:\r\n        height 150ms cubic-bezier(.4, 0, .2, 1),\r\n        background-color 300ms cubic-bezier(.2, 0, 0, 1);\r\n}\r\n\r\n.root.focused .active-indicator {\r\n    height: var(--field-indicator-h, 2px);\r\n    background: var(--md-sys-color-primary, #6750a4);\r\n}\r\n\r\n.root.has-error .active-indicator {\r\n    background: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n.root.disabled .active-indicator { opacity: 0.38; }\r\n\r\n.root.disabled .container {\r\n    background: color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 4%, transparent);\r\n}\r\n\r\n.root.disabled .label,\r\n.root.disabled .prefix-text,\r\n.root.disabled .suffix-text {\r\n    color: color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 38%, transparent);\r\n}\r\n\r\n.root.disabled input {\r\n    color: color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 38%, transparent);\r\n}\r\n\r\n/* \u2500\u2500 Outline (outlined variant) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.outline-container {\r\n    position: absolute;\r\n    inset: 0;\r\n    pointer-events: none;\r\n}\r\n\r\n.outline-canvas {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n/* \u2500\u2500 Leading Icon \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.leading-icon {\r\n    position: absolute;\r\n    left: var(--field-icon-pad, 12px);\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    width: var(--field-icon-sz, 24px);\r\n    height: var(--field-icon-sz, 24px);\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    z-index: 2;\r\n    color: var(--field-icon-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    transition: transform 300ms cubic-bezier(.2, .8, .2, 1);\r\n    cursor: pointer;\r\n}\r\n\r\n.leading-icon .icon-text {\r\n    font-family: 'Material Symbols Outlined';\r\n    font-feature-settings: 'liga' 1;\r\n    -webkit-font-feature-settings: 'liga' 1;\r\n    font-size: var(--field-icon-sz, 24px);\r\n    font-variation-settings:\r\n        'FILL' var(--field-icon-fill, 0),\r\n        'wght' var(--field-icon-wght, 400),\r\n        'GRAD' var(--field-icon-grad, 0),\r\n        'opsz' var(--field-icon-sz, 24);\r\n    line-height: 1;\r\n    font-style: normal;\r\n}\r\n\r\n.root.hovered .leading-icon { transform: translateY(-50%) rotate(5deg); }\r\n.root.disabled .leading-icon { opacity: 0.38; }\r\n\r\n/* \u2500\u2500 Trailing Icon \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.trailing-icon {\r\n    position: absolute;\r\n    right: var(--field-icon-pad, 12px);\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    width: var(--field-icon-sz, 24px);\r\n    height: var(--field-icon-sz, 24px);\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    z-index: 2;\r\n    color: var(--field-icon-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    cursor: pointer;\r\n    transition: transform 300ms cubic-bezier(.2, .8, .2, 1);\r\n}\r\n\r\n.trailing-icon .icon-text {\r\n    font-family: 'Material Symbols Outlined';\r\n    font-feature-settings: 'liga' 1;\r\n    -webkit-font-feature-settings: 'liga' 1;\r\n    font-size: var(--field-icon-sz, 24px);\r\n    font-variation-settings:\r\n        'FILL' 0,\r\n        'wght' 400,\r\n        'GRAD' 0,\r\n        'opsz' var(--field-icon-sz, 24);\r\n    line-height: 1;\r\n    font-style: normal;\r\n}\r\n\r\n.root.hovered .trailing-icon { transform: translateY(-50%) rotate(-5deg); }\r\n.root.disabled .trailing-icon { opacity: 0.38; }\r\n.root.has-error .trailing-icon .icon-text {\r\n    color: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n/* \u2500\u2500 Label \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.label {\r\n    position: absolute;\r\n    z-index: 2;\r\n    left: var(--field-label-x, var(--field-pad-x, 16px));\r\n    top: 50%;\r\n    pointer-events: none;\r\n    transform-origin: left center;\r\n    transform: translateY(-50%);\r\n    transition: transform 150ms cubic-bezier(.2, 0, 0, 1),\r\n                color 150ms cubic-bezier(.2, 0, 0, 1);\r\n    color: var(--field-label-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    /* Base typography - body-large */\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    line-height: var(--md-sys-typescale-body-large-line-height, 24px);\r\n    letter-spacing: var(--md-sys-typescale-body-large-tracking, 0.5px);\r\n}\r\n\r\n/* Populated Filled: label floats to top - scale creates smaller text */\r\n.label.populated.filled {\r\n    /* Move up to 8px from top, accounting for 50% start position */\r\n    /* 50% of 56px = 28px, need to go to 8px + half of scaled line-height */\r\n    transform: translateY(calc(-50% - 12px)) scale(0.75);\r\n    transform-origin: left top;\r\n}\r\n\r\n/* Populated Outlined: label floats to center of top border line */\r\n.label.populated.outlined {\r\n    transform: translateY(calc(-50% - (var(--field-h, 56px) / 2) + 1px)) scale(0.75);\r\n    transform-origin: left center;\r\n}\r\n\r\n.root.focused .label {\r\n    color: var(--md-sys-color-primary, #6750a4);\r\n}\r\n\r\n.root.has-error .label {\r\n    color: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n.root.disabled .label { opacity: 0.38; }\r\n\r\n/* \u2500\u2500 Input Area \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.input-area {\r\n    position: absolute;\r\n    inset: 0;\r\n    z-index: 1;\r\n    display: flex;\r\n    align-items: center;\r\n    padding-left: var(--field-input-left, var(--field-pad-x, 16px));\r\n    padding-right: var(--field-input-right, var(--field-pad-x, 16px));\r\n    box-sizing: border-box;\r\n}\r\n\r\n.input-area.has-label.populated.filled {\r\n    padding-top: 16px;\r\n}\r\n\r\n.input-row {\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 4px;\r\n    width: 100%;\r\n    min-width: 0;\r\n}\r\n\r\n.prefix-text,\r\n.suffix-text {\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    color: var(--field-text-color, var(--md-sys-color-on-surface, #1d1b20));\r\n    opacity: 0.6;\r\n    white-space: nowrap;\r\n}\r\n\r\n/* \u2500\u2500 Input Element \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\ninput {\r\n    flex: 1;\r\n    min-width: 0;\r\n    border: none;\r\n    outline: none;\r\n    background: transparent;\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    line-height: var(--md-sys-typescale-body-large-line-height, 24px);\r\n    color: var(--field-text-color, var(--md-sys-color-on-surface, #1d1b20));\r\n    caret-color: var(--md-sys-color-primary, #6750a4);\r\n}\r\n\r\ninput::placeholder {\r\n    color: var(--md-sys-color-on-surface-variant, #49454f);\r\n    opacity: 1;\r\n}\r\n\r\ninput:disabled {\r\n    opacity: 0.38;\r\n    cursor: not-allowed;\r\n}\r\n\r\n.root.has-error input {\r\n    caret-color: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n/* Selection color */\r\ninput::selection {\r\n    background: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 30%, transparent);\r\n}\r\n\r\n/* \u2500\u2500 Supporting Text Row \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.supporting-row {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    padding-left: var(--field-pad-x, 16px);\r\n    padding-right: var(--field-pad-x, 16px);\r\n    padding-top: var(--field-supporting-top, 4px);\r\n    gap: 16px;\r\n}\r\n\r\n.supporting-text {\r\n    font-family: var(--md-sys-typescale-body-small-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-small-size, 12px);\r\n    font-weight: var(--md-sys-typescale-body-small-weight, 400);\r\n    line-height: var(--md-sys-typescale-body-small-line-height, 16px);\r\n    color: var(--field-supporting-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    flex: 1;\r\n}\r\n\r\n.root.has-error .supporting-text {\r\n    color: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n.character-counter {\r\n    font-family: var(--md-sys-typescale-body-small-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-small-size, 12px);\r\n    font-weight: var(--md-sys-typescale-body-small-weight, 400);\r\n    line-height: var(--md-sys-typescale-body-small-line-height, 16px);\r\n    color: var(--md-sys-color-on-surface-variant, #49454f);\r\n    white-space: nowrap;\r\n}\r\n\r\n.root.disabled .supporting-row { opacity: 0.38; }\r\n";
+var TextField_default = "/* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\n   lumina-text-field \u2014 Material Design 3 TextField (Expressive 2025)\r\n   \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\n   CSS custom properties (set inline by component JS):\r\n     --field-h                 container height\r\n     --field-icon-sz           icon size\r\n     --field-radius            corner radius\r\n     --field-pad-x             horizontal padding\r\n     --field-icon-pad          icon padding\r\n     --field-indicator-h       active indicator height\r\n\r\n   Color tokens:\r\n     --field-container-bg      container background\r\n     --field-label-color       label text color\r\n     --field-text-color        input text color\r\n     --field-icon-color        icon color\r\n     --field-indicator-color   active indicator color\r\n     --field-outline-color     outline color (outlined variant)\r\n     --field-supporting-color  supporting text color\r\n     --field-state-layer       state layer color\r\n   \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n\r\n:host {\r\n    display: inline-flex;\r\n    outline: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n    position: relative;\r\n    vertical-align: top;\r\n    width: var(--field-width, 280px);\r\n}\r\n\r\n/* \u2500\u2500 Root \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.root {\r\n    position: relative;\r\n    display: flex;\r\n    flex-direction: column;\r\n    width: 100%;\r\n}\r\n\r\n/* \u2500\u2500 Transform Container \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.transform-container {\r\n    position: relative;\r\n    width: 100%;\r\n    height: var(--field-h, 56px);\r\n    cursor: text;\r\n}\r\n\r\n/* \u2500\u2500 Container \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.container {\r\n    position: absolute;\r\n    inset: 0;\r\n    box-sizing: border-box;\r\n    background: var(--field-container-bg, transparent);\r\n    border-radius: var(--field-radius, 4px);\r\n    overflow: hidden;\r\n}\r\n\r\n.container.filled {\r\n    border-radius: var(--field-radius, 4px) var(--field-radius, 4px) 0 0;\r\n    background: var(--md-sys-color-surface-container-highest, #e6e0e9);\r\n}\r\n\r\n.container.outlined {\r\n    background: transparent;\r\n    border-radius: var(--field-radius, 4px);\r\n}\r\n\r\n/* \u2500\u2500 State Layer (filled variant) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.state-layer {\r\n    position: absolute;\r\n    inset: 0;\r\n    border-radius: inherit;\r\n    background: var(--field-state-layer, var(--md-sys-color-on-surface, #1d1b20));\r\n    opacity: 0;\r\n    pointer-events: none;\r\n    transition: opacity 150ms cubic-bezier(.4, 0, .2, 1);\r\n}\r\n\r\n.root.hovered:not(.focused) .state-layer.filled { opacity: 0.08; }\r\n\r\n/* \u2500\u2500 Active Indicator (filled variant, bottom line) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.active-indicator {\r\n    position: absolute;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 1px;\r\n    background: var(--field-indicator-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    transition:\r\n        height 150ms cubic-bezier(.4, 0, .2, 1),\r\n        background-color 300ms cubic-bezier(.2, 0, 0, 1);\r\n}\r\n\r\n.root.focused .active-indicator {\r\n    height: var(--field-indicator-h, 2px);\r\n    background: var(--md-sys-color-primary, #6750a4);\r\n}\r\n\r\n.root.has-error .active-indicator {\r\n    background: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n.root.disabled .active-indicator { opacity: 0.38; }\r\n\r\n.root.disabled .container {\r\n    background: color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 4%, transparent);\r\n}\r\n\r\n.root.disabled .label,\r\n.root.disabled .prefix-text,\r\n.root.disabled .suffix-text {\r\n    color: color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 38%, transparent);\r\n}\r\n\r\n.root.disabled input {\r\n    color: color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 38%, transparent);\r\n}\r\n\r\n/* \u2500\u2500 Outline (outlined variant) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.outline-container {\r\n    position: absolute;\r\n    inset: 0;\r\n    pointer-events: none;\r\n}\r\n\r\n.outline-canvas {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n/* \u2500\u2500 Leading Icon \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.leading-icon {\r\n    position: absolute;\r\n    left: var(--field-icon-pad, 12px);\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    width: var(--field-icon-sz, 24px);\r\n    height: var(--field-icon-sz, 24px);\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    z-index: 2;\r\n    color: var(--field-icon-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    transition: transform 300ms cubic-bezier(.2, .8, .2, 1);\r\n    cursor: pointer;\r\n}\r\n\r\n.leading-icon .icon-text {\r\n    font-family: 'Material Symbols Outlined';\r\n    font-feature-settings: 'liga' 1;\r\n    -webkit-font-feature-settings: 'liga' 1;\r\n    font-size: var(--field-icon-sz, 24px);\r\n    font-variation-settings:\r\n        'FILL' var(--field-icon-fill, 0),\r\n        'wght' var(--field-icon-wght, 400),\r\n        'GRAD' var(--field-icon-grad, 0),\r\n        'opsz' var(--field-icon-sz, 24);\r\n    line-height: 1;\r\n    font-style: normal;\r\n}\r\n\r\n.root.hovered .leading-icon { transform: translateY(-50%) rotate(5deg); }\r\n.root.disabled .leading-icon { opacity: 0.38; }\r\n\r\n/* \u2500\u2500 Trailing Icon \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.trailing-icon {\r\n    position: absolute;\r\n    right: var(--field-icon-pad, 12px);\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    width: var(--field-icon-sz, 24px);\r\n    height: var(--field-icon-sz, 24px);\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    z-index: 2;\r\n    color: var(--field-icon-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    cursor: pointer;\r\n    transition: transform 300ms cubic-bezier(.2, .8, .2, 1);\r\n}\r\n\r\n.trailing-icon .icon-text {\r\n    font-family: 'Material Symbols Outlined';\r\n    font-feature-settings: 'liga' 1;\r\n    -webkit-font-feature-settings: 'liga' 1;\r\n    font-size: var(--field-icon-sz, 24px);\r\n    font-variation-settings:\r\n        'FILL' 0,\r\n        'wght' 400,\r\n        'GRAD' 0,\r\n        'opsz' var(--field-icon-sz, 24);\r\n    line-height: 1;\r\n    font-style: normal;\r\n}\r\n\r\n.root.hovered .trailing-icon { transform: translateY(-50%) rotate(-5deg); }\r\n.root.disabled .trailing-icon { opacity: 0.38; }\r\n.root.has-error .trailing-icon .icon-text {\r\n    color: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n/* \u2500\u2500 Label \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.label {\r\n    position: absolute;\r\n    z-index: 2;\r\n    left: var(--field-label-x, var(--field-pad-x, 16px));\r\n    top: 50%;\r\n    pointer-events: none;\r\n    transform-origin: left center;\r\n    transform: translateY(-50%);\r\n    transition: transform 150ms cubic-bezier(.2, 0, 0, 1),\r\n                color 150ms cubic-bezier(.2, 0, 0, 1);\r\n    color: var(--field-label-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    /* Base typography - body-large */\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    line-height: var(--md-sys-typescale-body-large-line-height, 24px);\r\n    letter-spacing: var(--md-sys-typescale-body-large-tracking, 0.5px);\r\n}\r\n\r\n/* Populated Filled: label floats to top - scale creates smaller text */\r\n.label.populated.filled {\r\n    /* Move up to 8px from top, accounting for 50% start position */\r\n    /* 50% of 56px = 28px, need to go to 8px + half of scaled line-height */\r\n    transform: translateY(calc(-50% - 12px)) scale(0.75);\r\n    transform-origin: left top;\r\n}\r\n\r\n/* Populated Outlined: label floats to center of top border line */\r\n.label.populated.outlined {\r\n    transform: translateY(calc(-50% - (var(--field-h, 56px) / 2) + 1px)) scale(0.75);\r\n    transform-origin: left center;\r\n}\r\n\r\n.root.focused .label {\r\n    color: var(--md-sys-color-primary, #6750a4);\r\n}\r\n\r\n.root.has-error .label {\r\n    color: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n.root.disabled .label { opacity: 0.38; }\r\n\r\n/* \u2500\u2500 Input Area \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.input-area {\r\n    position: absolute;\r\n    inset: 0;\r\n    z-index: 1;\r\n    display: flex;\r\n    align-items: center;\r\n    padding-left: var(--field-input-left, var(--field-pad-x, 16px));\r\n    padding-right: var(--field-input-right, var(--field-pad-x, 16px));\r\n    box-sizing: border-box;\r\n}\r\n\r\n.input-area.has-label.populated.filled {\r\n    padding-top: 16px;\r\n}\r\n\r\n.input-row {\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 4px;\r\n    width: 100%;\r\n    min-width: 0;\r\n}\r\n\r\n.prefix-text,\r\n.suffix-text {\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    color: var(--field-text-color, var(--md-sys-color-on-surface, #1d1b20));\r\n    opacity: 0.6;\r\n    white-space: nowrap;\r\n}\r\n\r\n/* \u2500\u2500 Input Element \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\ninput {\r\n    flex: 1;\r\n    min-width: 0;\r\n    border: none;\r\n    outline: none;\r\n    background: transparent;\r\n    font-family: var(--md-sys-typescale-body-large-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-large-size, 16px);\r\n    font-weight: var(--md-sys-typescale-body-large-weight, 400);\r\n    line-height: var(--md-sys-typescale-body-large-line-height, 24px);\r\n    color: var(--field-text-color, var(--md-sys-color-on-surface, #1d1b20));\r\n    caret-color: var(--md-sys-color-primary, #6750a4);\r\n}\r\n\r\ninput::placeholder {\r\n    color: var(--md-sys-color-on-surface-variant, #49454f);\r\n    opacity: 1;\r\n}\r\n\r\ninput:disabled {\r\n    opacity: 0.38;\r\n    cursor: not-allowed;\r\n}\r\n\r\n.root.has-error input {\r\n    caret-color: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n/* Selection color */\r\ninput::selection {\r\n    background: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 30%, transparent);\r\n}\r\n\r\n/* \u2500\u2500 Supporting Text Row \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\r\n.supporting-row {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    padding-left: var(--field-pad-x, 16px);\r\n    padding-right: var(--field-pad-x, 16px);\r\n    padding-top: var(--field-supporting-top, 4px);\r\n    gap: 16px;\r\n}\r\n\r\n.supporting-text {\r\n    font-family: var(--md-sys-typescale-body-small-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-small-size, 12px);\r\n    font-weight: var(--md-sys-typescale-body-small-weight, 400);\r\n    line-height: var(--md-sys-typescale-body-small-line-height, 16px);\r\n    color: var(--field-supporting-color, var(--md-sys-color-on-surface-variant, #49454f));\r\n    flex: 1;\r\n}\r\n\r\n.root.has-error .supporting-text {\r\n    color: var(--md-sys-color-error, #b3261e);\r\n}\r\n\r\n.character-counter {\r\n    font-family: var(--md-sys-typescale-body-small-font, 'Roboto', 'Segoe UI', sans-serif);\r\n    font-size: var(--md-sys-typescale-body-small-size, 12px);\r\n    font-weight: var(--md-sys-typescale-body-small-weight, 400);\r\n    line-height: var(--md-sys-typescale-body-small-line-height, 16px);\r\n    color: var(--md-sys-color-on-surface-variant, #49454f);\r\n    white-space: nowrap;\r\n}\r\n\r\n.root.disabled .supporting-row { opacity: 0.38; }\r\n";
 
 // src/components/controls/TextField.ts
 var TextField2 = class extends i4 {
@@ -27699,7 +27699,7 @@ __decorateClass([
   e4(".label")
 ], TextField2.prototype, "labelElement", 2);
 TextField2 = __decorateClass([
-  t("umi-text-field")
+  t("lumina-text-field")
 ], TextField2);
 
 // src/components/styles/Switch.css
@@ -28124,11 +28124,11 @@ __decorateClass([
   r4()
 ], Switch2.prototype, "_bounceClass", 2);
 Switch2 = __decorateClass([
-  t("umi-switch")
+  t("lumina-switch")
 ], Switch2);
 
 // src/components/styles/LabsAppBars.css
-var LabsAppBars_default = ":host {\r\n    display: block;\r\n    width: 100%;\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n}\r\n\r\n.bar {\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background: var(--md-sys-color-surface, #fef7ff);\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n    transition: background-color 200ms cubic-bezier(.2, 0, 0, 1), color 200ms cubic-bezier(.2, 0, 0, 1);\r\n    border-bottom: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant, #cac4d0) 26%, transparent);\r\n}\r\n\r\n.bar.is-scrolled {\r\n    background: var(--md-sys-color-surface-container, #f3edf7);\r\n}\r\n\r\n.main-row {\r\n    min-height: 64px;\r\n    padding: 0 4px;\r\n    display: grid;\r\n    grid-template-columns: auto 1fr auto;\r\n    align-items: center;\r\n    gap: 8px;\r\n}\r\n\r\n.leading-wrap,\r\n.trailing-wrap {\r\n    min-width: 48px;\r\n    min-height: 48px;\r\n    display: inline-flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    gap: 2px;\r\n    padding: 0 4px;\r\n}\r\n\r\n.headline-wrap {\r\n    min-width: 0;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n}\r\n\r\n.headline {\r\n    margin: 0;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n\r\n.subtitle {\r\n    margin-top: 2px;\r\n    color: var(--md-sys-color-on-surface-variant, #49454f);\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n\r\n/* Small / Center */\r\n.bar.variant-small .headline,\r\n.bar.variant-center .headline {\r\n    font-family: var(--md-sys-typescale-title-large-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-title-large-size, 22px);\r\n    font-weight: var(--md-sys-typescale-title-large-weight, 400);\r\n    line-height: var(--md-sys-typescale-title-large-line-height, 28px);\r\n    letter-spacing: var(--md-sys-typescale-title-large-tracking, 0);\r\n}\r\n\r\n.bar.variant-small .subtitle,\r\n.bar.variant-center .subtitle {\r\n    font-family: var(--md-sys-typescale-label-medium-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-label-medium-size, 12px);\r\n    font-weight: var(--md-sys-typescale-label-medium-weight, 500);\r\n    line-height: var(--md-sys-typescale-label-medium-line-height, 16px);\r\n    letter-spacing: var(--md-sys-typescale-label-medium-tracking, 0.5px);\r\n}\r\n\r\n.bar.text-leading.variant-small .headline-wrap,\r\n.bar.text-leading.variant-center .headline-wrap {\r\n    text-align: left;\r\n}\r\n\r\n.bar.text-centered.variant-small .headline-wrap,\r\n.bar.text-centered.variant-center .headline-wrap,\r\n.bar.variant-center .headline-wrap {\r\n    text-align: center;\r\n}\r\n\r\n.bar.variant-center .main-row {\r\n    grid-template-columns: minmax(56px, auto) 1fr minmax(56px, auto);\r\n}\r\n\r\n/* Flexible (Expressive) */\r\n.bar.variant-medium-flexible,\r\n.bar.variant-large-flexible {\r\n    padding-bottom: 12px;\r\n}\r\n\r\n.bar.variant-medium-flexible .main-row,\r\n.bar.variant-large-flexible .main-row {\r\n    min-height: 64px;\r\n}\r\n\r\n.flexible-text-wrap {\r\n    padding: 0 16px;\r\n    min-height: 44px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n}\r\n\r\n.bar.variant-medium-flexible .flexible-text-wrap {\r\n    min-height: 48px;\r\n}\r\n\r\n.bar.variant-large-flexible .flexible-text-wrap {\r\n    min-height: 72px;\r\n}\r\n\r\n.bar.variant-medium-flexible .headline {\r\n    font-family: var(--md-sys-typescale-headline-medium-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-headline-medium-size, 28px);\r\n    font-weight: var(--md-sys-typescale-headline-medium-weight, 400);\r\n    line-height: var(--md-sys-typescale-headline-medium-line-height, 36px);\r\n    letter-spacing: var(--md-sys-typescale-headline-medium-tracking, 0);\r\n}\r\n\r\n.bar.variant-large-flexible .headline {\r\n    font-family: var(--md-sys-typescale-display-small-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-display-small-size, 36px);\r\n    font-weight: var(--md-sys-typescale-display-small-weight, 400);\r\n    line-height: var(--md-sys-typescale-display-small-line-height, 44px);\r\n    letter-spacing: var(--md-sys-typescale-display-small-tracking, 0);\r\n}\r\n\r\n.bar.variant-medium-flexible .subtitle {\r\n    font-family: var(--md-sys-typescale-label-large-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-label-large-size, 14px);\r\n    font-weight: var(--md-sys-typescale-label-large-weight, 500);\r\n    line-height: var(--md-sys-typescale-label-large-line-height, 20px);\r\n    letter-spacing: var(--md-sys-typescale-label-large-tracking, 0.1px);\r\n}\r\n\r\n.bar.variant-large-flexible .subtitle {\r\n    font-family: var(--md-sys-typescale-title-medium-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-title-medium-size, 16px);\r\n    font-weight: var(--md-sys-typescale-title-medium-weight, 500);\r\n    line-height: var(--md-sys-typescale-title-medium-line-height, 24px);\r\n    letter-spacing: var(--md-sys-typescale-title-medium-tracking, 0.15px);\r\n}\r\n\r\n.bar.text-leading .flexible-text-wrap {\r\n    text-align: left;\r\n}\r\n\r\n.bar.text-centered .flexible-text-wrap {\r\n    text-align: center;\r\n}\r\n\r\n/* Defaults for icon button spacing in slots */\r\n::slotted(umi-icon-button),\r\n::slotted(md-icon-button),\r\n::slotted(md-filled-icon-button),\r\n::slotted(md-filled-tonal-icon-button),\r\n::slotted(md-outlined-icon-button) {\r\n    margin: 0;\r\n}\r\n";
+var LabsAppBars_default = ":host {\r\n    display: block;\r\n    width: 100%;\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n}\r\n\r\n.bar {\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background: var(--md-sys-color-surface, #fef7ff);\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n    transition: background-color 200ms cubic-bezier(.2, 0, 0, 1), color 200ms cubic-bezier(.2, 0, 0, 1);\r\n    border-bottom: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant, #cac4d0) 26%, transparent);\r\n}\r\n\r\n.bar.is-scrolled {\r\n    background: var(--md-sys-color-surface-container, #f3edf7);\r\n}\r\n\r\n.main-row {\r\n    min-height: 64px;\r\n    padding: 0 4px;\r\n    display: grid;\r\n    grid-template-columns: auto 1fr auto;\r\n    align-items: center;\r\n    gap: 8px;\r\n}\r\n\r\n.leading-wrap,\r\n.trailing-wrap {\r\n    min-width: 48px;\r\n    min-height: 48px;\r\n    display: inline-flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    gap: 2px;\r\n    padding: 0 4px;\r\n}\r\n\r\n.headline-wrap {\r\n    min-width: 0;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n}\r\n\r\n.headline {\r\n    margin: 0;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n\r\n.subtitle {\r\n    margin-top: 2px;\r\n    color: var(--md-sys-color-on-surface-variant, #49454f);\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n\r\n/* Small / Center */\r\n.bar.variant-small .headline,\r\n.bar.variant-center .headline {\r\n    font-family: var(--md-sys-typescale-title-large-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-title-large-size, 22px);\r\n    font-weight: var(--md-sys-typescale-title-large-weight, 400);\r\n    line-height: var(--md-sys-typescale-title-large-line-height, 28px);\r\n    letter-spacing: var(--md-sys-typescale-title-large-tracking, 0);\r\n}\r\n\r\n.bar.variant-small .subtitle,\r\n.bar.variant-center .subtitle {\r\n    font-family: var(--md-sys-typescale-label-medium-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-label-medium-size, 12px);\r\n    font-weight: var(--md-sys-typescale-label-medium-weight, 500);\r\n    line-height: var(--md-sys-typescale-label-medium-line-height, 16px);\r\n    letter-spacing: var(--md-sys-typescale-label-medium-tracking, 0.5px);\r\n}\r\n\r\n.bar.text-leading.variant-small .headline-wrap,\r\n.bar.text-leading.variant-center .headline-wrap {\r\n    text-align: left;\r\n}\r\n\r\n.bar.text-centered.variant-small .headline-wrap,\r\n.bar.text-centered.variant-center .headline-wrap,\r\n.bar.variant-center .headline-wrap {\r\n    text-align: center;\r\n}\r\n\r\n.bar.variant-center .main-row {\r\n    grid-template-columns: minmax(56px, auto) 1fr minmax(56px, auto);\r\n}\r\n\r\n/* Flexible (Expressive) */\r\n.bar.variant-medium-flexible,\r\n.bar.variant-large-flexible {\r\n    padding-bottom: 12px;\r\n}\r\n\r\n.bar.variant-medium-flexible .main-row,\r\n.bar.variant-large-flexible .main-row {\r\n    min-height: 64px;\r\n}\r\n\r\n.flexible-text-wrap {\r\n    padding: 0 16px;\r\n    min-height: 44px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n}\r\n\r\n.bar.variant-medium-flexible .flexible-text-wrap {\r\n    min-height: 48px;\r\n}\r\n\r\n.bar.variant-large-flexible .flexible-text-wrap {\r\n    min-height: 72px;\r\n}\r\n\r\n.bar.variant-medium-flexible .headline {\r\n    font-family: var(--md-sys-typescale-headline-medium-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-headline-medium-size, 28px);\r\n    font-weight: var(--md-sys-typescale-headline-medium-weight, 400);\r\n    line-height: var(--md-sys-typescale-headline-medium-line-height, 36px);\r\n    letter-spacing: var(--md-sys-typescale-headline-medium-tracking, 0);\r\n}\r\n\r\n.bar.variant-large-flexible .headline {\r\n    font-family: var(--md-sys-typescale-display-small-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-display-small-size, 36px);\r\n    font-weight: var(--md-sys-typescale-display-small-weight, 400);\r\n    line-height: var(--md-sys-typescale-display-small-line-height, 44px);\r\n    letter-spacing: var(--md-sys-typescale-display-small-tracking, 0);\r\n}\r\n\r\n.bar.variant-medium-flexible .subtitle {\r\n    font-family: var(--md-sys-typescale-label-large-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-label-large-size, 14px);\r\n    font-weight: var(--md-sys-typescale-label-large-weight, 500);\r\n    line-height: var(--md-sys-typescale-label-large-line-height, 20px);\r\n    letter-spacing: var(--md-sys-typescale-label-large-tracking, 0.1px);\r\n}\r\n\r\n.bar.variant-large-flexible .subtitle {\r\n    font-family: var(--md-sys-typescale-title-medium-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-title-medium-size, 16px);\r\n    font-weight: var(--md-sys-typescale-title-medium-weight, 500);\r\n    line-height: var(--md-sys-typescale-title-medium-line-height, 24px);\r\n    letter-spacing: var(--md-sys-typescale-title-medium-tracking, 0.15px);\r\n}\r\n\r\n.bar.text-leading .flexible-text-wrap {\r\n    text-align: left;\r\n}\r\n\r\n.bar.text-centered .flexible-text-wrap {\r\n    text-align: center;\r\n}\r\n\r\n/* Defaults for icon button spacing in slots */\r\n::slotted(lumina-icon-button),\r\n::slotted(md-icon-button),\r\n::slotted(md-filled-icon-button),\r\n::slotted(md-filled-tonal-icon-button),\r\n::slotted(md-outlined-icon-button) {\r\n    margin: 0;\r\n}\r\n";
 
 // src/components/labs/AppBars.ts
 var LabsAppBar = class extends i4 {
@@ -28243,7 +28243,7 @@ __decorateClass([
   r4()
 ], LabsAppBar.prototype, "_hasTrailing", 2);
 LabsAppBar = __decorateClass([
-  t("umi-labs-app-bar")
+  t("lumina-labs-app-bar")
 ], LabsAppBar);
 
 // src/components/styles/LabsBadges.css
@@ -28322,7 +28322,7 @@ __decorateClass([
   n3({ type: Boolean })
 ], LabsBadge.prototype, "visible", 2);
 LabsBadge = __decorateClass([
-  t("umi-labs-badge")
+  t("lumina-labs-badge")
 ], LabsBadge);
 
 // src/components/styles/LabsCards.css
@@ -28381,7 +28381,7 @@ var LabsCard = class extends i4 {
       if (node.classList.contains("actions")) return true;
       if (node.getAttribute("slot") === "actions") return true;
       const tag = node.tagName;
-      if (tag === "BUTTON" || tag === "A" || tag === "INPUT" || tag === "SELECT" || tag === "TEXTAREA" || tag.startsWith("UMI-") || tag.startsWith("MD-")) {
+      if (tag === "BUTTON" || tag === "A" || tag === "INPUT" || tag === "SELECT" || tag === "TEXTAREA" || tag.startsWith("LUMINA-") || tag.startsWith("MD-")) {
         if (tag !== "ARTICLE") return true;
       }
     }
@@ -28492,11 +28492,11 @@ __decorateClass([
   r4()
 ], LabsCard.prototype, "_focused", 2);
 LabsCard = __decorateClass([
-  t("umi-labs-card")
+  t("lumina-labs-card")
 ], LabsCard);
 
 // src/components/styles/LabsCarousel.css
-var LabsCarousel_default = ":host {\r\n    display: block;\r\n    width: 100%;\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n}\r\n\r\n.carousel {\r\n    width: 100%;\r\n}\r\n\r\n.viewport {\r\n    width: 100%;\r\n    overflow-x: auto;\r\n    overflow-y: hidden;\r\n    border-radius: 28px;\r\n    cursor: grab;\r\n    scrollbar-width: none;\r\n    scrollbar-gutter: auto;\r\n    -ms-overflow-style: none;\r\n    overscroll-behavior-x: contain;\r\n    -webkit-overflow-scrolling: touch;\r\n    touch-action: pan-x;\r\n    user-select: none;\r\n}\r\n\r\n.viewport::-webkit-scrollbar {\r\n    width: 0;\r\n    height: 0;\r\n    display: none;\r\n}\r\n\r\n.viewport::-webkit-scrollbar-track {\r\n    background: transparent;\r\n}\r\n\r\n.viewport::-webkit-scrollbar-thumb {\r\n    background: transparent;\r\n    border-radius: 999px;\r\n}\r\n\r\n.viewport::-webkit-scrollbar-thumb:hover {\r\n    background: transparent;\r\n}\r\n\r\n.viewport.is-dragging {\r\n    cursor: grabbing;\r\n    user-select: none;\r\n}\r\n\r\n.viewport.is-dragging,\r\n.viewport.is-wheeling {\r\n    scroll-snap-type: none !important;\r\n}\r\n\r\n.track {\r\n    min-height: 200px;\r\n    width: max-content;\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 8px;\r\n    padding: 8px 16px;\r\n    perspective: 1000px;\r\n}\r\n\r\n.carousel.snap .viewport {\r\n    scroll-snap-type: x mandatory;\r\n}\r\n\r\n.carousel.free-scroll .viewport {\r\n    scroll-snap-type: x proximity;\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item) {\r\n    position: relative;\r\n    flex: 0 0 auto;\r\n    min-height: 180px;\r\n    transform-origin: center center;\r\n    transform-style: preserve-3d;\r\n    backface-visibility: hidden;\r\n    contain: layout paint style;\r\n    border-radius: var(--labs-carousel-dynamic-radius, 28px);\r\n    border: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant, #cac4d0) 55%, transparent);\r\n    background: var(--md-sys-color-surface-container, #f3edf7);\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n    overflow: hidden;\r\n    cursor: pointer;\r\n    scroll-snap-align: start;\r\n    scroll-snap-stop: always;\r\n    transform:\r\n        translateX(var(--labs-carousel-parallax-x, 0px))\r\n        translateY(calc(var(--labs-carousel-dynamic-lift, 0px) * -0.1))\r\n        rotateY(var(--labs-carousel-tilt, 0deg))\r\n        scale(var(--labs-carousel-dynamic-scale, 1));\r\n    transition:\r\n        width var(--labs-carousel-item-duration, 260ms) var(--labs-carousel-item-easing, cubic-bezier(.2, .75, .2, 1)),\r\n        transform var(--labs-carousel-item-duration, 260ms) var(--labs-carousel-item-easing, cubic-bezier(.2, .75, .2, 1)),\r\n        border-radius var(--labs-carousel-item-duration, 260ms) var(--labs-carousel-item-easing, cubic-bezier(.2, .75, .2, 1)),\r\n        background-color 180ms cubic-bezier(.2, 0, 0, 1),\r\n        box-shadow 180ms cubic-bezier(.2, 0, 0, 1),\r\n        border-color 180ms cubic-bezier(.2, 0, 0, 1);\r\n    outline: none;\r\n    user-select: none;\r\n    will-change: transform, border-radius, width;\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item:hover) {\r\n    box-shadow: inset 0 0 0 9999px color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 8%, transparent);\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item:active) {\r\n    box-shadow: inset 0 0 0 9999px color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 12%, transparent);\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item:focus-visible) {\r\n    border-color: var(--md-sys-color-primary, #6750a4);\r\n    box-shadow: 0 0 0 3px color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 24%, transparent);\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item.size-large) {\r\n    width: var(--labs-carousel-dynamic-width, min(74vw, 360px));\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item.size-medium) {\r\n    width: var(--labs-carousel-dynamic-width, min(58vw, 280px));\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item.size-small) {\r\n    width: var(--labs-carousel-dynamic-width, clamp(40px, 8vw, 56px));\r\n}\r\n\r\n::slotted(.umi-labs-carousel-item.size-full) {\r\n    width: var(--labs-carousel-dynamic-width, 100%);\r\n    min-height: 280px;\r\n    border-radius: 0;\r\n}\r\n\r\n.carousel.variant-uncontained .track,\r\n.carousel.variant-uncontained-multi .track {\r\n    padding-right: 0;\r\n}\r\n\r\n.carousel.variant-full-screen .viewport {\r\n    border-radius: 0;\r\n}\r\n\r\n.carousel.variant-full-screen .track {\r\n    min-height: 320px;\r\n    padding: 0;\r\n    gap: 16px;\r\n}\r\n\r\n.show-all {\r\n    margin-top: 8px;\r\n    padding: 8px 12px;\r\n    border-radius: 10px;\r\n    border: 1px solid color-mix(in srgb, var(--md-sys-color-outline, #79747e) 60%, transparent);\r\n    background: transparent;\r\n    color: var(--md-sys-color-primary, #6750a4);\r\n    font-family: var(--md-sys-typescale-label-large-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-label-large-size, 14px);\r\n    font-weight: var(--md-sys-typescale-label-large-weight, 500);\r\n    letter-spacing: var(--md-sys-typescale-label-large-tracking, 0.1px);\r\n    cursor: pointer;\r\n}\r\n\r\n.show-all:hover {\r\n    background: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 8%, transparent);\r\n}\r\n\r\n.show-all:focus-visible {\r\n    outline: 2px solid color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 50%, transparent);\r\n    outline-offset: 2px;\r\n}\r\n\r\n@media (min-width: 900px) {\r\n    ::slotted(.umi-labs-carousel-item.size-large) {\r\n        width: min(42vw, 420px);\r\n    }\r\n\r\n    ::slotted(.umi-labs-carousel-item.size-medium) {\r\n        width: min(30vw, 320px);\r\n    }\r\n}\r\n\r\n@media (prefers-reduced-motion: reduce) {\r\n    .viewport {\r\n        scroll-behavior: auto;\r\n    }\r\n\r\n    ::slotted(.umi-labs-carousel-item) {\r\n        transition: none;\r\n        transform: none;\r\n    }\r\n}\r\n";
+var LabsCarousel_default = ":host {\r\n    display: block;\r\n    width: 100%;\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n}\r\n\r\n.carousel {\r\n    width: 100%;\r\n}\r\n\r\n.viewport {\r\n    width: 100%;\r\n    overflow-x: auto;\r\n    overflow-y: hidden;\r\n    border-radius: 28px;\r\n    cursor: grab;\r\n    scrollbar-width: none;\r\n    scrollbar-gutter: auto;\r\n    -ms-overflow-style: none;\r\n    overscroll-behavior-x: contain;\r\n    -webkit-overflow-scrolling: touch;\r\n    touch-action: pan-x;\r\n    user-select: none;\r\n}\r\n\r\n.viewport::-webkit-scrollbar {\r\n    width: 0;\r\n    height: 0;\r\n    display: none;\r\n}\r\n\r\n.viewport::-webkit-scrollbar-track {\r\n    background: transparent;\r\n}\r\n\r\n.viewport::-webkit-scrollbar-thumb {\r\n    background: transparent;\r\n    border-radius: 999px;\r\n}\r\n\r\n.viewport::-webkit-scrollbar-thumb:hover {\r\n    background: transparent;\r\n}\r\n\r\n.viewport.is-dragging {\r\n    cursor: grabbing;\r\n    user-select: none;\r\n}\r\n\r\n.viewport.is-dragging,\r\n.viewport.is-wheeling {\r\n    scroll-snap-type: none !important;\r\n}\r\n\r\n.track {\r\n    min-height: 200px;\r\n    width: max-content;\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 8px;\r\n    padding: 8px 16px;\r\n    perspective: 1000px;\r\n}\r\n\r\n.carousel.snap .viewport {\r\n    scroll-snap-type: x mandatory;\r\n}\r\n\r\n.carousel.free-scroll .viewport {\r\n    scroll-snap-type: x proximity;\r\n}\r\n\r\n::slotted(.lumina-labs-carousel-item) {\r\n    position: relative;\r\n    flex: 0 0 auto;\r\n    min-height: 180px;\r\n    transform-origin: center center;\r\n    transform-style: preserve-3d;\r\n    backface-visibility: hidden;\r\n    contain: layout paint style;\r\n    border-radius: var(--labs-carousel-dynamic-radius, 28px);\r\n    border: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant, #cac4d0) 55%, transparent);\r\n    background: var(--md-sys-color-surface-container, #f3edf7);\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n    overflow: hidden;\r\n    cursor: pointer;\r\n    scroll-snap-align: start;\r\n    scroll-snap-stop: always;\r\n    transform:\r\n        translateX(var(--labs-carousel-parallax-x, 0px))\r\n        translateY(calc(var(--labs-carousel-dynamic-lift, 0px) * -0.1))\r\n        rotateY(var(--labs-carousel-tilt, 0deg))\r\n        scale(var(--labs-carousel-dynamic-scale, 1));\r\n    transition:\r\n        width var(--labs-carousel-item-duration, 260ms) var(--labs-carousel-item-easing, cubic-bezier(.2, .75, .2, 1)),\r\n        transform var(--labs-carousel-item-duration, 260ms) var(--labs-carousel-item-easing, cubic-bezier(.2, .75, .2, 1)),\r\n        border-radius var(--labs-carousel-item-duration, 260ms) var(--labs-carousel-item-easing, cubic-bezier(.2, .75, .2, 1)),\r\n        background-color 180ms cubic-bezier(.2, 0, 0, 1),\r\n        box-shadow 180ms cubic-bezier(.2, 0, 0, 1),\r\n        border-color 180ms cubic-bezier(.2, 0, 0, 1);\r\n    outline: none;\r\n    user-select: none;\r\n    will-change: transform, border-radius, width;\r\n}\r\n\r\n::slotted(.lumina-labs-carousel-item:hover) {\r\n    box-shadow: inset 0 0 0 9999px color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 8%, transparent);\r\n}\r\n\r\n::slotted(.lumina-labs-carousel-item:active) {\r\n    box-shadow: inset 0 0 0 9999px color-mix(in srgb, var(--md-sys-color-on-surface, #1d1b20) 12%, transparent);\r\n}\r\n\r\n::slotted(.lumina-labs-carousel-item:focus-visible) {\r\n    border-color: var(--md-sys-color-primary, #6750a4);\r\n    box-shadow: 0 0 0 3px color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 24%, transparent);\r\n}\r\n\r\n::slotted(.lumina-labs-carousel-item.size-large) {\r\n    width: var(--labs-carousel-dynamic-width, min(74vw, 360px));\r\n}\r\n\r\n::slotted(.lumina-labs-carousel-item.size-medium) {\r\n    width: var(--labs-carousel-dynamic-width, min(58vw, 280px));\r\n}\r\n\r\n::slotted(.lumina-labs-carousel-item.size-small) {\r\n    width: var(--labs-carousel-dynamic-width, clamp(40px, 8vw, 56px));\r\n}\r\n\r\n::slotted(.lumina-labs-carousel-item.size-full) {\r\n    width: var(--labs-carousel-dynamic-width, 100%);\r\n    min-height: 280px;\r\n    border-radius: 0;\r\n}\r\n\r\n.carousel.variant-uncontained .track,\r\n.carousel.variant-uncontained-multi .track {\r\n    padding-right: 0;\r\n}\r\n\r\n.carousel.variant-full-screen .viewport {\r\n    border-radius: 0;\r\n}\r\n\r\n.carousel.variant-full-screen .track {\r\n    min-height: 320px;\r\n    padding: 0;\r\n    gap: 16px;\r\n}\r\n\r\n.show-all {\r\n    margin-top: 8px;\r\n    padding: 8px 12px;\r\n    border-radius: 10px;\r\n    border: 1px solid color-mix(in srgb, var(--md-sys-color-outline, #79747e) 60%, transparent);\r\n    background: transparent;\r\n    color: var(--md-sys-color-primary, #6750a4);\r\n    font-family: var(--md-sys-typescale-label-large-font, 'Roboto', sans-serif);\r\n    font-size: var(--md-sys-typescale-label-large-size, 14px);\r\n    font-weight: var(--md-sys-typescale-label-large-weight, 500);\r\n    letter-spacing: var(--md-sys-typescale-label-large-tracking, 0.1px);\r\n    cursor: pointer;\r\n}\r\n\r\n.show-all:hover {\r\n    background: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 8%, transparent);\r\n}\r\n\r\n.show-all:focus-visible {\r\n    outline: 2px solid color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 50%, transparent);\r\n    outline-offset: 2px;\r\n}\r\n\r\n@media (min-width: 900px) {\r\n    ::slotted(.lumina-labs-carousel-item.size-large) {\r\n        width: min(42vw, 420px);\r\n    }\r\n\r\n    ::slotted(.lumina-labs-carousel-item.size-medium) {\r\n        width: min(30vw, 320px);\r\n    }\r\n}\r\n\r\n@media (prefers-reduced-motion: reduce) {\r\n    .viewport {\r\n        scroll-behavior: auto;\r\n    }\r\n\r\n    ::slotted(.lumina-labs-carousel-item) {\r\n        transition: none;\r\n        transform: none;\r\n    }\r\n}\r\n";
 
 // src/components/labs/Carousel.ts
 var LabsCarousel = class extends i4 {
@@ -28708,7 +28708,7 @@ var LabsCarousel = class extends i4 {
   _applyLayoutClasses() {
     const itemCount = this._items.length;
     this._items.forEach((item, index) => {
-      item.classList.add("umi-labs-carousel-item");
+      item.classList.add("lumina-labs-carousel-item");
       item.classList.remove(
         "size-large",
         "size-medium",
@@ -29049,11 +29049,11 @@ __decorateClass([
   r4()
 ], LabsCarousel.prototype, "_activeIndex", 2);
 LabsCarousel = __decorateClass([
-  t("umi-labs-carousel")
+  t("lumina-labs-carousel")
 ], LabsCarousel);
 
 // src/components/styles/LabsToolbars.css
-var LabsToolbars_default = ":host {\r\n    display: block;\r\n    width: 100%;\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n}\r\n\r\n.toolbar-host {\r\n    width: 100%;\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 10px;\r\n}\r\n\r\n.toolbar {\r\n    min-height: 64px;\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 8px;\r\n    padding: 8px 16px;\r\n    border: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant, #cac4d0) 38%, transparent);\r\n    transition: background-color 180ms cubic-bezier(.2, 0, 0, 1), border-color 180ms cubic-bezier(.2, 0, 0, 1), box-shadow 180ms cubic-bezier(.2, 0, 0, 1);\r\n}\r\n\r\n.cluster {\r\n    min-height: 48px;\r\n    display: inline-flex;\r\n    align-items: center;\r\n    gap: 8px;\r\n}\r\n\r\n.middle {\r\n    flex: 1 1 auto;\r\n    justify-content: center;\r\n    min-width: 0;\r\n}\r\n\r\n.leading,\r\n.trailing {\r\n    flex: 0 0 auto;\r\n}\r\n\r\n.trailing {\r\n    justify-content: flex-end;\r\n}\r\n\r\n/* Variants */\r\n.variant-docked {\r\n    width: 100%;\r\n}\r\n\r\n.variant-docked .toolbar {\r\n    width: 100%;\r\n    border-radius: 0;\r\n}\r\n\r\n.variant-floating {\r\n    width: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.variant-floating .toolbar {\r\n    width: fit-content;\r\n    max-width: min(100%, calc(100vw - 32px));\r\n    border-radius: 28px;\r\n}\r\n\r\n.variant-floating.orientation-horizontal {\r\n    align-items: flex-end;\r\n}\r\n\r\n.variant-floating.orientation-vertical {\r\n    width: fit-content;\r\n}\r\n\r\n.variant-floating.orientation-vertical .toolbar {\r\n    flex-direction: column;\r\n    align-items: stretch;\r\n    width: max-content;\r\n    max-width: none;\r\n}\r\n\r\n.variant-floating.orientation-vertical .cluster {\r\n    width: 100%;\r\n    justify-content: center;\r\n}\r\n\r\n.variant-floating.orientation-vertical .middle {\r\n    flex: 0 0 auto;\r\n}\r\n\r\n/* Color styles */\r\n.style-standard .toolbar {\r\n    background: var(--md-sys-color-surface-container, #f3edf7);\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n}\r\n\r\n.style-vibrant .toolbar {\r\n    background: var(--md-sys-color-primary-container, #eaddff);\r\n    color: var(--md-sys-color-on-primary-container, #21005d);\r\n    border-color: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 30%, transparent);\r\n}\r\n\r\n/* Elevation */\r\n.is-elevated.variant-floating .toolbar {\r\n    box-shadow: 0 1px 2px color-mix(in srgb, var(--md-sys-color-shadow, #000) 18%, transparent),\r\n                0 4px 10px color-mix(in srgb, var(--md-sys-color-shadow, #000) 12%, transparent);\r\n}\r\n\r\n.is-flat .toolbar {\r\n    box-shadow: none;\r\n}\r\n\r\n/* FAB pairing */\r\n.fab-wrap {\r\n    flex: 0 0 auto;\r\n    display: inline-flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n.variant-floating.orientation-vertical .fab-wrap {\r\n    width: 100%;\r\n    justify-content: center;\r\n}\r\n\r\n/* Slots defaults */\r\n::slotted(umi-icon-button),\r\n::slotted(umi-filled-button),\r\n::slotted(umi-tonal-button),\r\n::slotted(umi-outlined-button),\r\n::slotted(umi-text-button),\r\n::slotted(umi-fab),\r\n::slotted(md-icon-button),\r\n::slotted(md-filled-icon-button),\r\n::slotted(md-filled-tonal-icon-button),\r\n::slotted(md-outlined-icon-button) {\r\n    margin: 0;\r\n}\r\n";
+var LabsToolbars_default = ":host {\r\n    display: block;\r\n    width: 100%;\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n}\r\n\r\n.toolbar-host {\r\n    width: 100%;\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 10px;\r\n}\r\n\r\n.toolbar {\r\n    min-height: 64px;\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 8px;\r\n    padding: 8px 16px;\r\n    border: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant, #cac4d0) 38%, transparent);\r\n    transition: background-color 180ms cubic-bezier(.2, 0, 0, 1), border-color 180ms cubic-bezier(.2, 0, 0, 1), box-shadow 180ms cubic-bezier(.2, 0, 0, 1);\r\n}\r\n\r\n.cluster {\r\n    min-height: 48px;\r\n    display: inline-flex;\r\n    align-items: center;\r\n    gap: 8px;\r\n}\r\n\r\n.middle {\r\n    flex: 1 1 auto;\r\n    justify-content: center;\r\n    min-width: 0;\r\n}\r\n\r\n.leading,\r\n.trailing {\r\n    flex: 0 0 auto;\r\n}\r\n\r\n.trailing {\r\n    justify-content: flex-end;\r\n}\r\n\r\n/* Variants */\r\n.variant-docked {\r\n    width: 100%;\r\n}\r\n\r\n.variant-docked .toolbar {\r\n    width: 100%;\r\n    border-radius: 0;\r\n}\r\n\r\n.variant-floating {\r\n    width: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.variant-floating .toolbar {\r\n    width: fit-content;\r\n    max-width: min(100%, calc(100vw - 32px));\r\n    border-radius: 28px;\r\n}\r\n\r\n.variant-floating.orientation-horizontal {\r\n    align-items: flex-end;\r\n}\r\n\r\n.variant-floating.orientation-vertical {\r\n    width: fit-content;\r\n}\r\n\r\n.variant-floating.orientation-vertical .toolbar {\r\n    flex-direction: column;\r\n    align-items: stretch;\r\n    width: max-content;\r\n    max-width: none;\r\n}\r\n\r\n.variant-floating.orientation-vertical .cluster {\r\n    width: 100%;\r\n    justify-content: center;\r\n}\r\n\r\n.variant-floating.orientation-vertical .middle {\r\n    flex: 0 0 auto;\r\n}\r\n\r\n/* Color styles */\r\n.style-standard .toolbar {\r\n    background: var(--md-sys-color-surface-container, #f3edf7);\r\n    color: var(--md-sys-color-on-surface, #1d1b20);\r\n}\r\n\r\n.style-vibrant .toolbar {\r\n    background: var(--md-sys-color-primary-container, #eaddff);\r\n    color: var(--md-sys-color-on-primary-container, #21005d);\r\n    border-color: color-mix(in srgb, var(--md-sys-color-primary, #6750a4) 30%, transparent);\r\n}\r\n\r\n/* Elevation */\r\n.is-elevated.variant-floating .toolbar {\r\n    box-shadow: 0 1px 2px color-mix(in srgb, var(--md-sys-color-shadow, #000) 18%, transparent),\r\n                0 4px 10px color-mix(in srgb, var(--md-sys-color-shadow, #000) 12%, transparent);\r\n}\r\n\r\n.is-flat .toolbar {\r\n    box-shadow: none;\r\n}\r\n\r\n/* FAB pairing */\r\n.fab-wrap {\r\n    flex: 0 0 auto;\r\n    display: inline-flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n.variant-floating.orientation-vertical .fab-wrap {\r\n    width: 100%;\r\n    justify-content: center;\r\n}\r\n\r\n/* Slots defaults */\r\n::slotted(lumina-icon-button),\r\n::slotted(lumina-filled-button),\r\n::slotted(lumina-tonal-button),\r\n::slotted(lumina-outlined-button),\r\n::slotted(lumina-text-button),\r\n::slotted(lumina-fab),\r\n::slotted(md-icon-button),\r\n::slotted(md-filled-icon-button),\r\n::slotted(md-filled-tonal-icon-button),\r\n::slotted(md-outlined-icon-button) {\r\n    margin: 0;\r\n}\r\n";
 
 // src/components/labs/Toolbars.ts
 var LabsToolbar = class extends i4 {
@@ -29126,7 +29126,7 @@ __decorateClass([
   n3({ type: String, attribute: "aria-label" })
 ], LabsToolbar.prototype, "ariaLabel", 2);
 LabsToolbar = __decorateClass([
-  t("umi-labs-toolbar")
+  t("lumina-labs-toolbar")
 ], LabsToolbar);
 export {
   AssistChip2 as AssistChip,
@@ -29622,4 +29622,4 @@ lit-html/directives/live.js:
    * limitations under the License.
    *)
 */
-//# sourceMappingURL=index.browser.js.map
+//# sourceMappingURL=lumina-ui-web.js.map

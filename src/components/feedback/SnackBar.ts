@@ -37,7 +37,7 @@ export interface SnackHandle {
     updateMessage: (text: string) => void;
 }
 
-@customElement('umi-snackbar')
+@customElement('lumina-snackbar')
 export class SnackBar extends LitElement {
     static readonly AlignView = {
         Bottom: 0,
@@ -406,7 +406,7 @@ export class SnackBar extends LitElement {
 
     private _stackStyle(): string {
         const styleParts: string[] = [
-            `--umi-snackbar-spacing:${this.spacing}px`,
+            `--lumina-snackbar-spacing:${this.spacing}px`,
             `max-width:${Math.max(220, this._viewportWidth - 8)}px`,
         ];
 
@@ -539,6 +539,6 @@ export class SnackBar extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-snackbar': SnackBar;
+        'lumina-snackbar': SnackBar;
     }
 }

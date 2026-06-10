@@ -3,7 +3,7 @@ import { unsafeCSS } from 'lit';
 import * as T from '../templates/Button.js';
 import elevatedStyles from '../styles/ElevatedButton.css';
 
-@customElement('umi-elevated-button')
+@customElement('lumina-elevated-button')
 export class ElevatedButton extends T.Button {
     constructor() {
         super();
@@ -18,6 +18,6 @@ export class ElevatedButton extends T.Button {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-elevated-button': ElevatedButton;
+        'lumina-elevated-button': ElevatedButton;
     }
 }

@@ -18,7 +18,7 @@ export enum IconButtonSize {
     XL = 4  // 56px
 }
 
-@customElement('umi-icon-button')
+@customElement('lumina-icon-button')
 export class IconButton extends LitElement {
     @property({ type: Number, attribute: 'button-type' }) buttonType: IconButtonType = IconButtonType.Standard;
     @property({ type: Number }) size: IconButtonSize = IconButtonSize.M;
@@ -143,6 +143,6 @@ export class IconButton extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-icon-button': IconButton;
+        'lumina-icon-button': IconButton;
     }
 }

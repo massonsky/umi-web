@@ -4,7 +4,7 @@ import cardStyles from '../styles/LabsCards.css';
 
 export type LabsCardVariant = 'elevated' | 'filled' | 'outlined';
 
-@customElement('umi-labs-card')
+@customElement('lumina-labs-card')
 export class LabsCard extends LitElement {
     @property({ type: String }) variant: LabsCardVariant = 'elevated';
     @property({ type: String }) headline = '';
@@ -49,7 +49,7 @@ export class LabsCard extends LitElement {
                 tag === 'INPUT' ||
                 tag === 'SELECT' ||
                 tag === 'TEXTAREA' ||
-                tag.startsWith('UMI-') ||
+                tag.startsWith('LUMINA-') ||
                 tag.startsWith('MD-')
             ) {
                 // Нативные/кастомные action-элементы не должны триггерить primary click карточки.
@@ -145,6 +145,6 @@ export class LabsCard extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-labs-card': LabsCard;
+        'lumina-labs-card': LabsCard;
     }
 }

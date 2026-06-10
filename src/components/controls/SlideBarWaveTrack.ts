@@ -4,7 +4,7 @@ import { query } from 'lit/decorators.js';
 import slideBarStyles from '../styles/SlideBar.css';
 
 /**
- * umi-slide-bar-wave-track
+ * lumina-slide-bar-wave-track
  *
  * TS/Lit port of SlideBarWaveTrack.qml
  *
@@ -24,7 +24,7 @@ import slideBarStyles from '../styles/SlideBar.css';
  *   opacityValue    — прозрачность
  *   leftCorners / rightCorners — радиусы концов (dp)
  */
-@customElement('umi-slide-bar-wave-track')
+@customElement('lumina-slide-bar-wave-track')
 export class SlideBarWaveTrack extends LitElement {
     @property({ type: Number, attribute: 'right-corners' }) rightCorners = 2;
     @property({ type: Number, attribute: 'left-corners' })  leftCorners = 9;
@@ -209,6 +209,6 @@ export class SlideBarWaveTrack extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-slide-bar-wave-track': SlideBarWaveTrack;
+        'lumina-slide-bar-wave-track': SlideBarWaveTrack;
     }
 }

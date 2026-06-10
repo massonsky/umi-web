@@ -33,7 +33,7 @@ function easeInOutCubic(t: number): number {
 // ─── Component ───────────────────────────────────────────────────────────────
 
 /**
- * `<umi-loading-indicator>` — Material Design 3 Expressive Loading Indicator
+ * `<lumina-loading-indicator>` — Material Design 3 Expressive Loading Indicator
  *
  * Shape-morphing + rotation indicator following M3 Expressive guidelines.
  * Recommended as a replacement for indeterminate circular progress indicators.
@@ -46,11 +46,11 @@ function easeInOutCubic(t: number): number {
  *
  * @example
  * ```html
- * <umi-loading-indicator size="48"></umi-loading-indicator>
- * <umi-loading-indicator size="48" has-background></umi-loading-indicator>
+ * <lumina-loading-indicator size="48"></lumina-loading-indicator>
+ * <lumina-loading-indicator size="48" has-background></lumina-loading-indicator>
  * ```
  */
-@customElement('umi-loading-indicator')
+@customElement('lumina-loading-indicator')
 export class LoadingIndicator extends LitElement {
 
     /** Size in px (width = height) */
@@ -260,6 +260,6 @@ export class LoadingIndicator extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-loading-indicator': LoadingIndicator;
+        'lumina-loading-indicator': LoadingIndicator;
     }
 }

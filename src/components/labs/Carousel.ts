@@ -10,7 +10,7 @@ export type LabsCarouselVariant =
     | 'centered-hero'
     | 'full-screen';
 
-@customElement('umi-labs-carousel')
+@customElement('lumina-labs-carousel')
 export class LabsCarousel extends LitElement {
     @property({ type: String }) variant: LabsCarouselVariant = 'multi-browse';
     @property({ type: Boolean }) snap = true;
@@ -116,7 +116,7 @@ export class LabsCarousel extends LitElement {
         const itemCount = this._items.length;
 
         this._items.forEach((item, index) => {
-            item.classList.add('umi-labs-carousel-item');
+            item.classList.add('lumina-labs-carousel-item');
             item.classList.remove(
                 'size-large',
                 'size-medium',
@@ -678,6 +678,6 @@ export class LabsCarousel extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-labs-carousel': LabsCarousel;
+        'lumina-labs-carousel': LabsCarousel;
     }
 }

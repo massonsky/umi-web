@@ -4,7 +4,7 @@ import progressStyles from '../styles/ProgressBars.css';
 
 function clamp(v: number, min: number, max: number): number { return Math.max(min, Math.min(max, v)); }
 
-@customElement('umi-dl-progress-bar')
+@customElement('lumina-dl-progress-bar')
 export class DLProgressBar extends LitElement {
     @property({ type: Number }) progress = 0; // 0..100
     @property({ type: Number }) thickness = 4;
@@ -94,6 +94,6 @@ export class DLProgressBar extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-dl-progress-bar': DLProgressBar;
+        'lumina-dl-progress-bar': DLProgressBar;
     }
 }

@@ -5,7 +5,7 @@ import './FilterChip.js';
 import './InputChip.js';
 import './SuggestionChip.js';
 
-@customElement('umi-chips')
+@customElement('lumina-chips')
 export class Chips extends LitElement {
     static readonly chipAssist = 0;
     static readonly chipFilter = 1;
@@ -23,7 +23,7 @@ export class Chips extends LitElement {
         switch (this.chipType) {
             case Chips.chipFilter:
                 return html`
-                    <umi-filter-chip
+                    <lumina-filter-chip
                         .text=${this.text}
                         .icon=${this.icon}
                         .enabled=${this.enabled}
@@ -33,40 +33,40 @@ export class Chips extends LitElement {
                             this.selected = Boolean(e.detail?.selected);
                             this.dispatchEvent(new CustomEvent('toggled', { detail: e.detail, bubbles: true, composed: true }));
                         }}
-                    ></umi-filter-chip>
+                    ></lumina-filter-chip>
                 `;
             case Chips.chipInput:
                 return html`
-                    <umi-input-chip
+                    <lumina-input-chip
                         .text=${this.text}
                         .icon=${this.icon}
                         .enabled=${this.enabled}
                         .selected=${this.selected}
                         @clicked=${() => this.dispatchEvent(new CustomEvent('clicked', { bubbles: true, composed: true }))}
                         @removeClicked=${() => this.dispatchEvent(new CustomEvent('removeClicked', { bubbles: true, composed: true }))}
-                    ></umi-input-chip>
+                    ></lumina-input-chip>
                 `;
             case Chips.chipSuggestion:
                 return html`
-                    <umi-suggestion-chip
+                    <lumina-suggestion-chip
                         .text=${this.text}
                         .icon=${this.icon}
                         .enabled=${this.enabled}
                         .elevated=${this.elevated}
                         @clicked=${() => this.dispatchEvent(new CustomEvent('clicked', { bubbles: true, composed: true }))}
                         @suggestionSelected=${(e: CustomEvent) => this.dispatchEvent(new CustomEvent('suggestionSelected', { detail: e.detail, bubbles: true, composed: true }))}
-                    ></umi-suggestion-chip>
+                    ></lumina-suggestion-chip>
                 `;
             case Chips.chipAssist:
             default:
                 return html`
-                    <umi-assist-chip
+                    <lumina-assist-chip
                         .text=${this.text}
                         .icon=${this.icon}
                         .enabled=${this.enabled}
                         .elevated=${this.elevated}
                         @clicked=${() => this.dispatchEvent(new CustomEvent('clicked', { bubbles: true, composed: true }))}
-                    ></umi-assist-chip>
+                    ></lumina-assist-chip>
                 `;
         }
     }
@@ -74,6 +74,6 @@ export class Chips extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-chips': Chips;
+        'lumina-chips': Chips;
     }
 }

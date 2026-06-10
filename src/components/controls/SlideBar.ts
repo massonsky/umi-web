@@ -57,10 +57,10 @@ class SlideBarMath {
 }
 
 // ─────────────────────────────────────────────────────────────
-// umi-slide-bar
+// lumina-slide-bar
 // ─────────────────────────────────────────────────────────────
 /**
- * umi-slide-bar
+ * lumina-slide-bar
  *
  * TS/Lit port of SlideBar.qml (+ SlideBarBase.qml logic).
  *
@@ -77,7 +77,7 @@ class SlideBarMath {
  *   input          — при каждом сдвиге (dragging)
  *   change         — при завершении interaction
  */
-@customElement('umi-slide-bar')
+@customElement('lumina-slide-bar')
 export class SlideBar extends LitElement {
     // ── Public API — цвета ──────────────────────────────────
     @property({ type: String, attribute: 'active-track-color' })
@@ -637,7 +637,7 @@ export class SlideBar extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-slide-bar': SlideBar;
+        'lumina-slide-bar': SlideBar;
     }
 }
 

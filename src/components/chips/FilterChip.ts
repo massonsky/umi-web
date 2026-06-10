@@ -1,7 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 import { ChipBase } from './ChipBase.js';
 
-@customElement('umi-filter-chip')
+@customElement('lumina-filter-chip')
 export class FilterChip extends ChipBase {
     @property({ type: Boolean }) toggleable = true;
     @property({ type: String, attribute: 'checkmark-icon' }) checkmarkIcon = 'check';
@@ -50,6 +50,6 @@ export class FilterChip extends ChipBase {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-filter-chip': FilterChip;
+        'lumina-filter-chip': FilterChip;
     }
 }

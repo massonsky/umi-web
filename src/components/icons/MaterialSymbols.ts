@@ -3,7 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 import { type SymbolsStyle } from '../types.js';
 
 /**
- * `<umi-icon name="home">`
+ * `<lumina-icon name="home">`
  *
  * Отрисовывает одну иконку Material Symbols с поддержкой
  * variable font axes (FILL, wght, GRAD, opsz).
@@ -19,19 +19,19 @@ import { type SymbolsStyle } from '../types.js';
  *   color         — цвет (CSS-значение)                 (по умолч. currentColor)
  *
  * CSS-переменные (можно переопределять снаружи):
- *   --umi-icon-fill         : 0
- *   --umi-icon-weight       : 400
- *   --umi-icon-grade        : 0
- *   --umi-icon-optical-size : 24
- *   --umi-icon-size         : 24px
- *   --umi-icon-color        : currentColor
+ *   --lumina-icon-fill         : 0
+ *   --lumina-icon-weight       : 400
+ *   --lumina-icon-grade        : 0
+ *   --lumina-icon-optical-size : 24
+ *   --lumina-icon-size         : 24px
+ *   --lumina-icon-color        : currentColor
  *
  * Пример:
- *   <umi-icon name="home" fill="1" weight="600" size="32"></umi-icon>
- *   <umi-icon name="favorite" icon-style="Rounded" color="red"></umi-icon>
- *   <umi-icon name="delete" style="--umi-icon-fill:1;--umi-icon-size:48px"></umi-icon>
+ *   <lumina-icon name="home" fill="1" weight="600" size="32"></lumina-icon>
+ *   <lumina-icon name="favorite" icon-style="Rounded" color="red"></lumina-icon>
+ *   <lumina-icon name="delete" style="--lumina-icon-fill:1;--lumina-icon-size:48px"></lumina-icon>
  */
-@customElement('umi-icon')
+@customElement('lumina-icon')
 export class MaterialSymbols extends LitElement {
     /** Имя иконки (лигатура) */
     @property({ type: String }) name: string = '';
@@ -65,12 +65,12 @@ export class MaterialSymbols extends LitElement {
             align-items: center;
             justify-content: center;
             line-height: 1;
-            --umi-icon-fill:         0;
-            --umi-icon-weight:       400;
-            --umi-icon-grade:        0;
-            --umi-icon-optical-size: 24;
-            --umi-icon-size:         24px;
-            --umi-icon-color:        currentColor;
+            --lumina-icon-fill:         0;
+            --lumina-icon-weight:       400;
+            --lumina-icon-grade:        0;
+            --lumina-icon-optical-size: 24;
+            --lumina-icon-size:         24px;
+            --lumina-icon-color:        currentColor;
         }
 
         .symbol {
@@ -92,14 +92,14 @@ export class MaterialSymbols extends LitElement {
             user-select:     none;
             pointer-events:  none;
 
-            font-size:       var(--umi-icon-size, 24px);
-            color:           var(--umi-icon-color, currentColor);
+            font-size:       var(--lumina-icon-size, 24px);
+            color:           var(--lumina-icon-color, currentColor);
 
             font-variation-settings:
-                'FILL' var(--umi-icon-fill,         0),
-                'wght' var(--umi-icon-weight,       400),
-                'GRAD' var(--umi-icon-grade,        0),
-                'opsz' var(--umi-icon-optical-size, 24);
+                'FILL' var(--lumina-icon-fill,         0),
+                'wght' var(--lumina-icon-weight,       400),
+                'GRAD' var(--lumina-icon-grade,        0),
+                'opsz' var(--lumina-icon-optical-size, 24);
 
             transition:
                 font-size             200ms cubic-bezier(0.2, 0, 0, 1),
@@ -113,12 +113,12 @@ export class MaterialSymbols extends LitElement {
 
         const style = [
             `font-family: ${fontFamily}`,
-            `--umi-icon-size: ${this.size}px`,
-            `--umi-icon-fill: ${this.fill}`,
-            `--umi-icon-weight: ${this.weight}`,
-            `--umi-icon-grade: ${this.grade}`,
-            `--umi-icon-optical-size: ${this.opticalSize}`,
-            this.color ? `--umi-icon-color: ${this.color}` : '',
+            `--lumina-icon-size: ${this.size}px`,
+            `--lumina-icon-fill: ${this.fill}`,
+            `--lumina-icon-weight: ${this.weight}`,
+            `--lumina-icon-grade: ${this.grade}`,
+            `--lumina-icon-optical-size: ${this.opticalSize}`,
+            this.color ? `--lumina-icon-color: ${this.color}` : '',
         ].filter(Boolean).join('; ');
 
         return html`<span class="symbol" style="${style}">${this.name}</span>`;
@@ -127,6 +127,6 @@ export class MaterialSymbols extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-icon': MaterialSymbols;
+        'lumina-icon': MaterialSymbols;
     }
 }

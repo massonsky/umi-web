@@ -229,7 +229,7 @@
 }
 
 /* =====================================================
-   Standalone umi-slide-bar-handle element
+   Standalone lumina-slide-bar-handle element
     ===================================================== */
 .handle-root {
     position: relative;
@@ -263,7 +263,7 @@
 }
 
 /* =====================================================
-   Standalone umi-slide-bar-track element
+   Standalone lumina-slide-bar-track element
    ===================================================== */
 .track-root {
     display: block;
@@ -278,7 +278,7 @@
 }
 
 /* =====================================================
-   Standalone umi-slide-bar-wave-track element
+   Standalone lumina-slide-bar-wave-track element
    ===================================================== */
 .wave-track-root {
     display: block;
@@ -293,7 +293,7 @@
 }
 
 /* =====================================================
-   Standalone umi-slide-bar-label element
+   Standalone lumina-slide-bar-label element
    ===================================================== */
 .label-root {
     display: inline-flex;

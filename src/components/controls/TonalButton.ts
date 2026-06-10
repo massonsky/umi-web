@@ -3,7 +3,7 @@ import { unsafeCSS } from 'lit';
 import * as T from '../templates/Button.js';
 import tonalStyles from '../styles/TonalButton.css';
 
-@customElement('umi-tonal-button')
+@customElement('lumina-tonal-button')
 export class TonalButton extends T.Button {
     constructor() {
         super();
@@ -18,6 +18,6 @@ export class TonalButton extends T.Button {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-tonal-button': TonalButton;
+        'lumina-tonal-button': TonalButton;
     }
 }

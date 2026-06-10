@@ -4,7 +4,7 @@ import appBarsStyles from '../styles/LabsAppBars.css';
 
 export type LabsAppBarVariant = 'small' | 'center' | 'medium-flexible' | 'large-flexible';
 
-@customElement('umi-labs-app-bar')
+@customElement('lumina-labs-app-bar')
 export class LabsAppBar extends LitElement {
     @property({ type: String }) headline = 'Page title';
     @property({ type: String }) subtitle = '';
@@ -112,6 +112,6 @@ export class LabsAppBar extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-labs-app-bar': LabsAppBar;
+        'lumina-labs-app-bar': LabsAppBar;
     }
 }

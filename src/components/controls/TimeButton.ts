@@ -4,7 +4,7 @@ import timeStyles from '../styles/TimeButtons.css';
 
 type ButtonSizeSpec = { h: number; w: number; fs: number; i: number; p: number };
 
-@customElement('umi-time-button')
+@customElement('lumina-time-button')
 export class TimeButton extends LitElement {
     @property({ type: Number }) buttonType = 0; // 0 Filled, 1 Tonal, 2 Elevated, 3 Outlined, 4 Text
     @property({ type: Number }) size = 2; // M
@@ -191,6 +191,6 @@ export class TimeButton extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-time-button': TimeButton;
+        'lumina-time-button': TimeButton;
     }
 }

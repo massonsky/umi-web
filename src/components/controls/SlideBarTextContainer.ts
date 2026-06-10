@@ -3,7 +3,7 @@ import { customElement, property, state } from 'lit/decorators.js';
 import slideBarStyles from '../styles/SlideBar.css';
 
 /**
- * umi-slide-bar-label
+ * lumina-slide-bar-label
  *
  * TS/Lit port of SlideBarTextContainer.qml
  *
@@ -15,7 +15,7 @@ import slideBarStyles from '../styles/SlideBar.css';
  *   show()                        — показать лейбл
  *   hide()                        — запустить таймер скрытия (250ms)
  */
-@customElement('umi-slide-bar-label')
+@customElement('lumina-slide-bar-label')
 export class SlideBarTextContainer extends LitElement {
     @property({ type: String, attribute: 'container-color' })
     containerColor = 'var(--md-sys-color-inverse-surface, #313033)';
@@ -73,6 +73,6 @@ export class SlideBarTextContainer extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-slide-bar-label': SlideBarTextContainer;
+        'lumina-slide-bar-label': SlideBarTextContainer;
     }
 }

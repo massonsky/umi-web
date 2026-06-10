@@ -1,7 +1,7 @@
 import { customElement } from 'lit/decorators.js';
 import { ChipBase } from './ChipBase.js';
 
-@customElement('umi-assist-chip')
+@customElement('lumina-assist-chip')
 export class AssistChip extends ChipBase {
     constructor() {
         super();
@@ -21,6 +21,6 @@ export class AssistChip extends ChipBase {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-assist-chip': AssistChip;
+        'lumina-assist-chip': AssistChip;
     }
 }

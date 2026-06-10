@@ -36,7 +36,7 @@ export interface OptionWithSelection {
     originalItem: ComboBoxItem | string;
 }
 
-@customElement('umi-combo-box')
+@customElement('lumina-combo-box')
 export class ComboBox extends LitElement {
     // =========================================================
     // MD3 EXPRESSIVE ANIMATION TIMING
@@ -799,6 +799,6 @@ export class ComboBox extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-combo-box': ComboBox;
+        'lumina-combo-box': ComboBox;
     }
 }

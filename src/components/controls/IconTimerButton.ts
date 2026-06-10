@@ -2,7 +2,7 @@ import { LitElement, html, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import timeStyles from '../styles/TimeButtons.css';
 
-@customElement('umi-icon-timer-button')
+@customElement('lumina-icon-timer-button')
 export class IconTimerButton extends LitElement {
     @property({ type: Number, attribute: 'button-type' }) buttonType = 0; // 0 Standard, 1 Filled, 2 Tonal, 3 Outlined
     @property({ type: Number }) size = 2; // 0..4
@@ -185,6 +185,6 @@ export class IconTimerButton extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-icon-timer-button': IconTimerButton;
+        'lumina-icon-timer-button': IconTimerButton;
     }
 }

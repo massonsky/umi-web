@@ -2,7 +2,7 @@ import { LitElement, html, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import loadingStyles from '../styles/LoadingButtons.css';
 
-@customElement('umi-loading-floating-action-button')
+@customElement('lumina-loading-floating-action-button')
 export class LoadingFloatingActionButton extends LitElement {
     @property({ type: String, attribute: 'icon-name' }) iconName = '';
     @property({ type: Number, attribute: 'icon-type' }) iconType = 0;
@@ -28,18 +28,18 @@ export class LoadingFloatingActionButton extends LitElement {
         const indicatorSize = Math.max(16, Math.floor(sizePx * 0.48));
 
         if (this.progressType === 2) {
-            return html`<umi-loading-indicator .size=${indicatorSize} .color=${indicatorColor}></umi-loading-indicator>`;
+            return html`<lumina-loading-indicator .size=${indicatorSize} .color=${indicatorColor}></lumina-loading-indicator>`;
         }
 
         if (this.progressType === 0) {
             return this.progressStyle === 1
-                ? html`<umi-dc-progress-bar-expressive .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></umi-dc-progress-bar-expressive>`
-                : html`<umi-dc-progress-bar .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></umi-dc-progress-bar>`;
+                ? html`<lumina-dc-progress-bar-expressive .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></lumina-dc-progress-bar-expressive>`
+                : html`<lumina-dc-progress-bar .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></lumina-dc-progress-bar>`;
         }
 
         return this.progressStyle === 1
-            ? html`<umi-ic-progress-bar-expressive .running=${true} .diameter=${indicatorSize} .thickness=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></umi-ic-progress-bar-expressive>`
-            : html`<umi-ic-progress-bar .running=${true} .diameter=${indicatorSize} .strokeWidth=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></umi-ic-progress-bar>`;
+            ? html`<lumina-ic-progress-bar-expressive .running=${true} .diameter=${indicatorSize} .thickness=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></lumina-ic-progress-bar-expressive>`
+            : html`<lumina-ic-progress-bar .running=${true} .diameter=${indicatorSize} .strokeWidth=${3} .gapSize=${6} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></lumina-ic-progress-bar>`;
     }
 
     private _handleClick(): void {
@@ -98,6 +98,6 @@ export class LoadingFloatingActionButton extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-loading-floating-action-button': LoadingFloatingActionButton;
+        'lumina-loading-floating-action-button': LoadingFloatingActionButton;
     }
 }

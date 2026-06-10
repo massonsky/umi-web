@@ -1,7 +1,7 @@
 import { customElement, property, state } from 'lit/decorators.js';
 import { ChipBase } from './ChipBase.js';
 
-@customElement('umi-suggestion-chip')
+@customElement('lumina-suggestion-chip')
 export class SuggestionChip extends ChipBase {
     @property({ type: Boolean, attribute: 'fade-after-click' }) fadeAfterClick = false;
     @property({ type: Number, attribute: 'fade-out-duration' }) fadeOutDuration = 170;
@@ -52,6 +52,6 @@ export class SuggestionChip extends ChipBase {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-suggestion-chip': SuggestionChip;
+        'lumina-suggestion-chip': SuggestionChip;
     }
 }

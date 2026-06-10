@@ -3,7 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 import slideBarStyles from '../styles/SlideBar.css';
 
 /**
- * umi-slide-bar-handle
+ * lumina-slide-bar-handle
  *
  * TS/Lit port of SlideBarHandleItem.qml
  *
@@ -12,7 +12,7 @@ import slideBarStyles from '../styles/SlideBar.css';
  *
  * @fires - нет публичных событий; используется как вложенный элемент
  */
-@customElement('umi-slide-bar-handle')
+@customElement('lumina-slide-bar-handle')
 export class SlideBarHandleItem extends LitElement {
     /** Цвет ручки */
     @property({ type: String, attribute: 'handle-color' })
@@ -59,6 +59,6 @@ export class SlideBarHandleItem extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-slide-bar-handle': SlideBarHandleItem;
+        'lumina-slide-bar-handle': SlideBarHandleItem;
     }
 }

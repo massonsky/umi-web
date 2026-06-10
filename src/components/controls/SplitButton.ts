@@ -49,7 +49,7 @@ const VARIANT_COLORS: Record<SplitButtonVariant, { bg:string; text:string; outli
 // ─── Global popup styles (injected once into <head>) ──────────────────────────
 
 const POPUP_CSS = `
-.umi-split-popup {
+.lumina-split-popup {
     position:fixed; z-index:9999; box-sizing:border-box; border-radius:8px;
     overflow:hidden;
     background:var(--md-sys-color-surface-container,var(--md-sys-color-surface,#fff));
@@ -60,14 +60,14 @@ const POPUP_CSS = `
     transition:opacity 300ms cubic-bezier(.2,0,0,1),
                transform 600ms cubic-bezier(.34,1.56,.64,1);
 }
-.umi-split-popup[data-up]{transform-origin:bottom right}
-.umi-split-popup[data-hidden]{opacity:0;transform:scale(.85);pointer-events:none;visibility:hidden}
-.umi-split-popup[data-closing]{
+.lumina-split-popup[data-up]{transform-origin:bottom right}
+.lumina-split-popup[data-hidden]{opacity:0;transform:scale(.85);pointer-events:none;visibility:hidden}
+.lumina-split-popup[data-closing]{
     opacity:0!important;transform:scale(.9)!important;pointer-events:none;
     transition:opacity 200ms cubic-bezier(.4,0,1,1),transform 200ms cubic-bezier(.4,0,.6,1)!important;
 }
 /* ── items ── */
-.umi-split-menu-item{
+.lumina-split-menu-item{
     display:flex;align-items:center;gap:12px;box-sizing:border-box;
     padding:0 16px;cursor:pointer;position:relative;overflow:hidden;user-select:none;
     color:var(--md-sys-color-on-surface,#1c1b1f);
@@ -76,65 +76,65 @@ const POPUP_CSS = `
     opacity:0;
     transition:opacity 220ms ease,background 150ms linear;
 }
-.umi-split-menu-item.visible{opacity:1}
-.umi-split-menu-item:hover{background:rgba(0,0,0,.08)}
-.umi-split-menu-item.pressing{background:rgba(0,0,0,.12)}
-.umi-split-menu-item.selected{
+.lumina-split-menu-item.visible{opacity:1}
+.lumina-split-menu-item:hover{background:rgba(0,0,0,.08)}
+.lumina-split-menu-item.pressing{background:rgba(0,0,0,.12)}
+.lumina-split-menu-item.selected{
     background:color-mix(in srgb,var(--md-sys-color-primary,#6750a4) 12%,transparent);
     color:var(--md-sys-color-primary,#6750a4);
 }
-.umi-split-menu-item.disabled{opacity:.38;pointer-events:none}
+.lumina-split-menu-item.disabled{opacity:.38;pointer-events:none}
 /* ── icon, check ── */
-.umi-split-menu-icon,.umi-split-menu-check{
+.lumina-split-menu-icon,.lumina-split-menu-check{
     font-family:'Material Symbols Outlined';
     font-feature-settings:'liga' 1;
     -webkit-font-feature-settings:'liga' 1;
     font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 20;
     line-height:1;font-style:normal;display:inline-block;
 }
-.umi-split-menu-icon{font-size:20px;color:var(--md-sys-color-on-surface-variant,#49454f);flex-shrink:0}
-.umi-split-menu-check{font-size:18px;margin-left:auto;opacity:0;transition:opacity 200ms;color:var(--md-sys-color-primary,#6750a4)}
-.umi-split-menu-item.selected .umi-split-menu-check{opacity:1}
+.lumina-split-menu-icon{font-size:20px;color:var(--md-sys-color-on-surface-variant,#49454f);flex-shrink:0}
+.lumina-split-menu-check{font-size:18px;margin-left:auto;opacity:0;transition:opacity 200ms;color:var(--md-sys-color-primary,#6750a4)}
+.lumina-split-menu-item.selected .lumina-split-menu-check{opacity:1}
 /* ── text ── */
-.umi-split-item-text{flex:1;overflow:hidden}
-.umi-split-item-primary{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.umi-split-item-secondary{font-size:12px;color:var(--md-sys-color-on-surface-variant,#49454f);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lumina-split-item-text{flex:1;overflow:hidden}
+.lumina-split-item-primary{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lumina-split-item-secondary{font-size:12px;color:var(--md-sys-color-on-surface-variant,#49454f);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 /* ── checkbox ── */
-.umi-split-item-cb{
+.lumina-split-item-cb{
     width:18px;height:18px;border:2px solid var(--md-sys-color-on-surface-variant,#49454f);
     border-radius:2px;flex-shrink:0;margin-left:auto;display:flex;align-items:center;justify-content:center;
     box-sizing:border-box;transition:background 200ms,border-color 200ms;
 }
-.umi-split-item-cb.checked{background:var(--md-sys-color-primary,#6750a4);border-color:var(--md-sys-color-primary,#6750a4)}
-.umi-split-item-cb.checked::after{content:'';width:10px;height:6px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translateY(-2px);display:block}
+.lumina-split-item-cb.checked{background:var(--md-sys-color-primary,#6750a4);border-color:var(--md-sys-color-primary,#6750a4)}
+.lumina-split-item-cb.checked::after{content:'';width:10px;height:6px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translateY(-2px);display:block}
 /* ── switch ── */
-.umi-split-item-sw{
+.lumina-split-item-sw{
     width:52px;min-width:52px;height:32px;border-radius:16px;
     background:var(--md-sys-color-surface-container-highest,#e6e0e9);
     border:2px solid var(--md-sys-color-outline,#79747e);
     position:relative;margin-left:auto;flex-shrink:0;box-sizing:border-box;
     transition:background 200ms,border-color 200ms;
 }
-.umi-split-item-sw::after{
+.lumina-split-item-sw::after{
     content:'';position:absolute;top:50%;left:3px;width:16px;height:16px;
     border-radius:50%;background:var(--md-sys-color-outline,#79747e);
     transform:translateY(-50%);transition:left 300ms cubic-bezier(.34,1.56,.64,1),background 200ms;
 }
-.umi-split-item-sw.checked{background:var(--md-sys-color-primary,#6750a4);border-color:var(--md-sys-color-primary,#6750a4)}
-.umi-split-item-sw.checked::after{left:calc(100% - 19px);background:var(--md-sys-color-on-primary,#fff)}
+.lumina-split-item-sw.checked{background:var(--md-sys-color-primary,#6750a4);border-color:var(--md-sys-color-primary,#6750a4)}
+.lumina-split-item-sw.checked::after{left:calc(100% - 19px);background:var(--md-sys-color-on-primary,#fff)}
 /* ── radio ── */
-.umi-split-item-radio{
+.lumina-split-item-radio{
     width:20px;height:20px;border-radius:50%;border:2px solid var(--md-sys-color-on-surface-variant,#49454f);
     flex-shrink:0;margin-right:4px;position:relative;box-sizing:border-box;transition:border-color 200ms;
 }
-.umi-split-item-radio.checked{border-color:var(--md-sys-color-primary,#6750a4)}
-.umi-split-item-radio.checked::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--md-sys-color-primary,#6750a4)}
+.lumina-split-item-radio.checked{border-color:var(--md-sys-color-primary,#6750a4)}
+.lumina-split-item-radio.checked::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--md-sys-color-primary,#6750a4)}
 `;
 
 function ensureGlobalStyle() {
-    if (document.getElementById('__umi-split-style')) return;
+    if (document.getElementById('__lumina-split-style')) return;
     const s = document.createElement('style');
-    s.id = '__umi-split-style';
+    s.id = '__lumina-split-style';
     s.textContent = POPUP_CSS;
     document.head.appendChild(s);
 }
@@ -142,7 +142,7 @@ function ensureGlobalStyle() {
 // ─── Component ────────────────────────────────────────────────────────────────
 
 /**
- * `<umi-split-button>` — Material Design 3 Split Button
+ * `<lumina-split-button>` — Material Design 3 Split Button
  *
  * Features:
  * - 4 variants: filled | tonal | elevated | outlined
@@ -160,13 +160,13 @@ function ensureGlobalStyle() {
  *
  * @example
  * ```html
- * <umi-split-button text="Create" icon-name="add" variant="filled" size="m"></umi-split-button>
+ * <lumina-split-button text="Create" icon-name="add" variant="filled" size="m"></lumina-split-button>
  * ```
  * ```js
  * el.menuItems = [{ text: 'Option 1', icon: 'edit' }, { text: 'Option 2' }];
  * ```
  */
-@customElement('umi-split-button')
+@customElement('lumina-split-button')
 export class SplitButton extends LitElement {
 
     @property({ type: String })                           text      = '';
@@ -208,7 +208,7 @@ export class SplitButton extends LitElement {
         super.connectedCallback();
         ensureGlobalStyle();
         this._portal = document.createElement('div');
-        this._portal.className = 'umi-split-popup';
+        this._portal.className = 'lumina-split-popup';
         this._portal.setAttribute('data-hidden', '');
         document.body.appendChild(this._portal);
 
@@ -297,7 +297,7 @@ export class SplitButton extends LitElement {
             if (!this._portal) return;
             this._portal.removeAttribute('data-hidden');
             this._portal.removeAttribute('data-closing');
-            this._portal.querySelectorAll<HTMLElement>('.umi-split-menu-item').forEach((el, i) => {
+            this._portal.querySelectorAll<HTMLElement>('.lumina-split-menu-item').forEach((el, i) => {
                 const t = setTimeout(() => el.classList.add('visible'), 30 + i * 45);
                 this._staggerTimers.push(t as unknown as ReturnType<typeof setTimeout>);
             });
@@ -342,7 +342,7 @@ export class SplitButton extends LitElement {
                 const chk = this.menuItemType === 'radio'   ? this.selectedIndex === i : !!item.checked;
                 const dis = item.enabled === false;
                 return html`<div
-                    class="umi-split-menu-item ${sel?'selected':''} ${dis?'disabled':''}"
+                    class="lumina-split-menu-item ${sel?'selected':''} ${dis?'disabled':''}"
                     style="height:${itemH}px"
                     role=${this.menuItemType==='radio'?'menuitemradio':this.menuItemType==='checkbox'?'menuitemcheckbox':'menuitem'}
                     aria-checked=${chk}
@@ -351,10 +351,10 @@ export class SplitButton extends LitElement {
                     @mouseup=${(e:Event)    => (e.currentTarget as HTMLElement).classList.remove('pressing')}
                     @mouseleave=${(e:Event) => (e.currentTarget as HTMLElement).classList.remove('pressing')}
                 >
-                    ${item.icon ? html`<span class="umi-split-menu-icon">${item.icon}</span>` : nothing}
-                    <div class="umi-split-item-text">
-                        <div class="umi-split-item-primary">${item.text}</div>
-                        ${item.secondaryText ? html`<div class="umi-split-item-secondary">${item.secondaryText}</div>` : nothing}
+                    ${item.icon ? html`<span class="lumina-split-menu-icon">${item.icon}</span>` : nothing}
+                    <div class="lumina-split-item-text">
+                        <div class="lumina-split-item-primary">${item.text}</div>
+                        ${item.secondaryText ? html`<div class="lumina-split-item-secondary">${item.secondaryText}</div>` : nothing}
                     </div>
                     ${this._trailing(item, i, chk)}
                 </div>`;
@@ -364,10 +364,10 @@ export class SplitButton extends LitElement {
 
     private _trailing(item: SplitButtonMenuItem, _i: number, checked: boolean) {
         switch (this.menuItemType) {
-            case 'checkbox': return html`<div class="umi-split-item-cb  ${checked?'checked':''}"></div>`;
-            case 'switch':   return html`<div class="umi-split-item-sw  ${checked?'checked':''}"></div>`;
-            case 'radio':    return html`<div class="umi-split-item-radio ${checked?'checked':''}"></div>`;
-            default:         return html`<span class="umi-split-menu-check">check</span>`;
+            case 'checkbox': return html`<div class="lumina-split-item-cb  ${checked?'checked':''}"></div>`;
+            case 'switch':   return html`<div class="lumina-split-item-sw  ${checked?'checked':''}"></div>`;
+            case 'radio':    return html`<div class="lumina-split-item-radio ${checked?'checked':''}"></div>`;
+            default:         return html`<span class="lumina-split-menu-check">check</span>`;
         }
     }
 
@@ -467,6 +467,6 @@ export class SplitButton extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-split-button': SplitButton;
+        'lumina-split-button': SplitButton;
     }
 }

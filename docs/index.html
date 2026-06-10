@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@umi/components — Material Design 3 Web Components</title>
+    <title>@luminaui/web — Material Design 3 Web Components</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -291,7 +291,7 @@
             border-bottom: 1px solid var(--md-sys-color-outline-variant, #cac4d0);
         }
 
-        .demo-section__header umi-icon {
+        .demo-section__header lumina-icon {
             color: var(--md-sys-color-primary, #6750a4);
         }
 
@@ -473,8 +473,8 @@
             color: var(--md-sys-color-on-surface-variant, #49454f);
         }
 
-        .slider-demo-row umi-slide-bar,
-        .slider-demo-row umi-range-slide-bar {
+        .slider-demo-row lumina-slide-bar,
+        .slider-demo-row lumina-range-slide-bar {
             flex: 1;
             min-width: 0;
         }
@@ -672,24 +672,24 @@
 </head>
 <body>
     <!-- ═══════ Infrastructure (invisible) ═══════ -->
-    <umi-color-scheme
+    <lumina-color-scheme
         id="colorScheme"
         seed="#6750a4"
         variant="tonal-spot"
         contrast="0"
         success-seed="#386a20"
         warning-seed="#7c5800">
-    </umi-color-scheme>
-    <umi-font symbols-style="Outlined" load-symbols></umi-font>
-    <umi-font symbols-style="Rounded" load-symbols></umi-font>
-    <umi-font symbols-style="Sharp" load-symbols></umi-font>
-    <umi-snackbar id="snackbar" align-view="1" max-visible="3"></umi-snackbar>
+    </lumina-color-scheme>
+    <lumina-font symbols-style="Outlined" load-symbols></lumina-font>
+    <lumina-font symbols-style="Rounded" load-symbols></lumina-font>
+    <lumina-font symbols-style="Sharp" load-symbols></lumina-font>
+    <lumina-snackbar id="snackbar" align-view="1" max-visible="3"></lumina-snackbar>
 
     <!-- ═══════ Navigation ═══════ -->
     <nav class="demo-nav">
         <a href="#" class="demo-nav__brand">
             <div class="demo-nav__brand-icon">U</div>
-            <div class="demo-nav__title">Umi <span>Components</span></div>
+            <div class="demo-nav__title">LuminaUI <span>Components</span></div>
         </a>
         <ul class="demo-nav__links">
             <li><a href="#colors">Colors</a></li>
@@ -703,17 +703,17 @@
             <li><a href="#material-web">Material Web</a></li>
         </ul>
         <div class="demo-nav__actions">
-            <a href="https://github.com/massonsky/umi-web" target="_blank" rel="noopener" style="display:flex;align-items:center;">
-                <umi-icon-button icon-name="code" button-type="0"></umi-icon-button>
+            <a href="https://github.com/massonsky/lumina-web" target="_blank" rel="noopener" style="display:flex;align-items:center;">
+                <lumina-icon-button icon-name="code" button-type="0"></lumina-icon-button>
             </a>
-            <umi-icon-button
+            <lumina-icon-button
                 id="themeToggle"
                 icon-name="dark_mode"
                 checked-icon-name="light_mode"
                 checkable
                 icon-fill="1"
                 button-type="2">
-            </umi-icon-button>
+            </lumina-icon-button>
         </div>
     </nav>
 
@@ -723,15 +723,15 @@
             <span class="demo-hero__version">v1.0</span>
             Material Design 3 &middot; Lit &middot; Web Components
         </div>
-        <h1>Build Beautiful UIs<br>with <span class="gradient-text">Umi Components</span></h1>
+        <h1>Build Beautiful UIs<br>with <span class="gradient-text">LuminaUI Components</span></h1>
         <p>50+ production-ready Material Design 3 web components with dynamic color,
            living material animations, and full accessibility support.</p>
         <div class="demo-hero__actions">
-            <a href="https://github.com/massonsky/umi-web/releases/latest" target="_blank" rel="noopener" style="text-decoration:none;">
-                <umi-filled-button id="getStartedBtn" text="Get Started" icon-name="rocket_launch" size="3"></umi-filled-button>
+            <a href="https://github.com/massonsky/lumina-web/releases/latest" target="_blank" rel="noopener" style="text-decoration:none;">
+                <lumina-filled-button id="getStartedBtn" text="Get Started" icon-name="rocket_launch" size="3"></lumina-filled-button>
             </a>
-            <a href="https://github.com/massonsky/umi-web" target="_blank" rel="noopener" style="text-decoration:none;">
-                <umi-outlined-button id="githubBtn" text="GitHub" icon-name="code" size="3"></umi-outlined-button>
+            <a href="https://github.com/massonsky/lumina-web" target="_blank" rel="noopener" style="text-decoration:none;">
+                <lumina-outlined-button id="githubBtn" text="GitHub" icon-name="code" size="3"></lumina-outlined-button>
             </a>
         </div>
         <div class="demo-hero__stats">
@@ -757,7 +757,7 @@
     <!-- ═══════ 1. Dynamic Colors ═══════ -->
     <section id="colors" class="demo-section">
         <div class="demo-section__header">
-            <umi-icon name="palette" fill="1" size="28"></umi-icon>
+            <lumina-icon name="palette" fill="1" size="28"></lumina-icon>
             <h2>Dynamic Color</h2>
             <p>9 scheme variants &middot; custom seed &middot; dark/light</p>
         </div>
@@ -804,7 +804,7 @@
     <!-- ═══════ 2. Buttons ═══════ -->
     <section id="buttons" class="demo-section">
         <div class="demo-section__header">
-            <umi-icon name="smart_button" fill="1" size="28"></umi-icon>
+            <lumina-icon name="smart_button" fill="1" size="28"></lumina-icon>
             <h2>Buttons</h2>
             <p>5 types &middot; 5 sizes &middot; icons &middot; groups</p>
         </div>
@@ -814,19 +814,19 @@
             <h3>Standard Buttons</h3>
             <p class="demo-card__subtitle">Filled, Tonal, Elevated, Outlined, and Text — all support icons and 5 size levels.</p>
             <div class="component-row">
-                <umi-filled-button text="Filled" icon-name="add"></umi-filled-button>
-                <umi-tonal-button text="Tonal" icon-name="palette"></umi-tonal-button>
-                <umi-elevated-button text="Elevated" icon-name="upload"></umi-elevated-button>
-                <umi-outlined-button text="Outlined" icon-name="edit"></umi-outlined-button>
-                <umi-text-button text="Text" icon-name="info"></umi-text-button>
+                <lumina-filled-button text="Filled" icon-name="add"></lumina-filled-button>
+                <lumina-tonal-button text="Tonal" icon-name="palette"></lumina-tonal-button>
+                <lumina-elevated-button text="Elevated" icon-name="upload"></lumina-elevated-button>
+                <lumina-outlined-button text="Outlined" icon-name="edit"></lumina-outlined-button>
+                <lumina-text-button text="Text" icon-name="info"></lumina-text-button>
             </div>
             <div class="demo-label" style="margin-top:20px">Sizes: XS → XL</div>
             <div class="component-row">
-                <umi-filled-button text="XS" size="0"></umi-filled-button>
-                <umi-filled-button text="Small" size="1"></umi-filled-button>
-                <umi-filled-button text="Medium" size="2"></umi-filled-button>
-                <umi-filled-button text="Large" size="3"></umi-filled-button>
-                <umi-filled-button text="Extra Large" size="4"></umi-filled-button>
+                <lumina-filled-button text="XS" size="0"></lumina-filled-button>
+                <lumina-filled-button text="Small" size="1"></lumina-filled-button>
+                <lumina-filled-button text="Medium" size="2"></lumina-filled-button>
+                <lumina-filled-button text="Large" size="3"></lumina-filled-button>
+                <lumina-filled-button text="Extra Large" size="4"></lumina-filled-button>
             </div>
         </div>
 
@@ -835,16 +835,16 @@
             <h3>Icon Buttons</h3>
             <p class="demo-card__subtitle">Standard, Filled, Tonal, Outlined — with toggle support.</p>
             <div class="component-row">
-                <umi-icon-button icon-name="favorite" button-type="0"></umi-icon-button>
-                <umi-icon-button icon-name="favorite" button-type="1" icon-fill="1"></umi-icon-button>
-                <umi-icon-button icon-name="bookmark" button-type="2"></umi-icon-button>
-                <umi-icon-button icon-name="share" button-type="3"></umi-icon-button>
+                <lumina-icon-button icon-name="favorite" button-type="0"></lumina-icon-button>
+                <lumina-icon-button icon-name="favorite" button-type="1" icon-fill="1"></lumina-icon-button>
+                <lumina-icon-button icon-name="bookmark" button-type="2"></lumina-icon-button>
+                <lumina-icon-button icon-name="share" button-type="3"></lumina-icon-button>
             </div>
             <div class="demo-label" style="margin-top:16px">Toggle Mode</div>
             <div class="component-row">
-                <umi-icon-button icon-name="favorite_border" checked-icon-name="favorite" checkable button-type="1"></umi-icon-button>
-                <umi-icon-button icon-name="bookmark_border" checked-icon-name="bookmark" checkable button-type="2"></umi-icon-button>
-                <umi-icon-button icon-name="star_border" checked-icon-name="star" checkable button-type="0" icon-fill="1"></umi-icon-button>
+                <lumina-icon-button icon-name="favorite_border" checked-icon-name="favorite" checkable button-type="1"></lumina-icon-button>
+                <lumina-icon-button icon-name="bookmark_border" checked-icon-name="bookmark" checkable button-type="2"></lumina-icon-button>
+                <lumina-icon-button icon-name="star_border" checked-icon-name="star" checkable button-type="0" icon-fill="1"></lumina-icon-button>
             </div>
         </div>
 
@@ -853,13 +853,13 @@
             <h3>Floating Action Buttons</h3>
             <p class="demo-card__subtitle">FAB (3 sizes) and Extended FAB with text labels.</p>
             <div class="component-row">
-                <umi-fab icon-name="add" fab-size="small"></umi-fab>
-                <umi-fab icon-name="edit" fab-size="medium"></umi-fab>
-                <umi-fab icon-name="navigation" fab-size="large" icon-fill="1"></umi-fab>
+                <lumina-fab icon-name="add" fab-size="small"></lumina-fab>
+                <lumina-fab icon-name="edit" fab-size="medium"></lumina-fab>
+                <lumina-fab icon-name="navigation" fab-size="large" icon-fill="1"></lumina-fab>
             </div>
             <div class="component-row" style="margin-top:16px">
-                <umi-extended-fab text="Create" icon-name="add"></umi-extended-fab>
-                <umi-extended-fab text="Navigate" icon-name="near_me" icon-fill="1"></umi-extended-fab>
+                <lumina-extended-fab text="Create" icon-name="add"></lumina-extended-fab>
+                <lumina-extended-fab text="Navigate" icon-name="near_me" icon-fill="1"></lumina-extended-fab>
             </div>
         </div>
 
@@ -868,18 +868,18 @@
             <h3>Button Group</h3>
             <p class="demo-card__subtitle">Connected and standard grouping with single/multi-select.</p>
             <div class="demo-label">Connected Group</div>
-            <umi-button-group group-type="1" orientation="0" size="2">
-                <umi-filled-button text="Day" checkable checked></umi-filled-button>
-                <umi-filled-button text="Week" checkable></umi-filled-button>
-                <umi-filled-button text="Month" checkable></umi-filled-button>
-                <umi-filled-button text="Year" checkable></umi-filled-button>
-            </umi-button-group>
+            <lumina-button-group group-type="1" orientation="0" size="2">
+                <lumina-filled-button text="Day" checkable checked></lumina-filled-button>
+                <lumina-filled-button text="Week" checkable></lumina-filled-button>
+                <lumina-filled-button text="Month" checkable></lumina-filled-button>
+                <lumina-filled-button text="Year" checkable></lumina-filled-button>
+            </lumina-button-group>
             <div class="demo-label" style="margin-top:20px">Standard Group</div>
-            <umi-button-group group-type="0" orientation="0" size="2">
-                <umi-outlined-button text="Left" icon-name="format_align_left" checkable></umi-outlined-button>
-                <umi-outlined-button text="Center" icon-name="format_align_center" checkable checked></umi-outlined-button>
-                <umi-outlined-button text="Right" icon-name="format_align_right" checkable></umi-outlined-button>
-            </umi-button-group>
+            <lumina-button-group group-type="0" orientation="0" size="2">
+                <lumina-outlined-button text="Left" icon-name="format_align_left" checkable></lumina-outlined-button>
+                <lumina-outlined-button text="Center" icon-name="format_align_center" checkable checked></lumina-outlined-button>
+                <lumina-outlined-button text="Right" icon-name="format_align_right" checkable></lumina-outlined-button>
+            </lumina-button-group>
         </div>
 
         <!-- Split Button -->
@@ -887,9 +887,9 @@
             <h3>Split Button</h3>
             <p class="demo-card__subtitle">Primary action with dropdown menu — 4 variants.</p>
             <div class="component-row">
-                <umi-split-button id="splitFilled" text="Create" icon-name="add" variant="filled" size="m"></umi-split-button>
-                <umi-split-button id="splitTonal" text="Share" icon-name="share" variant="tonal" size="m"></umi-split-button>
-                <umi-split-button id="splitOutlined" text="Export" icon-name="download" variant="outlined" size="m"></umi-split-button>
+                <lumina-split-button id="splitFilled" text="Create" icon-name="add" variant="filled" size="m"></lumina-split-button>
+                <lumina-split-button id="splitTonal" text="Share" icon-name="share" variant="tonal" size="m"></lumina-split-button>
+                <lumina-split-button id="splitOutlined" text="Export" icon-name="download" variant="outlined" size="m"></lumina-split-button>
             </div>
         </div>
 
@@ -899,18 +899,18 @@
             <p class="demo-card__subtitle">Loading buttons, progress buttons, and timer buttons.</p>
             <div class="demo-label">Loading Buttons</div>
             <div class="component-row">
-                <umi-loader-button id="loaderBtn" text="Upload" icon-name="cloud_upload" button-type="0" size="2"></umi-loader-button>
-                <umi-loader-button id="loaderBtnTonal" text="Process" icon-name="sync" button-type="1" size="2"></umi-loader-button>
+                <lumina-loader-button id="loaderBtn" text="Upload" icon-name="cloud_upload" button-type="0" size="2"></lumina-loader-button>
+                <lumina-loader-button id="loaderBtnTonal" text="Process" icon-name="sync" button-type="1" size="2"></lumina-loader-button>
             </div>
             <div class="demo-label" style="margin-top:16px">Progress Bar Button</div>
             <div class="component-row">
-                <umi-progress-bar-button id="progressBtn" text="Download" icon-name="download" button-type="0" size="2" timer-duration="5"></umi-progress-bar-button>
-                <umi-text-button id="startProgressBtn" text="Start" icon-name="play_arrow"></umi-text-button>
+                <lumina-progress-bar-button id="progressBtn" text="Download" icon-name="download" button-type="0" size="2" timer-duration="5"></lumina-progress-bar-button>
+                <lumina-text-button id="startProgressBtn" text="Start" icon-name="play_arrow"></lumina-text-button>
             </div>
             <div class="demo-label" style="margin-top:16px">Timer Button</div>
             <div class="component-row">
-                <umi-time-button id="timeBtn" text="Resend Code" icon-name="schedule" button-type="1" size="2" timer-duration="10" timer-format="ss"></umi-time-button>
-                <umi-text-button id="startTimeBtn" text="Start Timer" icon-name="play_arrow"></umi-text-button>
+                <lumina-time-button id="timeBtn" text="Resend Code" icon-name="schedule" button-type="1" size="2" timer-duration="10" timer-format="ss"></lumina-time-button>
+                <lumina-text-button id="startTimeBtn" text="Start Timer" icon-name="play_arrow"></lumina-text-button>
             </div>
         </div>
     </section>
@@ -918,7 +918,7 @@
     <!-- ═══════ 3. Icons ═══════ -->
     <section id="icons" class="demo-section">
         <div class="demo-section__header">
-            <umi-icon name="emoji_symbols" fill="1" size="28"></umi-icon>
+            <lumina-icon name="emoji_symbols" fill="1" size="28"></lumina-icon>
             <h2>Icons</h2>
             <p>Material Symbols &middot; Variable font axes</p>
         </div>
@@ -928,43 +928,43 @@
             <p class="demo-card__subtitle">Full variable font support — fill, weight, grade, optical size.</p>
             <div class="demo-label">Styles</div>
             <div class="component-row">
-                <umi-icon name="home" icon-style="Outlined" size="32" color="var(--md-sys-color-primary)"></umi-icon>
-                <umi-icon name="home" icon-style="Rounded" size="32" color="var(--md-sys-color-secondary)"></umi-icon>
-                <umi-icon name="home" icon-style="Sharp" size="32" color="var(--md-sys-color-on-surface)"></umi-icon>
+                <lumina-icon name="home" icon-style="Outlined" size="32" color="var(--md-sys-color-primary)"></lumina-icon>
+                <lumina-icon name="home" icon-style="Rounded" size="32" color="var(--md-sys-color-secondary)"></lumina-icon>
+                <lumina-icon name="home" icon-style="Sharp" size="32" color="var(--md-sys-color-on-surface)"></lumina-icon>
             </div>
             <div class="demo-label" style="margin-top:16px">Fill Axis (0 → 1)</div>
             <div class="component-row">
-                <umi-icon name="favorite" fill="0" size="32" color="var(--md-sys-color-error)"></umi-icon>
-                <umi-icon name="favorite" fill="0.5" size="32" color="var(--md-sys-color-error)"></umi-icon>
-                <umi-icon name="favorite" fill="1" size="32" color="var(--md-sys-color-error)"></umi-icon>
+                <lumina-icon name="favorite" fill="0" size="32" color="var(--md-sys-color-error)"></lumina-icon>
+                <lumina-icon name="favorite" fill="0.5" size="32" color="var(--md-sys-color-error)"></lumina-icon>
+                <lumina-icon name="favorite" fill="1" size="32" color="var(--md-sys-color-error)"></lumina-icon>
             </div>
             <div class="demo-label" style="margin-top:16px">Weight Axis (100 → 700)</div>
             <div class="component-row">
-                <umi-icon name="settings" weight="100" size="32"></umi-icon>
-                <umi-icon name="settings" weight="300" size="32"></umi-icon>
-                <umi-icon name="settings" weight="500" size="32"></umi-icon>
-                <umi-icon name="settings" weight="700" size="32"></umi-icon>
+                <lumina-icon name="settings" weight="100" size="32"></lumina-icon>
+                <lumina-icon name="settings" weight="300" size="32"></lumina-icon>
+                <lumina-icon name="settings" weight="500" size="32"></lumina-icon>
+                <lumina-icon name="settings" weight="700" size="32"></lumina-icon>
             </div>
             <div class="demo-label" style="margin-top:16px">Sizes (20px → 48px)</div>
             <div class="component-row" style="align-items:end">
-                <umi-icon name="star" fill="1" size="20" color="var(--md-sys-color-primary)"></umi-icon>
-                <umi-icon name="star" fill="1" size="24" color="var(--md-sys-color-primary)"></umi-icon>
-                <umi-icon name="star" fill="1" size="32" color="var(--md-sys-color-primary)"></umi-icon>
-                <umi-icon name="star" fill="1" size="40" color="var(--md-sys-color-primary)"></umi-icon>
-                <umi-icon name="star" fill="1" size="48" color="var(--md-sys-color-primary)"></umi-icon>
+                <lumina-icon name="star" fill="1" size="20" color="var(--md-sys-color-primary)"></lumina-icon>
+                <lumina-icon name="star" fill="1" size="24" color="var(--md-sys-color-primary)"></lumina-icon>
+                <lumina-icon name="star" fill="1" size="32" color="var(--md-sys-color-primary)"></lumina-icon>
+                <lumina-icon name="star" fill="1" size="40" color="var(--md-sys-color-primary)"></lumina-icon>
+                <lumina-icon name="star" fill="1" size="48" color="var(--md-sys-color-primary)"></lumina-icon>
             </div>
             <div class="demo-label" style="margin-top:16px">Common Icons</div>
             <div class="component-row">
-                <umi-icon name="search" size="28"></umi-icon>
-                <umi-icon name="notifications" size="28"></umi-icon>
-                <umi-icon name="account_circle" size="28" fill="1"></umi-icon>
-                <umi-icon name="delete" size="28" color="var(--md-sys-color-error)"></umi-icon>
-                <umi-icon name="check_circle" size="28" fill="1" color="var(--md-sys-color-primary)"></umi-icon>
-                <umi-icon name="cloud_upload" size="28"></umi-icon>
-                <umi-icon name="visibility" size="28"></umi-icon>
-                <umi-icon name="lock" size="28" fill="1"></umi-icon>
-                <umi-icon name="schedule" size="28"></umi-icon>
-                <umi-icon name="language" size="28"></umi-icon>
+                <lumina-icon name="search" size="28"></lumina-icon>
+                <lumina-icon name="notifications" size="28"></lumina-icon>
+                <lumina-icon name="account_circle" size="28" fill="1"></lumina-icon>
+                <lumina-icon name="delete" size="28" color="var(--md-sys-color-error)"></lumina-icon>
+                <lumina-icon name="check_circle" size="28" fill="1" color="var(--md-sys-color-primary)"></lumina-icon>
+                <lumina-icon name="cloud_upload" size="28"></lumina-icon>
+                <lumina-icon name="visibility" size="28"></lumina-icon>
+                <lumina-icon name="lock" size="28" fill="1"></lumina-icon>
+                <lumina-icon name="schedule" size="28"></lumina-icon>
+                <lumina-icon name="language" size="28"></lumina-icon>
             </div>
         </div>
     </section>
@@ -972,7 +972,7 @@
     <!-- ═══════ 4. Selection ═══════ -->
     <section id="selection" class="demo-section">
         <div class="demo-section__header">
-            <umi-icon name="check_box" fill="1" size="28"></umi-icon>
+            <lumina-icon name="check_box" fill="1" size="28"></lumina-icon>
             <h2>Selection Controls</h2>
             <p>Checkbox &middot; Radio &middot; Tristate</p>
         </div>
@@ -981,17 +981,17 @@
             <h3>Checkboxes</h3>
             <p class="demo-card__subtitle">Standard, with text, tristate, error state, and backgrounds.</p>
             <div class="component-row">
-                <umi-checkbox></umi-checkbox>
-                <umi-checkbox checked></umi-checkbox>
-                <umi-checkbox text="Accept terms" checked></umi-checkbox>
-                <umi-checkbox text="With error" error></umi-checkbox>
-                <umi-checkbox tristate text="Tristate" check-state="1"></umi-checkbox>
+                <lumina-checkbox></lumina-checkbox>
+                <lumina-checkbox checked></lumina-checkbox>
+                <lumina-checkbox text="Accept terms" checked></lumina-checkbox>
+                <lumina-checkbox text="With error" error></lumina-checkbox>
+                <lumina-checkbox tristate text="Tristate" check-state="1"></lumina-checkbox>
             </div>
             <div class="demo-label" style="margin-top:16px">With Background</div>
             <div class="component-row">
-                <umi-checkbox text="Filled" show-background background-type="0" checked></umi-checkbox>
-                <umi-checkbox text="Tonal" show-background background-type="1" checked></umi-checkbox>
-                <umi-checkbox text="Outlined" show-background background-type="2"></umi-checkbox>
+                <lumina-checkbox text="Filled" show-background background-type="0" checked></lumina-checkbox>
+                <lumina-checkbox text="Tonal" show-background background-type="1" checked></lumina-checkbox>
+                <lumina-checkbox text="Outlined" show-background background-type="2"></lumina-checkbox>
             </div>
         </div>
 
@@ -999,44 +999,44 @@
             <h3>Radio Buttons</h3>
             <p class="demo-card__subtitle">Auto-exclusive within the same parent. With text and backgrounds.</p>
             <div class="component-row">
-                <umi-radio-button name="demo-radio" text="Option A" checked></umi-radio-button>
-                <umi-radio-button name="demo-radio" text="Option B"></umi-radio-button>
-                <umi-radio-button name="demo-radio" text="Option C"></umi-radio-button>
+                <lumina-radio-button name="demo-radio" text="Option A" checked></lumina-radio-button>
+                <lumina-radio-button name="demo-radio" text="Option B"></lumina-radio-button>
+                <lumina-radio-button name="demo-radio" text="Option C"></lumina-radio-button>
             </div>
             <div class="demo-label" style="margin-top:16px">With Background</div>
             <div class="component-row">
-                <umi-radio-button name="demo-radio-bg" text="Small" show-background background-type="1" size="0" checked></umi-radio-button>
-                <umi-radio-button name="demo-radio-bg" text="Medium" show-background background-type="1" size="1"></umi-radio-button>
-                <umi-radio-button name="demo-radio-bg" text="Large" show-background background-type="1" size="2"></umi-radio-button>
+                <lumina-radio-button name="demo-radio-bg" text="Small" show-background background-type="1" size="0" checked></lumina-radio-button>
+                <lumina-radio-button name="demo-radio-bg" text="Medium" show-background background-type="1" size="1"></lumina-radio-button>
+                <lumina-radio-button name="demo-radio-bg" text="Large" show-background background-type="1" size="2"></lumina-radio-button>
             </div>
         </div>
 
         <div class="demo-card">
-            <h3>Switches (UMI)</h3>
+            <h3>Switches (LuminaUI)</h3>
             <p class="demo-card__subtitle">QML-перенос: drag ручки, иконки в handle, background-контейнер и состояния.</p>
 
             <div class="demo-label">Basic</div>
             <div class="component-row component-row--col" style="gap:14px;align-items:flex-start;">
-                <umi-switch text="Выключено"></umi-switch>
-                <umi-switch text="Включено" checked></umi-switch>
-                <umi-switch text="Disabled" disabled></umi-switch>
-                <umi-switch text="Interaction (alias) disabled" interaction="false" checked></umi-switch>
-                <umi-switch text="Interaction disabled" interaction-enabled="false" checked></umi-switch>
+                <lumina-switch text="Выключено"></lumina-switch>
+                <lumina-switch text="Включено" checked></lumina-switch>
+                <lumina-switch text="Disabled" disabled></lumina-switch>
+                <lumina-switch text="Interaction (alias) disabled" interaction="false" checked></lumina-switch>
+                <lumina-switch text="Interaction disabled" interaction-enabled="false" checked></lumina-switch>
             </div>
 
             <div class="demo-label" style="margin-top:16px">Handle Icons</div>
             <div class="component-row component-row--col" style="gap:14px;align-items:flex-start;">
-                <umi-switch text="show-on-icon" show-on-icon checked></umi-switch>
-                <umi-switch text="show-off-icon" show-off-icon></umi-switch>
-                <umi-switch text="show-on-icon-off-icon" show-on-icon-off-icon></umi-switch>
-                <umi-switch text="show-on-icon-off-icon (on)" show-on-icon-off-icon checked></umi-switch>
+                <lumina-switch text="show-on-icon" show-on-icon checked></lumina-switch>
+                <lumina-switch text="show-off-icon" show-off-icon></lumina-switch>
+                <lumina-switch text="show-on-icon-off-icon" show-on-icon-off-icon></lumina-switch>
+                <lumina-switch text="show-on-icon-off-icon (on)" show-on-icon-off-icon checked></lumina-switch>
             </div>
 
             <div class="demo-label" style="margin-top:16px">Background Types</div>
             <div class="component-row component-row--col" style="gap:14px;align-items:flex-start;">
-                <umi-switch text="Filled background" show-background background-type="0" checked></umi-switch>
-                <umi-switch text="Tonal background" show-background background-type="1" checked></umi-switch>
-                <umi-switch text="Outlined background" show-background background-type="2"></umi-switch>
+                <lumina-switch text="Filled background" show-background background-type="0" checked></lumina-switch>
+                <lumina-switch text="Tonal background" show-background background-type="1" checked></lumina-switch>
+                <lumina-switch text="Outlined background" show-background background-type="2"></lumina-switch>
             </div>
         </div>
     </section>
@@ -1044,8 +1044,8 @@
     <!-- ═══════ 4.5. ComboBox ═══════ -->
     <section id="combobox" class="demo-section">
         <div class="demo-section__header">
-            <umi-icon name="arrow_drop_down_circle" fill="1" size="28"></umi-icon>
-            <h2>ComboBox (UMI)</h2>
+            <lumina-icon name="arrow_drop_down_circle" fill="1" size="28"></lumina-icon>
+            <h2>ComboBox (LuminaUI)</h2>
             <p>Filled/Outlined &middot; Array/Object model &middot; roles</p>
         </div>
 
@@ -1056,39 +1056,39 @@
             <div class="component-row component-row--col">
                 <div style="width:min(100%, 420px);">
                     <div class="demo-label">Filled (без выбора по умолчанию)</div>
-                    <umi-combo-box
+                    <lumina-combo-box
                         id="comboBasic"
                         label-text="Выберите город"
                         supporting-text="Нажмите, чтобы открыть список"
                         has-trailing-icon>
-                    </umi-combo-box>
+                    </lumina-combo-box>
                 </div>
 
                 <div style="width:min(100%, 420px);">
                     <div class="demo-label">Outlined + textRole/valueRole</div>
-                    <umi-combo-box
+                    <lumina-combo-box
                         id="comboRoles"
                         label-text="Приоритет"
                         supporting-text="Данные через textRole/valueRole"
                         text-role="title"
                         value-role="code">
-                    </umi-combo-box>
+                    </lumina-combo-box>
                 </div>
 
                 <div style="width:min(100%, 420px);">
                     <div class="demo-label">С авто-выбором первого элемента</div>
-                    <umi-combo-box
+                    <lumina-combo-box
                         id="comboAuto"
                         label-text="Версия"
                         supporting-text="auto-select-first-element"
                         auto-select-first-element
                         has-trailing-icon>
-                    </umi-combo-box>
+                    </lumina-combo-box>
                 </div>
 
                 <div style="width:min(100%, 420px);">
                     <div class="demo-label">С префиксом/суффиксом и leading icon</div>
-                    <umi-combo-box
+                    <lumina-combo-box
                         id="comboAffixes"
                         label-text="Формат"
                         supporting-text="Prefix/suffix + leading icon"
@@ -1097,7 +1097,7 @@
                         has-leading-icon
                         leading-icon-name="description"
                         auto-select-first-element>
-                    </umi-combo-box>
+                    </lumina-combo-box>
                 </div>
             </div>
 
@@ -1109,8 +1109,8 @@
     <!-- ═══════ 4.6. TextField ═══════ -->
     <section id="textfield" class="demo-section">
         <div class="demo-section__header">
-            <umi-icon name="text_fields" fill="1" size="28"></umi-icon>
-            <h2>TextField (UMI)</h2>
+            <lumina-icon name="text_fields" fill="1" size="28"></lumina-icon>
+            <h2>TextField (LuminaUI)</h2>
             <p>Filled/Outlined &middot; Validation &middot; Icons</p>
         </div>
 
@@ -1121,27 +1121,27 @@
             <div class="component-row component-row--col">
                 <div style="width:min(100%, 420px);">
                     <div class="demo-label">Filled</div>
-                    <umi-text-field
+                    <lumina-text-field
                         id="tfFilled"
                         label-text="Имя пользователя"
                         supporting-text="Минимум 3 символа">
-                    </umi-text-field>
+                    </lumina-text-field>
                 </div>
 
                 <div style="width:min(100%, 420px);">
                     <div class="demo-label">Outlined</div>
-                    <umi-text-field
+                    <lumina-text-field
                         id="tfOutlined"
                         label-text="Email"
                         supporting-text="Введите email адрес"
                         filled="false"
                         validation-type="email">
-                    </umi-text-field>
+                    </lumina-text-field>
                 </div>
 
                 <div style="width:min(100%, 420px);">
                     <div class="demo-label">С иконками</div>
-                    <umi-text-field
+                    <lumina-text-field
                         id="tfIcons"
                         label-text="Поиск"
                         placeholder-text="Что найти?"
@@ -1149,17 +1149,17 @@
                         leading-icon-name="search"
                         has-trailing-icon
                         trailing-icon-name="mic">
-                    </umi-text-field>
+                    </lumina-text-field>
                 </div>
 
                 <div style="width:min(100%, 420px);">
                     <div class="demo-label">Пароль</div>
-                    <umi-text-field
+                    <lumina-text-field
                         id="tfPassword"
                         label-text="Пароль"
                         supporting-text="Не менее 8 символов"
                         password-mode>
-                    </umi-text-field>
+                    </lumina-text-field>
                 </div>
             </div>
         </div>
@@ -1171,44 +1171,44 @@
             <div class="component-row component-row--col">
                 <div style="width:min(100%, 420px);">
                     <div class="demo-label">Email</div>
-                    <umi-text-field
+                    <lumina-text-field
                         id="tfEmail"
                         label-text="Email"
                         validation-type="email"
                         error-message="Введите корректный email"
                         filled="false">
-                    </umi-text-field>
+                    </lumina-text-field>
                 </div>
 
                 <div style="width:min(100%, 420px);">
                     <div class="demo-label">Телефон</div>
-                    <umi-text-field
+                    <lumina-text-field
                         id="tfPhone"
                         label-text="Телефон"
                         validation-type="phone"
                         error-message="Некорректный формат телефона">
-                    </umi-text-field>
+                    </lumina-text-field>
                 </div>
 
                 <div style="width:min(100%, 420px);">
                     <div class="demo-label">URL</div>
-                    <umi-text-field
+                    <lumina-text-field
                         id="tfUrl"
                         label-text="Веб-сайт"
                         validation-type="url"
                         error-message="Введите корректный URL"
                         filled="false">
-                    </umi-text-field>
+                    </lumina-text-field>
                 </div>
 
                 <div style="width:min(100%, 420px);">
                     <div class="demo-label">С лимитом символов</div>
-                    <umi-text-field
+                    <lumina-text-field
                         id="tfLimit"
                         label-text="Комментарий"
                         max-length="100"
                         supporting-text="Краткий комментарий">
-                    </umi-text-field>
+                    </lumina-text-field>
                 </div>
             </div>
         </div>
@@ -1220,21 +1220,21 @@
             <div class="component-row component-row--col">
                 <div style="width:min(100%, 420px);">
                     <div class="demo-label">Disabled</div>
-                    <umi-text-field
+                    <lumina-text-field
                         label-text="Отключено"
                         value="Нередактируемое"
                         disabled>
-                    </umi-text-field>
+                    </lumina-text-field>
                 </div>
 
                 <div style="width:min(100%, 420px);">
                     <div class="demo-label">Readonly</div>
-                    <umi-text-field
+                    <lumina-text-field
                         label-text="Только чтение"
                         value="Фиксированное значение"
                         read-only
                         filled="false">
-                    </umi-text-field>
+                    </lumina-text-field>
                 </div>
             </div>
         </div>
@@ -1243,7 +1243,7 @@
     <!-- ═══════ 5. Chips ═══════ -->
     <section id="chips" class="demo-section">
         <div class="demo-section__header">
-            <umi-icon name="label" fill="1" size="28"></umi-icon>
+            <lumina-icon name="label" fill="1" size="28"></lumina-icon>
             <h2>Chips</h2>
             <p>Assist &middot; Filter &middot; Input &middot; Suggestion</p>
         </div>
@@ -1252,10 +1252,10 @@
             <h3>Assist Chips</h3>
             <p class="demo-card__subtitle">Non-selectable action shortcuts with optional icons.</p>
             <div class="chips-row">
-                <umi-assist-chip text="Calendar" icon="event"></umi-assist-chip>
-                <umi-assist-chip text="Directions" icon="directions"></umi-assist-chip>
-                <umi-assist-chip text="Share" icon="share"></umi-assist-chip>
-                <umi-assist-chip text="Call" icon="call"></umi-assist-chip>
+                <lumina-assist-chip text="Calendar" icon="event"></lumina-assist-chip>
+                <lumina-assist-chip text="Directions" icon="directions"></lumina-assist-chip>
+                <lumina-assist-chip text="Share" icon="share"></lumina-assist-chip>
+                <lumina-assist-chip text="Call" icon="call"></lumina-assist-chip>
             </div>
         </div>
 
@@ -1263,11 +1263,11 @@
             <h3>Filter Chips</h3>
             <p class="demo-card__subtitle">Toggleable selection with checkmark animation.</p>
             <div class="chips-row">
-                <umi-filter-chip text="Electronics" icon="devices" selected></umi-filter-chip>
-                <umi-filter-chip text="Clothing" icon="checkroom"></umi-filter-chip>
-                <umi-filter-chip text="Books" icon="menu_book"></umi-filter-chip>
-                <umi-filter-chip text="Sports" icon="sports_soccer"></umi-filter-chip>
-                <umi-filter-chip text="Music" icon="music_note" selected></umi-filter-chip>
+                <lumina-filter-chip text="Electronics" icon="devices" selected></lumina-filter-chip>
+                <lumina-filter-chip text="Clothing" icon="checkroom"></lumina-filter-chip>
+                <lumina-filter-chip text="Books" icon="menu_book"></lumina-filter-chip>
+                <lumina-filter-chip text="Sports" icon="sports_soccer"></lumina-filter-chip>
+                <lumina-filter-chip text="Music" icon="music_note" selected></lumina-filter-chip>
             </div>
         </div>
 
@@ -1275,10 +1275,10 @@
             <h3>Input Chips</h3>
             <p class="demo-card__subtitle">Removable tags, perfect for multi-select fields.</p>
             <div class="chips-row">
-                <umi-input-chip text="JavaScript" icon="code"></umi-input-chip>
-                <umi-input-chip text="TypeScript" icon="code"></umi-input-chip>
-                <umi-input-chip text="Lit" icon="local_fire_department"></umi-input-chip>
-                <umi-input-chip text="Web Components" icon="web"></umi-input-chip>
+                <lumina-input-chip text="JavaScript" icon="code"></lumina-input-chip>
+                <lumina-input-chip text="TypeScript" icon="code"></lumina-input-chip>
+                <lumina-input-chip text="Lit" icon="local_fire_department"></lumina-input-chip>
+                <lumina-input-chip text="Web Components" icon="web"></lumina-input-chip>
             </div>
         </div>
 
@@ -1286,10 +1286,10 @@
             <h3>Suggestion Chips</h3>
             <p class="demo-card__subtitle">Contextual suggestions that can fade after selection.</p>
             <div class="chips-row">
-                <umi-suggestion-chip text="Good morning"></umi-suggestion-chip>
-                <umi-suggestion-chip text="How are you?"></umi-suggestion-chip>
-                <umi-suggestion-chip text="Tell me a joke"></umi-suggestion-chip>
-                <umi-suggestion-chip text="What's the weather?" fade-after-click></umi-suggestion-chip>
+                <lumina-suggestion-chip text="Good morning"></lumina-suggestion-chip>
+                <lumina-suggestion-chip text="How are you?"></lumina-suggestion-chip>
+                <lumina-suggestion-chip text="Tell me a joke"></lumina-suggestion-chip>
+                <lumina-suggestion-chip text="What's the weather?" fade-after-click></lumina-suggestion-chip>
             </div>
         </div>
     </section>
@@ -1297,7 +1297,7 @@
     <!-- ═══════ 6. Sliders ═══════ -->
     <section id="sliders" class="demo-section">
         <div class="demo-section__header">
-            <umi-icon name="tune" fill="1" size="28"></umi-icon>
+            <lumina-icon name="tune" fill="1" size="28"></lumina-icon>
             <h2>Sliders</h2>
             <p>Continuous &middot; Discrete &middot; Wave &middot; Range</p>
         </div>
@@ -1308,22 +1308,22 @@
             <div class="slider-demos">
                 <div class="slider-demo-row">
                     <label>Continuous</label>
-                    <umi-slide-bar id="slider1" value="40" from="0" to="100"></umi-slide-bar>
+                    <lumina-slide-bar id="slider1" value="40" from="0" to="100"></lumina-slide-bar>
                     <span class="slider-value" id="slider1Val">40</span>
                 </div>
                 <div class="slider-demo-row">
                     <label>Discrete (5)</label>
-                    <umi-slide-bar id="slider2" value="60" from="0" to="100" divisions="5"></umi-slide-bar>
+                    <lumina-slide-bar id="slider2" value="60" from="0" to="100" divisions="5"></lumina-slide-bar>
                     <span class="slider-value" id="slider2Val">60</span>
                 </div>
                 <div class="slider-demo-row">
                     <label>Wave Mode</label>
-                    <umi-slide-bar id="slider3" value="50" from="0" to="100" wave-mode wave-animated></umi-slide-bar>
+                    <lumina-slide-bar id="slider3" value="50" from="0" to="100" wave-mode wave-animated></lumina-slide-bar>
                     <span class="slider-value" id="slider3Val">50</span>
                 </div>
                 <div class="slider-demo-row">
                     <label>With Icon</label>
-                    <umi-slide-bar id="slider4" value="70" from="0" to="100" icon="volume_up"></umi-slide-bar>
+                    <lumina-slide-bar id="slider4" value="70" from="0" to="100" icon="volume_up"></lumina-slide-bar>
                     <span class="slider-value" id="slider4Val">70</span>
                 </div>
             </div>
@@ -1335,7 +1335,7 @@
             <div class="slider-demos">
                 <div class="slider-demo-row">
                     <label>Price Range</label>
-                    <umi-range-slide-bar id="rangeSlider" from="0" to="1000" min-value="200" max-value="800"></umi-range-slide-bar>
+                    <lumina-range-slide-bar id="rangeSlider" from="0" to="1000" min-value="200" max-value="800"></lumina-range-slide-bar>
                     <span class="slider-value" id="rangeVal">$200–$800</span>
                 </div>
             </div>
@@ -1345,7 +1345,7 @@
     <!-- ═══════ 7. Feedback ═══════ -->
     <section id="feedback" class="demo-section">
         <div class="demo-section__header">
-            <umi-icon name="notifications_active" fill="1" size="28"></umi-icon>
+            <lumina-icon name="notifications_active" fill="1" size="28"></lumina-icon>
             <h2>Feedback</h2>
             <p>Progress &middot; Loading &middot; Snackbar</p>
         </div>
@@ -1356,36 +1356,36 @@
             <div class="progress-grid">
                 <div class="progress-item">
                     <span class="demo-label">IC Standard</span>
-                    <umi-ic-progress-bar diameter="48" stroke-width="4"></umi-ic-progress-bar>
+                    <lumina-ic-progress-bar diameter="48" stroke-width="4"></lumina-ic-progress-bar>
                 </div>
                 <div class="progress-item">
                     <span class="demo-label">IC Expressive</span>
-                    <umi-ic-progress-bar-expressive diameter="48"></umi-ic-progress-bar-expressive>
+                    <lumina-ic-progress-bar-expressive diameter="48"></lumina-ic-progress-bar-expressive>
                 </div>
                 <div class="progress-item">
                     <span class="demo-label">DC Standard</span>
-                    <umi-dc-progress-bar diameter="48" stroke-width="4" value="0.65"></umi-dc-progress-bar>
+                    <lumina-dc-progress-bar diameter="48" stroke-width="4" value="0.65"></lumina-dc-progress-bar>
                 </div>
                 <div class="progress-item">
                     <span class="demo-label">DC Expressive</span>
-                    <umi-dc-progress-bar-expressive diameter="48" value="0.4"></umi-dc-progress-bar-expressive>
+                    <lumina-dc-progress-bar-expressive diameter="48" value="0.4"></lumina-dc-progress-bar-expressive>
                 </div>
                 <div class="progress-item">
                     <span class="demo-label">Loading Indicator</span>
-                    <umi-loading-indicator size="48"></umi-loading-indicator>
+                    <lumina-loading-indicator size="48"></lumina-loading-indicator>
                 </div>
                 <div class="progress-item">
                     <span class="demo-label">With Background</span>
-                    <umi-loading-indicator size="48" has-background></umi-loading-indicator>
+                    <lumina-loading-indicator size="48" has-background></lumina-loading-indicator>
                 </div>
             </div>
 
             <div class="demo-label" style="margin-top: 32px">Linear Progress Bars</div>
             <div style="display:flex;flex-direction:column;gap:16px;margin-top:12px;">
-                <umi-il-progress-bar style="width:100%"></umi-il-progress-bar>
-                <umi-il-progress-bar-expressive style="width:100%"></umi-il-progress-bar-expressive>
-                <umi-dl-progress-bar style="width:100%" value="0.55"></umi-dl-progress-bar>
-                <umi-dl-progress-bar-expressive style="width:100%" value="0.35"></umi-dl-progress-bar-expressive>
+                <lumina-il-progress-bar style="width:100%"></lumina-il-progress-bar>
+                <lumina-il-progress-bar-expressive style="width:100%"></lumina-il-progress-bar-expressive>
+                <lumina-dl-progress-bar style="width:100%" value="0.55"></lumina-dl-progress-bar>
+                <lumina-dl-progress-bar-expressive style="width:100%" value="0.35"></lumina-dl-progress-bar-expressive>
             </div>
         </div>
 
@@ -1393,11 +1393,11 @@
             <h3>Snackbar</h3>
             <p class="demo-card__subtitle">Info, warning, error, success — with actions, swipe to dismiss, and stacking.</p>
             <div class="snack-buttons">
-                <umi-filled-button id="snackInfo" text="Info" icon-name="info" size="1"></umi-filled-button>
-                <umi-tonal-button id="snackSuccess" text="Success" icon-name="check_circle" size="1"></umi-tonal-button>
-                <umi-outlined-button id="snackWarning" text="Warning" icon-name="warning" size="1"></umi-outlined-button>
-                <umi-text-button id="snackError" text="Error" icon-name="error" size="1"></umi-text-button>
-                <umi-elevated-button id="snackAction" text="With Action" icon-name="undo" size="1"></umi-elevated-button>
+                <lumina-filled-button id="snackInfo" text="Info" icon-name="info" size="1"></lumina-filled-button>
+                <lumina-tonal-button id="snackSuccess" text="Success" icon-name="check_circle" size="1"></lumina-tonal-button>
+                <lumina-outlined-button id="snackWarning" text="Warning" icon-name="warning" size="1"></lumina-outlined-button>
+                <lumina-text-button id="snackError" text="Error" icon-name="error" size="1"></lumina-text-button>
+                <lumina-elevated-button id="snackAction" text="With Action" icon-name="undo" size="1"></lumina-elevated-button>
             </div>
         </div>
     </section>
@@ -1405,7 +1405,7 @@
     <!-- ═══════ 9. Base Material Web Components ═══════ -->
     <section id="material-web" class="demo-section">
         <div class="demo-section__header">
-            <umi-icon name="widgets" fill="1" size="28"></umi-icon>
+            <lumina-icon name="widgets" fill="1" size="28"></lumina-icon>
             <h2>Material Web (md-*)</h2>
             <p>Base @material/web components included in the bundle</p>
         </div>
@@ -1797,22 +1797,22 @@
 
     <!-- ═══════ 8. FAB Menu ═══════ -->
     <div style="position:fixed;bottom:24px;right:24px;z-index:50;">
-        <umi-fab-menu
+        <lumina-fab-menu
             id="fabMenu"
             main-icon="add"
             direction="0"
             item-spacing="12"
             expressive-motion>
-        </umi-fab-menu>
+        </lumina-fab-menu>
     </div>
 
     <!-- ═══════ Footer ═══════ -->
     <footer class="demo-footer">
         <p>
-            <strong>@umi/components</strong> v1.0
+            <strong>@luminaui/web</strong> v1.0
             &middot; Built with <a href="https://lit.dev" target="_blank" rel="noopener">Lit</a>
             &middot; <a href="https://m3.material.io" target="_blank" rel="noopener">Material Design 3</a>
-            &middot; <a href="https://github.com/massonsky/umi-web" target="_blank" rel="noopener">GitHub</a>
+            &middot; <a href="https://github.com/massonsky/lumina-web" target="_blank" rel="noopener">GitHub</a>
         </p>
         <p style="margin-top:8px;opacity:0.6;font-size:12px;">MIT License &middot; 2024–2026</p>
     </footer>
@@ -1821,7 +1821,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
     <script type="module">
-        import './umi-components.js?v=20260304-switch-nodrag';
+        import './lumina-ui-web.js?v=20260304-switch-nodrag';
 
         // ── Theme Toggle ──────────────────────────────────────────
         const colorScheme = document.getElementById('colorScheme');
@@ -1998,7 +1998,7 @@
             }
         });
 
-        // ── UMI ComboBox examples ─────────────────────────────────
+        // ── LuminaUI ComboBox examples ─────────────────────────────────
         const comboBasic = document.getElementById('comboBasic');
         const comboRoles = document.getElementById('comboRoles');
         const comboAffixes = document.getElementById('comboAffixes');
@@ -2045,10 +2045,10 @@
 
         // ── Hero Buttons ──────────────────────────────────────────
         document.getElementById('getStartedBtn')?.addEventListener('clicked', () => {
-            window.open('https://github.com/massonsky/umi-web/releases/latest', '_blank');
+            window.open('https://github.com/massonsky/lumina-web/releases/latest', '_blank');
         });
         document.getElementById('githubBtn')?.addEventListener('clicked', () => {
-            window.open('https://github.com/massonsky/umi-web', '_blank');
+            window.open('https://github.com/massonsky/lumina-web', '_blank');
         });
 
         // ── MD Dialog ─────────────────────────────────────────────
@@ -2066,7 +2066,7 @@
         });
 
         // ── Auto code samples per demo-card ─────────────────────
-        const isComponentTag = (tagName) => tagName.startsWith('UMI-') || tagName.startsWith('MD-');
+        const isComponentTag = (tagName) => tagName.startsWith('LUMINA-') || tagName.startsWith('MD-');
 
         const componentSelectors = [
             '.component-row',
@@ -2076,7 +2076,7 @@
             'md-chip-set',
             'md-tabs',
             'md-list',
-            'umi-button-group'
+            'lumina-button-group'
         ].join(', ');
 
         const escapeHtml = (str) => str

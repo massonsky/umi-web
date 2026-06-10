@@ -2,7 +2,7 @@ import { LitElement, html, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import loadingStyles from '../styles/LoadingButtons.css';
 
-@customElement('umi-loading-icon-button')
+@customElement('lumina-loading-icon-button')
 export class LoadingIconButton extends LitElement {
     @property({ type: Number, attribute: 'button-type' }) buttonType = 0; // 0 Standard, 1 Filled, 2 Tonal, 3 Outlined
     @property({ type: Number }) size = 2;
@@ -71,18 +71,18 @@ export class LoadingIconButton extends LitElement {
         const indicatorSize = Math.max(14, Math.floor(sizePx * 0.52));
 
         if (this.progressType === 2) {
-            return html`<umi-loading-indicator .size=${indicatorSize} .color=${indicatorColor}></umi-loading-indicator>`;
+            return html`<lumina-loading-indicator .size=${indicatorSize} .color=${indicatorColor}></lumina-loading-indicator>`;
         }
 
         if (this.progressType === 0) {
             return this.progressStyle === 1
-                ? html`<umi-dc-progress-bar-expressive .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${2} .gapSize=${4} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></umi-dc-progress-bar-expressive>`
-                : html`<umi-dc-progress-bar .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${2} .gapSize=${4} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></umi-dc-progress-bar>`;
+                ? html`<lumina-dc-progress-bar-expressive .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${2} .gapSize=${4} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></lumina-dc-progress-bar-expressive>`
+                : html`<lumina-dc-progress-bar .progress=${Math.max(0, Math.min(100, this.progress))} .diameter=${indicatorSize} .thickness=${2} .gapSize=${4} .indicatorColor=${indicatorColor} .trackColor=${trackColor}></lumina-dc-progress-bar>`;
         }
 
         return this.progressStyle === 1
-            ? html`<umi-ic-progress-bar-expressive .running=${true} .diameter=${indicatorSize} .thickness=${2} .gapSize=${4} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></umi-ic-progress-bar-expressive>`
-            : html`<umi-ic-progress-bar .running=${true} .diameter=${indicatorSize} .strokeWidth=${2} .gapSize=${4} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></umi-ic-progress-bar>`;
+            ? html`<lumina-ic-progress-bar-expressive .running=${true} .diameter=${indicatorSize} .thickness=${2} .gapSize=${4} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></lumina-ic-progress-bar-expressive>`
+            : html`<lumina-ic-progress-bar .running=${true} .diameter=${indicatorSize} .strokeWidth=${2} .gapSize=${4} .indicatorColor=${indicatorColor} .trackColor=${trackColor} .showTrack=${true}></lumina-ic-progress-bar>`;
     }
 
     private _handleClick(): void {
@@ -147,6 +147,6 @@ export class LoadingIconButton extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-loading-icon-button': LoadingIconButton;
+        'lumina-loading-icon-button': LoadingIconButton;
     }
 }

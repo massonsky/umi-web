@@ -8,7 +8,7 @@ const ORIENTATION_VERTICAL = 1;
 const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v));
 
 /**
- * umi-scroll-bar
+ * lumina-scroll-bar
  *
  * TS/Lit port of ScrollBarM3.qml.
  *
@@ -19,7 +19,7 @@ const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(ma
  * - drag thumb + click on track
  * - sync с target scroll container (target-selector)
  */
-@customElement('umi-scroll-bar')
+@customElement('lumina-scroll-bar')
 export class ScrollBar extends LitElement {
     @property({ type: Number }) orientation = ORIENTATION_VERTICAL;
 
@@ -364,7 +364,7 @@ export class ScrollBar extends LitElement {
     }
 }
 
-@customElement('umi-scroll-bar-expressive')
+@customElement('lumina-scroll-bar-expressive')
 export class ScrollBarExpressive extends ScrollBar {
     @property({ type: Boolean, attribute: 'breathing-animation' }) breathingAnimation = false;
     @property({ type: Boolean, attribute: 'show-shadow' }) showShadow = true;
@@ -407,7 +407,7 @@ export class ScrollBarExpressive extends ScrollBar {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-scroll-bar': ScrollBar;
-        'umi-scroll-bar-expressive': ScrollBarExpressive;
+        'lumina-scroll-bar': ScrollBar;
+        'lumina-scroll-bar-expressive': ScrollBarExpressive;
     }
 }

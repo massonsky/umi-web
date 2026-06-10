@@ -23,7 +23,7 @@ function arcPath(cx: number, cy: number, r: number, start: number, end: number):
     return `M ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2}`;
 }
 
-@customElement('umi-dc-progress-bar-expressive')
+@customElement('lumina-dc-progress-bar-expressive')
 export class DCProgressBarExpressive extends LitElement {
     @property({ type: Number }) progress = 0;
     @property({ type: Number }) thickness = 4;
@@ -203,6 +203,6 @@ export class DCProgressBarExpressive extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-dc-progress-bar-expressive': DCProgressBarExpressive;
+        'lumina-dc-progress-bar-expressive': DCProgressBarExpressive;
     }
 }

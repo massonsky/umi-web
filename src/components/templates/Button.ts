@@ -26,7 +26,7 @@ export enum IconType {
 }
 
 /**
- * Button — Базовый класс кнопки Umi.
+ * Button — Базовый класс кнопки LuminaUI.
  * Обеспечивает API размеров, групп, иконок и морфинг-анимацию радиусов.
  */
 export class Button extends LitElement {

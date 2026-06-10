@@ -2,7 +2,7 @@ import { LitElement, html, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import radioStyles from '../styles/RadioButton.css';
 
-@customElement('umi-radio-button')
+@customElement('lumina-radio-button')
 export class RadioButton extends LitElement {
     @property({ type: Boolean }) enabled = true;
     @property({ type: Boolean, reflect: true }) checked = false;
@@ -109,7 +109,7 @@ export class RadioButton extends LitElement {
         if (!this.autoExclusive || !this.checked) return;
 
         const root = this.getRootNode() as Document | ShadowRoot;
-        const all = Array.from(root.querySelectorAll('umi-radio-button')) as RadioButton[];
+        const all = Array.from(root.querySelectorAll('lumina-radio-button')) as RadioButton[];
 
         all.forEach((el) => {
             if (el === this) return;
@@ -237,6 +237,6 @@ export class RadioButton extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-radio-button': RadioButton;
+        'lumina-radio-button': RadioButton;
     }
 }

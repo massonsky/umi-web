@@ -3,7 +3,7 @@ import { unsafeCSS } from 'lit';
 import * as T from '../templates/Button.js';
 import filledStyles from '../styles/FilledButton.css';
 
-@customElement('umi-filled-button')
+@customElement('lumina-filled-button')
 export class FilledButton extends T.Button {
     constructor() {
         super();
@@ -18,6 +18,6 @@ export class FilledButton extends T.Button {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-filled-button': FilledButton;
+        'lumina-filled-button': FilledButton;
     }
 }

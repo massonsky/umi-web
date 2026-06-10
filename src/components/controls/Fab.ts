@@ -4,7 +4,7 @@ import { FabBase } from '../templates/Fab.js';
 
 export type FabSize = 'small' | 'medium' | 'large';
 
-@customElement('umi-fab')
+@customElement('lumina-fab')
 export class Fab extends FabBase {
     @property({ type: String, attribute: 'fab-size' }) fabSize: FabSize = 'medium';
 
@@ -58,6 +58,6 @@ export class Fab extends FabBase {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-fab': Fab;
+        'lumina-fab': Fab;
     }
 }

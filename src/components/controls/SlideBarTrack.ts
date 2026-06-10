@@ -3,7 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 import slideBarStyles from '../styles/SlideBar.css';
 
 /**
- * umi-slide-bar-track
+ * lumina-slide-bar-track
  *
  * TS/Lit port of SlideBarTrack.qml
  *
@@ -12,7 +12,7 @@ import slideBarStyles from '../styles/SlideBar.css';
  * rightCorners — радиус правых углов (по умолчанию 2px).
  * opacityValue — прозрачность трека.
  */
-@customElement('umi-slide-bar-track')
+@customElement('lumina-slide-bar-track')
 export class SlideBarTrack extends LitElement {
     @property({ type: Number, attribute: 'right-corners' }) rightCorners = 2;
     @property({ type: Number, attribute: 'left-corners' })  leftCorners = 9; // height/2+1 for 16px track
@@ -43,6 +43,6 @@ export class SlideBarTrack extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-slide-bar-track': SlideBarTrack;
+        'lumina-slide-bar-track': SlideBarTrack;
     }
 }

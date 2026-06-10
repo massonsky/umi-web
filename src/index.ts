@@ -1,17 +1,17 @@
 ﻿/**
- * @umi/components — Umi Component Library
+ * @luminaui/web — LuminaUI Web Component Library
  *
  * Автоматически регистрирует все стандартные компоненты @material/web (md-*),
- * а также экспортирует все кастомные компоненты Umi (umi-*).
+ * а также экспортирует все кастомные компоненты LuminaUI (lumina-*).
  *
  * Использование:
- *   import '@umi/components';
+ *   import '@luminaui/web';
  *   // или именованный импорт:
- *   import { FilledButton, MaterialColor, SchemeVariant } from '@umi/components';
+ *   import { FilledButton, MaterialColor, SchemeVariant } from '@luminaui/web';
  *
  * После этого доступны теги:
  *   md-filled-button, md-checkbox, md-slider, ... (стандартный MD3)
- *   umi-filled-button, umi-fab, umi-color-scheme, umi-font, umi-icon, ...
+ *   lumina-filled-button, lumina-fab, lumina-color-scheme, lumina-font, lumina-icon, ...
  */
 
 // ─── Регистрируем все стандартные компоненты @material/web ───────────────────
@@ -28,7 +28,7 @@ import '@material/web/labs/navigationdrawer/navigation-drawer.js';
 import '@material/web/labs/segmentedbutton/outlined-segmented-button.js';
 import '@material/web/labs/segmentedbuttonset/outlined-segmented-button-set.js';
 
-// ─── Кастомные компоненты Umi ─────────────────────────────────────────────────
+// ─── Кастомные компоненты LuminaUI ─────────────────────────────────────────────────
 export * from './components/types.js';
 export * from './components/actions/index.js';
 export * from './components/fab/index.js';

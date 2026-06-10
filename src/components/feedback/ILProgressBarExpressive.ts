@@ -4,7 +4,7 @@ import progressStyles from '../styles/ProgressBars.css';
 
 function easeInQuint(t: number): number { return t * t * t * t * t; }
 
-@customElement('umi-il-progress-bar-expressive')
+@customElement('lumina-il-progress-bar-expressive')
 export class ILProgressBarExpressive extends LitElement {
     @property({ type: Number }) thickness = 4;
     @property({ type: Number, attribute: 'gap-size' }) gapSize = 4;
@@ -203,6 +203,6 @@ export class ILProgressBarExpressive extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-il-progress-bar-expressive': ILProgressBarExpressive;
+        'lumina-il-progress-bar-expressive': ILProgressBarExpressive;
     }
 }

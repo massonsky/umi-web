@@ -2,7 +2,7 @@ import { LitElement, html, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import timeStyles from '../styles/TimeButtons.css';
 
-@customElement('umi-extended-floating-action-time-button')
+@customElement('lumina-extended-floating-action-time-button')
 export class ExtendedFloatingActionTimeButton extends LitElement {
     @property({ type: String }) text = '';
     @property({ type: String, attribute: 'icon-name' }) iconName = '';
@@ -132,6 +132,6 @@ export class ExtendedFloatingActionTimeButton extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-extended-floating-action-time-button': ExtendedFloatingActionTimeButton;
+        'lumina-extended-floating-action-time-button': ExtendedFloatingActionTimeButton;
     }
 }

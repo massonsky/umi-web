@@ -3,7 +3,7 @@ import { unsafeCSS } from 'lit';
 import * as T from '../templates/Button.js';
 import outlinedStyles from '../styles/OutlinedButton.css';
 
-@customElement('umi-outlined-button')
+@customElement('lumina-outlined-button')
 export class OutlinedButton extends T.Button {
     constructor() {
         super();
@@ -18,6 +18,6 @@ export class OutlinedButton extends T.Button {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-outlined-button': OutlinedButton;
+        'lumina-outlined-button': OutlinedButton;
     }
 }

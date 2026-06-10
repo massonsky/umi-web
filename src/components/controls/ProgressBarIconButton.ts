@@ -2,7 +2,7 @@ import { LitElement, html, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import progressStyles from '../styles/ProgressButtons.css';
 
-@customElement('umi-progress-bar-icon-button')
+@customElement('lumina-progress-bar-icon-button')
 export class ProgressBarIconButton extends LitElement {
     @property({ type: Number, attribute: 'button-type' }) buttonType = 0; // 0 Standard, 1 Filled, 2 Tonal, 3 Outlined
     @property({ type: Number }) size = 2; // 0..4
@@ -189,6 +189,6 @@ export class ProgressBarIconButton extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-progress-bar-icon-button': ProgressBarIconButton;
+        'lumina-progress-bar-icon-button': ProgressBarIconButton;
     }
 }

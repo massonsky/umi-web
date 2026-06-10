@@ -1,7 +1,7 @@
 import { customElement } from 'lit/decorators.js';
 import { ChipBase } from './ChipBase.js';
 
-@customElement('umi-input-chip')
+@customElement('lumina-input-chip')
 export class InputChip extends ChipBase {
     private _removeAnimTimer = 0;
 
@@ -42,6 +42,6 @@ export class InputChip extends ChipBase {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-input-chip': InputChip;
+        'lumina-input-chip': InputChip;
     }
 }

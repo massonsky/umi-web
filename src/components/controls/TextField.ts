@@ -23,7 +23,7 @@ import textFieldStyles from '../styles/TextField.css';
 export type EchoMode = 'normal' | 'password' | 'no-echo';
 export type ValidationType = 'none' | 'email' | 'phone' | 'url' | 'number' | 'custom';
 
-@customElement('umi-text-field')
+@customElement('lumina-text-field')
 export class TextField extends LitElement {
     // =========================================================
     // MD3 EXPRESSIVE ANIMATION TIMING
@@ -807,6 +807,6 @@ export class TextField extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-text-field': TextField;
+        'lumina-text-field': TextField;
     }
 }

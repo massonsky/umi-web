@@ -6,7 +6,7 @@ export type LabsToolbarVariant = 'docked' | 'floating';
 export type LabsToolbarColor = 'standard' | 'vibrant';
 export type LabsToolbarOrientation = 'horizontal' | 'vertical';
 
-@customElement('umi-labs-toolbar')
+@customElement('lumina-labs-toolbar')
 export class LabsToolbar extends LitElement {
     @property({ type: String }) variant: LabsToolbarVariant = 'floating';
     @property({ type: String, attribute: 'color-style' }) colorStyle: LabsToolbarColor = 'standard';
@@ -64,6 +64,6 @@ export class LabsToolbar extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-labs-toolbar': LabsToolbar;
+        'lumina-labs-toolbar': LabsToolbar;
     }
 }

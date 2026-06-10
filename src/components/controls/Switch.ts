@@ -2,7 +2,7 @@ import { LitElement, html, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import switchStyles from '../styles/Switch.css';
 
-@customElement('umi-switch')
+@customElement('lumina-switch')
 export class Switch extends LitElement {
     // Public API (QML parity)
     @property({ type: String }) text = '';
@@ -446,6 +446,6 @@ export class Switch extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-switch': Switch;
+        'lumina-switch': Switch;
     }
 }

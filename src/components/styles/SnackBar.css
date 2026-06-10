@@ -13,7 +13,7 @@
 .stack {
     position: absolute;
     display: flex;
-    gap: var(--umi-snackbar-spacing, 16px);
+    gap: var(--lumina-snackbar-spacing, 16px);
     pointer-events: none;
 }
 

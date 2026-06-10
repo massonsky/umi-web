@@ -4,7 +4,7 @@ import badgeStyles from '../styles/LabsBadges.css';
 
 export type LabsBadgeVariant = 'auto' | 'small' | 'large';
 
-@customElement('umi-labs-badge')
+@customElement('lumina-labs-badge')
 export class LabsBadge extends LitElement {
     @property({ type: String }) variant: LabsBadgeVariant = 'auto';
     @property({ type: Number }) count = -1;
@@ -66,6 +66,6 @@ export class LabsBadge extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-labs-badge': LabsBadge;
+        'lumina-labs-badge': LabsBadge;
     }
 }

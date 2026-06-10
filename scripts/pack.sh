@@ -11,7 +11,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
 echo ""
-echo "=== @umi/components pack script ==="
+echo "=== @luminaui/web pack script ==="
 
 # ----- 1. Bump version -----
 if [ "$BUMP_TYPE" != "none" ]; then
@@ -44,4 +44,4 @@ VERSION=$(node -p "require('./package.json').version")
 echo "Install via:"
 echo "  npm install $TGZ_PATH"
 echo "  # или после публикации:"
-echo "  npm install @umi/components@$VERSION"
+echo "  npm install @luminaui/web@$VERSION"

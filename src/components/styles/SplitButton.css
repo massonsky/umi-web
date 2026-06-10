@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────────────────────────
-   umi-split-button — Material Design 3 Split Button
+   lumina-split-button — Material Design 3 Split Button
    ─────────────────────────────────────────────────────────────
    CSS custom properties (set inline by component JS):
      --split-h             button height
@@ -26,7 +26,7 @@
 }
 
 /* ── Life Material: breathing animation ────────────────────── */
-@keyframes umi-breathe {
+@keyframes lumina-breathe {
     0%, 100% { transform: none; }
     50%      { transform: none; }
 }
@@ -41,7 +41,7 @@
 }
 
 .wrapper.life-material {
-    animation: umi-breathe 3s ease-in-out infinite;
+    animation: lumina-breathe 3s ease-in-out infinite;
 }
 
 .wrapper.pressed,

@@ -124,12 +124,12 @@
 }
 
 /* Slots defaults */
-::slotted(umi-icon-button),
-::slotted(umi-filled-button),
-::slotted(umi-tonal-button),
-::slotted(umi-outlined-button),
-::slotted(umi-text-button),
-::slotted(umi-fab),
+::slotted(lumina-icon-button),
+::slotted(lumina-filled-button),
+::slotted(lumina-tonal-button),
+::slotted(lumina-outlined-button),
+::slotted(lumina-text-button),
+::slotted(lumina-fab),
 ::slotted(md-icon-button),
 ::slotted(md-filled-icon-button),
 ::slotted(md-filled-tonal-icon-button),

@@ -25,7 +25,7 @@ function arcPath(cx: number, cy: number, r: number, start: number, end: number):
     return `M ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2}`;
 }
 
-@customElement('umi-ic-progress-bar-expressive')
+@customElement('lumina-ic-progress-bar-expressive')
 export class ICProgressBarExpressive extends LitElement {
     @property({ type: Boolean }) running = true;
 
@@ -206,6 +206,6 @@ export class ICProgressBarExpressive extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-ic-progress-bar-expressive': ICProgressBarExpressive;
+        'lumina-ic-progress-bar-expressive': ICProgressBarExpressive;
     }
 }

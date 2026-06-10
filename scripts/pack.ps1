@@ -1,7 +1,7 @@
 #!/usr/bin/env pwsh
 <#
 .SYNOPSIS
-    Собирает @umi/components в .tgz npm-пакет.
+    Собирает @luminaui/web в .tgz npm-пакет.
 .PARAMETER BumpType
     Тип bump версии: patch | minor | major | none (default: none)
 .PARAMETER OutputDir
@@ -24,7 +24,7 @@ $ErrorActionPreference = 'Stop'
 $Root = Split-Path $PSScriptRoot -Parent
 Set-Location $Root
 
-Write-Host "`n=== @umi/components pack script ===" -ForegroundColor Cyan
+Write-Host "`n=== @luminaui/web pack script ===" -ForegroundColor Cyan
 
 # ----- 1. Bump version -----
 if ($BumpType -ne 'none') {
@@ -66,4 +66,4 @@ $Version = (Get-Content 'package.json' -Raw | ConvertFrom-Json).version
 Write-Host "Install via:" -ForegroundColor DarkGray
 Write-Host "  npm install $TgzPath" -ForegroundColor DarkGray
 Write-Host "  # или после публикации:" -ForegroundColor DarkGray
-Write-Host "  npm install @umi/components@$Version" -ForegroundColor DarkGray
+Write-Host "  npm install @luminaui/web@$Version" -ForegroundColor DarkGray

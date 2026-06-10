@@ -25,7 +25,7 @@ export interface FabMenuItemData {
     enabled?: boolean;
 }
 
-@customElement('umi-fab-menu')
+@customElement('lumina-fab-menu')
 export class FloatingActionButtonMenu extends LitElement {
     private static _registry = new Set<FloatingActionButtonMenu>();
 
@@ -259,7 +259,7 @@ export class FloatingActionButtonMenu extends LitElement {
                                     --start-y:${start.y}px;
                                 "
                             >
-                                <umi-fab-menu-item
+                                <lumina-fab-menu-item
                                     .text=${item.text ?? ''}
                                     .iconName=${item.icon ?? ''}
                                     .buttonType=${this._baseType(item)}
@@ -268,7 +268,7 @@ export class FloatingActionButtonMenu extends LitElement {
                                     .itemWidth=${width}
                                     @clicked=${() => this._onItemClicked(index, item)}
                                     @toggled=${(e: CustomEvent) => this._onItemToggled(index, Boolean(e.detail?.checked), item)}
-                                ></umi-fab-menu-item>
+                                ></lumina-fab-menu-item>
                             </div>
                         `;
                     })}
@@ -289,6 +289,6 @@ export class FloatingActionButtonMenu extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-fab-menu': FloatingActionButtonMenu;
+        'lumina-fab-menu': FloatingActionButtonMenu;
     }
 }

@@ -10,7 +10,7 @@ export enum FabMenuItemType {
     ToggleIcon = 4,
 }
 
-@customElement('umi-fab-menu-item')
+@customElement('lumina-fab-menu-item')
 export class FloatingActionButtonMenuItem extends LitElement {
     @property({ type: String }) text = '';
     @property({ type: String, attribute: 'icon-name' }) iconName = '';
@@ -44,25 +44,25 @@ export class FloatingActionButtonMenuItem extends LitElement {
         switch (this.buttonType) {
             case FabMenuItemType.IconButton:
                 return html`
-                    <umi-icon-button
+                    <lumina-icon-button
                         .iconName=${this.iconName}
                         .buttonType=${1}
                         .size=${4}
                         .checkable=${false}
                         @clicked=${this._emitClicked}
-                    ></umi-icon-button>
+                    ></lumina-icon-button>
                 `;
 
             case FabMenuItemType.ToggleIcon:
                 return html`
-                    <umi-icon-button
+                    <lumina-icon-button
                         .iconName=${this.iconName}
                         .buttonType=${1}
                         .size=${4}
                         .checkable=${true}
                         .checked=${this.checked}
                         @toggled=${(e: CustomEvent) => this._emitToggled(Boolean(e.detail?.checked))}
-                    ></umi-icon-button>
+                    ></lumina-icon-button>
                 `;
 
             case FabMenuItemType.Switch:
@@ -90,11 +90,11 @@ export class FloatingActionButtonMenuItem extends LitElement {
             case FabMenuItemType.EFAB:
             default:
                 return html`
-                    <umi-extended-fab
+                    <lumina-extended-fab
                         .text=${this.text}
                         .iconName=${this.iconName}
                         @clicked=${this._emitClicked}
-                    ></umi-extended-fab>
+                    ></lumina-extended-fab>
                 `;
         }
     }
@@ -112,6 +112,6 @@ export class FloatingActionButtonMenuItem extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-fab-menu-item': FloatingActionButtonMenuItem;
+        'lumina-fab-menu-item': FloatingActionButtonMenuItem;
     }
 }

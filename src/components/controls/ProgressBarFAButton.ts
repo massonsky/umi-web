@@ -2,7 +2,7 @@ import { LitElement, html, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import progressStyles from '../styles/ProgressButtons.css';
 
-@customElement('umi-progress-bar-fab')
+@customElement('lumina-progress-bar-fab')
 export class ProgressBarFAButton extends LitElement {
     @property({ type: String, attribute: 'icon-name' }) iconName = '';
     @property({ type: Number, attribute: 'icon-type' }) iconType = 0;
@@ -137,6 +137,6 @@ export class ProgressBarFAButton extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'umi-progress-bar-fab': ProgressBarFAButton;
+        'lumina-progress-bar-fab': ProgressBarFAButton;
     }
 }
